@@ -1,0 +1,88 @@
+.what-is-it {
+    padding: 112px 0;
+    background: #fff;
+    box-shadow: 0 0 11px 0px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 3;
+    text-align: center;
+
+    img {
+        width: 700px;
+        position: relative;
+        top: -130px;
+        left: -20px;
+        margin-bottom: -70px;
+    }
+
+    .general {
+
+        /*float: left;*/
+        margin-right: 60px;
+        margin-left: 95px;
+        display: flex;
+        justify-content: space-between;
+        z-index: 10;
+        position: relative;
+    }
+
+    .general p {
+        width: 300px;
+    }
+
+
+    .general li {
+        margin-bottom: 40px;
+        text-align: left;
+    }
+
+    p {
+        line-height: 22px;
+        font-size: 16px;
+    }
+
+    .divider {
+        height: 2px;
+        width: 400px;
+        background-color: #0fbbec;
+        margin: 40px auto;
+        clear: left;
+    }
+
+    h2 {
+        text-align: center;
+        font-size: 30px;
+        color: #5f5f5f;
+        margin-bottom: 40px;
+    }
+
+    h3 {
+        text-align: left;
+        font-size: 22px;
+        color: #5f5f5f;
+        margin-bottom: 14px;
+        font-weight: 300;
+    }
+
+    h3 small {
+        display: block;
+        margin-top: 6px;
+        font-size: 14px;
+        font-style: italic;
+    }
+
+    .core-features {
+        width: 1000px;
+        margin: 0 auto;
+    }
+
+    .core-features li {
+        width: 260px;
+        margin-right: 110px;
+        text-align: left;
+        float: left;
+    }
+
+    .core-features li:last-child {
+        margin-right: 0;
+    }
+}

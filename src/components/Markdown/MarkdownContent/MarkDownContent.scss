@@ -1,0 +1,113 @@
+.content {
+    h3 {
+        margin: 15px 0 10px 0;
+        font-size: 18px;
+        font-weight: 400;
+    }
+
+    * {
+        font-size: 16px;
+        font-weight: 300;
+        font-family: Roboto, sans-serif;
+        color: #333;
+    }
+
+    h2 {
+        font-size: 20px;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 4px;
+        margin-top: 40px;
+    }
+
+    h4, h4 code {
+        font-size: 15px;
+        margin-top: 32px;
+        color: #000;
+        font-weight: 400;
+    }
+
+    p {
+        margin-top: 16px;
+    }
+
+    p a {
+        color: #0FBBEC;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    p a:hover {
+        color: #085b73;
+    }
+
+    img {
+        display: block;
+        margin: 10px auto;
+        max-width: 100%;
+    }
+
+    li {
+        padding: 5px 20px;
+        position: relative;
+        line-height: 30px;
+    }
+
+    strong {
+        font-weight: 400;
+        color: #111;
+    }
+
+    li:before {
+        content: "-";
+        position: absolute;
+        left: 6px;
+        font-size: 16px;
+        font-weight: 500;
+        color: #aaa;
+    }
+
+    li a, td a {
+        color: #0FBBEC;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    pre {
+        margin: 16px 0;
+    }
+
+    code,
+    code * {
+        font-family: "Courier New", monospace;
+    }
+
+    .info {
+        border: 1px solid #8ab4d0;
+        padding: 10px 10px 10px 60px;
+        background: #f6f9fb;
+        margin: 16px 0;
+        box-sizing: border-box;
+        position: relative;
+        color: #235d84;
+        line-height: 30px;
+    }
+
+    .info:before {
+        content: "\f14a";
+        display: inline-block;
+        font-family: "Ionicons";
+        speak: none;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        text-rendering: auto;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        color: #8ab4d0;
+        position: absolute;
+        left: 25px;
+        top: 8px;
+        font-size: 50px;
+    }
+}

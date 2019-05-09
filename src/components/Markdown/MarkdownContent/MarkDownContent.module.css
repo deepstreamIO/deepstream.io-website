@@ -1,0 +1,31 @@
+.wrapper {
+    display: flex;
+    max-width: 1260px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+
+.article {
+    max-width: 840px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.header {
+    margin-top: 80px;
+}
+
+.title {
+    font-size: 3em;
+}

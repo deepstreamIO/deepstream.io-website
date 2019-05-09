@@ -1,0 +1,21 @@
+.install-page {
+    section {
+        padding: 60px 5px;
+        border-bottom: 1px solid #eee;
+    }
+
+    h2, p {
+        text-align: center;
+    }
+
+     p a {
+        font: inherit;
+        color: #0FBBEC;
+    }
+
+    @media screen and (min-width:47em) {
+        section{
+            padding: 60px 0;
+        }
+    }
+}

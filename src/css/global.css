@@ -1,0 +1,138 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    font: 12px/16px Roboto, sans-serif;
+    color: #222;
+    box-sizing: border-box;
+}
+
+/*************************
+* GENERAL
+* ***********************/
+h1{
+    font-size: 26px;
+    font-weight: 100;
+    color: #474b4c;
+    margin-bottom: 16px;
+}
+
+h2, h3, h2 > a, h3 > a{
+    font-size: 26px;
+    font-weight: 100;
+    color: #474b4c;
+    margin-bottom: 16px;
+}
+
+h3{
+    font-size: 20px;
+    margin-bottom: 4px;
+}
+
+p{
+    color: #647276;
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: 300;
+}
+
+em {
+    font-style: italic;
+}
+
+section{
+    display: block;
+    clear: both;
+    overflow: hidden;
+    padding: 40px 0 80px;
+}
+
+.section-headline{
+    text-align: center;
+    margin: 40px 0;
+}
+
+.two-col .left,
+.two-col .right {
+    float: left;
+    width: 100%;
+}
+@media screen and (min-width:47em){
+    .two-col .left,
+    .two-col .right {
+        width: 50%;
+    }
+}
+
+a{
+    text-decoration: none;
+}
+
+.active, .active a{
+    color: #1876b3;
+    font-weight: bold;
+}
+
+h3.icon-divider {
+    margin-bottom: 20px;
+}
+
+h3.icon-divider span.icon {
+    display: inline-block;
+    color: #999;
+    position: relative;
+    top: 4px;
+    font-size: 25px;
+    padding: 0 1px;
+}
+
+h3.icon-divider span.divider {
+    display: inline-block;
+    height: 20px;
+    width: 1px;
+    margin: 3px 6px;
+    background-color: #0FBBEC;
+    vertical-align: middle;
+}
+
+h3.icon-divider span.text {
+    font-size: 20px;
+    font-weight: 100;
+}
+
+/*************************
+* STRUCTURE
+* ***********************/
+.wrapper{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.two-col{
+    overflow: hidden;
+}
+
+.two-col > .col{
+    float: left;
+}
+
+.two-col > .col.small{
+    width: 300px;
+}
+
+.two-col > .col.big{
+    border-left: 1px solid #eee;
+    border-top: 1px solid #eee;
+    width: 100%;
+}
+
+@media screen and (min-width:47em){
+
+}
+
+.edit-page-link {
+    float: right;
+    margin-right: 20px;
+    margin-top: 5px;
+}
+

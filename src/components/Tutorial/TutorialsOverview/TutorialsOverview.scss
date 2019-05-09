@@ -1,0 +1,54 @@
+.tut-overview {
+    margin: 0;
+    padding-bottom: 60px;
+    background: #f4f4f4;
+
+    h2.main {
+        text-align: center;
+        margin: 40px 0;
+    }
+
+     .wrapper {
+        overflow: hidden;
+    }
+
+     a {
+        position: relative;
+        display: block;
+        float: left;
+        width: 199px;
+        height: 100px;
+        cursor: pointer;
+        transition: all 300ms ease;
+        margin: 0 20px 20px 20px;
+    }
+
+     .wrapper:hover a {
+        opacity: 0.5;
+    }
+
+     .wrapper a:hover {
+        opacity: 1;
+    }
+
+     a h3 {
+        width: 100px;
+        padding-left: 10px;
+        height: 100%;
+        display: table;
+        position: absolute;
+        top: 0;
+    }
+
+     a h3 span {
+        font-weight: 300;
+        vertical-align: middle;
+        display: table-cell;
+        font-size: 18px;
+        line-height: 25px;
+    }
+
+     a h3 span.bright {
+        color: #fff;
+    }
+}

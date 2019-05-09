@@ -1,0 +1,212 @@
+.main-header {
+    background-color: #0FBBEC;
+    /*background-image: url(../img/bg-main.png);*/
+    background-repeat: no-repeat;
+    background-position: center right;
+    width: 100%;
+    min-height: 300px;
+    position: relative;
+
+.git-btn {
+    position: absolute;
+    left: 50%;
+    margin-left: -50px;
+    top: -50px;
+}
+
+.header-bg .bg-bus {
+    width: 50%;
+    height: 100%;
+    left: 25%;
+    position: absolute;
+    top: 22px;
+}
+
+.elton {
+    background: url(/images/start-header-shadow.png) no-repeat center bottom;
+    background-size: contain;
+    float: left;
+    padding: 0 15px 0 30px;
+}
+
+.elton img {
+    width: 100%;
+    max-width: 200px;
+    float: right;
+    margin-bottom: 15%;
+}
+
+.page-title {
+    font-size: 5rem;
+    letter-spacing: -1px;
+    font-weight: 700;
+    font-family: "Open Sans", sans-serif;
+    color: #fff;
+}
+
+.main-header-text-wrapper {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    clear: both;
+    padding: 10px 35px;
+}
+
+.main-header-text {
+    position: relative;
+}
+
+.main-header-text .buttons {
+    text-align: center;
+    position: relative;
+    top: 30px;
+}
+
+.main-header-text a {
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px 15px;
+    border-radius: 3px;
+    width: 150px;
+    cursor: pointer;
+    transition: all 400ms ease;
+    position: relative;
+    font-size: 14px;
+    color: #fff;
+
+    display: block;
+    left: 40%;
+}
+
+.main-header-text a:hover {
+    border: 1px solid rgba(255, 255, 255, 1);
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.main-header-text a i {
+    color: #fff;
+    font-size: 18px;
+    margin-right: 5px;
+    margin-left: -6px;
+    position: relative;
+    top: 2px;
+}
+
+.main-header-text a:first-child {
+    margin-bottom: 10px;
+}
+
+.bottom {
+    width: 100%;
+    clear: both;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.bottom a {
+    width: 100%;
+    display: inline-block;
+    color: #fff;
+    padding: 6px 16px;
+}
+
+.bottom a i {
+    color: #fff;
+    margin-right: 6px;
+}
+
+.page-description,
+.page-description * {
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.5em;
+    color: #FFF;
+    letter-spacing: 1px;
+    max-width: 500px;
+}
+
+@media screen and (max-width: 40em) {
+    .git-btn {
+        display: none;
+    }
+}
+
+
+@media screen and (min-width: 40em) {
+    .elton {
+        float: none;
+        position: absolute;
+    }
+
+    .elton {
+        bottom: 5%;
+        left: 7.5%;
+        width: 20%;
+    }
+}
+
+@media screen and (min-width: 50em) {
+    .elton {
+        bottom: 5%;
+        left: 25%;
+        width: 12.5%;
+    }
+}
+
+@media screen and (min-width: 47em) {
+    min-height: 400px;
+
+    .main-header-text {
+        text-align: center;
+        clear: none;
+        max-width: 50%;
+        margin: 0 auto;
+    }
+
+    /*
+    .main-header-text a{
+        display: block;
+        float: none;
+        margin: 25px auto;
+    }*/
+    .page-title {
+        margin: 10px 0 10px 0;
+    }
+
+    .page-description {
+        margin: 0 auto;
+    }
+
+    .main-header-text {
+        display: block;
+        margin: 20px auto;
+    }
+
+    .bottom a {
+        width: auto
+    }
+
+    .main-header-text-wrapper {
+        padding: 100px 0;
+    }
+
+    .main-header-text .buttons {
+        text-align: center;
+        position: relative;
+        top: 30px;
+    }
+
+    .main-header-text a:first-child {
+        margin-right: 16px;
+        margin-bottom: 0;
+    }
+
+    .main-header-text a {
+        display: inline-block;
+        left: 0;
+    }
+
+}
+
+}

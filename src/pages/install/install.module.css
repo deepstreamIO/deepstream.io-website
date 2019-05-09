@@ -1,0 +1,25 @@
+.subheading {
+    margin-top: 30px;
+    border-bottom: 1px solid #ddd;
+}
+
+.otherServer{
+    margin-top: 60px;
+}
+
+.blockLink{
+    overflow: hidden;
+}
+
+@media screen and (max-width:410px) {
+    .installBlock {
+        display: block;
+        width: 100%;
+    }
+    .installBlockContent {
+        margin: 0 auto;
+    }
+    .installBlockContent .status {
+        left: 0;
+    }
+}

@@ -1,0 +1,252 @@
+.code-samples {
+    padding: 30px 0 0;
+
+    .wrapper {
+        position: relative;
+    }
+
+    .select {
+        position: relative;
+        display: inline-block;
+        border: 1px solid #ddd;
+        padding: 5px 5px;
+        background-color: #fff;
+        border-radius: 3px;
+        -webkit-user-select: none;
+        user-select: none;
+        cursor: pointer;
+    }
+
+    .select:hover {
+        background-color: #f7f7f7;
+    }
+
+    .select .selected {
+        font-size: 26px;
+        font-weight: 100;
+        color: #3A739B;
+        display: inline-block;
+    }
+
+    .select .options {
+        position: absolute;
+        background: #fff;
+        z-index: 1;
+        box-shadow: 0 4px 7px 0px rgba(0, 0, 0, 0.3);
+        left: 0px;
+        top: 100%;
+        height: 0;
+        overflow: hidden;
+        transition: all 300ms ease;
+    }
+
+    .select .options.open {
+        height: 96px;
+    }
+
+    .column .select .options.open {
+        height: 64px;
+    }
+
+    .select .options span {
+        font-size: 26px;
+        font-weight: 100;
+        padding: 0 12px;
+        line-height: normal;
+        color: #3A739B;
+        display: block;
+        text-align: left;
+        white-space: nowrap;
+        cursor: pointer;
+    }
+
+    .select .options span:hover {
+        background-color: #dee8ef;
+    }
+
+    .select .options span.active {
+        background-color: #3A739B;
+        color: #fff;
+    }
+
+    .select i {
+        color: #3A739B;
+        font-size: 20px;
+        margin-left: 2px;
+    }
+
+    .column {
+        float: left;
+        height: 100%;
+    }
+
+    .col-a .inner {
+        width: 400px;
+        transform: rotate(90deg);
+        height: 20px;
+        transform-origin: left;
+        margin-top: 20px;
+    }
+
+    .col-a {
+        width: 20px;
+        left: -20px;
+        position: absolute;
+    }
+
+    .col-a a {
+        display: block;
+        width: 100px;
+        float: left;
+        padding: 4px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 300;
+        position: relative;
+        opacity: 0.5;
+    }
+
+    .col-a a.active,
+    .col-a a:hover {
+        opacity: 1;
+    }
+
+    .col-a a img,
+    .col-a a i {
+        font-size: 20px;
+        color: #3A739B;
+        position: absolute;
+        top: 2px;
+        left: -22px;
+        width: 20px;
+        text-align: right;
+    }
+
+    .col-b,
+    .col-d {
+        position: relative;
+        width: 90%;
+        border-radius: 5px;
+        margin: 0 5%;
+    }
+
+    .col-c {
+        width: 100%;
+        position: relative;
+        margin: auto;
+    }
+
+    .col-c img {
+        margin-top: 80px;
+        transform: rotate(90deg);
+        margin-left: 25%;
+    }
+
+    .col-d {
+        margin-bottom: 80px;
+    }
+
+    .select.language {
+        position: absolute;
+        z-index: 2;
+        right: 16px;
+        top: 16px;
+    }
+
+    .select.language .arrow {
+        color: #AAA;
+    }
+
+    .select.language .ion-social-javascript {
+        color: #F7DF1E;
+    }
+
+    .select.language .ion-social-android {
+        color: #A4C639;
+    }
+
+    .select.language .ion-social-apple {
+        color: #333;
+    }
+
+    .col-c .server {
+        width: 110px;
+        height: 110px;
+        border-radius: 100px;
+        border: 1px solid #ddd;
+        padding: 15px;
+        position: relative;
+        margin: -55px auto;
+        top: 50%;
+        background-color: #fff;
+    }
+
+    @media screen and (min-width: 47em) {
+        .col-b,
+        .col-d {
+            width: 40%;
+            margin: 0;
+        }
+
+        .col-d .pre {
+            margin-left: 40px;
+        }
+
+        .wrapper {
+            height: 275px;
+        }
+
+        .col-d {
+            margin-bottom: 0;
+        }
+
+        .col-c {
+            width: 20%;
+        }
+
+        .col-c img {
+            transform: none;
+            margin-left: 0;
+        }
+    }
+
+    /** reset prism **/
+    .pre {
+        border: none;
+        background: none;
+        margin-top: 20px;
+    }
+
+    .pre code {
+        display: none;
+        background: none;
+        border: none;
+        white-space: pre;
+        position: relative;
+        top: 26px;
+    }
+
+    .pre code.active {
+        display: block;
+    }
+
+    .pre,
+    .pre * {
+        font-size: 14px;
+        color: #333;
+        font-family: "Courier New", monospace;
+        font-weight: normal;
+    }
+
+    .pre b.comment {
+        color: #999;
+    }
+
+    .pre b.token {
+        color: #3a9b85;
+    }
+
+    .pre b.string {
+        color: #3A739B;
+    }
+}
