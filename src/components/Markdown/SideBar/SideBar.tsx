@@ -1,5 +1,5 @@
 import style from './SideBar.module.css'
-import React, {useCallback, useState} from "react"
+import React, {useState} from "react"
 import cn from 'classnames'
 import {Link} from 'gatsby';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'

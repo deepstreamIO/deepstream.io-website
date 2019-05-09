@@ -24,6 +24,7 @@ interface CategoryProps {
 }
 
 const Category: React.FunctionComponent<CategoryProps> = ({ title, entries, entry}) => {
+    console.log(title, entries, entry)
     let children = null
     if (entries) {
         const keys = Object.keys(entries).sort()
@@ -36,8 +37,6 @@ const Category: React.FunctionComponent<CategoryProps> = ({ title, entries, entr
         <h3><a>{title}</a></h3>
         {children}
     </div>
-
-
 }
 
 export const TutorialsGuides: React.FunctionComponent<TutorialsOverviewProps> = ({ edges }) => {
@@ -60,11 +59,20 @@ export const TutorialsGuides: React.FunctionComponent<TutorialsOverviewProps> = 
                 sections[paths[2]][paths[3]] = {}
             }
             sections[paths[2]][paths[3]][paths[4]] = entry
+        } else if (paths.length === 7) {
+            if (!sections[paths[2]][paths[3]]) {
+                sections[paths[2]][paths[3]] = {}
+            }
+            if (!sections[paths[2]][paths[3]][paths[4]]) {
+                sections[paths[2]][paths[3]][paths[4]] = {}
+            }
+            sections[paths[2]][paths[3]][paths[4]][paths[5]] = entry
         } else {
             sections[paths[2]][paths[3]] = entry
         }
     })
 
+    debugger
     return <Section className="section-overview">
         <Section columnClassName="entries" columns={[
             <div>
@@ -96,8 +104,9 @@ export const TutorialsGuides: React.FunctionComponent<TutorialsOverviewProps> = 
             </div>,
             <div>
                 <h2>Example Applications</h2>
-                <Category title="Applications" entries={sections.guides.apps} />
-                {/*<Category title="Games" entries={sections.guides.games} />*/}
+                <Category title="JavaScript" entries={sections.guides['example-apps'].javascript} />
+                <Category title="GeoLocation" entries={sections.guides['example-apps'].geolocation} />
+                <Category title="HTTP" entries={sections.guides['example-apps'].http} />
             </div>,
         ]} />
 
