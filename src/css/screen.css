@@ -411,9 +411,9 @@ button, .button {
     text-decoration: none;
     color: #fff;
     font-family: 'Open Sans', sans-serif;
-    font-size: 11px; // Hack because Firefox sucks ass.
-line-height: 13px; // Hack because Firefox sucks ass.
-font-weight: 300;
+    font-size: 11px;
+    line-height: 13px;
+    font-weight: 300;
     text-align: center;
     letter-spacing: 1px;
     text-transform: uppercase;

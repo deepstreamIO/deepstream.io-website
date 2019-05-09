@@ -10,8 +10,8 @@ interface SideBarProps {
 }
 
 const Section = ({ item, navigation, activePath, setOpen, open }) => (
-    <div className={style.sectionLevel} onClick={() => open ? setOpen(null) : setOpen(item) }>
-        <label>{item}</label>
+    <div className={style.sectionLevel}>
+        <label onClick={() => open ? setOpen(null) : setOpen(item) }>{item}</label>
         {open ? <IoIosArrowDown /> : <IoIosArrowUp />}
         {open && createSideBarTree(navigation[item], 1, activePath)}
     </div>

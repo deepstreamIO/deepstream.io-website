@@ -65,8 +65,6 @@ export const TutorialsGuides: React.FunctionComponent<TutorialsOverviewProps> = 
         }
     })
 
-    console.log(sections)
-
     return <Section className="section-overview">
         <Section columnClassName="entries" columns={[
             <div>
