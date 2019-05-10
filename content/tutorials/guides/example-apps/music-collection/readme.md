@@ -10,7 +10,7 @@ Speaking of events, rather than a local event hub, you could employ deepstream e
 
 Let's see how we could achieve this by building a CRUD app for managing collection of album and album's tracks using Angular as our UI tool.
 
-![Final app](/assets/img/tutorial/album-collection/final.gif)
+![Final app](/images/tutorial/album-collection/final.gif)
 
 [Getting started with deepstreamHub is easy](/tutorials/getting-started/javascript) and takes less than ten minutes. First, let's start by creating a free deepstreamHub account:
 
@@ -90,7 +90,7 @@ ds.event.emit( 'album', {some: 'data'} );
 ```
 
 ## Fetching List of Albums and Tracks
-![List interaction](/assets/img/tutorial/album-collection/album-tracks.png)
+![List interaction](/images/tutorial/album-collection/album-tracks.png)
 _Album track relationship_
 
 The UX as shown in the image above demands that we have a list of tracks that is updated once an item gets clicked in the list albums. These means that an album could have 0 - n number of tracks and we should show users these tracks when the parent album gets clicked.
@@ -243,7 +243,7 @@ The `subscribe` handler receives the id which is used to get the respective albu
 That completes the fetch/read (R) stage in the CRUD process.
 
 ## Creating Entries
-![List interaction](/assets/img/tutorial/album-collection/create.png)
+![List interaction](/images/tutorial/album-collection/create.png)
 
 The Angular Form module makes it easy to create forms with dynamic controls using `FormArray`. With dynamic controls, you can have an array of form controls to add and remove multiple album **tracks**. You can learn more about `FormArray` [here](https://angular.io/docs/ts/latest/api/forms/index/FormArray-class.html).
 
@@ -319,7 +319,7 @@ public addTrack(tracks) {
 ```
 
 ## Updating Entries
-![List interaction](/assets/img/tutorial/album-collection/edit.png)
+![List interaction](/images/tutorial/album-collection/edit.png)
 
 Updating is a lot more like creating with just the difference being that the album id is used to track which albums and tracks are being updated. The `saveAlbum` and `saveTracks` methods also handle the updates but with an `editing` flag to determine whether the user is in an edit state or create state:
 
@@ -407,4 +407,4 @@ deleteAlbum(id) {
 ## Final Notes
 
 - __Source and Example__: The examples presented here are truncated so as to emphasize more on the main point which is realtime CRUD eventing. The full code can be found on [GitHub](https://github.com/deepstreamIO/example-app-album-collection) and the live demo [here](https://deepstreamio.github.io/example-app-album-collection/dist/)
-- __More Options__: deepstream offers other strategies apart from [Events](/tutorials/guides/events/). Consider having a look at [Records](/tutorials/guides/records/) or [RPCs](/tutorials/guides/remote-procedure-calls/) to know what works best in your application
+- __More Options__: deepstream offers other strategies apart from [Events](/tutorials/core/pubsub/). Consider having a look at [Records](/tutorials/core/datasync/records/) or [RPCs](/tutorials/core/request-response/) to know what works best in your application

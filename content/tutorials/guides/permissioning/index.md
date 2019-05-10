@@ -16,13 +16,13 @@ With Valve you can
 For this tutorial it's helpful to know your way around the deepstream [
 configuration](/docs/server/configuration/) as we'll need to tell
 the server where we stored our permissioning rules. deepstream supports a
-variety of communication concepts such as data-sync, publish-subscribe or request-response and _Valve_ is flexible enough to allow different rules for each concept. This guide will mostly focus on [records](/tutorials/core/datasync-records/), so it'd be good to familiarize yourself with them. Since permissioning is fundamentally about the rights of individual clients, it would also be good to know how [user authentication](/tutorials/core/security-overview/) works in deepstream.
+variety of communication concepts such as data-sync, publish-subscribe or request-response and _Valve_ is flexible enough to allow different rules for each concept. This guide will mostly focus on [records](/tutorials/core/datasync/records/), so it'd be good to familiarize yourself with them. Since permissioning is fundamentally about the rights of individual clients, it would also be good to know how [user authentication](/tutorials/core/security/) works in deepstream.
 
 ### Let's start with an example
 Imagine you are running a discussion forum. To avoid vandalism and spam, users
 have to wait 24 hours before they can create new posts or modify existing posts
 after registration. 
-This means we'll need to store the time the user registered along with their account information. This can be done dynamically using [http authentication](/tutorials/core/auth-http-webhook/), but to keep things simple for this tutorial we'll just store it as `timestamp` within the `serverData` using deepstream's file-based authentication. A user entry in `conf/users.yml` might look as follows:
+This means we'll need to store the time the user registered along with their account information. This can be done dynamically using [http authentication](/tutorials/core/auth/http-webhook/), but to keep things simple for this tutorial we'll just store it as `timestamp` within the `serverData` using deepstream's file-based authentication. A user entry in `conf/users.yml` might look as follows:
 ```yaml
 JohnDoe:
 	password: gvb4563Z
@@ -34,7 +34,7 @@ know when John Doe registered so there is a `timestamp` in the `serverData`
 section.
 
 With deepstream as a back-end, it makes sense to store all forum threads in
-records (this is the [data-sync concept](/tutorials/core/datasync-records/)).
+records (this is the [data-sync concept](/tutorials/core/datasync/records/)).
 The following Valve snippet gives new users read-only access:
 ```yaml
 record:
@@ -176,7 +176,7 @@ apply.
 ### Records
 
 Records can be created, deleted, read from, written to, and you can _listen_ to
-other clients subscribing to records (the [record tutorial](/tutorials/core/datasync-records/)
+other clients subscribing to records (the [record tutorial](/tutorials/core/datasync/records/)
 elaborates on these operations and it explains the differences between
 unsubscribing from, discarding, and deleting records). The following snippet is
 the default Valve code for records:
@@ -216,7 +216,7 @@ presence:
 
 ### Events
 
-[Events](/tutorials/core/pubsub-events/) can be published and subscribed to.
+[Events](/tutorials/core/pubsub/) can be published and subscribed to.
 Moreover, a client emitting events may listen to event subscriptions. The
 actions can be permissioned in the section `events`:
 ```yaml
@@ -232,7 +232,7 @@ the expression.
 
 ### RPCs
 
-[Remote procedure calls](/tutorials/core/request-response-rpc/) can be provided
+[Remote procedure calls](/tutorials/core/request-response/) can be provided
 or requested. The corresponding permissioning section is identified by the key
 `rpc`:
 ```yaml
@@ -266,6 +266,6 @@ permission:
 ## Further Reading
 
 More compact introductions (or refreshers) are the tutorials [_Valve
-Permissioning Simple_](/tutorials/core/permission-conf-simple/), [_Valve
-Permissioning Advanced_](/tutorials/core/permission-conf-advanced/), and
-[_Dynamic Permissions using Valve_](/tutorials/core/permissions-dynamic/). To learn how to sent user-specific data using Valve, have a look at the [user-specific data guide](/tutorials/guides/user-specific-data/).
+Permissioning Simple_](/tutorials/core/permission/conf-simple/), [_Valve
+Permissioning Advanced_](/tutorials/core/permission/conf-advanced/), and
+[_Dynamic Permissions using Valve_](/tutorials/core/permissions/dynamic/). To learn how to sent user-specific data using Valve, have a look at the [user-specific data guide](/tutorials/guides/user-specific-data/).

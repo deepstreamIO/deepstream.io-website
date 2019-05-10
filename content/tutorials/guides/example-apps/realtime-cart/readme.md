@@ -12,7 +12,7 @@ Assume a merchant has 5 of a given items and User A tries to buy three while Use
 
 The only way to tell both users what is left is by updating the number of remaining products in realtime. This is where deepstream events shine. deepstream events are not just your regular pub/sub (though they can be used that way) but come with realtime capabilities. We will be building a bookshop where books can be purchased by adding them to a simple cart. The UI will be simple and made with React.
 
-![Bookstream gif](/assets/img/tutorial/realtime-cart/bookstream.gif)
+![Bookstream gif](/images/tutorial/realtime-cart/bookstream.gif)
 
 ## Setting Up React and deepstreamHub
 
@@ -38,7 +38,7 @@ Now to deepstreamHub. deepstream is fast to setup. You just need an account by [
 
 ## Presentation Components
 
-![Presentation Components](/assets/img/tutorial/realtime-cart/components.png)
+![Presentation Components](/images/tutorial/realtime-cart/components.png)
 
 From the image above, our app has 3 components -- two of which are presentation and one container (red). The presentation components are `BookList`(blue) and `BookItem`(green). This is because all they do is render information to the view. They don't handle any logic.
 

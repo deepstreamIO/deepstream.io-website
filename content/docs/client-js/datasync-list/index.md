@@ -15,22 +15,12 @@ const list = client.record.getList( 'cars' );
 ```
 
 ## Properties
-```
-{{#table mode="api"}}
--
-  arg: name
-  typ: String
-  des: The name of the list, as specified when calling `client.record.getList( 'name' );`
--
-  arg: usages
-  typ: Number
-  des: The number of times `client.record.getList()` has been called for this record throughout the application
--
-  arg: isReady
-  typ: Boolean
-  des: True once the list has received its current data and emitted the `'ready'` event
-{{/table}}
-```
+
+|Argument|Type|Description|
+|---|---|---|
+|name|String|The name of the list, as specified when calling `client.record.getList( 'name' );`|
+|isReady|Boolean|True once the list has received its current data and emitted the `'ready'` event|
+
 ## Events
 
 ### ready
@@ -57,21 +47,21 @@ Emitted if the list encounters an error. The error message is passed to the even
 ## Methods
 
 ### whenReady( callback )
-```
-{{#table mode="api"}}
--
-  arg: callback
-  typ: Function
-  opt: false
-  des: A function that will be invoked as soon as the list is ready. Receives the list as an argument
-{{/table}}
-```
+
+|Argument|Type|Options|Description|
+|---|---|---|---|
+|callback|Function|true|A function that will be invoked as soon as the list is ready. Receives the list as an argument|
+
 Invokes `callback` once the list has been loaded. This might happen synchronously if the list is already available or asynchronously if the list still needs to be retrieved. Some methods, e.g. `addEntry()` or `setEntries()` or `subscribe()` can be used before the list is ready.
 
 ```javascript
+// Callback
 list.whenReady( ( list ) => {
   // interact with the list
 });
+
+// ES6
+await list.whenReady()
 ```
 
 ### isEmpty()
@@ -88,20 +78,16 @@ if( list.isEmpty() ) {
 Returns an array of the current entries in the list.
 
 ```javascript
-var entries = list.getEntries()
+const entries = list.getEntries()
 console.log( entries ) // [ 'car/1', 'car2' ]
 ```
 
 ### setEntries( entries )
-```
-{{#table mode="api"}}
--
-  arg: entries
-  typ: Array
-  opt: false
-  des: An array of record name strings
-{{/table}}
-```
+
+|Argument|Type|Options|Description|
+|---|---|---|---|
+|entries|Array|false|An array of record name strings|
+
 Sets the contents of the list to the provided array of record names. To add or remove specific entries use `addEntry()` or `removeEntry()` respectively.
 
 ```javascript
@@ -109,45 +95,29 @@ list.setEntries( [ 'car/1', 'car/2' ] );
 ```
 
 ### addEntry( entry, index )
-```
-{{#table mode="api"}}
--
-  arg: entry
-  typ: String
-  opt: false
-  des: A record name that should be added to the list
--
-  arg: index
-  typ: Number
-  opt: true
-  des: An optional index that the new entry should be inserted at. If omitted, the new entry is appended to the end of the list.
-{{/table}}
-```
+
+|Argument|Type|Options|Description|
+|---|---|---|---|
+|entry|String|false|A record name that should be added to the list|
+|index|Number|true|An optional index that the new entry should be inserted at. If omitted, the new entry is appended to the end of the list.|
+
 Adds a new record name to the list.
 
 ```javascript
 function addCar( number ) {
-  var id = 'car/' + client.getUid();
+  const id = 'car/' + client.getUid();
   client.record.getRecord( id ).set( 'number', number );
   list.addEntry( id );
 }
 ```
 
 ### removeEntry( entry, index )
-```
-{{#table mode="api"}}
--
-  arg: entry
-  typ: String
-  opt: false
-  des: A record name that should be removed from the list
--
-  arg: index
-  typ: Number
-  opt: true
-  des: The index at which the record should be removed. If ommited, all entries of the given name will be removed
-{{/table}}
-```
+
+|Argument|Type|Options|Description|
+|---|---|---|---|
+|entry|String|false|A record name that should be removed to the list|
+|index|Number|true|An optional index that the entry should be removed from at. If ommited, all entries of the given name will be removed.|
+
 Removes an entry from the list. `removeEntry` will not throw any error if the entry doesn't exist.
 
 ```javascript
@@ -157,20 +127,12 @@ function removeCar( carRecord ) {
 ```
 
 ### subscribe( callback, triggerNow )
-```
-{{#table mode="api"}}
--
-  arg: callback
-  typ: Function
-  opt: false
-  des: A callback function that will be called whenever the content of the list changes
--
-  arg: triggerNow
-  typ: Boolean
-  opt: true
-  des: If true, the callback function will be called immediately with the current value
-{{/table}}
-```
+
+|Argument|Type|Options|Description|
+|---|---|---|---|
+|callback|Function|false|A callback function that will be called whenever the content of the list changes|
+|triggerNow|Boolean|true|If true, the callback function will be called immediately with the current value|
+
 Registers a function that will be invoked whenever any changes to the list's contents occur. Optionally you can also pass `true` to execute the callback function straight away with the list's current entries.
 
 ```javascript
@@ -181,15 +143,11 @@ list.subscribe( listChanged, false );
 ```
 
 ### unsubscribe( callback )
-```
-{{#table mode="api"}}
--
-  arg: callback
-  typ: Function
-  opt: true
-  des: The previously registered callback function. If ommited, all listeners will be unsubscribed.
-{{/table}}
-```
+
+|Argument|Type|Options|Description|
+|---|---|---|---|
+|callback|Function|true|The previously registered callback function. If ommited, all listeners will be unsubscribed.|
+
 Removes a subscription that was previously made using `list.subscribe()`
 
 Please Note: unsubscribe is purely a client side operation. To notify the server
@@ -205,10 +163,9 @@ Removes all change listeners and notifies the server that the client is no longe
 ```javascript
 list.discard();
 ```
-<br/>
-{{#infobox "info"}}
-- It is important to make sure that `discard()` is called for any list that's no longer needed. If you only remove the listeners using `unsubscribe()` the server won't be notified and will continue to send updates to the client.
-{{/infobox}}
+
+[[info]]
+| It is important to make sure that `discard()` is called for any list that's no longer needed. If you only remove the listeners using `unsubscribe()` the server won't be notified and will continue to send updates to the client.
 
 ### delete()
 Deletes the list on the server. This action deletes the list for all users from both cache and storage and is irreversible.

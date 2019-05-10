@@ -46,7 +46,7 @@ export default () => (<Layout pageClass="install-page">
                 deepstream clients let you connect to the server. The JavaScript client is polished and battletested, other clients are under development. Contributions are welcome, if you'd like to get involved meet us on <a href="https://github.com/deepstreamIO/deepstream.io/issues?q=is%3Aopen+is%3Aissue+label%3Anew-client">Github</a>.
             </p>
             <div className={cn(style.clientGrid, style.blockLink)}>
-                <InstallBlock url="/tutorials/core/getting-started-quickstart/#getting-the-client" img="/images/install/javascript.png" name="Browser / Node" />
+                <InstallBlock url="/tutorials/guides/getting-started-quickstart/#getting-the-client" img="/images/install/javascript.png" name="Browser / Node" />
                 <InstallBlock url="/install/java" img="/images/install/java.png" name="Java" soon={true} />
                 <InstallBlock url="/install/android" img="/images/install/android.png" name="Android" soon={true} />
                 <InstallBlock url="/docs/client-swift/AnonymousRecord/" img="/images/install/ios.png" name="iOS" soon={true} />
@@ -62,19 +62,19 @@ export default () => (<Layout pageClass="install-page">
             </p>
             <h3 className={style.subheading}>cache connectors</h3>
             <div className={cn(style.connectorsGrid, style.blockLink)}>
-                <InstallBlock url="/tutorials/integrations/cache-redis/" img="/images/install/redis.png" name="Redis" />
-                <InstallBlock url="/tutorials/integrations/cache-hazelcast/" img="/images/install/hazelcast.png" name="Hazelcast" />
-                <InstallBlock url="/tutorials/integrations/cache-memcached/" img="/images/install/memcached.png" name="memcached" />
+                <InstallBlock url="/tutorials/plugins/cache/redis/" img="/images/install/redis.png" name="Redis" />
+                <InstallBlock url="/tutorials/plugins/cache/hazelcast/" img="/images/install/hazelcast.png" name="Hazelcast" />
+                <InstallBlock url="/tutorials/plugins/cache/memcached/" img="/images/install/memcached.png" name="memcached" />
             </div>
             <h3 className={style.subheading}>database connectors</h3>
             <div className={cn(style.connectorsGrid, style.blockLink)}>
-                <InstallBlock url="/tutorials/integrations/db-postgres/" img="/images/install/postgres.png" name="Postgres" />
-                <InstallBlock url="/tutorials/integrations/db-mongodb/" img="/images/install/mongodb.png" name="MongoDB" />
-                <InstallBlock url="/tutorials/integrations/db-elasticsearch/" img="/images/install/elasticsearch.png" name="ElasticSearch" />
-                <InstallBlock url="/tutorials/integrations/db-rethinkdb/" img="/images/install/rethinkdb.png" name="RethinkDB" />
-                {/*<InstallBlock url="/tutorials/integrations/db-leveldb/" img="/images/install/leveldb.png" name="LevelDB" />*/}
-                {/*<InstallBlock url="/tutorials/integrations/db-couchdb/" img="/images/install/couchdb.png" name="CouchDB" />*/}
-                {/*<InstallBlock url="/tutorials/integrations/db-dynamodb/" img="/images/install/dynamodb.png" name="Amazon DynamoDB" />*/}
+                <InstallBlock url="/tutorials/plugins/database/postgres/" img="/images/install/postgres.png" name="Postgres" />
+                <InstallBlock url="/tutorials/plugins/database/mongodb/" img="/images/install/mongodb.png" name="MongoDB" />
+                <InstallBlock url="/tutorials/plugins/database/elasticsearch/" img="/images/install/elasticsearch.png" name="ElasticSearch" />
+                <InstallBlock url="/tutorials/plugins/database/rethinkdb/" img="/images/install/rethinkdb.png" name="RethinkDB" />
+                {/*<InstallBlock url="/tutorials/database/db-leveldb/" img="/images/install/leveldb.png" name="LevelDB" />*/}
+                {/*<InstallBlock url="/tutorials/database/db-couchdb/" img="/images/install/couchdb.png" name="CouchDB" />*/}
+                {/*<InstallBlock url="/tutorials/database/db-dynamodb/" img="/images/install/dynamodb.png" name="Amazon DynamoDB" />*/}
             </div>
     </Section>
 

@@ -1,7 +1,7 @@
 ---
 title: Realtime Flight Tracker
 description: Building a realtime flight tracker with deepstreamHub
-tags: flights, web, realtime, records
+tags: [flights, web, realtime, records]
 navLabel: Realtime Flight Tracker
 ---
 This tutorial will take you through building a realtime flight tracking system with deepstreamHub. We'll be building both a backend provider process that updates the records with the location of flights, and a web based front end that allows us to visualise these. If you'd like to dive straight into the code you can take a look at the GitHub [repository](https://github.com/deepstreamIO/dsh-demo-realtime-flight-tracker).

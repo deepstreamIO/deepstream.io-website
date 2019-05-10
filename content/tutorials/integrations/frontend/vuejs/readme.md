@@ -9,7 +9,7 @@ body_class: bright
 
 Getting started with deepstreamHub is easy and takes less than ten minutes. However, if you have any questions, please [get in touch](/contact).
 
-This getting started guide will walk you through integrating deepstream in Vue. You will also learn how to implement the three deepstream core concepts: [Records](/tutorials/guides/records), [Events](/tutorials/guides/events) and [RPCs](/tutorials/guides/remote-procedure-calls/).
+This getting started guide will walk you through integrating deepstream in Vue. You will also learn how to implement the three deepstream core concepts: [Records](/tutorials/core/datasync/records/), [Events](/tutorials/core/pubsub/) and [RPCs](/tutorials/core/request-response/).
 
 First, let's start by creating a free deepstreamHub account:
 
@@ -54,8 +54,6 @@ new Vue({
 
 The hook will connect to your deepstream server and login only when the component is created.
 
-The `login` method can take credentials if [authentication is configured](/tutorials/guides/email-auth/).
-
 
 ## Records (realtime datastore)
 {{> glossary record=true noHeadline=true}}
@@ -77,7 +75,7 @@ myRecord.set({
 
 Let's set up two-way bindings with an input field - whenever a path within our record, e.g. `firstname` changes we want to update the input. Whenever a user types, we want to update the record.
 
-![Two-way realtime bindings](/assets/img/tutorial/browser-app/realtime-datastore.gif)
+![Two-way realtime bindings](/images/tutorial/browser-app/realtime-datastore.gif)
 
 Let's see an example:
 
@@ -129,7 +127,7 @@ The `subscribe` method is used to listen for updates and update the inputs accor
 ## Events (publish-subscribe)
 {{> glossary event=true noHeadline=true}}
 
-![Publish-Subscribe](/assets/img/tutorial/browser-app/pubsub.gif)
+![Publish-Subscribe](/images/tutorial/browser-app/pubsub.gif)
 
 Clients and backend processes can receive events using `.subscribe()`
 
@@ -190,7 +188,7 @@ Just like the `record` example, `ds` instance is passed as props and the `create
 ## RPCs (request-response)
 {{> glossary rpc=true noHeadline=true}}
 
-![Request Response](/assets/img/tutorial/browser-app/request-response.gif)
+![Request Response](/images/tutorial/browser-app/request-response.gif)
 
 You can make a request using `.make()`
 
@@ -290,10 +288,3 @@ new Vue({
 
 ## Where to go next?
 To learn how to use deepstreamHub with other frontend frameworks head over to the tutorial section. To learn how to use the JavaScript SDK with NodeJS rather than in a browser, head over to the [getting started with NodeJS tutorial](/tutorials/getting-started/node/).
-
-## Live demo
-{{> live-demo
-    htmlUrl="https://cdn.rawgit.com/deepstreamIO/getting-started-vue/aee4423b/index.html"
-    cssUrl="https://cdn.rawgit.com/deepstreamIO/getting-started-vue/19729cb3/css/app.css"
-    jsUrl="https://cdn.rawgit.com/deepstreamIO/getting-started-vue/19729cb3/js/app.js"
-}}

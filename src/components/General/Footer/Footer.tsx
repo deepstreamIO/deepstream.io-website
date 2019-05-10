@@ -16,7 +16,7 @@ export const Footer = ({ hasSideBar }) => (
                         <Link to="/install/">Install</Link>
                         <Link to="/tutorials/">Tutorials</Link>
                         <Link to="/docs/">Documentation</Link>
-                        <a href="deepstreamHub.com/blog/">Blog</a>
+                        <a href="https://deepstreamHub.com/blog/">Blog</a>
                         <Link to="/info/">Info</Link>
                 </div>
 

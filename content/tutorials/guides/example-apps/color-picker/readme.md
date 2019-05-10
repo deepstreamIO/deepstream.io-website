@@ -4,7 +4,7 @@ description: Create a pie chart to show all the logged in users
 tags: JavaScript, Presence, Records, OpenAuth
 ---
 
-This tutorial is mainly focused on the [presence](/tutorials/guides/presence/) feature of deepstream and serves as a step by step guide for building a client side application in deepstream that uses prsenece. 
+This tutorial is mainly focused on the [presence](/tutorials/core/presence/) feature of deepstream and serves as a step by step guide for building a client side application in deepstream that uses prsenece. 
 
 This application will allow a client to log into deepstream and choose a color of his/her choice from the available color pallette. A pie chart will be produced that updates in real time to show the colors chosen by all the users currently logged into the application. Here's a sample of how it will look like:
 
@@ -26,7 +26,7 @@ Create a new application on deepstreamHub, you will get an App URL from your das
 var client = deepstream('<YOUR APP URL>',<ADDITIONAL OPTIONS>)
 ```
 
-The second parameter is optional. You can get more information about them, [here](/docs/general/options/).
+The second parameter is optional. You can get more information about them, [here](/docs/client-js/options/).
 
 In deepstream, logging errors is easy where you just have to pass an error message to the event callback, as shown below.
 

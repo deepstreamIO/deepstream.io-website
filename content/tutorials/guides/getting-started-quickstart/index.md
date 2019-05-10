@@ -72,4 +72,4 @@ record.subscribe('firstname', function(value) {
 
 Open the web page in two browser windows and type text into either of the text fields and the other browser window will reflect changes instantly.
 
-And that's it. There's of course a lot more to deepstream than that. If you'd like to learn more about records and what they can be used for, head over to the [record tutorial](/tutorials/core/datasync-records/). Or start reading about deepstream's [Request/Response](/tutorials/core/request-response-rpc/) or [Pub/Sub](/tutorials/core/pubsub-events/) features.
+And that's it. There's of course a lot more to deepstream than that. If you'd like to learn more about records and what they can be used for, head over to the [record tutorial](/tutorials/core/datasync/records/). Or start reading about deepstream's [Request/Response](/tutorials/core/request-response/) or [Pub/Sub](/tutorials/core/pubsub/) features.

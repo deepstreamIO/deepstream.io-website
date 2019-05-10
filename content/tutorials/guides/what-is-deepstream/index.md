@@ -16,9 +16,9 @@ Hey, it’s good to see that you’ve stumbled upon this page. deepstream is an 
 ### What is it?
 deepstream is a standalone server that is installed the same way you’d install say Nginx or most databases. It’s available [via package managers for most Linux distributions as well as executable for Windows and Mac](/install/).
 
-Clients establish persistent, bidirectional WebSocket connections with the deepstream server using lightweight SDKs that are available for [Browsers/Node](/tutorials/core/getting-started-quickstart/#getting-the-client) and [Java/Android](/install/android/) and soon/partially as well for [iOS(ObjC/Swift)](https://github.com/deepstreamIO/deepstream.io/issues/68), [Python](https://github.com/deepstreamIO/deepstream.io/issues/72), [.NET](https://github.com/deepstreamIO/deepstream.io/issues/70) and [C/C++](/deepstreamIO/deepstream.io/issues/69).
+Clients establish persistent, bidirectional WebSocket connections with the deepstream server using lightweight SDKs that are available for [Browsers/Node](/tutorials/guides/getting-started-quickstart/#getting-the-client) and [Java/Android](/install/android/) and soon/partially as well for [iOS(ObjC/Swift)](https://github.com/deepstreamIO/deepstream.io/issues/68), [Python](https://github.com/deepstreamIO/deepstream.io/issues/72), [.NET](https://github.com/deepstreamIO/deepstream.io/issues/70) and [C/C++](/deepstreamIO/deepstream.io/issues/69).
 
-The server itself is [configurable](/docs/server/configuration/) and uses [permission files](/tutorials/core/permission-conf-simple/) to validate incoming messages, but doesn’t hold any logic other than that. All logic is provided by “clients” which can be backend processes as well as end-users. deepstream provides numerous features such as [listening and active subscriptions](/tutorials/core/active-data-providers/) to hook into what users request and provide/transform data accordingly as well as integrate and retrieve data from third party components or APIs.
+The server itself is [configurable](/docs/server/configuration/) and uses [permission files](/tutorials/core/permission/conf-simple/) to validate incoming messages, but doesn’t hold any logic other than that. All logic is provided by “clients” which can be backend processes as well as end-users. deepstream provides numerous features such as [listening and active subscriptions](/tutorials/core/active-data-providers/) to hook into what users request and provide/transform data accordingly as well as integrate and retrieve data from third party components or APIs.
 This makes deepstream useful as both a realtime server for mobile/browser and desktop clients as well as a backbone for microservice architectures.
 What is it for?
 deepstream is useful as a backend for most applications, but is mostly used for
@@ -35,9 +35,9 @@ deepstream is useful as a backend for most applications, but is mostly used for
 
 ### What does it do?
 deepstream provides three core concepts:
-- **[Data-sync:](/tutorials/core/datasync-records/)** stateful and persistent JSON objects that can be manipulated in whole or in parts and are synchronized across all connected clients
-- **[Pub-Sub:](/tutorials/core/pubsub-events/)** many-to-many messaging based on subscriptions to topics
-- **[Request-Response:](/tutorials/core/request-response-rpc/)** Question/Answer workflows
+- **[Data-sync:](/tutorials/core/datasync/records/)** stateful and persistent JSON objects that can be manipulated in whole or in parts and are synchronized across all connected clients
+- **[Pub-Sub:](/tutorials/core/pubsub/)** many-to-many messaging based on subscriptions to topics
+- **[Request-Response:](/tutorials/core/request-response/)** Question/Answer workflows
 
 ### What does it not do?
 deepstream is a realtime data server that can handle all aspects of your application's logic. But: 
@@ -55,17 +55,17 @@ deepstream can optionally be integrated with three types of systems:
 - Caches can be used for fast, short-term data access
 - Message Busses can be used for deepstream nodes to communicate with each other
 
-Connectors are available for many popular systems, e.g. [RethinkDB](/tutorials/integrations/db-rethinkdb/), [MongoDB](/tutorials/integrations/db-mongodb/), [Redis](/tutorials/integrations/cache-redis/), [AMQP](/tutorials/integrations/msg-amqp/), [Kafka](/tutorials/integrations/msg-kafka/) or [ElasticSearch](/tutorials/integrations/db-elasticsearch/) and can also easily be written yourself. This animation aims to provide an impression of how deepstream interacts with other systems
+Connectors are available for many popular systems, e.g. [RethinkDB](/tutorials/plugins/database/rethinkdb/), [MongoDB](/tutorials/plugins/database/mongodb/), [Redis](/tutorials/plugins/cache/redis/), [AMQP](/tutorials/integrations/msg-amqp/), [Kafka](/tutorials/integrations/msg-kafka/) or [ElasticSearch](/tutorials/plugins/database/elasticsearch/) and can also easily be written yourself. This animation aims to provide an impression of how deepstream interacts with other systems
 
 ![how it works](/tutorials/core/cluster-messaging/internal-workings.svg)
 
 If no external system is specified, deepstream will run as a single node and store data in internal memory, but won't persist it to disk.
 
 ### How is security handled?
-deepstream supports [encrypted connections](/tutorials/core/security-overview/)
-and [multiple authentication strategies](/tutorials/core/auth-http-webhook/) to
+deepstream supports [encrypted connections](/tutorials/core/security/)
+and [multiple authentication strategies](/tutorials/core/auth/http-webhook/) to
 validate incoming connections. It also uses a granular permission language
-called [_Valve_](/tutorials/core/permission-conf-simple/) that lets you
+called [_Valve_](/tutorials/core/permission/conf-simple/) that lets you
 configure exactly which user can manipulate which record, event or rpc with
 which data.
 

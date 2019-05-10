@@ -1,7 +1,7 @@
 ---
 title: Collaborative Post-It Board
 description: Creating a Retrospective Board with deepstreamHub
-tags: Javascript, lists, records
+tags: [Javascript, lists, records]
 ---
 With more and more teams working remotely, tools have sprung up everywhere, shifting online processes. The fun part behind retrospective planning poker and other methods was always the interactivity, seeing cards move around and identifying barely readable scribbles.
 As such, let’s take a look at how we can use data-sync to create a real-time retrospective board that supports both desktops and mobile phones. It will look something like this:
@@ -76,7 +76,7 @@ And that’s part two. You now have your users connected and logged into deepstr
 
 ## The juicy parts
 
-Now comes the fun part—getting all the cards to remain in sync across all browsers/phones. Let’s take a step back and first look at data-sync and how it is used. We’ll be using [records](/tutorials/guides/records/) and [lists](/tutorials/guides/lists/) to keep state. A record is just a convenient way of storing and manipulating JSON with data-sync built in.
+Now comes the fun part—getting all the cards to remain in sync across all browsers/phones. Let’s take a step back and first look at data-sync and how it is used. We’ll be using [records](/tutorials/core/datasync/records/) and [lists](/tutorials/core/datasync/lists/) to keep state. A record is just a convenient way of storing and manipulating JSON with data-sync built in.
 Core concepts: 
 
 - A record has a unique identifier. You can create your own or use `getUid()`  to generate one for you: 

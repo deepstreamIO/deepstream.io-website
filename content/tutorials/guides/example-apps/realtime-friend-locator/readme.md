@@ -10,7 +10,7 @@ One of the exciting things about deepstream is that it allows you to get geospat
 
 ## Connecting deepstream with Rethinkdb
 
-Deepstream.io already has a great tutorial up about using RethinkDB with deepstream. You can find out more on how to [integrate RethinkDB with deepstream](/open-source/integrations/db-rethinkdb/) here. RethinkDB will store all the actual data when deepstream creates records, and deepstream will only pull the data from RethinkDB once it subscribes to that particular record.
+Deepstream.io already has a great tutorial up about using RethinkDB with deepstream. You can find out more on how to [integrate RethinkDB with deepstream](/tutorials/plugins/database/rethinkdb/) here. RethinkDB will store all the actual data when deepstream creates records, and deepstream will only pull the data from RethinkDB once it subscribes to that particular record.
 
 Another great reason for using RethinkDB for this project, is for its ability to do geospatial queries. Instead of having to access each record we create through deepstream, RethinkDB can first do a geospatial query with the coordinates that are stored, then deepstream can subscribe to a list of results that are populated by the query, and finally subscribe only to those records that we want from the database query. This will result in faster load times, since we won't have to subscribe and unsubscribe to every record that exists. Instead we'll only subscribe to the records we want.
 
@@ -109,7 +109,7 @@ onPositionUpdate( position ) {
 
 Now we are ready to find all the users who are within a kilometer radius of us, and who are logged in to the app. We will be using the listen method to pull our data out of this list we created, that contains our latitude and longitude.
 
-The listen method is called every time there is a change in record subscriptions, with our *isSubscribed* callback either returning true if there is a subscription, or false if there is not. Once there are events to subscribe to and we accept the response, we can start publishing data that will be populated from our database. There is more information about this in the  [events turorial](/tutorials/guides/active-data-providers/).
+The listen method is called every time there is a change in record subscriptions, with our *isSubscribed* callback either returning true if there is a subscription, or false if there is not. Once there are events to subscribe to and we accept the response, we can start publishing data that will be populated from our database. There is more information about this in the  [events turorial](/tutorials/core/active-data-providers/).
 
 ```js
 //server side

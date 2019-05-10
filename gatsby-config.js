@@ -77,14 +77,23 @@ module.exports = {
               directory: `${__dirname}/examples/`,
             },
           },
+          'gatsby-remark-copy-linked-files',
+          'gatsby-remark-smartypants',
           {
             resolve: 'gatsby-remark-prismjs',
             options: {
-              classPrefix: 'gatsby-code-',
             },
           },
-          'gatsby-remark-copy-linked-files',
-          'gatsby-remark-smartypants',
+          {
+            resolve: "gatsby-remark-custom-blocks",
+            options: {
+              blocks: {
+                info: {
+                  classes: "info"
+                },
+              },
+            },
+          },
         ],
       },
     },

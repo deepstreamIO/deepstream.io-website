@@ -3,7 +3,7 @@ title: Valve Permissioning Advanced
 description: Learn how to unlock the full potential of Valve
 ---
 
-Ok, time for some advanced valve rules. To get up to speed with the basics, head over to the [simple permission rules example](/tutorials/core/permission-conf-simple/).
+Ok, time for some advanced valve rules. To get up to speed with the basics, head over to the [simple permission rules example](/tutorials/core/permission/conf-simple/).
 
 ## Variables
 Valve automatically injects a set of variables into its permission rules.
@@ -30,7 +30,7 @@ For records, `data` is the INCOMING data - the current data is available as `old
 #### `user`
 `user` is an object containing information about the user attempting the action. It offers `user.id` - the username that was provided at login and `user.data`.
 
-`user.data` is the meta-data that was provided when the user logged in. This could be the data returned by the [http webhook](/tutorials/core/auth-http-webhook/) as `serverData` or the `data` field from the user file if you're using [file-based authentication](/tutorials/core/auth-file/). Data is a great place to store authentication data like roles (e.g. `{role: 'admin'}`), access-levels or flags like `{ canDeletePosts: false }`.
+`user.data` is the meta-data that was provided when the user logged in. This could be the data returned by the [http webhook](/tutorials/core/auth/http-webhook/) as `serverData` or the `data` field from the user file if you're using [file-based authentication](/tutorials/core/auth-file/). Data is a great place to store authentication data like roles (e.g. `{role: 'admin'}`), access-levels or flags like `{ canDeletePosts: false }`.
 
 Permissioning also allows age based validation in conjunction with `now`, e.g.,
 new users on a website may create new content and modify existing data only if

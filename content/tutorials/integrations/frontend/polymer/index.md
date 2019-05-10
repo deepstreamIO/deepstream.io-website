@@ -31,7 +31,7 @@ bower install deepstream.io-tools-polymer
 ```
 or get it directly from [Github](https://github.com/deepstreamIO/deepstream.io-tools-polymer).
 
-Before we begin, let's start a deepstream server. If you haven't done that before, have a look at the [getting started tutorial](../../core/getting-started-quickstart/).
+Before we begin, let's start a deepstream server. If you haven't done that before, have a look at the [getting started tutorial](/tutorials/guides/getting-started-quickstart/).
 
 #### Connectivity
 First, let's connect to deepstream. This can be accomplished by adding a `ds-connection` element. This creates a connection to deepstream based on the `url` attribute you've specified and exposes the [connection state](/docs/common/constants/#connection-state) and deepstream instance.
@@ -87,7 +87,7 @@ Now that we're connected you can enable your elements to auto-sync their data wi
 Note how there is another `ds-connection` element present. This is to access the same deepstream connection using a [global variable](https://github.com/Polymer/docs/issues/334) across the application.
 
 #### Lists
-Finally, let's look at [lists](https://deepstream.io/tutorials/lists.html). Lists are collections of record that are related to each other and can be iterated. This can be achieved by using a `ds-list` element. The attributes used are the same as `ds-record`, except the record names are exposed via an array called `entries`.
+Finally, let's look at [lists](https://deepstream.io/tutorials/core/datasync/lists/). Lists are collections of record that are related to each other and can be iterated. This can be achieved by using a `ds-list` element. The attributes used are the same as `ds-record`, except the record names are exposed via an array called `entries`.
 
 ```html
 <template>

@@ -1,7 +1,7 @@
 ---
 title: Presence
 description: Presence allows us to query on the connected authenticated clients.
-tags: Javascript, Presence
+tags: [Javascript, Presence]
 ---
 
 deepstream's presence feature allows the users in your application to track the online or offline status of other users.

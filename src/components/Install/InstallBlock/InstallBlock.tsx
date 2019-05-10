@@ -5,7 +5,7 @@ import style from "./InstallBlock.module.css"
 import {Link} from "gatsby"
 
 interface InstallBlockProps {
-    url: string,
+    url?: string,
     img: string,
     name: string,
     soon?: boolean,
@@ -13,14 +13,18 @@ interface InstallBlockProps {
 }
 
 export const InstallBlock: React.FunctionComponent<InstallBlockProps> = ({ url, img, name, soon = false, dev = false }) => {
-    return <Link to={url}>
-        <div className={cn(style.wrapper)} >
-            <div className={style.content}>
-                {dev && <div className={style.inDevelopment}>in development</div>}
-                {soon && <div className={style.comingSoon}>coming soon</div>}
-                <img src={img} width="100" height="100" />
-                <h3>{name}</h3>
-            </div>
+    const block = <div className={cn(style.wrapper)} >
+        <div className={style.content}>
+            {dev && <div className={style.inDevelopment}>in development</div>}
+            {soon && <div className={style.comingSoon}>coming soon</div>}
+            <img src={img} width="100" height="100" />
+            <h3>{name}</h3>
         </div>
-    </Link>
+    </div>
+
+    if (soon) {
+        return <a>{block}</a>
+    }
+
+    return <Link to={url!}>{block}</Link>
 }

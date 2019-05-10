@@ -9,7 +9,7 @@ RPCs are helpful on their own as a substitute for classic HTTP workflows, but ar
 
 ## some great uses for RPC
 
-* **Querying your database** If you’re using a database or search engine like [ElasticSearch](/tutorials/integrations/db-elasticsearch/) with deepstream, RPCs can be used to query data from it.
+* **Querying your database** If you’re using a database or search engine like [ElasticSearch](/tutorials/plugins/database/elasticsearch/) with deepstream, RPCs can be used to query data from it.
 * **Interfacing with REST APIs** Need to retrieve a forecast from OpenWeatherMap, get a Github Repo’s commit history or query data from YQL? Create a process that forwards incoming RPCs as HTTP requests and returns the result.
 * **Securely combining multi step record transactions** If you're building a realtime voting system, you might want to increase the vote count AND flag the user as having voted at the same time. Use an RPC for that.
 * **Distributing computational load** Running expensive image processing tasks? Break your image into parts and let deepstream distribute them between RPC providers.

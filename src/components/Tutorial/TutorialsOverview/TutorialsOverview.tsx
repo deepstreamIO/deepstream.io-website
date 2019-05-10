@@ -23,7 +23,7 @@ import arduinoImage from './images/arduino.png'
 export const TutorialsOverview = () => (
     <Section className="tut-overview">
         <h2 className="main">Tutorials</h2>
-        <Link to="/tutorials/core/getting-started-quickstart/">
+        <Link to="/tutorials/guides/getting-started-quickstart/">
             <img src={quickstartImage}/>
             <h3><span className="bright">Getting Started</span></h3>
         </Link>
@@ -31,19 +31,19 @@ export const TutorialsOverview = () => (
             <img src={serverImage}/>
             <h3><span>Server Quickstart</span></h3>
         </Link>
-        <Link to="/tutorials/core/datasync-records/">
+        <Link to="/tutorials/core/datasync/records/">
             <img src={introductionImage}/>
             <h3><span className="bright">Using Records</span></h3>
         </Link>
-        <Link to="/tutorials/core/pubsub-events/">
+        <Link to="/tutorials/core/pubsub/">
             <img src={rocketImage}/>
             <h3><span className="bright">Using Events</span></h3>
         </Link>
-        <Link to="/tutorials/core/security-overview/">
+        <Link to="/tutorials/core/security/">
             <img src={securityImage}/>
             <h3><span>Security Overview</span></h3>
         </Link>
-        <Link to="/tutorials/core/permissions-dynamic/">
+        <Link to="/tutorials/core/permissions/dynamic/">
             <img src={dynamicPermissionsImage}/>
             <h3><span>Dynamic Permissioning</span></h3>
         </Link>
@@ -67,15 +67,15 @@ export const TutorialsOverview = () => (
             <img src={knockoutImage}/>
             <h3><span>Usage with KnockoutJS</span></h3>
         </Link>
-        <a href="http://tutorials.pluralsight.com/front-end-javascript/building-a-multiplayer-space-shooter-part-i">
+        <a href="https://tutorials.pluralsight.com/front-end-javascript/building-a-multiplayer-space-shooter-part-i">
             <img src={spaceshooterImage}/>
             <h3><span className="bright">Multiplayer Spaceshooter</span></h3>
         </a>
-        <a href="http://sweetcode.io/creating-retrospective-board-deepstream-io/">
+        <a href="https://sweetcode.io/creating-retrospective-board-deepstream-io/">
             <img src={postitboardImage}/>
             <h3><span>Post-It Board</span></h3>
         </a>
-        <a href="deepstreamHub.com/blog/controlling-an-arduino-from-the-browser-using-deepstream/">
+        <a href="https://deepstreamHub.com/blog/controlling-an-arduino-from-the-browser-using-deepstream/">
             <img src={arduinoImage}/>
             <h3><span className="bright">Browser to Arduino</span></h3>
         </a>

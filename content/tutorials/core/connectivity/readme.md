@@ -1,7 +1,6 @@
 ---
 title: Connectivity
 description: Documentation for connection status and how to configure reconnection behaviour
-body_class: dark
 ---
 All deepstreamHub SDKs establish a persistent, bidirectional connection to the platform. This connection can be lost due to network outage, lack of mobile network coverage or similar problems – if this happens all SDKs will queue outgoing updates and try to re-establish the connection.
 

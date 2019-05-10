@@ -7,23 +7,15 @@ The deepstream JavaScript client can be used by both browsers and Node.js. You c
 
 ### deepstream(url, options)
 
-{{#table mode="api"}}
--
-  arg: url
-  typ: String
-  opt: false
-  des: The server URL
--
-  arg: options
-  typ: Object
-  opt: true
-  des: A map of options. Please find a list of available options [here](/docs/client-js/options/)
-{{/table}}
+|Argument|Type|Optional|Description|
+|---|---|---|---|
+|url|String|false|The server URL
+|options|Object|true|A map of options. Please find a list of available options [here](/docs/client-js/options/)
 
 Creates a client instance and initialises the connection to the deepstream server. The connection will be kept in a quarantine state and won't be fully usable until `login()` is called.
 
-```javascript
-var deepstream = require('deepstream.io-client-js')
+```js
+const deepstream = require('deepstream.io-client-js')
 const client = deepstream('localhost:6020').login()
 ```
 
@@ -49,23 +41,13 @@ client.on('error', ( error, event, topic ) =>
 ## Methods
 
 ### login(authParams, callback)
-```
-{{#table mode="api"}}
--
-  arg: authParams
-  typ: Object
-  opt: false
-  des: |
-    An object with authentication parameters, e.g <br><code>{ username: &#39;peter&#39;, password: &#39;sesame&#39; }</code>
--
-  arg: callback
-  typ: Function
-  opt: true
-  des: A function that will be called once the response to the authentication request is received.
-{{/table}}
-```
 
-Authenticates the client against the server. To learn more about how authentication works, please have a look at the [Security Overview](/tutorials/core/security-overview/).
+|Argument|Type|Optional|Description|
+|---|---|---|---|
+|authParams|Object|false|An object with authentication parameters
+|callback|Function|true|A function that will be called once the response to the authentication request is received.
+
+Authenticates the client against the server. To learn more about how authentication works, please have a look at the [Security Overview](/tutorials/core/security/).
 
 Callback will be called with: success (Boolean), data (Object).
 

@@ -304,6 +304,3 @@ Update the template to iterate over `chatArray` and display the chats:
 ```
 
 ![](http://imgur.com/0sphh7d.gif)
-
-## Conclusion
-This walkthrough is a teaser compared to the power of deepstream especially when integrated with your favorite tools. deepstream also integrates with major databases, cache engines/storage, and provides (or about to provide) SDK for your platforms. deepstream is changing the way we build real-time apps, and this new way is fast, simple, and free.

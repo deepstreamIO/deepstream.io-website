@@ -7,7 +7,7 @@ Oh dear...permissions! Permissions are always super-hard to explain. I've read t
 
 With deepstream, things can be equally tricky at times - but for different reasons. deepstream is a realtime server. And even its permissions can be - if you want them to be - shared with both clients and servers in realtime.
 
-The good news is that deepstream makes realtime permissions extremely easy using a permission language called "Valve". This tutorial assumes that you already know your way around Valve. If you haven't come across it yet, make sure to read the [Simple Valve](/tutorials/core/permission-conf-simple/) and [Advanced Valve](/tutorials/core/permission-conf-advanced/) tutorials first.
+The good news is that deepstream makes realtime permissions extremely easy using a permission language called "Valve". This tutorial assumes that you already know your way around Valve. If you haven't come across it yet, make sure to read the [Simple Valve](/tutorials/core/permission/conf-simple/) and [Advanced Valve](/tutorials/core/permission/conf-advanced/) tutorials first.
 
 ## But hold on: Why would I want realtime permissions?
 A lot of times you'll want the same set of permissions in two places:
@@ -25,7 +25,7 @@ This tutorial won't be using The Simpsons or any other metaphor. Instead, it wil
 there will be three users and one admin with individual credentials 
 ![Screenshot login form](login.png)
 
-there is one global color [record](/tutorials/core/datasync-records/) that can be set by any user to red, green or blue
+there is one global color [record](/tutorials/core/datasync/records/) that can be set by any user to red, green or blue
 
 each user gets three buttons, one for each color. When clicked, they set the global color.
 ![Screenshot user GUI](user.png)

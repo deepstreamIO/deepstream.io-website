@@ -12,11 +12,11 @@ The emphasis on "zero or more" underlines one of the main characteristics of pub
 This decoupling makes pub/sub scalable and fault tolerant, but sometimes you want to know if there's someone out there waiting for your messages. For that, deepstream's events come with a feature called "listening".
 
 ## Pub/Sub and its limitations
-Due to its simplicity and versatility, pub/sub is the most widely adopted pattern for realtime systems with many hosted (e.g. [Pusher](https://pusher.com/), [PubNub](https://www.pubnub.com/)), server-to-client (e.g. [socket.io](http://socket.io/), [SocketCluster](http://socketcluster.io/#!/)) or server-to-server (e.g. [Redis](http://redis.io/topics/pubsub), [Kafka](http://kafka.apache.org/)) solutions available.
+Due to its simplicity and versatility, pub/sub is the most widely adopted pattern for realtime systems with many hosted (e.g. [Pusher](https://pusher.com/), [PubNub](https://www.pubnub.com/)), server-to-client (e.g. [socket.io](http://socket.io/), [SocketCluster](http://socketcluster.io/#!/)) or server-to-server (e.g. [Redis](https://redis.io/topics/pubsub), [Kafka](http://kafka.apache.org/)) solutions available.
 
 However, pub/sub is purely a lightweight way of messaging, but doesn't have any concept of persistence or state. It's therefore often used to notify clients of changes which in turn trigger a separate HTTP request to retrieve the actual data.
 
-This comes with significant overhead and is increasingly abandoned in favour of "data-sync", an approach where the actual data is distributed and kept in sync across all subscribed clients. Data-sync is one of deepstream's core features and can be used in the form of [records](/tutorials/core/datasync-records/).
+This comes with significant overhead and is increasingly abandoned in favour of "data-sync", an approach where the actual data is distributed and kept in sync across all subscribed clients. Data-sync is one of deepstream's core features and can be used in the form of [records](/tutorials/core/datasync/records/).
 
 Having said that, pub/sub vs data-sync doesn't need to be an either/or decision. Both complement each other well and can be used together for many use cases.
 

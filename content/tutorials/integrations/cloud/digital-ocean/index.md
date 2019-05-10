@@ -189,5 +189,5 @@ deepstream start &
 - [Additional Security Steps for Redis](https://www.digitalocean.com/community/tutorials/how-to-use-the-redis-one-click-application#additional-security-steps)
 - [Additional Security Steps for MongoDB](https://www.digitalocean.com/community/tutorials/how-to-use-the-mongodb-one-click-application#accessing-remotely)
 - [Cluster Messaging with deepstream](https://deepstream.io/tutorials/core/cluster-messaging/)
-- [HTTP Authentication for deepstream clients](https://deepstream.io/tutorials/core/auth-http-webhook/)
-- [deepstream Valve Permissioning](https://deepstream.io/tutorials/core/permission-conf-simple/)
+- [HTTP Authentication for deepstream clients](https://deepstream.io/tutorials/core/auth/http-webhook/)
+- [deepstream Valve Permissioning](https://deepstream.io/tutorials/core/permission/conf-simple/)

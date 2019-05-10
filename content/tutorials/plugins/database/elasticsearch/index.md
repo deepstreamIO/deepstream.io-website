@@ -10,7 +10,7 @@ You can run ElasticSearch yourself as a single server or a cluster or use it as 
 #### Using ElasticSearch with deepstream.io
 ElasticSearch's powerful search capabilities can be a great addition for many deepstream apps, but there are some things to be aware of:
 
-**Use it with a persisting cache** ElasticSearch can be used just as a normal data-base to store deepstream records, but it is first and foremost a search engine. When used with deepstream.io, we'd recommend also using a cache that saves data to disk, e.g. [Redis](../cache/cache-redis/) as a faster way of storing and accessing data.
+**Use it with a persisting cache** ElasticSearch can be used just as a normal data-base to store deepstream records, but it is first and foremost a search engine. When used with deepstream.io, we'd recommend also using a cache that saves data to disk, e.g. [Redis](../cache/redis/) as a faster way of storing and accessing data.
 
 **ElasticSearch's 'realtime search' means something different** [There's a lot of discussion about what __realtime__ exactly means](https://deepstream.io/blog/what-is-realtime/). For deepstream and many others, it means that data is sent to you as it becomes available.
 'Realtime search' in this context means that new results are streamed out as soon as they match an existing query. This interpretation us shared by others, e.g. [RethinkDB](../rethinkdb/) as well.

@@ -14,7 +14,7 @@ Let's build a realtime chat App in browser. We'll be implementing quite a few fe
 - get all the chat history
 
 
-This tutorial covers a lot of concepts in deepstreamHub and we'd definitely recommend being familiar with [Records](/tutorials/guides/records) and [Lists](/tutorials/guides/lists) before giving this a go, additionally [Angular](/tutorials/getting-started/angularjs/) and [Javascript](/tutorials/getting-started/javascript/) experience will be helpful as well.
+This tutorial covers a lot of concepts in deepstreamHub and we'd definitely recommend being familiar with [Records](/tutorials/core/datasync/records/) and [Lists](/tutorials/guides/lists) before giving this a go, additionally [Angular](/tutorials/getting-started/angularjs/) and [Javascript](/tutorials/getting-started/javascript/) experience will be helpful as well.
 
 If you have any questions please take a look at the GitHub [repository](https://github.com/deepstreamIO/dsh-demo-webApp-chat) or [get in touch](/contact).
 

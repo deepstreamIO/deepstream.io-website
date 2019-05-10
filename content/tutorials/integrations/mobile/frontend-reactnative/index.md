@@ -19,7 +19,7 @@ deepstream start
 
 ## 2. Set up the HTML side (optional)
 
-To try some quick tests between the React Native Simulator and a browser window, you can set up an HTML side folliwing the [quickstart guide](/tutorials/core/getting-started-quickstart/).
+To try some quick tests between the React Native Simulator and a browser window, you can set up an HTML side folliwing the [quickstart guide](/tutorials/guides/getting-started-quickstart/).
 
 ## 3. Initialize and run a new React Native application
 
@@ -99,7 +99,7 @@ import deepstream from 'deepstream.io-client-js';
 // ...
 ```
 
-Then setup the client and record like we saw in the [quickstart guide](/tutorials/core/getting-started-quickstart/)
+Then setup the client and record like we saw in the [quickstart guide](/tutorials/guides/getting-started-quickstart/)
 
 ```js
 constructor(props) {

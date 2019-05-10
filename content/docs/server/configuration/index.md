@@ -205,7 +205,7 @@ authentication options are `none`, `file`, and `http`, each of them having
 different `options` which are described in the tutorials on [Auth
 None](/tutorials/core/auth-none/), [file-based
 authentication](/tutorials/core/auth-file/), and [HTTP
-authentication](/tutorials/core/auth-http-webhook/), respectively.
+authentication](/tutorials/core/auth/http-webhook/), respectively.
 
 ```yaml
 #Authentication
@@ -220,7 +220,7 @@ _Default_: `none`
 ## Permissioning
 
 In this section you can configure the
-[permissioning](/tutorials/core/permission-conf-simple/). The key used for this
+[permissioning](/tutorials/core/permission/conf-simple/). The key used for this
 section is `permission` and you can create your own custom permission handler or
 use a configuration file. To use the former method, select the option
 `type: none` and override the `permissionHandler` with the aid of the [NodeJS

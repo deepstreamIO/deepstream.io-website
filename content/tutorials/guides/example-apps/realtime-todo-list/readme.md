@@ -7,7 +7,7 @@ navLabel: Realtime Todo List
 
 You probably know the [TodoMVC](http://todomvc.com/) project (if not, take a look). We believe that deepstreamHub's lists and records can simplify the development and implementation of many kinds of project, ToDomvc and the like are good examples for that.
 This tutorial will show you how to use deepstreamHub's records and lists for building a realtime TodoList app with React.
-We definitely recommend being familiar with [Records](/tutorials/guides/records) and [Lists](/tutorials/guides/lists/) before giving this a go, and, of course, with the React framework.
+We definitely recommend being familiar with [Records](/tutorials/core/datasync/records/) and [Lists](/tutorials/core/datasync/lists/) before giving this a go, and, of course, with the React framework.
 
 This is how it looks like:
 
@@ -34,7 +34,6 @@ and log in (we didn't configure any authentication, so there are no credentials 
 ```javascript
 ds.login();
 ```
-
 
 ## Getting the list and subscribing for updates
 

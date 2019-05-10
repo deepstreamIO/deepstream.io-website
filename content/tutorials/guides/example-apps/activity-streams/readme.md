@@ -3,12 +3,11 @@ title: Activity Streams / Facebook feed
 description: Example app showing how to build activity streams with deepstreamHub events
 tags: JavaScript, streams, feeds, events, pub-sub
 navLabel: Activity Streams
-body_class: dark
 ---
 
 With deepstreamHub's realtime events, you can easily build an activity steam just like you see on your Facebook wall. These events are emitted as a result of an action, thereby triggering updates to all subscribed clients.
 
-![Post Box](/assets/img/tutorial/activity-streams/final.gif)
+![Post Box](/images/tutorial/activity-streams/final.gif)
 
 [Getting started with deepstreamHub is easy](/tutorials/getting-started/javascript) and takes less than ten minutes. However, if you have any questions, please [get in touch](/contact).
 
@@ -16,15 +15,9 @@ First, let's start by creating a free deepstreamHub account:
 
 {{> start-deepstream-server}}
 
-
-
 deepstream provides a JavaScript library which helps in interacting with your deepstreamHub server.
 
-
-
 ## Connect to deepstream and log in
-
-
 
 Include the JS-client library
 
@@ -99,7 +92,7 @@ $.ajax({
 
 We have a global `user` object which we update with the data from Random User API. We also update the new post box avatar so we can visually tell who is posting:
 
-![Post Box](/assets/img/tutorial/activity-streams/post-box.png)
+![Post Box](/images/tutorial/activity-streams/post-box.png)
 
 When the post content is filled and the post button clicked, we expect to emit an event with this post content and the user we just received as the event payload:
 

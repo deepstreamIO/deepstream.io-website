@@ -37,7 +37,7 @@ npm install --save deepstream.io-client-js axios blueimp-md5
 ```
 At step 2, where you initialize a new project, answer the questions with the following answers:
 
-![Installation CMD](/assets/img/tutorial/vue-comment-feeds/installation.png)
+![Installation CMD](/images/tutorial/vue-comment-feeds/installation.png)
 
 ## Simple Vue Routes
 In as much as we are making a "single page app", we need to create different views to take care of different tasks like authentication and displaying/creating comment feeds.
@@ -134,7 +134,7 @@ Our example needs identity management to know who is making a comment. For this 
 
 deepstreamHub users' signup API endpoint allows you to create users and store on the deepstreamHub server. With that, you can authenticate using email and password for existing users.
 
-![IMAGE OF SIGNUP PAGE](/assets/img/tutorial/vue-comment-feeds/signup.png)
+![IMAGE OF SIGNUP PAGE](/images/tutorial/vue-comment-feeds/signup.png)
 
 Let's create the Vue file for sign up to match the route we defined initially:
 
@@ -374,7 +374,7 @@ First, we create/retrieve deepstream list to hold a collection of user records u
 
 ## Signing In
 
-![Sign in](/assets/img/tutorial/vue-comment-feeds/signin.png)
+![Sign in](/images/tutorial/vue-comment-feeds/signin.png)
 
 The sign in flow is a lot simpler than what we had for sign up. We just need to call the deepstream `login` method, pass in the credentials provided, and if successful, store in localStorage:
 
@@ -810,7 +810,7 @@ One last presentation component to take a look at is the one that renders the fo
 </style>
 ```
 
-![Home](/assets/img/tutorial/vue-comment-feeds/home.png)
+![Home](/images/tutorial/vue-comment-feeds/home.png)
 
 There is a little bit of redundancy because we are creating comments with existing user information added to it. This is not so bad, because it's more expensive to retrieve both nodes differently.
 

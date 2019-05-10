@@ -8,7 +8,7 @@ export const GettingStarted = () => (
     <Section className="getting-started">
         <h2 className="section-headline">getting started</h2>
         <div className="main">
-            <a href="/tutorials/core/getting-started-quickstart/" className="first">
+            <a href="/tutorials/guides/getting-started-quickstart/" className="first">
                 <div className="icon"><IoIosSpeedometer /></div>
                 <h3>Quickstart</h3>
                 <p>Get up and running with deepstream in 10 minutes or less</p>

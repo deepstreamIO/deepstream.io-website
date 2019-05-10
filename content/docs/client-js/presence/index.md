@@ -5,20 +5,15 @@ description: API docs for deepstream's presence feature, allowing clients to kno
 
 Presence allows clients to know when other clients come online and offline, as well as the ability to query for connected clients.
 
-It's worth mentioning that presence only shows clients that logged in with a username. For example, `client.login();` won't trigger the callback client.subscribe( callback ).
+It's worth mentioning that presence only shows clients that logged in with a username. For example, `client.login()` won't trigger the callback `client.subscribe(callback)`.
 
 ## Methods
 
 ### client.subscribe( callback )
-{{#table mode="api"}}
--
-  arg: callback
-  typ: Function
-  opt: false
-  des: Will be invoked with the username of a client,
-       and a boolean to indicate if it was a login(true) or
-       logout(false) event
-{{/table}}
+
+|Argument|Type|Optional|Description|
+|---|---|---|---|
+|callback|Function|false|Will be invoked with the username of a client, and a boolean to indicate if it was a login(true) or logout(false) event|
 
 Subscribes to presence events. Callback will receive the username of the newly added client
 
@@ -33,13 +28,10 @@ client.login({username: 'Alex'})
 ```
 
 ### client.unsubscribe( callback )
-{{#table mode="api"}}
--
-  arg: callback
-  typ: Function
-  opt: False
-  des: A previously registered callback
-{{/table}}
+
+|Argument|Type|Optional|Description|
+|---|---|---|---|
+|callback|Function|false|A previously registered callback|
 
 Removes a previously registered presence callback
 
@@ -53,13 +45,10 @@ client.presence.unsubscribe( onOnlineStatusChange )
 ```
 
 ### client.getAll( callback )
-{{#table mode="api"}}
--
-  arg: callback
-  typ: Function
-  opt: False
-  des: A function that will be called with an array of usernames that are online
-{{/table}}
+
+|Argument|Type|Optional|Description|
+|---|---|---|---|
+|callback|Function|false|A function that will be called with an array of usernames that are online|
 
 Queries for currently connected clients
 

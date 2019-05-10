@@ -2,11 +2,12 @@
 title: User-Specific Data
 description: How to send different data for each user
 ---
+
 A frequent requirement for any app is the need to send different data to
 different users. Whether it's updates to a social feed, discounts for frequent
 buyers, a list of matches on a dating platform, or any other kind of private or at least user-specific information.
 Fortunately, all three of deepstream's core concepts - data-sync,
-publish-subscribe, and request-response - provide various means to achieve this. The trick? Combine user-specific record or event names with deepstream's permissioning language [Valve](/tutorials/core/permission-conf-simple/).
+publish-subscribe, and request-response - provide various means to achieve this. The trick? Combine user-specific record or event names with deepstream's permissioning language [Valve](/tutorials/core/permission/conf-simple/).
 
 ## User-Specific Records
 Providing private or user-specific records is as simple as including the username in the record name. If your social network has a profile for Lisa Miller, simply store the profile in a record called `profile/lisa-miller`:

@@ -28,7 +28,7 @@ const createSideBarTree = (navigation: any, depth: number, activePath, open? = '
             <Link to={navigation.slug}>{navigation.title}</Link>
         </div>
     } else {
-        return Object.keys(navigation).map((item, index) => {
+        return Object.keys(navigation).sort().map((item, index) => {
             if (navigation[item].leaf) {
                 return createSideBarTree(navigation[item], depth, activePath)
             } else  if (depth === 0) {
