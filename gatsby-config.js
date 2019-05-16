@@ -4,13 +4,8 @@ module.exports = {
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
     author: `@gatsbyjs`,
   },
-  mapping: {
-    'MarkdownRemark.frontmatter.author': 'AuthorYaml',
-  },
   plugins: [
-    {
-      resolve: 'gatsby-plugin-sass'
-    },
+    'gatsby-plugin-sass',
     {
       resolve: 'gatsby-plugin-react-svg',
       options: {
@@ -30,7 +25,6 @@ module.exports = {
         ],
       },
     },
-    `gatsby-transformer-authors-yaml`,
     {
       resolve: `gatsby-plugin-typescript`,
       options: {
@@ -46,35 +40,36 @@ module.exports = {
         path: `${__dirname}/content`,
       },
     },
+      {
+          resolve: `gatsby-source-filesystem`,
+          options: {
+              name: `code-examples`,
+              path: `${__dirname}/code-examples`,
+          },
+      },
+      {
+          resolve: `gatsby-source-filesystem`,
+          options: {
+              name: `markdown-template`,
+              path: `${__dirname}/markdown-templates`,
+          },
+      },
     {
       resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
+          {
+            resolve: "gatsby-remark-embed-markdown",
+            options: {
+              directory: `${__dirname}/markdown-templates/`,
+            }
+          },
+          "gatsby-remark-embed-code-relative",
           'gatsby-remark-responsive-iframe',
           {
             resolve: 'gatsby-remark-images',
             options: {
               maxWidth: 840,
-            },
-          },
-          // {
-          //   resolve: 'gatsby-remark-code-repls',
-          //   options: {
-          //     defaultText: '<b>Try it on CodePen</b>',
-          //     directory: `${__dirname}/examples/`,
-          //     externals: [
-          //       `//unpkg.com/react-dom/umd/react-dom.development.js`,
-          //     ],
-          //     dependencies: [],
-          //     redirectTemplate: `${__dirname}/src/templates/codepen-example.js`,
-          //     target: '_blank',
-          //   },
-          // },
-          {
-            resolve: 'gatsby-remark-embed-snippet',
-            options: {
-              classPrefix: 'gatsby-code-',
-              directory: `${__dirname}/examples/`,
             },
           },
           'gatsby-remark-copy-linked-files',
@@ -88,6 +83,9 @@ module.exports = {
             resolve: "gatsby-remark-custom-blocks",
             options: {
               blocks: {
+                glossary: {
+                  classes: "glossary"
+                },
                 info: {
                   classes: "info"
                 },

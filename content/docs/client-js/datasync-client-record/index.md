@@ -25,9 +25,8 @@ client.login()
 
 Retrieves and if necessary creates a [Record](/docs/client-js/datasync-record/) with the given name. Records are persistent data structures that are synced between clients. To learn more about what they are used for and how they work, head over to the [record tutorial](/tutorials/core/datasync/records/).
 
-{{#infobox "info"}}
-- The record will be loaded asynchronously. To ensure the record is loaded put your logic into the [whenReady](/tutorials/core/datasync/records/) callback.
-{{/infobox}}
+[[info]]
+| The record will be loaded asynchronously. To ensure the record is loaded put your logic into the [whenReady](/tutorials/core/datasync/records/) callback.
 
 ```javascript
 const record = client.record.getRecord('user/johndoe')

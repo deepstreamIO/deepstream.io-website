@@ -1,7 +1,7 @@
 ---
 title: Music Collection (CRUD)
 description: Realtime state management in CRUD apps using deepstream events
-tags: Events, Angular, Javascript, CRUD, Pub-Sub
+tags: [Events, Angular, Javascript, CRUD, Pub-Sub]
 navLabel: Music Collection
 ---
 A common concern in component architecture is passing data around (mostly from parent to grandchildren, grandchildren to parent and among sibling components). The first thing that could come to mind is to use a Flux implementation, but sometimes this becomes an overkill. When that is the case, you could decide to opt for an event hub.
@@ -14,7 +14,7 @@ Let's see how we could achieve this by building a CRUD app for managing collecti
 
 [Getting started with deepstreamHub is easy](/tutorials/getting-started/javascript) and takes less than ten minutes. First, let's start by creating a free deepstreamHub account:
 
-{{> start-deepstream-server}}
+`markdown:start-deepstream-server.md`
 
 deepstream provides a JavaScript library which helps in interacting with your deepstreamHub server.
 
@@ -48,6 +48,7 @@ To tell Angular that the installed dependency is a vendor file and should be loa
 ```
 
 ## Deepstream Service:
+
 ```ts
 import {Injectable} from "@angular/core";
 import * as deepstream from 'deepstream.io-client-js'
@@ -69,16 +70,14 @@ Let's briefly discuss what events are in deepstream context.
 
 ## deepstream Events
 
-{{> glossary event=true noHeadline=true}}
-
-
+`markdown:glossary-event.md`
 
 Events, aka Pub/Sub, allows communication using a Publish-Subscribe pattern. A client/server emits an event, which is known as publishing and all connected (subscribed) clients/servers are triggered with the event's payload if any. This is a common pattern, not just in realtime systems, but software engineering generally.
 
 Clients and backend processes can receive events using `.subscribe()`
 
 ```javascript
-ds.event.subscribe( 'album', function( eventData ){ 
+ds.event.subscribe( 'album', eventData => { 
   /*do stuff like updating a list of albums*/ 
 });
 ```
@@ -97,7 +96,7 @@ The UX as shown in the image above demands that we have a list of tracks that is
 
 To achieve this relationship we need a unique id for each track that points to whatever album it belongs to. The following is a service that stores the albums and tracks:
 
-```js
+```ts
 import { Injectable } from '@angular/core';
 import { Album, Track } from './data';
 import {DsService} from "./ds.service";
@@ -173,6 +172,7 @@ export class DataService {
       return 0;
     });
   }
+  
   public getTracksByAlbumId(id) {
     return this.tracks.filter(track => track.albumId == id);
   }
@@ -184,7 +184,7 @@ The service also exposes some methods to retrieve all albums, all tracks and all
 
 With the data available, you can inject it into the component, pass the values to a property and iterate over the values in the template:
 
-```js
+```ts
 export class AlbumListComponent implements OnInit {
 
   albums;
@@ -254,7 +254,7 @@ When the form is eventually submitted with `ngSubmit` event, the form values are
 </form>
 ```
 
-```js
+```ts
 export class ModalComponent implements OnInit {
 
   constructor(
@@ -306,7 +306,7 @@ The form is contained in a modal (which we can ignore), so we can concentrate on
 
 `dataService.addAlbum` and `dataService.addTracks` are methods exposed by the data service class to add albums and tracks respectively:
 
-```js
+```ts
 public addAlbum(album) {
   this.albums.push(album);
 }
@@ -363,7 +363,7 @@ The data service class is also delegated to handle the data update via the event
 
 An important task during the update process is to pre-populate the form with the entry we intend to edit. We could get the entry and set the form to the values retrieved:
 
-```js
+```ts
 public defaults;
 
 this.dsService.event.subscribe('edit-album', id => {
@@ -380,7 +380,7 @@ this.dsService.event.subscribe('edit-album', id => {
 
 The `defaults` property is bound to the form so if it exists; the form values will be equal to the selected album and album tracks. This happens when the `edit-album` event is emitted which is triggered when edit button is clicked:
 
-```js
+```ts
 edit(id) {
    this.dsService.event.emit('edit-album', id)
  }
@@ -393,7 +393,7 @@ edit(id) {
 ## Deleting Entries
 Deleting is always the easiest part of the CRUD process. Just like every other process, listen to a click event, emit the `delete-album` event and remove the data via the event subscription:
 
-```js
+```ts
 this.dsService.event.subscribe('delete-album', id => {
    // deleteAlbumTracks in the data service
    // removes the selected album 

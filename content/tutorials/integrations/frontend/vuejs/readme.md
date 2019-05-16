@@ -13,7 +13,7 @@ This getting started guide will walk you through integrating deepstream in Vue. 
 
 First, let's start by creating a free deepstreamHub account:
 
-{{> start-deepstream-server}}
+`markdown:start-deepstream-server.md`
 
 deepstream provides a JavaScript library which helps interact with your deepstreamHub server.
 
@@ -56,7 +56,7 @@ The hook will connect to your deepstream server and login only when the componen
 
 
 ## Records (realtime datastore)
-{{> glossary record=true noHeadline=true}}
+`markdown:glossary-record.md`
 
 Creating a new record or retrieving an existent one works the same way
 
@@ -125,7 +125,7 @@ The `ds` props is the deepstream connection instance which is passed from the pa
 The `subscribe` method is used to listen for updates and update the inputs accordingly. The method is called in the `created` lifecycle hook as well so it can be setup once the component is created.
 
 ## Events (publish-subscribe)
-{{> glossary event=true noHeadline=true}}
+`markdown:glossary-event.md`
 
 ![Publish-Subscribe](/images/tutorial/browser-app/pubsub.gif)
 
@@ -186,7 +186,8 @@ const Events = {
 Just like the `record` example, `ds` instance is passed as props and the `created` hook handles the event subscription.
 
 ## RPCs (request-response)
-{{> glossary rpc=true noHeadline=true}}
+
+`markdown:glossary-rpc.md`
 
 ![Request Response](/images/tutorial/browser-app/request-response.gif)
 

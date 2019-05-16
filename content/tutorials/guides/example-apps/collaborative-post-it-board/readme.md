@@ -27,22 +27,19 @@ In case you decide to make the application public, let’s throw in a few securi
 To achieve this, we’ll be using good old [jQuery](https://jquery.com/) on the frontend and [deepstreamHub](https://deepstreamhub.com/) as our backend.
 
 
-{{> start-deepstream-server}}
+`markdown:start-deepstream-server.md`
 
 ## Connect to deepstream and log in
 
 To get started, include the JS-client library
 
-```html
-<script src="//cdnjs.cloudflare.com/ajax/libs/deepstream.io-client-js/2.1.1/deepstream.js"></script>
-```
+`embed: js/include-script.html`
 
 Get your app url from the dashboard and establish a connection to deepstreamHub. We'll do that, and all the login functions, inside an Angular service. We'll explain more about that in a minute.
 
 ```javascript
-var ds = deepstream('APP-URL');
+const ds = deepstream('APP-URL');
 ```
-
 
 Since we want to limit users who can use the board, we are going to have to get the username and password from a minimalistic login form.
 
@@ -83,7 +80,7 @@ Core concepts:
 
 ```javascript
 const recordName = client.getUid();
-const record = client.record.getRecord( recordName );
+const record = client.record.getRecord(recordName);
 ```
 
 -You can set its data:
@@ -134,9 +131,9 @@ function onCardAdded() {
 
 // Creating all the existing cards on login
 this.cardList = this.ds.record.getList( 'example-board' );
-this.cardList.whenReady( ( this ) => {
- const entries = this.cardList.getEntries();
- entries.forEach( onCardAdded.bind( this ) );
+this.cardList.whenReady(list => {
+ const entries = list.getEntries();
+ entries.forEach(onCardAdded.bind(this));
 } );
 
 // Listening to card being added on the board.
@@ -182,17 +179,17 @@ Perfect, now our board is starting to look presentable! Let’s look at adding a
 
 Deepstream comes with a powerful permissioning language called Valve, which can be used to create rules to allow/deny all possible client actions. Going back to our last requirement, we want to only allow the creator to update his/her own cards. Since we’ve made the username part of the recordname, this is rather straightforward. Let’s take a look at how we can implement that in our pemission.yml config file.
 
-```javascript
+```yaml
 record:
   "postits/.*":
-  write: "data.owner === user.id"
+    write: "data.owner === user.id"
 ```
 
 
 And that’s it. The users who can edit cards have to be the same as the cards’ creators.
 Let’s introduce a tiny bit of scope creep, and allow the scrum-master to edit any card and be the only one who can delete cards. Luckily, we added this earlier on in the user config, so we have access to user roles.
 
-```javascript
+```yaml
 record:
   "postits/.*":
     write: "data.owner === user.id || user.id === 'scrum-master'"

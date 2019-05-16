@@ -1,7 +1,7 @@
 ---
 title: Realtime Chat in Browser
 description: Learn how to create a realtime chat app in the browser
-tags: Javascript, Angular, lists, records
+tags: [Javascript, Angular, lists, records]
 navLabel: Realtime Chat in Browser
 ---
 
@@ -18,23 +18,20 @@ This tutorial covers a lot of concepts in deepstreamHub and we'd definitely reco
 
 If you have any questions please take a look at the GitHub [repository](https://github.com/deepstreamIO/dsh-demo-webApp-chat) or [get in touch](/contact).
 
-{{> start-deepstream-server}}
+`markdown:start-deepstream-server.md`
 
 ## Connect to deepstream and log in
 
 To get started, include the JS-client library
 
-```html
-<script src="//cdnjs.cloudflare.com/ajax/libs/deepstream.io-client-js/2.1.1/deepstream.js"></script>
-```
+`embed: js/include-script.html`
 
 Get your app url from the dashboard and establish a connection to deepstreamHub. You'll be that using all the login functions inside an Angular service. We'll explain more about that in a minute.
 
-```javascript
-var ds = deepstream('APP-URL');
-```
+`embed: js/create-client.js`
 
 In the HTML, the login form should look like this:
+
 ```HTML
 <form ng-if="!loggedIn">
   <h3>Welcome to the chat app</h3>
@@ -143,10 +140,7 @@ chatApp.service('deepstreamService', function($q, $http) {
   }
   return deepstreamService
 })
-
 ```
-
-
 
 ## Viewing the users in your app
 
@@ -161,13 +155,11 @@ At this stage you have a deepstream `List` called `users` that contains the user
 - view offline and online status and see it automatically update
 
 
-
 Now you need to do is get the list of user ids in our application. You can do this through the `getList` method, which will return all the `Record` names in the list.
 
 ```javascript
 var list = ds.record.getList('users');
 ```
-
 
 Next you will to create a local list on the scope, this will include the user's email, as well as the id.
 This is how you will create it:
@@ -257,7 +249,6 @@ This is how the chat navigation can look in the HTML:
   ```javascript
   var chatName = [userId.substring(6),friendId.substring(6)].sort().join('::');
   var chatList = ds.record.getList(chatName);
-
   ```
 
   When a user is writing text in the input field, and presses enter, a few things happen. First, a unique recordId is initiated. Then a record is set with this id, containing the message, email of the sender, a unique message id and the time.
@@ -328,5 +319,3 @@ You can use the record get method to get the info straight from the HTML.
 Now that our realtime chat application is finished, it should look as follows.
 
   ![Chat gif](chat-demo.gif)
-
-  Thanks for staying with us, to get a deeper look into deepstreamHub, take a look at our other [example apps](/tutorials/#example-apps) or our various [integrations](/tutorials/#integrations).

@@ -1,7 +1,7 @@
 ---
 title: Color Picker App using JS
 description: Create a pie chart to show all the logged in users
-tags: JavaScript, Presence, Records, OpenAuth
+tags: [JavaScript, Presence, Records, OpenAuth]
 ---
 
 This tutorial is mainly focused on the [presence](/tutorials/core/presence/) feature of deepstream and serves as a step by step guide for building a client side application in deepstream that uses prsenece. 
@@ -12,9 +12,7 @@ This application will allow a client to log into deepstream and choose a color o
 
 We will make use of a JS client library. Include it in your application as follows:
 
-```html
-<script src="https://code.deepstreamhub.com/js/latest/deepstream.min.js"></script>
-```
+`embed: js/include-script.html`
 
 Create a file named script.js and just follow along.
 
@@ -22,26 +20,20 @@ Create a file named script.js and just follow along.
 
 Create a new application on deepstreamHub, you will get an App URL from your dashboard. Now switch back to script.js. For any application that uses deepstream, we first need to establish a connection to the deepstream server using the following statement:
 
-```javascript
-var client = deepstream('<YOUR APP URL>',<ADDITIONAL OPTIONS>)
-```
+`embed: js/create-client.js`
 
 The second parameter is optional. You can get more information about them, [here](/docs/client-js/options/).
 
 In deepstream, logging errors is easy where you just have to pass an error message to the event callback, as shown below.
 
-```javascript
-  client.on('error',function(error,event,topic) {
-  console.error(error,event,topic)
-})
-```
+`embed: js/attach-error-listener.js`
 
 ## Logging in using OpenAuth
 
 The next step is to login and initialize the application. In this example we use Open Authentication, feel free to refer the [Authentication](/docs/general/authentication/) page to try out other types of authentication.
 
 ```javascript
-client.login({},function(success,data) {
+client.login({}, (success,data) => {
   if(!success) {
     console.log('failed to login')
     return
@@ -98,7 +90,7 @@ The render function is essentially responsible for generating the pie chart. We 
 Declare an empty object named userRecords as follows:
 
 ```javascript
-var usersRecords = {};
+const usersRecords = {};
 
 function userLoggedIn(id) {
     //retrieves records with the given name pattern
@@ -153,11 +145,3 @@ record:
 ```
 
 Of course, you can edit these to tweak the functionality of the application anytime.
-
-
-## Live demo
-{{> live-demo
-    htmlUrl="https://cdn.rawgit.com/deepstreamIO/ds-demo-presence-colorpicker/master/index.html"
-    cssUrl="https://cdn.rawgit.com/deepstreamIO/ds-demo-presence-colorpicker/master/styles.css"
-    jsUrl="https://cdn.rawgit.com/deepstreamIO/ds-demo-presence-colorpicker/master/script.js"
-}}

@@ -1,7 +1,7 @@
 ---
 title: IoT Light Sensor
 description: deepstreamHub HTTP Internet of Things Light Sensor tutorial
-tags: HTTP, IoT, Arduino, ESP8266, WiFi
+tags: [HTTP, IoT, Arduino, ESP8266, WiFi]
 navLabel: IoT Light Sensor
 contentNav: true
 body_class: bright
@@ -61,6 +61,7 @@ The empty sketch defines two functions:
 To make debugging easier, we can enable debugging over a serial connection.
 
 To do so, simply add the following to the `setup()` function:
+
 ```cpp
 Serial.begin(115200);
 ```
@@ -107,6 +108,7 @@ void loop() {
 
 If you build and upload the script now and look in the `Serial Monitor` window
 you should see log lines, with the value changing as the light level changes e.g.
+
 ```
 Light level: 270
 Light level: 373
@@ -173,7 +175,7 @@ void updateRecord(int level) {
 Now go create a free account through the deepstreamHub dashboard, create an
 application and fetch an HTTP URL from the Application Details page.
 
-{{> start-deepstream-server}}
+`markdown:start-deepstream-server.md`
 
 You'll also need to select the relevant TLS fingerprint that relates to the
 subdomain in your HTTP URL, or you can follow 
@@ -349,19 +351,18 @@ void updateRecord(int level) {
 
 Now let's display those updates as they happen using Javascript and log them to the console:
 
-```javascript
+```html
 <head>
-<script src="http://code.deepstreamhub.com/js/latest/deepstream.min.js"></script>
-<script type="text/javascript">
-
-  const ds = deepstream('<YOUR APP URL>')
-  ds.login()
-
-  const record = ds.record.getRecord('readings/light-level')
-  record.subscribe('value', (value) => {
-    console.log('Light level update:', value)
-  })
-</script>
+    <script src="http://code.deepstream.io/js/latest/deepstream.min.js"></script>
+    <script type="text/javascript">
+      const ds = deepstream('<YOUR APP URL>')
+      ds.login()
+    
+      const record = ds.record.getRecord('readings/light-level')
+      record.subscribe('value', (value) => {
+        console.log('Light level update:', value)
+      })
+    </script>
 </head>
 ```
 

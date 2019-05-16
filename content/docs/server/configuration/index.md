@@ -35,11 +35,10 @@ _Default_: `true`
 deepstream can be configured to encrypt connections and you can provide the
 paths to your SSL key, certificate, and certificate authority file.
 
-{{#infobox "info"}}
-- For performance reasons, we recommend leaving SSL termination to a load
+[[info]]
+| For performance reasons, we recommend leaving SSL termination to a load
 balancer, e.g., nginx or HAProxy. The [nginx integration
 tutorial](/tutorials/integrations/other-nginx/) describes this in detail.
-{{/infobox}}
 
 ```yaml
 # SSL default configuration (no SSL/TLS)

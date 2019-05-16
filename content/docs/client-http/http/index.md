@@ -20,11 +20,6 @@ page](https://dashboard.deepstreamhub.com/#/apps) on the deepstreamHub dashboard
 
 ### Auth Request
 
-<div class="url-box">
-<div class="post type">post</div>
-<div class="url">&lt;YOUR HTTP AUTH URL&gt;</div>
-</div>
-
 The body is specified
 For details on possible authentication data see 
 [the authentication overview](/tutorials/guides/security-overview/#authentication).
@@ -52,21 +47,10 @@ curl -X POST -H "Content-Type: application/json" -d '{
 
 A successful response will have a 200 status code and a JSON body with the following properties:
 
-```
-{{#table mode="api"}}
--
-  par: "token"
-  typ: string
-  opt: false
-  des: A generated auth token.
-
--
-  par: "clientData"
-  typ: object
-  opt: false
-  des: Any client data specified for the authenticated user.
-{{/table}}
-```
+|Parameter|Type|Optional|Description|
+|---|---|---|---|
+|token|string|false|A generated auth token.|
+|clientData|object|false|Any client data specified for the authenticated user.|
 
 This auth token is valid for an unlimited number of requests, but will expire after 24 hours.
 
@@ -95,25 +79,10 @@ through the dashboard.
 
 ### Request
 
-<div class="url-box">
-<div class="post type">post</div>
-<div class="url">&lt;YOUR HTTP URL&gt;</div>
-</div>
-
-```
-{{#table mode="api"}}
--
-  par: "token"
-  typ: string
-  opt: true
-  des: A valid auth token. Leave this out to use open auth.
--
-  par: "body"
-  typ: array
-  opt: false
-  des: A non-empty array of commands.
-{{/table}}
-```
+|Parameter|Type|Optional|Description|
+|---|---|---|---|
+|token|string|false|A valid auth token. Leave this out to use open auth.|
+|body|array|false|A non-empty array of commands.|
 
 Example body: 
 ```json
@@ -171,21 +140,10 @@ A response with a 200 status code will have a JSON body in the following format:
 - Note: a 200 response does not indicate that the messages succeeded. Be sure to check the "result"
   property in the response body.
 
-```
-{{#table mode="api"}}
--
-  par: "result"
-  typ: string
-  opt: false
-  des: &quot;SUCCESS&quot; if all commands returned success, &quot;PARTIAL\_SUCCESS&quot; if some failed, &quot;FAILURE&quot; otherwise.
--
-  par: "body"
-  typ: array
-  opt: false
-  des: A non-empty array of message responses.
-{{/table}}
-```
-
+|Parameter|Type|Optional|Description|
+|---|---|---|---|
+|result|string|false|"SUCCESS" if all commands returned success, "PARTIAL\_SUCCESS" if some failed, "FAILURE" otherwise.|
+|body|array|false|A non-empty array of message responses.|
 
 Example response:
 ```json
@@ -214,30 +172,12 @@ All commands must have the properties "topic" and "action", which define the ope
 
 Responses are typically have the following standard fields. Any others are defined below.
 
-```
-{{#table mode="api"}}
--
-  par: "success"
-  typ: boolean
-  opt: false
-  des: Whether the command executed successfully.
--
-  par: "error"
-  typ: string
-  opt: true
-  des: A description of the error that occurred (if any).
--
-  par: "errorTopic"
-  typ: string
-  opt: true
-  des: The topic of the error that occurred (if any) e.g. &quot;record&quot;.
--
-  par: "errorEvent"
-  typ: string
-  opt: true
-  des: The event corresponding to the error (if any) e.g. &quot;RECORD\_NOT\_FOUND&quot;.
-{{/table}}
-```
+|Parameter|Type|Optional|Description|
+|---|---|---|---|
+|success|boolean|false|Whether the command executed successfully.|
+|error|string|true|A description of the error that occurred (if any).|
+|errorTopic|string|true|The topic of the error that occurred (if any) e.g. "record".|
+|errorEvent|string|true|The event corresponding to the error (if any) e.g. "RECORD\_NOT\_FOUND".|
 
 Example response:
 ``` json
@@ -250,30 +190,12 @@ Example response:
 
 If successful response means that the request was permissioned correctly.
 
-```
-{{#table mode="api"}}
--
-  par: "topic"
-  typ: string
-  opt: false
-  des: Must have value &quot;event&quot;.
--
-  par: "action"
-  typ: string
-  opt: false
-  des: Must have value &quot;emit&quot;.
--
-  par: "eventName"
-  typ: string
-  opt: false
-  des: The name of the event subscription e.g. &quot;frog&quot;.
--
-  par: "data"
-  typ: JSON
-  opt: true
-  des: A data payload e.g. { &quot;obj&quot;&#58; 3 } or &quot;string&quot;.
-{{/table}}
-```
+|Parameter|Type|Optional|Description|
+|---|---|---|---|
+|topic|string|false|Must have value "event".|
+|action|string|false|Must have value "emit".|
+|eventName|string|false|The name of the event subscription e.g. "frog".|
+|data|JSON|true|A data payload e.g. { "obj": 3 } or "string".|
 
 Event example with numeric payload:
 ``` json
@@ -287,25 +209,11 @@ Event example with numeric payload:
 
 ### Reading a record
 
-```
-{{#table mode="api"}}
--
-  par: "topic"
-  typ: string
-  opt: false
-  des: Must have value &quot;record&quot;.
--
-  par: "action"
-  typ: string
-  opt: false
-  des: Must have value &quot;read&quot;.
--
-  par: "recordName"
-  typ: string
-  opt: false
-  des: The name of the record e.g. &quot;cities/hamburg&quot;.
-{{/table}}
-```
+|Parameter|Type|Optional|Description|
+|---|---|---|---|
+|topic|string|false|Must have value "record".|
+|action|string|false|Must have value "read".|
+|recordName|string|false|The name of the record e.g. "cities/hamburg".|
 
 Example:
 ``` json
@@ -318,22 +226,13 @@ Example:
 
 Non-standard response properties:
 
-```
-{{#table mode="api"}}
--
-  par: "version"
-  typ: integer
-  opt: true
-  des: The version of the record that was read.
--
-  par: "data"
-  typ: string
-  opt: true
-  des: The current data that was read.
-{{/table}}
-```
+|Parameter|Type|Optional|Description|
+|---|---|---|---|
+|version|integer|true|The version of the record that was read.|
+|data|string|false|The current data that was read.|
 
 Example response:
+
 ``` json
 {
   "success": true,
@@ -348,25 +247,11 @@ Example response:
 
 Get the current version of a record.
 
-```
-{{#table mode="api"}}
--
-  par: "topic"
-  typ: string
-  opt: false
-  des: Must have value &quot;record&quot;.
--
-  par: "action"
-  typ: string
-  opt: false
-  des: Must have value &quot;head&quot;.
--
-  par: "recordName"
-  typ: string
-  opt: false
-  des: The name of the record e.g. &quot;cities/hamburg&quot;.
-{{/table}}
-```
+|Parameter|Type|Optional|Description|
+|---|---|---|---|
+|topic|string|false|Must have value "record".|
+|action|string|false|Must have value "head".|
+|recordName|string|false|The name of the record e.g. "cities/hamburg".|
 
 Example:
 ``` json
@@ -379,15 +264,10 @@ Example:
 
 Non-standard response properties:
 
-```
-{{#table mode="api"}}
--
-  par: "version"
-  typ: integer
-  opt: true
-  des: The version of the record that was read.
-{{/table}}
-```
+
+|Parameter|Type|Optional|Description|
+|---|---|---|---|
+|version|integer|true|The version of the record that was read.|
 
 Example response:
 ``` json
@@ -407,40 +287,14 @@ The "version" property may be used to ensure updates are not based on stale data
 For an update to succeed, the version provided must be 1 greater than the current version (see
 [head](#record-head)), otherwise a version conflict will occur.
 
-```
-{{#table mode="api"}}
--
-  par: "topic"
-  typ: string
-  opt: false
-  des: Must have value &quot;record&quot;.
--
-  par: "action"
-  typ: string
-  opt: false
-  des: Must have value &quot;write&quot;.
--
-  par: "recordName"
-  typ: string
-  opt: false
-  des: The name of the record e.g. &quot;cities/hamburg&quot;.
--
-  par: "path"
-  typ: string
-  opt: true
-  des: The record path.
--
-  par: "version"
-  typ: integer
-  opt: true
-  des: The version to be written. Defaults to -1 (force write).
--
-  par: "data"
-  typ: JSON
-  opt: false
-  des: The data to be set. If no path is set, this must be an object.
-{{/table}}
-```
+|Parameter|Type|Optional|Description|
+|---|---|---|---|
+|topic|string|false|Must have value "record".|
+|action|string|false|Must have value "write".|
+|recordName|string|false|The name of the record e.g. "cities/hamburg".|
+|path|string|true|The record path.|
+|version|integer|true| The version to be written. Defaults to -1 (force write).|
+|data|JSON|false| The data to be set. If no path is set, this must be an object.|
 
 Example:
 ``` json
@@ -456,21 +310,10 @@ Example:
 
 Non-standard response properties:
 
-```
-{{#table mode="api"}}
--
-  par: "currentVersion"
-  typ: integer
-  opt: true
-  des: On version conflict, the existing version.
--
-  par: "currentData"
-  typ: JSON
-  opt: true
-  des: On version conflict, the existing data.
-{{/table}}
-```
-
+|Parameter|Type|Optional|Description|
+|---|---|---|---|
+|currentVersion|integer|true|On version conflict, the existing version.|
+|currentData|JSON|true|On version conflict, the existing data.|
 
 Example successful response:
 ```json
@@ -500,25 +343,11 @@ Delete a record from the cache and storage.
 
 Deletion will succeed even if the record does not exist, but storage and cache errors may occur.
 
-```
-{{#table mode="api"}}
--
-  par: "topic"
-  typ: string
-  opt: false
-  des: Must have value &quot;record&quot;.
--
-  par: "action"
-  typ: string
-  opt: false
-  des: Must have value &quot;delete&quot;.
--
-  par: "recordName"
-  typ: string
-  opt: false
-  des: The name of the record e.g. &quot;cities/hamburg&quot;.
-{{/table}}
-```
+|Parameter|Type|Optional|Description|
+|---|---|---|---|
+|topic|string|false|Must have value "record".|
+|action|string|false|Must have value "delete".|
+|recordName|string|false| The name of the record e.g. "cities/hamburg".|
 
 Example:
 ``` json
@@ -533,30 +362,12 @@ Example:
 
 Making a remote procedure call.
 
-```
-{{#table mode="api"}}
--
-  par: "topic"
-  typ: string
-  opt: false
-  des: Must have value &quot;rpc&quot;.
--
-  par: "action"
-  typ: string
-  opt: false
-  des: Must have value &quot;make&quot;.
--
-  par: "rpcName"
-  typ: string
-  opt: false
-  des: The name of the RPC to call.
--
-  par: "data"
-  typ: JSON
-  opt: true
-  des: The RPC data argument.
-{{/table}}
-```
+|Parameter|Type|Optional|Description|
+|---|---|---|---|
+|topic|string|false|Must have value "rpc".|
+|action|string|false|Must have value "make".|
+|rpcName|string|false|The name of the RPC to call.|
+|data|JSON|true|The RPC data argument.|
 
 Example request:
 ```json
@@ -573,15 +384,9 @@ Example request:
 
 Non-standard response properties:
 
-```
-{{#table mode="api"}}
--
-  par: "data"
-  typ: JSON
-  opt: true
-  des: On success, RPC result.
-{{/table}}
-```
+|Parameter|Type|Optional|Description|
+|---|---|---|---|
+|data|JSON|true|On success, RPC result.|
 
 Example response:
 ```json
@@ -599,6 +404,11 @@ Presence allows you to retrieve a list of user ids that are online.
 Note: HTTP requests do not contribute to presence updates or queries. These details relate only to
   WebSocket clients.
 
+|Parameter|Type|Optional|Description|
+|---|---|---|---|
+|topic|string|false|Must have value "presence".|
+|action|string|false|Must have value "query".|
+
 Example request:
 ```json
 {
@@ -609,15 +419,9 @@ Example request:
 
 Non-standard response properties:
 
-```
-{{#table mode="api"}}
--
-  par: "users"
-  typ: array
-  opt: true
-  des: An array of logged-in users.
-{{/table}}
-```
+|Parameter|Type|Optional|Description|
+|---|---|---|---|
+|users|array|false|An array of logged-in users.|
 
 Example response:
 ```json

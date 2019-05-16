@@ -13,21 +13,17 @@ This is how it looks like:
 
 ![todoMVC gif](todoMVC.gif)
 
-{{> start-deepstream-server}}
+`markdown:start-deepstream-server.md`
 
 ## Connect to deepstream and log in
 
 Include the JS-client library
 
-```html
-<script src="//cdnjs.cloudflare.com/ajax/libs/deepstream.io-client-js/2.1.1/deepstream.js"></script>
-```
+`embed: js/include-script.html`
 
 Get your app url from the dashboard and establish a connection to deepstreamHub
 
-```javascript
-var ds = deepstream( '<YOUR APP URL>' );
-```
+`embed: js/create-client.js`
 
 and log in (we didn't configure any authentication, so there are no credentials required)
 

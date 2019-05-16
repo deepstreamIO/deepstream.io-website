@@ -1,7 +1,7 @@
 ---
 title: Activity Streams / Facebook feed
 description: Example app showing how to build activity streams with deepstreamHub events
-tags: JavaScript, streams, feeds, events, pub-sub
+tags: [JavaScript, streams, feeds, events, pub-sub]
 navLabel: Activity Streams
 ---
 
@@ -13,7 +13,7 @@ With deepstreamHub's realtime events, you can easily build an activity steam jus
 
 First, let's start by creating a free deepstreamHub account:
 
-{{> start-deepstream-server}}
+`markdown:start-deepstream-server.md`
 
 deepstream provides a JavaScript library which helps in interacting with your deepstreamHub server.
 
@@ -21,15 +21,11 @@ deepstream provides a JavaScript library which helps in interacting with your de
 
 Include the JS-client library
 
-```html
-<script src="//cdnjs.cloudflare.com/ajax/libs/deepstream.io-client-js/2.1.1/deepstream.js"></script>
-```
+`embed: js/include-script.html`
 
 Get your app url from the dashboard and establish a connection to deepstreamHub
 
-```javascript
-const ds = deepstream( '<YOUR APP URL>' );
-```
+`embed: js/create-client.js`
 
 and log in (we didn't configure any authentication, so there are no credentials required)
 
@@ -37,11 +33,9 @@ and log in (we didn't configure any authentication, so there are no credentials 
 ds.login();
 ```
 
-
-
 ## deepstreamHub Events
 
-{{> glossary event=true noHeadline=true}}
+`markdown:glossary-event.md`
 
 
 
@@ -50,13 +44,13 @@ Events, aka Pub/Sub, allows communication using a Publish-Subscribe pattern. A c
 Clients and backend processes can receive events using `.subscribe()`
 
 ```javascript
-ds.event.subscribe( 'posts-event', function( eventData ){ /*do stuff*/ });
+ds.event.subscribe('posts-event', (eventData) => { /*do stuff*/ });
 ```
 
 ... and publish events using `.emit()`
 
 ```javascript
-ds.event.emit( 'posts-event', {some: 'data'} );
+ds.event.emit('posts-event', {some: 'data'} );
 ```
 
 ## Creating Posts
@@ -174,10 +168,3 @@ Notice that the cards markup parent element has `new_card` class. This card help
 
 ## More Examples
 We at deepstreamHub have built and are building a lot of awesome example apps like the one we have just seen. You can checkout the [Realtime Todo List](/tutorials/example-apps/realtime-todo-list/), [Android Chat App](/tutorials/example-apps/android-chat-app/), [and more...](/tutorials/#example-apps)
-
-## Live demo
-{{> live-demo
-    htmlUrl="https://cdn.rawgit.com/deepstreamIO/example-app-activity-stream/c983dc7a/index.html"
-    cssUrl="https://cdn.rawgit.com/deepstreamIO/example-app-activity-stream/e680723f/css/app.css"
-    jsUrl="https://cdn.rawgit.com/deepstreamIO/example-app-activity-stream/e680723f/js/app.js"
-}}

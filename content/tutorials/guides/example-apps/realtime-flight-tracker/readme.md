@@ -6,7 +6,7 @@ navLabel: Realtime Flight Tracker
 ---
 This tutorial will take you through building a realtime flight tracking system with deepstreamHub. We'll be building both a backend provider process that updates the records with the location of flights, and a web based front end that allows us to visualise these. If you'd like to dive straight into the code you can take a look at the GitHub [repository](https://github.com/deepstreamIO/dsh-demo-realtime-flight-tracker).
 
-{{> start-deepstream-server}}
+`markdown:start-deepstream-server.md`
 
 ## Realtime updates via provider
 
@@ -156,5 +156,3 @@ function addFlightTracking(flightId) {
 After all this, we should have an application that looks as follows:
 
 ![flights](flights.gif)
-
-Thanks for staying with us, to get a deeper look into deepstreamHub, take a look at our other [example apps](/tutorials/#example-apps) or our various [integrations](/tutorials/#integrations).

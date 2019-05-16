@@ -38,7 +38,7 @@ First, let's connect to deepstream. This can be accomplished by adding a `ds-con
 
 ```html
 <ds-connection
-    url="localhost:6020"
+    url="localhost:6020" 
     state="{{connectionState}}"
     ds={{ds}}>
 </ds-connection>
@@ -89,16 +89,7 @@ Note how there is another `ds-connection` element present. This is to access the
 #### Lists
 Finally, let's look at [lists](https://deepstream.io/tutorials/core/datasync/lists/). Lists are collections of record that are related to each other and can be iterated. This can be achieved by using a `ds-list` element. The attributes used are the same as `ds-record`, except the record names are exposed via an array called `entries`.
 
-```html
-<template>
-    <ds-connection ds="{{ds}}"></ds-connection>
-    <ds-list name="[[name]]" entries="{{todos}}" ds="[[ds]]">
-        <template is="dom-repeat" items="[[todos]]" as="recordId">
-            <div>RecordId : {{recordId}}</div>
-        </template>
-    </ds-list>
-</template>
-```
+`embed:src/lists.html`
 
 And that's it, everything needed to create an application with data-sync!
 

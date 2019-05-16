@@ -1,7 +1,7 @@
 ---
 title: IoT Fridge Monitor
 description: deepstreamHub HTTP Internet of Things Fridge Monitor tutorial
-tags: HTTP, IoT, Arduino, ESP8266, WiFi
+tags: [HTTP, IoT, Arduino, ESP8266, WiFi]
 navLabel: IoT Fridge Monitor
 ---
 
@@ -10,7 +10,7 @@ environments where the cost of establishing and maintaining a WebSocket
 connection can be prohibitive.
 
 In this tutorial we'll use a remote, low-power ESP8266-based system-on-chip and
-a light sensor to send live light readings to deepstreamHub and display them on
+a light sensor to send live light readings to deepstream and display them on
 a webpage. Additionally, red and green LEDs will show whether the update has
 been successful.
 
@@ -338,6 +338,7 @@ The deepstreamHub HTTP API uses a JSON payload, so to help us build that we'll
 include the `ArduinoJSON` library we installed earlier.
 
 The body we're creating needs to look like this:
+
 ```json
 {
   "topic": "record",

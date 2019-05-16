@@ -1,7 +1,7 @@
 ---
 title: Realtime Cart using React
 description: Realtime product sync with deepstream events
-tags: Events, React, Javascript, Pub-Sub
+tags: [Events, React, Javascript, Pub-Sub]
 navLabel: Realtime Cart
 body_class: bright
 ---
@@ -33,7 +33,7 @@ create-react-app book-stream
 
 Now to deepstreamHub. deepstream is fast to setup. You just need an account by [signing up](https://dashboard.deepstreamhub.com/signup/) and an app with a URL:
 
-{{> start-deepstream-server}}
+`markdown:start-deepstream-server.md`
 
 
 ## Presentation Components
@@ -46,7 +46,7 @@ From the image above, our app has 3 components -- two of which are presentation 
 
 `BookItem` is the most atomic component in our app. It displays a card with information about a given book. The data for which these items depend on are passed down via props from a parent component which `BookItem` should be independent of:
 
-```js
+```jsx
 // ./src/components/BookItem/BookItem.js
 import React, { Component } from 'react';
 
@@ -108,7 +108,7 @@ Therefore, when the `add to cart` button is clicked, we send the particular book
 
 Of course, we're not dealing with just a single book. We are dealing with an array of books with a similar data structure. Therefore, we need to iterate over the list of books and render them using the `BookItem` component we saw earlier. Let's have a look at how `BookList` does that:
 
-```js
+```jsx
 // ./src/components/BookList/BookList.js
 import React, { Component } from 'react';
 
@@ -162,7 +162,7 @@ We send event and data down `BookItem` by passing them as attribute via `BookLis
 
 The navigation component displays the items in the cart. It is very simple with just a single value to bind -- the cart array length:
 
-```js
+```jsx
 // ./src/components/Nav/Nav.js
 import React, { Component } from 'react';
 import logo from '../../logo.svg';
@@ -191,7 +191,7 @@ export default Nav;
 ## Container (App) Component
 The container component is the guy responsible for knowing what the data is like as well as updating it. It's also responsible for passing it down to the child (presentation or another container) components. Let's start with recognizing and creating states:
 
-```js
+```jsx
 // ./src/App/App.js
 import React, { Component } from 'react';
 
@@ -215,7 +215,8 @@ class App extends Component {
 Two state items -- the books array and the cart array. The books default to an array of fake books data just for this example. In real app, you will be expected to probably make a server request in `componentDidMount` lifecycle method and update the state with `setState()`. See React's guide on [state and lifecycle](https://facebook.github.io/react/docs/state-and-lifecycle.html) for more information.
 
 This is what the fake books data looks like:
-```js
+
+```jsx
 // ./src/data.js
 export default [
     {
@@ -293,7 +294,7 @@ export default [
 
 With the books data to display available and living in our state already, we can pass it down to the `BooksList` component to iterate over:
 
-```js
+```jsx
 // ./src/App/App.js
 class App extends Component {
 
@@ -327,7 +328,7 @@ export default App;
 
 The only thing that is left for us is to start seeing books listed in our browser. This is because the `add to cart` event is yet to be handled. We already passed this event to `handleAddToCart` prop, but it's not created. Let's do that:
 
-```js
+```jsx
 // ./src/App/App.js
 class App extends Component {
 
@@ -364,7 +365,7 @@ export default App;
 
 The method is bound to the right context via the constructor:
 
-```js
+```jsx
   this.handleAddToCart = this.handleAddToCart.bind(this);
 ```
 
@@ -374,9 +375,7 @@ We first check if the book is already in the buyer's cart. If it is, we just do 
 
 At this point, when two buyers are adding the same item to cart, each of them is unaware of the number of items left. This could lead them to buy an item that is out of stock. Let's use the deepstream event to update changes on all connected clients while purchases are made:
 
-{{> glossary event=true noHeadline=true}}
-
-
+`markdown:glossary-event.md`
 
 You need to install the deepstream JS SDK:
 
@@ -386,24 +385,20 @@ npm install --save deepstream.io-client-js
 
 and connect to deepstreamHub using the URL you got after signing up:
 
-```js
-
+```jsx
 // ...
 
 import deepstream from 'deepstream.io-client-js'
 
-
 class App extends Component {
-
   constructor(props) {
-      // ...
-      // Connect to deepstream using the deepstream instance
-      this.dsClient = deepstream('<APP-URL>')
+     // ...
+    // Connect to deepstream using the deepstream instance
+    this.dsClient = deepstream('<APP-URL>')
     // Login to deepstreamHub server
-    .login();
+    this.dsClient.login();
       
-  }
-  
+  }  
 }
 
 export default App;
@@ -413,7 +408,7 @@ Before the container component is rendered, we instantiate deepstream while pass
 
 Still in the constructor, we will subscribe to a `cart-event` event which will be triggered with an `emit` in the `handleAddToCart` function:
 
-```js
+```jsx
 this.dsEvent = this.dsClient.event;
 
 this.dsEvent.subscribe('cart-event', (book) => {
@@ -433,7 +428,7 @@ When ever the event is emitted, we subtract one form the book's `inStock` intege
 Let's see how the event is emitted when adding items to cart:
 
 ```js
-handleAddToCart(book) {
+handleAddToCart (book) {
       // . . .
       // Emit deepstream event
       !cartItem && book.inStock > 0 && this.dsEvent.emit('cart-event', book);

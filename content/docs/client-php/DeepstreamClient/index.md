@@ -170,9 +170,8 @@ Example:
 ```javascript
 $version = $client->getRecordVersion( 'user/johndoe' );
 ```
-<div></div>
-{{> glossary record=true }}
-<div></div>
+
+`markdown:glossary-record.md`
 
 ### makeRpc( $rpcName, [$data] )
 ```
@@ -209,11 +208,9 @@ $result = $client->makeRpc( 'new-order', array(
 
 // without data
 $client->makeRpc( 'logout' );
-
 ```
-<div></div>
-{{> glossary rpc=true }}
-<div></div>
+
+`markdown:glossary-rpc.md`
 
 ### emitEvent( $eventName, [$data] )
 ```
@@ -254,9 +251,7 @@ $client->emitEvent( 'ping' );
 
 ```
 
-<div></div>
-{{> glossary event=true }}
-<div></div>
+`markdown:glossary-event.md`
 
 ### startBatch()
 <dl>

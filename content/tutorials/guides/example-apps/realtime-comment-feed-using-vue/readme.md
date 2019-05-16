@@ -1,7 +1,7 @@
 ---
 title: Realtime Comment Feed
 description: Learn how to create a realtime comment feeds with authentication using Vue
-tags: Javascript, Vue, lists, records
+tags: [Javascript, Vue, lists, records]
 navLabel: Comment Feed using Vue
 ---
 This walkthrough covers the fundamentals of what it takes to build a realtime comment feed application. Therefore, if you desire to add a feature like Facebook-style comments in your next app, then this is definitely what you need to read.
@@ -35,6 +35,7 @@ npm install
 # 5. Install deepstream and other utility libraries
 npm install --save deepstream.io-client-js axios blueimp-md5
 ```
+
 At step 2, where you initialize a new project, answer the questions with the following answers:
 
 ![Installation CMD](/images/tutorial/vue-comment-feeds/installation.png)
@@ -340,7 +341,7 @@ The `handleSubmit` method which the form invokes is where the user's signup jour
 
 The user signup endpoint allows only email and password. What happens to the name of the user and her avatar? We can create a record in deepstreamHub to store that. 
 
-{{> glossary record=true noHeadline=true}}
+`markdown:glossary-record.md`
 
 
 The ID of the record will be the same with the user's auth ID so we can easily fish the record when a user logs in:

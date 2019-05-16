@@ -11,6 +11,9 @@ interface EntryProps {
 }
 
 export const Entry: React.FunctionComponent<EntryProps> = ({ entry }) => {
+    if (!entry) {
+        return null
+    }
     const { title, slug, icon = null, description} = entry;
     return <Link className="entry" to={slug} title={description}>
 		{/*<Icon />*/}
