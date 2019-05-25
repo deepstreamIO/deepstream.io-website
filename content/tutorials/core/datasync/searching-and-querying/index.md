@@ -2,6 +2,7 @@
 title: Searching and Querying
 description: How to search through deepstream's data
 tags: [searching,querying,sql]
+needsRefresh: true
 ---
 
 deepstream is a fast transactional realtime server, but doesn't store any data itself (except for an internal cache for faster access). It does however work with a wide array of databases and makes it easy to expose the underlying db's querying features.

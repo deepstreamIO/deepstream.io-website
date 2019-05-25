@@ -84,7 +84,7 @@ The RethinkDB search provider is an independent process that sits between deepst
 Here's an example: Say you're storing a number of books as records.
 
 ```javascript
-client.record.getRecord( 'book/i95ny80q-2bph9txxqxg' ).set({
+client.record.getRecord('book/i95ny80q-2bph9txxqxg').set({
   'title': 'Harry Potter and the goblet of fire',
   'price': 9.99
 })
@@ -99,14 +99,14 @@ and use deepstream.io's RethinkDB storage connector with
 you can now search for Harry Potter books that cost less than 15.30 like this
 
 ```javascript
-var queryString = JSON.stringify({
+const queryString = JSON.stringify({
   table: 'book',
   query: [
     ['title', 'match', '^Harry Potter.*'],
     ['price', 'lt', 15.30]
   ]
 })
-client.record.getList('search?' + queryString)
+const searchList = client.record.getList('search?' + queryString)
 ```
 
 and the best thing is: it's in realtime. Whenever a record that matches the search criteria is added or removed, the list will be updated accordingly.

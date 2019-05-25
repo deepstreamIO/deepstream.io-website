@@ -13,7 +13,7 @@ publish-subscribe, and request-response - provide various means to achieve this.
 Providing private or user-specific records is as simple as including the username in the record name. If your social network has a profile for Lisa Miller, simply store the profile in a record called `profile/lisa-miller`:
 
 ```javascript
-var profile = ds.record.getRecord( 'profile/lisa-miller' );
+const profile = ds.record.getRecord( 'profile/lisa-miller' );
 ```
 
 Now we need to make sure that everyone can read that profile but only Lisa can
@@ -53,7 +53,8 @@ Once the user hits "login", the client executes deepstream's [login](/docs/clien
 
 ```javascript
 login() {
-    this.ds = deepstream( 'localhost:6020' ).login({
+    this.ds = deepstream( 'localhost:6020' )
+    this.ds.login({
         username: this.username(),
         password: this.password()
     }, this._onLogin.bind( this ))
@@ -176,14 +177,14 @@ this.ds.event.subscribe( 'user-updates/lisa-miller', ( msg ) => {
 Within our backend provider we now register as a "listener":
 
 ```javascript
-ds.event.listen( 'user-updates/*', ( match, isSubscribed, response ) => {
-    response.accept();
+ds.event.listen( 'user-updates/*', ( match, response ) => {
     const username = match.replace( 'user-updates/', '' );
-    if( isSubscribed ) {
-        startUserGreeting( username )
-    } else {
+    startUserGreeting( username )
+    response.accept()
+    
+    response.onStop(() => {
         endUserGreeting( username )
-    }
+    })
 })
 ```
 

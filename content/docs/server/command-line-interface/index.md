@@ -171,6 +171,7 @@ If you'd like to raise an issue on Github we'd appreciate if you could paste att
 
 Output example
 
+//TODO: Update to V4
 ```json
 {
   "deepstreamVersion": "2.4.0",

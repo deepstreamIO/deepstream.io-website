@@ -80,5 +80,4 @@ Presence is important because it is the only way to know the connection status o
 ## Video Demo
 The following is a short video of Alex Harley explaining in detail about presence in deepstream. 
 
-</br>
 <iframe width="780" height="439" src="https://www.youtube.com/embed/EdYzxVKIjJs" frameborder="0" allowfullscreen></iframe>

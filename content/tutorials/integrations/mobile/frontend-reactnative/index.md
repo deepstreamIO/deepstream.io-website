@@ -169,7 +169,8 @@ export default class DeepstreamReactNative extends Component {
   constructor(props) {
     super(props);
 
-    const client = deepstream('localhost:6020').login();
+    const client = deepstream('localhost:6020')
+    client.login();
     const record = client.record.getRecord('some-name');
     const text = '';
 

@@ -16,10 +16,6 @@ We will make use of a JS client library. Include it in your application as follo
 
 Create a file named script.js and just follow along.
 
-## Setting up deepstream
-
-Create a new application on deepstreamHub, you will get an App URL from your dashboard. Now switch back to script.js. For any application that uses deepstream, we first need to establish a connection to the deepstream server using the following statement:
-
 `embed: js/create-client.js`
 
 The second parameter is optional. You can get more information about them, [here](/docs/client-js/options/).
@@ -109,7 +105,6 @@ function userLoggedOut(id) {
   delete usersRecords[id]
   render()
 }
-
 ```
 
 Finally, we make sure to delete the user before he/she closes the browser window where the application is running.
@@ -120,7 +115,6 @@ window.onbeforeunload = function (e) {
   // Read more about permissions below
   usersRecords[userId].delete();
 }
-
 ```
 
 Now we are left with the render function which contains the logic for displaying the results from the above methods on screen, in terms of a pie chart. For our example, we use chart.js. Feel free to check out the render function and the complete code in the live demo at the end of this page.

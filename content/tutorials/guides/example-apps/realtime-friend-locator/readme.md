@@ -1,7 +1,7 @@
 ---
 title: Realtime friend locator with geolocation
 description: Create a web app that returns the location of those around you in Realtime
-tags: React, Rethinkdb, Geolocation, JavaScript, Google Maps
+tags: [React, Rethinkdb, Geolocation, JavaScript, Google Maps]
 ---
 
 ![Locate Your Friends](locator.gif)
@@ -23,18 +23,18 @@ To create a map using Google Maps API, you first need to get an [API key](https:
 Setting up deepstream in React is actually quite simple. Once you download and install deepstream.io, connecting to the deepstream server looks like:
 
 #### In your constructor connect to deepstream:
-```js
 
-this.ds = deepstream('ws://localhost:6020');
+```js
+this.ds = deepstream('<Your deepstream url>');
 // handle error here, in case of error
 this.ds.on( 'error', this._onError.bind( this ) );
 ```
+
 to keep things simple for this tutorial, we will skip password authentication, and just use the user's username to log into the deepstream server.
 
 #### To handle login, once a user has submitted their name:
 
 ```js
-
 login( username, callback ) {
     this.username = username;
     this.callback = callback;
@@ -64,6 +64,7 @@ _onRecordCheckComplete( record ) {
     this.callback( true );
 }
 ```
+
 ## Getting coordinates, and subscribing to a list
 
 Now that a user is logged in, we need to get their latitudinal and longitudinal coordinates. HTML5 makes this easy with its [navigator object](https://developer.mozilla.org/en-US/docs/Web/API/Navigator) that we can query for coordinates. Once we have their coordinates, we can listen to the user's position updates with the *watchPosition* method:
@@ -71,6 +72,7 @@ Now that a user is logged in, we need to get their latitudinal and longitudinal 
 ```js
 navigator.geolocation.watchPosition();
 ```
+
 This method gets called every time the logged in user's position changes. So we will want to pass to it a callback that will update the user's coordinates, and do a geospatial query upon position change. This will look like:
 
 ```js
@@ -102,7 +104,6 @@ onPositionUpdate( position ) {
     //that was created with google maps api
     this.map.setCenter( this.pos );
     this.circle.setCenter( this.pos );
-
 }
 ```
 ## Listening for subscribed users
@@ -113,9 +114,11 @@ The listen method is called every time there is a change in record subscriptions
 
 ```js
 //server side
-const deepstream = require('deepstream.io-client-js');
-const ds = deepstream('ws://localhost:6020').login()
 const GeoSubscription = require( './geo-subscription' );
+const deepstream = require('deepstream.io-client-js');
+
+const ds = deepstream('ws://localhost:6020')
+ds.login()
 
 ds.on( 'error', function(error) {
     console.log(error);

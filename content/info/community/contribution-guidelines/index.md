@@ -26,6 +26,7 @@ deepstream info
 
 Which will print out something similar to this:
 
+// TODO: V4 Update
 ```json
 {
   "deepstreamVersion": "1.0.0-rc.3",

@@ -49,7 +49,7 @@ The number is changed for every update and events are distributed over hundreds 
 
 Time to start exploring the limits of a single node, starting with CPU consumption. We've clocked the maximum throughput of an individual deepstream at 400,000 events per second on a c4.2xlarge high CPU machine. That's good to know, but collides with our best value for money performance testing policy. On c4.2xlarge, sending a billion messages cost 36 cents.
 
-Moving towards a way more affordable t2.medium instance, we found a sweet spot for CPU utilisation between 160.000 and 200.000 messages per second.
+Moving towards a way more affordable t2.medium instance, we found a sweet spot for CPU utilisation between 160k and 200k messages per second.
 
 ![CPU single node](cpu-single-node.png)
 

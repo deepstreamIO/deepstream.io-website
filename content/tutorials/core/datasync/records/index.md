@@ -29,7 +29,7 @@ navigator.geolocation.watchPosition(position => {
 `get()`, `set()` and `subscribe()` can be used to get the entire record's data, but also support "paths". Paths let you access sub-parts of your record's data using JSON notation, e.g. `pets[1].fur.color`. If a value for a path that doesn't exist yet is set, the path will be created on the fly.
 
 ## Record lifecycle
-When calling `client.record.getRecord()`, one of three things can happen:
+When calling `client.record.getRecord(name)`, one of three things can happen:
 
 - If the record doesn't exist on the client or the server yet, it will be created. The initial data of a newly created record is an empty object `{}`.
 
@@ -37,12 +37,12 @@ When calling `client.record.getRecord()`, one of three things can happen:
 
 - If the record is already loaded on the client, its instance will be returned.
 
-Independent of whether the record has been loaded yet, `getRecord()` will return a record instance straight away. You can already start setting values or subscribing to updates at this point, however `get()` calls might return `null`.
+Independent of whether the record has been loaded yet, `getRecord(name)` will return a record instance straight away. You can already start setting values or subscribing to updates at this point, however `get()` calls might return `null`.
 
 To ensure a record is fully loaded, use the `whenReady()` method. Please note: This method will execute synchronously when the record is already available or asynchronously if its still being loaded.
 
 #### Discarding Records
-To inform the server that you're no longer interested in updates for a record, call `discard()`. Discard calls are aggregated, meaning that if a record was requested in three different places using `getRecord()`, it also needs to be discarded three times in order for the server to be notified.
+To inform the server that you're no longer interested in updates for a record, call `discard()`.
 
 #### Deleting Records
 Records can be deleted using `delete()`. Deleting also discards the record. Whenever a record is deleted by one client, the same record on all other clients will emit a `delete` event.
@@ -89,32 +89,30 @@ Records also support a concept called "listening". Every client can register as 
 
 ```javascript
 // Client B
-client.record.listen('settings/.*', (match, isSubscribed, response) => {
+client.record.listen('settings/.*', (match, response) => {
   console.log(match) // 'settings/security'
-  if (isSubscribed) {
-    if (/* if you want to provide */) {
-      response.accept()
-      // star publishing to this record via `client.record.getRecord(match).set(/* data */)`
-    } else {
-      response.reject() // let deepstream ask another provider
-    }
+  if (/* if you want to provide */) {
+    // start publishing to this record via `client.record.setData(match, data, ack)`
+    response.accept()
+
+    response.onStop(() => {
+      // stop publishing to this record when no one is interested
+    })
   } else {
-    // stop publishing data
-    client.record.getRecord(match).discard()
+    response.reject() // let deepstream ask another provider
   }
 })
 ```
 
 This is useful to create "active" data providers - backend processes that only send out data that's actually requested. A few things worth mentioning about listening:
 
-- The listen-callback is called with `isSubscribed = true` once the first client subscribes to a matching record and with `isSubscribed = false` once the last subscriber for a matching record unsubscribes.
+- The listen-callback is called with once the first client subscribes to a matching record and onStop is called once the last subscriber for a matching record unsubscribes.
 
-- Listening also keeps state. Registering as a listener for a pattern that already has matching subscriptions will call the callback multiple times straight away, once for every matching subscription.
+- Listening also keeps state. Registering as a listener for a pattern that already has matching subscriptions will call the callback multiple times straight away, once for every matching subscription that doesn't have a provider.
 
+- Records have a `hasProvider` property that allows you to see if a service has accepted the listen request. This allows you to guarantee the data isn't stale.
 
 ## Video Demo 
 If you would like to learn more find out our video tutorial with Yasser Fadl, explaining more in detail about records in deepstream.
 
-
-</br>
 <iframe width="780" height="439" src="https://www.youtube.com/embed/kpsGDJlkCTE" frameborder="0" allowfullscreen></iframe>

@@ -47,7 +47,7 @@ When it comes to choosing a database and cache, there are a few things to take i
 - **Object/Document/NoSQL databases make more sense than relational ones** deepstream's data-structures are small, independent chunks of JSON, identified by a unique key that can be organized in collections. This makes them a natural fit for object or document oriented databases like Mongo, Rethink or Couch. deepstream also works with relational databases like MySQL, PostGre or Oracle, but doesn't take advantage of their data-modelling capabilities.
 
 - **Be careful when using external x-as-a-service providers**
-It can be tempting to use a fully managed cache from an infrastructure-as-a-service provider, but be aware if its hosted outside of your datacenter: deepstream constantly interacts with its cache and every millisecond in network latency will slow down your application considerably.
+It can be tempting to use a fully managed cache from an infrastructure-as-a-service provider, but be aware if its hosted outside of your datacenter: deepstream constantly interacts with its cache and every millisecond in network latency will slow down your application.
 Equally, a lot of cache / database protocols are designed for use within a trusted environment and therefor unencrypted. If your database lives outside of your network, make sure to use TLS or choose a service that offers a VPN.
 
 ## Downloading and installing connectors

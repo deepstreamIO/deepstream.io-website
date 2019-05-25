@@ -14,7 +14,7 @@ The deepstream JavaScript client can be used by both browsers and Node.js. You c
 
 Creates a client instance and initialises the connection to the deepstream server. The connection will be kept in a quarantine state and won't be fully usable until `login()` is called.
 
-```js
+```javascript
 const deepstream = require('deepstream.io-client-js')
 const client = deepstream('localhost:6020').login()
 ```

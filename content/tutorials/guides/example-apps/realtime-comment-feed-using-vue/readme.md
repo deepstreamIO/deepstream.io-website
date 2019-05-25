@@ -125,15 +125,15 @@ We need to update the `App.vue` entry component to add `router-vue` which is whe
 
 The `authUser` variable will be explained in details in a later topic.
 
-## Authentication with deepstreamHub
+## Authentication with deepstream
 
-deepstreamHub authentication is stateless. This implies that just like REST, you have to authenticate every realtime activity. It doesn't mean you have to provide credentials, you can perform anonymous auth.
+deepstream authentication is stateless. This implies that just like REST, you have to authenticate every realtime activity. It doesn't mean you have to provide credentials, you can perform anonymous auth.
 
-Our example needs identity management to know who is making a comment. For this reason, we can't just use deepstreamHub's anonymous auth. We will need to use email and password authentication. Let's get started by creating a user using a sign up form.
+Our example needs identity management to know who is making a comment. For this reason, we can't just use deepstream's anonymous auth. We will need to use email and password authentication. Let's get started by creating a user using a sign up form.
 
 ## Signing Up
 
-deepstreamHub users' signup API endpoint allows you to create users and store on the deepstreamHub server. With that, you can authenticate using email and password for existing users.
+deepstream users' signup API endpoint allows you to create users and store on the deepstream server. With that, you can authenticate using email and password for existing users.
 
 ![IMAGE OF SIGNUP PAGE](/images/tutorial/vue-comment-feeds/signup.png)
 
@@ -204,10 +204,10 @@ Vue files allow you to define markup (HTML),  logic (JS) and styles (CSS) in a s
 
 The JavaScript section just imports few helper libraries and creates a component skeleton with our form model data as well as deepstream initialization. We will see what axios and md5 imports will help us do in a moment.
 
-deepstreamHub `<APP-URL>` is available on the dashboard after [creating an account](https://dashboard.deepstreamhub.com/signup/). The url contains an `apiKey` query string, which we will also need when creating users via the REST endpoint:
+deepstream `<APP-URL>` is available on the dashboard after [creating an account](https://dashboard.deepstream.com/signup/). The url contains an `apiKey` query string, which we will also need when creating users via the REST endpoint:
 
 ```
-wss://<SUB>.deepstreamhub.com?apiKey=<APIKEY>
+wss://<SUB>.deepstream.com?apiKey=<APIKEY>
 ```
 
 ### Handling Signup
@@ -278,7 +278,7 @@ The `handleSubmit` method which the form invokes is where the user's signup jour
     >
     >What you can do is have a server that [generates a token](/tutorials/guides/jwt-auth/) for you which you can store as a cookie. 
     >
-    >deepstreamHub allows you to use [webhook authentication](https://deepstreamhub.com/tutorials/guides/http-webhook-auth) in achieving such flow.
+    >deepstream allows you to use [webhook authentication](https://deepstream.com/tutorials/guides/http-webhook-auth) in achieving such flow.
 
     An event is also emitted to tell the rest of our app that are interested in the new state change.
 
@@ -312,7 +312,7 @@ The `handleSubmit` method which the form invokes is where the user's signup jour
       methods: {
           ...
           createUser() {
-            const authUrl = 'https://api.deepstreamhub.com/api/v1/user-auth/signup/<API-KEY>';
+            const authUrl = 'https://api.deepstream.com/api/v1/user-auth/signup/<API-KEY>';
             axios.post(authUrl, {
               type: 'email',
               email: this.model.email,
@@ -333,13 +333,13 @@ The `handleSubmit` method which the form invokes is where the user's signup jour
       }
     };
     ```
-    We use [axios](https://github.com/mzabriskie/axios) which is a promise-based HTTP utility library to make a post request to the deepstreamHub server. If user is successfully created from the request, we attempt another login with the credentials.
+    We use [axios](https://github.com/mzabriskie/axios) which is a promise-based HTTP utility library to make a post request to the deepstream server. If user is successfully created from the request, we attempt another login with the credentials.
 
     The `addUserToRecords` method will be explained in __#5__.
 
 5. Create a `user` record to store the user's credential
 
-The user signup endpoint allows only email and password. What happens to the name of the user and her avatar? We can create a record in deepstreamHub to store that. 
+The user signup endpoint allows only email and password. What happens to the name of the user and her avatar? We can create a record in deepstream to store that. 
 
 `markdown:glossary-record.md`
 
@@ -566,7 +566,7 @@ export default {
   data() {
     return {
       comments: [],
-      ds: ds('<APP-URL>'),
+      ds: ds('<Your deepstream URL>'),
     };
   },
   created() {
@@ -603,7 +603,7 @@ export default {
   data() {
     return {
       comments: [],
-      ds: ds('wss://154.deepstreamhub.com?apiKey=68b9dab4-e3ea-4987-b6ed-b3c7c83b7c4a'),
+      ds: ds('wss://154.deepstream.com?apiKey=68b9dab4-e3ea-4987-b6ed-b3c7c83b7c4a'),
     };
   },
   created() {
@@ -671,7 +671,7 @@ created() {
   },
 ```
 
-When the list is ready, we ask deepstreamhub to fetch all entries, loop through them and call `getListEntryRecord` on each item. We will have a look at `getListEntryRecord` shortly.
+When the list is ready, we ask deepstream to fetch all entries, loop through them and call `getListEntryRecord` on each item. We will have a look at `getListEntryRecord` shortly.
 
 We also attach a listener to `entry-added` so when we call `addEntry` from `handleNewComment` method, the event is triggered with the new entry. We still call `getListEntryRecord` to handle that.
 

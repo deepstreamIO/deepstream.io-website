@@ -1,11 +1,11 @@
 ---
 title: Active Data Providers
-description: How to boost your application performance by supplying on demand data
+description: How to boost your application performance by supplying data on demand
 ---
 
 What are Data Providers?
 
-Data Providers are processes that feed data into deepstream. Technically, they are just regular deepstream clients that run on the backend and write to records, send events or provide RPCs.
+Data Providers are processes that feed data into deepstream. Technically, they are just regular deepstream clients that usually run on the backend and write to records, send events or provide RPCs.
 
 #### Example
 Imagine you're building an application that shows stock prices from various exchanges from around the world. For each exchange, you'd build a process that receives data and forwards it to deepstream.
@@ -21,15 +21,14 @@ Even worse: Most updates might be for stocks that no client is subscribed to and
 Only write to records / send events that clients are interested in. deepstream supports a feature called `listening` that lets clients listen for event or record subscriptions made by other clients. First, the listener registers for a pattern, e.g. `nasdaq/.*`. From thereon, it will be notified whenever a subscription is made or removed that matches said pattern.
 
 ```javascript
-client.record.listen('nasdaq/.*', (match, isSubscribed, response) => {
-  /*
-    match = 'nasdaq/msft'
-    isSubscribed = true
-  */
-  if( isSubscribed ) {
-    response.accept();
-  }
-});
+client.record.listen('nasdaq/.*', (match, response) => {
+  // Start providing data
+  response.accept()
+
+  response.onStop(() => {
+    // stop providing data
+  })
+})
 ```
 
 This allows you to create efficient providers that only send out the data that's currently needed.

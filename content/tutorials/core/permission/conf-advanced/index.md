@@ -12,18 +12,18 @@ Valve automatically injects a set of variables into its permission rules.
 `data` contains the data for events and RPCs. It can be used to validate the payload.
 
 ```yaml
-# make sure a tweet contains max 140 characters
+    # make sure a tweet contains max 140 characters
     publish: "data.content.length < 140"
-# make sure firstname is a string
+    # make sure firstname is a string
     write: "typeof data.firstname === 'string'"
 ```
 
 For records, `data` is the INCOMING data - the current data is available as `oldData`. This is helpful for comparisons:
 
 ```yaml
-# make sure bids at an auction can only go up
+    # make sure bids at an auction can only go up
     write: "data.price > oldData.price"
-# make sure that `owner` can't be changed once written
+    # make sure that `owner` can't be changed once written
     write: "!data.owner || data.owner == oldData.owner"
 ```
 

@@ -76,16 +76,5 @@ And if a failure:
 
 You can then handle the outcome of the login request in your JavaScript code, for example:
 
-```javascript
-client.login({
-  username: 'chris',
-  password: 'password' // NEEDS TO BE REAL
-}, (success, data) => {
-  if (success === true) {
-    // Handle a successful login
-  } else {
-    // Handle an incorrect login, the errorCode is available
-    console.log(errorCode)
-  }
-})
-```
+`embed: js/login-es5.js`
+`embed: js/login-es6.js`

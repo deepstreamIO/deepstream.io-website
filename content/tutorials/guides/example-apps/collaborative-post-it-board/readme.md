@@ -1,6 +1,6 @@
 ---
 title: Collaborative Post-It Board
-description: Creating a Retrospective Board with deepstreamHub
+description: Creating a Retrospective Board with deepstream
 tags: [Javascript, lists, records]
 ---
 With more and more teams working remotely, tools have sprung up everywhere, shifting online processes. The fun part behind retrospective planning poker and other methods was always the interactivity, seeing cards move around and identifying barely readable scribbles.
@@ -24,10 +24,7 @@ In case you decide to make the application public, let’s throw in a few securi
 
 - Only let cards be edited by their creator
 
-To achieve this, we’ll be using good old [jQuery](https://jquery.com/) on the frontend and [deepstreamHub](https://deepstreamhub.com/) as our backend.
-
-
-`markdown:start-deepstream-server.md`
+To achieve this, we’ll be using good old [jQuery](//jquery.com/) on the frontend and [deepstream](//deepstream.com/) as our backend.
 
 ## Connect to deepstream and log in
 
@@ -35,7 +32,7 @@ To get started, include the JS-client library
 
 `embed: js/include-script.html`
 
-Get your app url from the dashboard and establish a connection to deepstreamHub. We'll do that, and all the login functions, inside an Angular service. We'll explain more about that in a minute.
+Establish a connection to deepstream. We'll do that, and all the login functions, inside an Angular service. We'll explain more about that in a minute.
 
 ```javascript
 const ds = deepstream('APP-URL');
@@ -66,8 +63,8 @@ ds.login( authData, function( success, loginData ) {
    }
   });
 });
-
 ```
+
 And that’s part two. You now have your users connected and logged into deepstream!
 
 
@@ -109,7 +106,7 @@ record.subscribe( 'position', position => {
 ```
 
 
-deepstreamHub also has a concept of a “list”, which is a useful way to maintain a set of records that have things in common.  
+deepstream also has a concept of a “list”, which is a useful way to maintain a set of records that have things in common.  
 You can `addEntry( removeName )`, `removeEntry( recordName )` and listen to entry-added and entry-removed events.
 Let’s take a look at how we can put these things together to make a board. We’ll need a list to contain the set of all the records on the board. Whenever a card is created, the list will notify us and we can add it into the DOM. Since the list is the entry point to all our records, we need to use a non-random name.
 

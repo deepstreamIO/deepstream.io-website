@@ -24,7 +24,6 @@ interface CategoryProps {
 }
 
 const Category: React.FunctionComponent<CategoryProps> = ({ title, entries, entry}) => {
-    console.log(title, entries, entry)
     let children = null
     if (entries) {
         const keys = Object.keys(entries).sort()

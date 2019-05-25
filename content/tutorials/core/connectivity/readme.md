@@ -2,13 +2,14 @@
 title: Connectivity
 description: Documentation for connection status and how to configure reconnection behaviour
 ---
-All deepstreamHub SDKs establish a persistent, bidirectional connection to the platform. This connection can be lost due to network outage, lack of mobile network coverage or similar problems – if this happens all SDKs will queue outgoing updates and try to re-establish the connection.
+
+All deepstream SDKs establish a persistent, bidirectional connection to the platform. This connection can be lost due to network outage, lack of mobile network coverage or similar problems – if this happens all SDKs will queue outgoing updates and try to re-establish the connection.
 
 ##  Reconnection behaviour
 If a connection is lost, the client will immediately attempt to reconnect. Should that fail, it will wait a certain time and retry. Upon every unsuccessful attempt it will increment the time until the next attempt is made by a number of milliseconds specified in `reconnectIntervalIncrement`. For example if this is set to `2000` the first reconnection attempt will be made immediately, the second after two seconds, the next four seconds after that and so on. You can specify an upper limit to this as `maxReconnectInterval`. After a number of unsuccessful attempts configurable as `maxReconnectAttempts` the client will give up and change the connection-state to `ERROR`.
 
 ## Heartbeats
-Even if your connection is established, messages might not arrive. To check this, clients continuously send small ping-messages to the platform to make sure it’s still reachable. The platform responds to these immediately. If the client misses two consecutive responses it will change the connection-state to `ERROR` regardless of connectivity. You can configure how frequently these heartbeat messages are sent via `heartbeatInterval` (every 30 seconds by default).
+Even if your connection is established, messages might not arrive. To check this, clients continuously send small ping-messages to the platform to make sure it’s still reachable. If the client misses two consecutive responses it will change the connection-state to `ERROR` regardless of connectivity. You can configure how frequently these heartbeat messages are sent via `heartbeatInterval` (every 30 seconds by default).
 
 ## Connection States
 Each SDK provides the current connection-state as well as a way to listen for changes.
@@ -52,19 +53,22 @@ const options = {
     heartbeatInterval: 60000
 };
 
-const ds = deepstream('wss://123.deepstreamhub.com?apiKey=xxx', options );
-ds.login()
+const client = deepstream('wss://123.deepstreamhub.com?apiKey=xxx', options)
+client.login()
 
 // Assume we're updating a green/yellow/red indicator for connectionState with jQuery
-const connectionStateIndicator = $( '#connection-state-indicator' );
-ds.on( 'connectionStateChanged', connectionState => {
-    connectionStateIndicator.removeClass( 'good neutral bad' );
-    if( connectionState === 'OPEN' ) {
-        connectionStateIndicator.addClass( 'good' );
-    } else if( connectionState === 'OPEN' || connectionState === 'ERROR' ) {
-        connectionStateIndicator.addClass( 'bad' );
-    } else {
-        connectionStateIndicator.addClass( 'neutral' );
+const connectionStateIndicator = $('#connection-state-indicator');
+client.on('connectionStateChanged', connectionState => {
+    connectionStateIndicator.removeClass('good neutral bad')
+    switch (connectionState) {
+        case 'OPEN':
+            connectionStateIndicator.addClass('good')
+            break
+        case 'ERROR':
+            connectionStateIndicator.addClass('bad')
+            break
+        default:
+            connectionStateIndicator.addClass('neutral')
     }
-});
+})
 ```

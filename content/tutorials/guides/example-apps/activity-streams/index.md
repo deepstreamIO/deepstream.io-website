@@ -1,21 +1,13 @@
 ---
 title: Activity Streams / Facebook feed
-description: Example app showing how to build activity streams with deepstreamHub events
+description: Example app showing how to build activity streams with deepstream events
 tags: [JavaScript, streams, feeds, events, pub-sub]
 navLabel: Activity Streams
 ---
 
-With deepstreamHub's realtime events, you can easily build an activity steam just like you see on your Facebook wall. These events are emitted as a result of an action, thereby triggering updates to all subscribed clients.
+With deepstream's realtime events, you can easily build an activity steam just like you see on your Facebook wall. These events are emitted as a result of an action, thereby triggering updates to all subscribed clients.
 
 ![Post Box](/images/tutorial/activity-streams/final.gif)
-
-[Getting started with deepstreamHub is easy](/tutorials/getting-started/javascript) and takes less than ten minutes. However, if you have any questions, please [get in touch](/contact).
-
-First, let's start by creating a free deepstreamHub account:
-
-`markdown:start-deepstream-server.md`
-
-deepstream provides a JavaScript library which helps in interacting with your deepstreamHub server.
 
 ## Connect to deepstream and log in
 
@@ -23,21 +15,19 @@ Include the JS-client library
 
 `embed: js/include-script.html`
 
-Get your app url from the dashboard and establish a connection to deepstreamHub
+Establish a connection to deepstream
 
 `embed: js/create-client.js`
 
 and log in (we didn't configure any authentication, so there are no credentials required)
 
 ```javascript
-ds.login();
+ds.login()
 ```
 
-## deepstreamHub Events
+## deepstream Events
 
 `markdown:glossary-event.md`
-
-
 
 Events, aka Pub/Sub, allows communication using a Publish-Subscribe pattern. A client/server emits an event, which is known as publishing and all connected (subscribed) clients/servers are triggered with the event's payload if any. This is a common pattern, not just in realtime systems, but software engineering generally.
 
@@ -50,7 +40,7 @@ ds.event.subscribe('posts-event', (eventData) => { /*do stuff*/ });
 ... and publish events using `.emit()`
 
 ```javascript
-ds.event.emit('posts-event', {some: 'data'} );
+ds.event.emit('posts-event', { some: 'data' } );
 ```
 
 ## Creating Posts
@@ -167,4 +157,4 @@ Notice that the cards markup parent element has `new_card` class. This card help
 ```
 
 ## More Examples
-We at deepstreamHub have built and are building a lot of awesome example apps like the one we have just seen. You can checkout the [Realtime Todo List](/tutorials/example-apps/realtime-todo-list/), [Android Chat App](/tutorials/example-apps/android-chat-app/), [and more...](/tutorials/#example-apps)
+We at deepstream have built and are building a lot of awesome example apps like the one we have just seen. You can checkout the [Realtime Todo List](/tutorials/example-apps/realtime-todo-list/), [Android Chat App](/tutorials/example-apps/android-chat-app/), [and more...](/tutorials/#example-apps)

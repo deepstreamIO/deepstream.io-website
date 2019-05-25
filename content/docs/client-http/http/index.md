@@ -1,22 +1,19 @@
 ---
 title: HTTP API
-description: The reference for deepstreamHub's HTTP API
+description: The reference for deepstream's HTTP API
 ---
 
-deepstreamHub's HTTP API provides access to a subset of the features available through the client
+deepstream's HTTP API provides access to a subset of the features available through the client
 libraries, by making simple requests to our secure HTTPS endpoint.
 
 You can batch multiple fetches, updates and RPCs into a single request for convienience. Messages are counted on a per message basis, meaning a HTTP post that emits 3 events would count as three individual messages. However they do not affect your connection limit allowing thousands of devices to get or set your application on any plan.
 
 ## Authentication
 
-If your chosen auth strategy is email or webhook, the auth endpoint allows you to send
+If your chosen auth strategy is webhook, the auth endpoint allows you to send
 authentication data and returns a session token that can then be used for requests. 
 
 If you're using open auth, you can just go ahead and make requests without a token.
-
-To get your HTTP authentication URL, go to the [applications
-page](https://dashboard.deepstreamhub.com/#/apps) on the deepstreamHub dashboard, then select your app.  The URLs are displayed in the "Admin" tab. You'll need to include this in the URL for all your requests.
 
 ### Auth Request
 
@@ -24,10 +21,9 @@ The body is specified
 For details on possible authentication data see 
 [the authentication overview](/tutorials/guides/security-overview/#authentication).
 
-Example body (email auth): 
+Example body: 
 ```json
 {
-  "type": "email",
   "email": "fred.flintstone@example.com",
   "password": "y4b4d4b4d00"
 }
@@ -38,7 +34,6 @@ Example request using cURL:
 curl -X POST -H "Content-Type: application/json" -d '{
   "type": "email",
   "email": "fred.flintstone@example.com",
-  "password": "y4b4d4b4d00"
 }
 ' "<YOUR HTTP AUTH URL>"
 ```
@@ -51,8 +46,6 @@ A successful response will have a 200 status code and a JSON body with the follo
 |---|---|---|---|
 |token|string|false|A generated auth token.|
 |clientData|object|false|Any client data specified for the authenticated user.|
-
-This auth token is valid for an unlimited number of requests, but will expire after 24 hours.
 
 Example response: 
 ```json
@@ -74,8 +67,7 @@ Deepstream commands are encoded using the format defined below.
 
 The maximum message size is 1 megabyte.
 
-A token may be provided, either one fetched through the auth endpoint above, or one generated
-through the dashboard.
+A token may be provided via the auth endpoint above.
 
 ### Request
 

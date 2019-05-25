@@ -9,23 +9,22 @@ Permissions give you granular control over which records, events or RPCs can be 
 Permissions allow you to specify if a user can create, write, read or delete a record, publish or subscribe to events, provide and make RPCs or listen to other client's subscriptions.
 
 ## How do permissions work?
-deepstream uses a proprietary permission syntax called "Valve". Valve rules are simple javascript strings with a reduced feature-set. Each valve rule defines access to a specific action related to a specific concept, e.g. a "write" to a "record".
+deepstream uses a permission syntax called "Valve". Valve rules are simple javascript strings with a reduced feature-set. Each valve rule defines access to a specific action related to a specific concept, e.g. a "write" to a "record".
 
 Here's what they look like:
 
 ```yaml
 record:
-    #an auctioned item
+    # an auctioned item
     auction/item/$sellerId/$itemId:
-
-        #everyone can see the item and its price
+        # everyone can see the item and its price
         read: true
 
-        #only users with canBid flag in their authData can bid
-        #and bids can only be higher than the current price
+        # only users with canBid flag in their authData can bid
+        # and bids can only be higher than the current price
         write: "user.data.canBid && data.price > oldData.price"
 
-        #only the seller can delete the item
+        # only the seller can delete the item
         delete: "user.id == $sellerId"
 ```
 

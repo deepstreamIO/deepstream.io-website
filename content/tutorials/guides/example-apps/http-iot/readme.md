@@ -1,18 +1,17 @@
 ---
 title: IoT Light Sensor
-description: deepstreamHub HTTP Internet of Things Light Sensor tutorial
+description: deepstream HTTP Internet of Things Light Sensor tutorial
 tags: [HTTP, IoT, Arduino, ESP8266, WiFi]
 navLabel: IoT Light Sensor
 contentNav: true
-body_class: bright
 ---
 
-deepstreamHub's HTTP API is perfect for low-frequency data updates in low-power
+deepstream's HTTP API is perfect for low-frequency data updates in low-power
 environments where the cost of establishing and maintaining a WebSocket
 connection can be prohibitive.
 
 In this tutorial we'll use a remote, low-power ESP8266-based system-on-chip and
-a light sensor to send live light readings to deepstreamHub and display them on
+a light sensor to send live light readings to deepstream and display them on
 a webpage. Additionally, red and green LEDs will show whether the update has
 been successful.
 
@@ -22,7 +21,6 @@ I'd recommend being familiar with the basics of
 Here's how it looks:
 
 ![circuit](circuit.jpg)
-
 
 ## Hardware
 
@@ -117,7 +115,7 @@ Light level: 384
 
 ## Connecting to WiFi
 
-To submit this data to deepstreamHub we'll need an internet connection, and for
+To submit this data to deepstream we'll need an internet connection, and for
 that we'll use the chip's builtin WiFi and networking functionality. 
 
 Include the following headers:
@@ -172,26 +170,21 @@ void updateRecord(int level) {
 }
 ```
 
-Now go create a free account through the deepstreamHub dashboard, create an
-application and fetch an HTTP URL from the Application Details page.
-
-`markdown:start-deepstream-server.md`
-
 You'll also need to select the relevant TLS fingerprint that relates to the
 subdomain in your HTTP URL, or you can follow 
 [the instructions here](https://github.com/esp8266/Arduino/issues/2556#issuecomment-271372001)
 to generate your own: 
 
 ```cpp
-const char* deepstreamHubHttpUrl = "<YOUR HTTP URL>";
+const char* deepstreamHttpUrl = "<YOUR HTTP URL>";
 /*
  * Generated TLS fingerprints:
  *
- * 013.deepstreamhub.com: "3A:FC:6E:78:94:18:C0:A2:36:F3:C7:DF:86:27:4B:5A:CA:CF:28:3F"
- * 035.deepstreamhub.com: "57:18:5A:22:07:94:03:EF:90:C9:C2:56:58:C9:BB:06:66:A6:EA:76"
- * 154.deepstreamhub.com: "3C:65:CA:7C:3F:43:2D:FF:A1:63:38:F3:23:D5:59:25:E4:85:8C:0F"
+ * 013.deepstream.com: "3A:FC:6E:78:94:18:C0:A2:36:F3:C7:DF:86:27:4B:5A:CA:CF:28:3F"
+ * 035.deepstream.com: "57:18:5A:22:07:94:03:EF:90:C9:C2:56:58:C9:BB:06:66:A6:EA:76"
+ * 154.deepstream.com: "3C:65:CA:7C:3F:43:2D:FF:A1:63:38:F3:23:D5:59:25:E4:85:8C:0F"
  */
-const char* deepstreamHubTlsFingerprint = "<YOUR HTTP DOMAIN FINGERPRINT>";
+const char* deepstreamTlsFingerprint = "<YOUR HTTP DOMAIN FINGERPRINT>";
 ```
 
 We have to create a new `HTTPClient` for each message, so we'll create that in
@@ -201,14 +194,14 @@ We have to create a new `HTTPClient` for each message, so we'll create that in
 HTTPClient http;
 
 // configure client
-http.begin(deepstreamHubHttpUrl, deepstreamHubTlsFingerprint);
+http.begin(deepstreamHttpUrl, deepstreamTlsFingerprint);
 
 // ...
 
 http.end();
 ```
 
-The deepstreamHub HTTP API uses a JSON payload, so to help us build that we'll
+The deepstream HTTP API uses a JSON payload, so to help us build that we'll
 include the `ArduinoJSON` library we installed earlier.
 
 The body we're creating needs to look like this:
@@ -355,7 +348,7 @@ Now let's display those updates as they happen using Javascript and log them to 
 <head>
     <script src="http://code.deepstream.io/js/latest/deepstream.min.js"></script>
     <script type="text/javascript">
-      const ds = deepstream('<YOUR APP URL>')
+      const ds = deepstream('<Your deepstream URL>')
       ds.login()
     
       const record = ds.record.getRecord('readings/light-level')

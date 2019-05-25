@@ -30,7 +30,7 @@ Let's replicate the example above. First, you need a deepstream server running o
 
 Once your server is running, it's time to create our react-app. Let's start by installing the deepstream javascript client and deepstream-react
 
-```
+```bash
 npm install deepstream.io-client-js deepstream.io-tools-react --save
 ```
 

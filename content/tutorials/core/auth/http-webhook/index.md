@@ -1,6 +1,7 @@
 ---
 title: HTTP Authentication
 description: How to register your own HTTP server as a Webhook for user authentication
+tags: [authentication, webhook, http]
 ---
 
 Http authentication lets you register your own HTTP server's URL as a Webhook. Every time a user tries to login, deepstream will send their credentials via POST request to your server. Depending on your server's response, the user's login will be denied or granted.
@@ -76,19 +77,8 @@ app.listen(3000)
 
 In your application code you can now connect to the deepstream server and try to login a user. Try changing the value of username to something aside from 'chris' to see what happens.
 
-```javascript
-// from Node.js
-const deepstream = require('deepstream.io-client-js')
-const client = deepstream('localhost:6021'); //Change port to 6020 for browsers
-
-client.login({
-  username: 'chris',
-  password: 'password' // NEEDS TO BE REAL
-}, function(success, data) {
-  //success == true
-  //data == { themeColor: 'pink' }
-})
-```
+`embed: js/login-es5.js`
+`embed: js/login-es6.js`
 
 If a success, the deepstream console will show:
 

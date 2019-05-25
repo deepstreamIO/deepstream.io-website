@@ -1,6 +1,7 @@
 ---
 title: Node API
 description: API docs for using deepstream within your own node application
+needsReview: true
 ---
 
 API when using deepstream as a Node.js package via NPM.
@@ -12,19 +13,15 @@ which contains the configuration or a filePath to the configuration file. Missin
 If you omit the argument, deepstream will use default values. Read more about
 the [configuration and default values](/docs/server/configuration/).
 
-{{#table mode="api"}}
--
-  arg: options
-  typ: Object | String
-  opt: true
-  des: Either the configuration object or a filepath to the configuration file
-{{/table}}
+|Parameter|Type|Optional|Description|
+|---|---|---|---|
+|options|Object or string|true|Either the configuration object or a filepath to the configuration file|
 
 **Please note** calling `server = new Deepstream()` only creates the instance, to actually start the server, you still need to call `server.start();`
 
 ```javascript
 const Deepstream = require('deepstream.io')
-const server = new Deepstream({port:8000})
+const server = new Deepstream({ port:8000 })
 ```
 
 ## Events
@@ -51,27 +48,14 @@ configuration initialization step.
 
 💡 **NOTE:** If deepstream is initialized with a configuration object, `set()` will override the keys in your initial configuration. This is useful for passing in objects which are shared between deepstream and the rest of your application, such as a cache connector. You can override any of the options using the same name within your [configuration](/docs/server/configuration/), except for the notable difference(s) below.
 
-**NOTE:** 
-httpServer parameter removed in 2.x
-
-```
-{{#table mode="api"}}
--
-  arg: key
-  typ: String
-  opt: false
-  des: The configuration option that should be set
--
-  arg: value
-  typ: various
-  opt: false
-  des: The value that should be used
-{{/table}}
-```
+|Parameter|Type|Optional|Description|
+|---|---|---|---|
+|key|String|false|The configuration option that should be set|
+|value|JSONValue|false|The value that should be used|
 
 ##### Differences when using `set(key, value)`
 
-If you use an configuration object its properties will be treated as a file path.
+If you use a configuration object its properties will be treated as a file path.
 Here the `value` is treated as a string for these options:
 
 - `sslCert`
@@ -85,7 +69,6 @@ These options might have a different name and location in the structure of the c
 - `authenticationHandler`
 - `permissionHandler`
 - `logger`
-- `message`
 - `cache`
 - `storage`
 
@@ -127,21 +110,6 @@ server.set('permissionHandler', new LdapPermissionHandler())
 * @default DeepstreamWinstonLogger
 */
 server.set('logger', new FileLogger())
-
-/**
-* MessageConnectors connect deepstream to a message bus
-* (e.g. AMQP, Redis, Kafka) thus allowing for clustering.
-*
-* See the "Connectors" section above for details
-*
-* @type MessageConnector
-* @default NoopMessageConnector
-*/
-server.set('messageConnector', new RedisMessageConnector({
-  port: 6379,
-  host: 'localhost'
-}))
-
 
 /**
 * A regular expression that determines which records will not be

@@ -50,7 +50,7 @@ nano /etc/mongod.conf
 
 Then you need to change the `bindIp` value
 
-```
+```yaml
 net:
   port: 27017
   bindIp: mongodb_private_ip
@@ -81,13 +81,13 @@ bind redis_private_ip
 
 and restart the redis server via
 
-```shell
+```bash
 service redis restart
 ```
 
 ## Step 3 — Install and configure deepstream.io server
 
-```shell
+```bash
 ssh root@deepstream_server_ip
 source /etc/lsb-release && echo "deb http://dl.bintray.com/deepstreamio/deb ${DISTRIB_CODENAME} main" | sudo tee -a /etc/apt/sources.list
 apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 379CE192D401AB61
@@ -97,7 +97,7 @@ apt-get install -y deepstream.io
 
 Now let's install a connector for MongoDB and redis via the deepstream CLI:
 
-```
+```bash
 deepstream install storage mongodb
 deepstream install cache redis
 ```
@@ -133,7 +133,7 @@ deepstream start
 
 The output should contain these lines which indicate that the connection to the cache and storage layer were successful
 
-```
+```bash
 INFO | cache ready
 INFO | storage ready
 ```
@@ -147,7 +147,7 @@ deepstream provides also a message layer which allows communication between mult
 We can reuse the existing redis droplet for the message layer by adding this snippet to the configuration file in
 `/etc/deepstream/config.yml`:
 
-```
+```yaml
 plugins:
   message:
     name: redis
@@ -158,7 +158,7 @@ plugins:
 
 and install a connector to use redis for the message layer via
 
-```shell
+```bash
 deepstream install message redis
 ```
 
@@ -170,7 +170,7 @@ We move the configuration files into a public GitHub repository and download it 
 
 __User Data__
 
-```
+```bash
 #!/bin/bash
 source /etc/lsb-release && echo "deb http://dl.bintray.com/deepstreamio/deb ${DISTRIB_CODENAME} main" | sudo tee -a /etc/apt/sources.list
 apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 379CE192D401AB61

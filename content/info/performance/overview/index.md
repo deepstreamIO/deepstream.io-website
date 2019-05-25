@@ -25,14 +25,21 @@ Please note: The following tests are non-conclusive and will be improved and ext
 
 ## What type of tests can take these into account?
 
-* load tests<br />
-    Make sure that the system works as expected under a set conditions. This covers *CPU* and *message latency* and its output can be used to determine what kind of deployment structure would suit you best.
-* soak tests<br />
-    Run tests for a long period of time with slightly higher traffic. This covers *memory* and *message latency* and is used to ensure the system can run in production for long periods of time without reducing performance or crashing.
-* stress tests<br />
-    Push the system into critical usage of CPU and/or network usage and/or Memory and determine how it reacts.
-* spike tests<br />
-    Generating large amounts of clients or traffic in a very small amount of time and ensuring that the system does not fail.
+* load tests
+
+Make sure that the system works as expected under a set conditions. This covers *CPU* and *message latency* and its output can be used to determine what kind of deployment structure would suit you best.
+
+* soak tests
+
+Run tests for a long period of time with slightly higher traffic. This covers *memory* and *message latency* and is used to ensure the system can run in production for long periods of time without reducing performance or crashing.
+
+* stress tests
+
+Push the system into critical usage of CPU and/or network usage and/or Memory and determine how it reacts.
+
+* spike tests
+
+Generating large amounts of clients or traffic in a very small amount of time and ensuring that the system does not fail.
 
 ## How can you improve results?
 

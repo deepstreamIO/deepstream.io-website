@@ -9,14 +9,14 @@ The deepstream PHP SDK enables PHP developers to create, read, update and delete
 Under the hood the PHP SDK is using the deepstream HTTP API to execute individual and batch requests.
 
 ## Installation
-The deepstream PHP SDK can be installed via [composer](https://packagist.org/packages/deepstreamhub/deepstream.io-client-php) as `composer require deepstreamhub/deepstream.io-client-php` or browse the source on [Github](https://github.com/deepstreamIO/deepstream.io-client-php)
+The deepstream PHP SDK can be installed via [composer](https://packagist.org/packages/deepstream/deepstream.io-client-php) as `composer require deepstream/deepstream.io-client-php` or browse the source on [Github](https://github.com/deepstreamIO/deepstream.io-client-php)
 
 ## Basic usage
 
-```javascript
+```php
 <?php
 
-use Deepstreamhub\DeepstreamClient;
+use deepstream\DeepstreamClient;
 
 // Instanciates a client and emits an event
 $client = new DeepstreamClient( '<YOUR APP\'s HTTP URL>', array());
@@ -41,11 +41,11 @@ $client->emitEvent( 'news/sports', 'something about football is happening');
   des: Auth token used for all your requests
 {{/table}}
 
-The DeepstreamClient class creates a client instance to be used for all methods calls. The token option required for the $authData is a session token returned from a previous request to the app's HTTP auth url ([see http authentication](https://deepstreamhub.com/docs/http/v1/#authentication)) or generated via the deepstreamHub's dashboards token auth type. If you're using open auth the the token is optional.
+The DeepstreamClient class creates a client instance to be used for all methods calls. The token option required for the $authData is a session token returned from a previous request to the app's HTTP auth url ([see http authentication](https://deepstream.com/docs/http/v1/#authentication)) or generated via the deepstream's dashboards token auth type. If you're using open auth the the token is optional.
 
 Examples:
 
-```javascript
+```php
 // Instanciates a client with token session
 $client = new DeepstreamClient( '<YOUR APP\'s HTTP URL>', array(
     'token' => 'xxxx'
@@ -90,7 +90,7 @@ Updates a record. Records that do not already exist will be created.
 The optional "path" param may be used to update only part of a record.
 
 Examples:
-```javascript
+```php
 // Writing full data
 $client->setRecord( 'user/johndoe', array(
     'firstname' => 'John',
@@ -121,7 +121,7 @@ $client->setRecord( 'user/johndoe', 'age', '33' );
 Retrieves a Record previously created with the given name.
 
 Example:
-```javascript
+```php
 $firstname = $client->getRecord( 'user/johndoe' )->firstname;
 ```
 ### deleteRecord( $recordName )
@@ -143,7 +143,7 @@ Deletes a record from the cache and storage.
 Deletion will succeed even if the record does not exist.
 
 Example:
-```javascript
+```php
 $client->deleteRecord( 'user/johndoe' );
 ```
 ### getRecordVersion( $recordName )
@@ -167,7 +167,7 @@ otherwise a version conflict will occur. To force an update the version can be o
 
 Example:
 
-```javascript
+```php
 $version = $client->getRecordVersion( 'user/johndoe' );
 ```
 
@@ -197,7 +197,7 @@ $version = $client->getRecordVersion( 'user/johndoe' );
 Executes a remote procedure call.
 
 Examples:
-```javascript
+```php
 // with data
 $twentyfour = $client->makeRpc( 'multiply-by-two', 12 );
 
@@ -236,7 +236,7 @@ $client->makeRpc( 'logout' );
 Emits an event
 
 Examples:
-```javascript
+```php
 // with data
 $client->emitEvent( 'new-message', 'hey, what\'s up?' );
 
@@ -262,7 +262,7 @@ $client->emitEvent( 'ping' );
 Initiates a set of batch operations that will be executed as a single request. No actual request will be sent until executeBatch is called. All the methods called in a batch operation will return true and the result of all operations is returned by the executeBatch method.
 
 Example:
-```javascript
+```php
 $client->startBatch();
 // operations go here...
 ```
@@ -277,7 +277,7 @@ Executes a set of batch operations previously started.
 
 
 Example:
-```javascript
+```php
 $client->startBatch();
 $client->emitEvent( 'new-message', 'hey, what\'s up?' );
 $client->getRecord( 'user/johndoe' );

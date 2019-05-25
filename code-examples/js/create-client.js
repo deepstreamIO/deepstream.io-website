@@ -1,1 +1,1 @@
-const dsClient = deepstream('<YOUR APP URL>');
+const dsClient = deepstream('<Your deepstream URL>');

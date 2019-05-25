@@ -46,7 +46,7 @@ Heroku provides different versions of Node.js which can be specified in the pack
 
 Heroku applications also need a [Procfile](https://devcenter.Heroku.com/articles/procfile) in the root directory which contains the application type and command. Since deepstream is a server it needs to be defined as a `web` type.
 
-```
+```json
 web: npm start
 ```
 
@@ -64,7 +64,7 @@ On Heroku you can't expose a port directly. Instead Heroku will set an environme
 
 Let's copy the default configuration file to our project directory:
 
-```shell
+```bash
 cp -r node_modules/deepstream.io/conf .
 ```
 
@@ -85,13 +85,13 @@ the current directory as a git repository via `git init`.
 
 Don't forget to add your *node_modules* folder to your _.gitignore_ file by adding this line:
 
-```
+```bash
 node_modules
 ```
 
 Next up we'll commit all other files in the current directory:
 
-```shell
+```bash
 git commit -a -m "init commit"
 ```
 
@@ -108,7 +108,7 @@ For the next step you will create the Heroku app. You should consider to choose 
 This command creates an app with the name **deepstream-test** in Europe:
 
 
-```shell
+```bash
 Heroku apps:create deepstream-test --region eu
 ```
 
@@ -116,13 +116,13 @@ A git remote (Heroku) is also created and associated with your local git reposit
 
 Now you can push the code (from our local repository) to the remote repository at Heroku:
 
-```shell
+```bash
 git push heroku master
 ```
 
 After ths process is finished we can check the logs on Heroku via:
 
-```
+```bash
 heroku logs -t
 ```
 
@@ -213,7 +213,7 @@ plugins:
 
 In your logs you should see these two lines which indicates that the storage and cache layer are enabled:
 
-```
+```bash
 INFO | cache ready
 INFO | storage ready
 ```

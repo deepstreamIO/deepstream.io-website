@@ -12,11 +12,7 @@ Let's see how we could achieve this by building a CRUD app for managing collecti
 
 ![Final app](/images/tutorial/album-collection/final.gif)
 
-[Getting started with deepstreamHub is easy](/tutorials/getting-started/javascript) and takes less than ten minutes. First, let's start by creating a free deepstreamHub account:
-
-`markdown:start-deepstream-server.md`
-
-deepstream provides a JavaScript library which helps in interacting with your deepstreamHub server.
+deepstream provides a JavaScript library which helps in interacting with your deepstream server.
 
 ## Create an Angular App
 
@@ -56,7 +52,7 @@ import * as deepstream from 'deepstream.io-client-js'
 @Injectable()
 export class DsService {
   get dsInstance() {
-    return deepstream('<YOUR APP URL>').login()
+    return deepstream('<Your deepstream URL>').login()
   }
   get event () {
     return this.dsInstance.event

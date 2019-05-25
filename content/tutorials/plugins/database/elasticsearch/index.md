@@ -58,7 +58,8 @@ const es = new elasticsearch.Client({
 });
 
 // Create deepstream Client
-const client = deepstream('deepstream-host').login()
+const client = deepstream('deepstream-host')
+client.login()
 
 // Register as provider for search-color-for-brand
 client.rpc.provide('search-color-for-brand', (brand, response) => {

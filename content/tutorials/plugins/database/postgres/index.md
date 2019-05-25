@@ -105,35 +105,35 @@ connector.on( 'ready', ()=>{
 ```
 
 ## The API at a glance
-### constructor( options )
+### constructor(options)
 Create the Connector, see above for options
 
-### destroy( callback )
+### destroy(callback)
 Destroy the connector. Callback will be invoked once complete
 
-### createSchema( name, callback )
+### createSchema(name, callback)
 Create a new schema. The schema specified in the constructor options will be implicitly created. Default schema is 'ds'
 
-### destroySchema( name, callback )
+### destroySchema(name, callback)
 Destroys an existing schema
 
-### getSchemaOverview( callback, name )
+### getSchemaOverview(callback, name)
 Returns a map of tables to their number of rows (see above for example). Name is optional, if omitted, the schema from the options will be used
 
-### subscribe( callback, done, schema )
+### subscribe(callback, done, schema)
 Subscribe to notifications from the schema. Which notifications you'll receive is determined by the `notifications` option passed to the constructor. callback will be invoked with notifications in the format `{ event: 'INSERT', table: 'some-table', key: 'some-key' }`, done will be called once the subscription is established. Schema is optional.
 
-### unsubscribe( callback, done, schema )
+### unsubscribe(callback, done, schema)
 Removes a previously registered callback or all listeners if callback is omitted. Schema is optional
 
-### set( key, value, callback )
+### set(key, value, callback)
 Writes a value to the database. If key includes a `/` e.g. `cars/bmw`, the first part will be used to create a table and the second part as id. Value can be any JSON blob, callback will be invoked once the write is complete. Please note that reads are buffered and batched and might not be executed straight away.
 
-### get( key, callback ) 
+### get(key, callback) 
 Retrieves a value from a database. Callback will be invoked with error or null and the value
 
-### delete( key, callback )
+### delete(key, callback)
 Deletes a value from the database
 
-### query( statement, callback, args, silent ) 
+### query(statement, callback, args, silent) 
 Low level query interface.  Statement is a PostgreSQL string, args an optional array of arguments for parameterized queries and silent = true ensures that errors are forwarded to the callback rather than thrown/logged.

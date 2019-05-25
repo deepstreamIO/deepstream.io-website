@@ -1,19 +1,17 @@
 ---
 title: Realtime ToDo List
-description: Learn how to create a realtime ToDo list using deepstreamHub technology
-tags: Javascript, React, lists, records
+description: Learn how to create a realtime ToDo list using deepstream technology
+tags: [Javascript, React, lists, records]
 navLabel: Realtime Todo List
 ---
 
-You probably know the [TodoMVC](http://todomvc.com/) project (if not, take a look). We believe that deepstreamHub's lists and records can simplify the development and implementation of many kinds of project, ToDomvc and the like are good examples for that.
-This tutorial will show you how to use deepstreamHub's records and lists for building a realtime TodoList app with React.
+You probably know the [TodoMVC](http://todomvc.com/) project (if not, take a look). We believe that deepstream's lists and records can simplify the development and implementation of many kinds of project, ToDomvc and the like are good examples for that.
+This tutorial will show you how to use deepstream's records and lists for building a realtime TodoList app with React.
 We definitely recommend being familiar with [Records](/tutorials/core/datasync/records/) and [Lists](/tutorials/core/datasync/lists/) before giving this a go, and, of course, with the React framework.
 
 This is how it looks like:
 
 ![todoMVC gif](todoMVC.gif)
-
-`markdown:start-deepstream-server.md`
 
 ## Connect to deepstream and log in
 
@@ -21,7 +19,7 @@ Include the JS-client library
 
 `embed: js/include-script.html`
 
-Get your app url from the dashboard and establish a connection to deepstreamHub
+Get your app url from the dashboard and establish a connection to deepstream
 
 `embed: js/create-client.js`
 

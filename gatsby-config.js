@@ -65,6 +65,16 @@ module.exports = {
             }
           },
           "gatsby-remark-embed-code-relative",
+          // {
+          //   resolve: `gatsby-remark-prettier`,
+          //   options: {
+          //     // Look for local .prettierrc file.
+          //     // The same as `prettier.resolveConfig(process.cwd())`
+          //     usePrettierrc: true,
+          //     // Overwrite prettier options, check out https://prettier.io/docs/en/options.html
+          //     prettierOptions: {}
+          //   },
+          // },
           'gatsby-remark-responsive-iframe',
           {
             resolve: 'gatsby-remark-images',

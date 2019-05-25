@@ -5,7 +5,7 @@ tags: [Javascript, Angular, lists, records]
 navLabel: Realtime Chat in Browser
 ---
 
-Let's build a realtime chat App in browser. We'll be implementing quite a few features and showing you just how easy it is to do this with deepstreamHub. Upon completion you will be able to:
+Let's build a realtime chat App in browser. We'll be implementing quite a few features and showing you just how easy it is to do this with deepstream. Upon completion you will be able to:
 
 - view a list of users and whether they are online or offline
 
@@ -14,11 +14,9 @@ Let's build a realtime chat App in browser. We'll be implementing quite a few fe
 - get all the chat history
 
 
-This tutorial covers a lot of concepts in deepstreamHub and we'd definitely recommend being familiar with [Records](/tutorials/core/datasync/records/) and [Lists](/tutorials/guides/lists) before giving this a go, additionally [Angular](/tutorials/getting-started/angularjs/) and [Javascript](/tutorials/getting-started/javascript/) experience will be helpful as well.
+This tutorial covers a lot of concepts in deepstream and we'd definitely recommend being familiar with [Records](/tutorials/core/datasync/records/) and [Lists](/tutorials/guides/lists) before giving this a go, additionally [Angular](/tutorials/getting-started/angularjs/) and [Javascript](/tutorials/getting-started/javascript/) experience will be helpful as well.
 
 If you have any questions please take a look at the GitHub [repository](https://github.com/deepstreamIO/dsh-demo-webApp-chat) or [get in touch](/contact).
-
-`markdown:start-deepstream-server.md`
 
 ## Connect to deepstream and log in
 
@@ -26,7 +24,7 @@ To get started, include the JS-client library
 
 `embed: js/include-script.html`
 
-Get your app url from the dashboard and establish a connection to deepstreamHub. You'll be that using all the login functions inside an Angular service. We'll explain more about that in a minute.
+Get your app url from the dashboard and establish a connection to deepstream. You'll be that using all the login functions inside an Angular service. We'll explain more about that in a minute.
 
 `embed: js/create-client.js`
 
@@ -54,7 +52,7 @@ $scope.login = function() {
 }
 ```
 
-The deepstream service will check if the user exists. If not, it initiates a signUp function that creates an HTTP POST to our deepstreamHub API. You can find out more about our HTTP API [here](/tutorials/protocols/http-endpoint). After which, the login function is immediately called, where the user's list is called. 
+The deepstream service will check if the user exists. If not, it initiates a signUp function that creates an HTTP POST to our deepstream API. You can find out more about our HTTP API [here](/tutorials/protocols/http-endpoint). After which, the login function is immediately called, where the user's list is called. 
 The function checks if the current user is in the system or not. If not the userID will be added to the list, creating a record with the email and the userId.
 
 ```javascript

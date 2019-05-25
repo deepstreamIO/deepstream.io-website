@@ -103,11 +103,12 @@ chosen such that rules can be selected only based on the identifier.
 ### Identifier Matching
 
 Valve can match identifiers using fixed (sub-)strings, wild cards, and
-placeholders (at deepstreamHub, we call them _path variables_); these
+placeholders (with deepstream, we call them _path variables_); these
 placeholders can be used in the expressions. Suppose we store a user's first
 name, middle name, and last name in the format
 `name/lastname/middlename/firstname` and have a look at the following Valve
 code:
+
 ```yaml
 presence:
 	'name/Doe/$middlename/$firstname':

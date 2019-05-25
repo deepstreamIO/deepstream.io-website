@@ -7,7 +7,7 @@ Events are deepstream's implementation of the "publish/subscribe" or "observer" 
 
 ![Pub/Sub diagram](pubsub-diagram.png)
 
-The emphasis on "zero or more" underlines one of the main characteristics of pub/sub: Publishers and subscribers are completely decoupled. It's a bit like a newspaper - journalists write articles assuming but not knowing that they will be read, and readers open the sports section expecting but not knowing that something will be written on it.
+The emphasis on "zero or more" underlines one of the main characteristics of pub/sub: Publishers and subscribers are completely decoupled. It's a bit like a newspaper - journalists write articles assuming but not knowing that they will be read, and readers open the sports section expecting but not knowing that something they care about will be written on it.
 
 This decoupling makes pub/sub scalable and fault tolerant, but sometimes you want to know if there's someone out there waiting for your messages. For that, deepstream's events come with a feature called "listening".
 
@@ -54,28 +54,26 @@ Listeners can register for a pattern described by a regular expression, e.g. `'^
 
 ```javascript
 // Client B
-client.event.listen('^news/.*', (eventName, isSubscribed, response) => {
+client.event.listen('^news/.*', (eventName, response) => {
   console.log(eventName) // 'news/sports'
-  if (isSubscribed) {
-    if (/* if you want to provide */) {
-      response.accept()
-      // start publishing data via `client.event.emit(eventName, /* data */)`
-    } else {
-      response.reject() // let deepstream ask another provider
-    }
+  if (/* if you want to provide */) {
+    // start publishing data via `client.event.emit(eventName, /* data */)`
+    response.accept()
+
+    response.onStop(() => {
+      // stop publishing data
+    })
   } else {
-    // stop publishing data
+    response.reject() // let deepstream ask another provider
   }
 })
 ```
 
-The listen-callback is called with `isSubscribed = true` once a matching event is subscribed to for the first time and with `isSubscribed = false` once the last subscriber for a matching event unsubscribes.
+The listen-callback is called once a matching event is subscribed to for the first time and stopped once the last subscriber for a matching event unsubscribes.
 
-Listening also keeps state. Registering as a listener for a pattern that already has matching subscriptions will call the callback multiple times straight away, once for every matching subscription.
+Listening also keeps state. Registering as a listener for a pattern that already has matching subscriptions without an active provider will call the callback multiple times straight away, once for every matching subscription.
 
 ## Video Demo 
-If you would like to learn more find out our video tutorial with Yasser Fadl, explaining more in detail about Pub/Sub in deepstreamHub.
+If you would like to learn more find out our video tutorial with Yasser Fadl, explaining more in detail about Pub/Sub in deepstream.
 
-
-<br />
 <iframe width="780" height="439" src="https://www.youtube.com/embed/xWA6DgQ0sgU" frameborder="0" allowfullscreen></iframe>

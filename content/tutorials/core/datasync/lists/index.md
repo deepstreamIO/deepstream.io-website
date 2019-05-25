@@ -3,11 +3,11 @@ title: Lists
 description: Learn how you can use lists to create collections out of records with attributes in common
 ---
 
-Lists are observable arrays of recordnames (not their data!).
+Lists are observable arrays of recordNames (not their data!).
 
-Lists and recordnames have what a computer science teacher would call an n:m-relationship - a list can contain many recordnames and a recordname can be part of many lists.
+Lists and recordNames have what a computer science teacher would call an n:m-relationship - a list can contain many recordNames and a recordName can be part of many lists.
 
-To make life easier, lists come with all sorts of convenience methods. You can add an entry at a specific index using `addEntry( recordName, index )`, remove entries from anywhere within the list using `removeEntry( recordName )`, set or get all entries or check if the list `isEmpty()`.
+To make life easier, lists come with all sorts of convenience methods. You can add an entry at a specific index using `addEntry(recordName, index)`, remove entries from anywhere within the list using `removeEntry( recordName)`, set or get all entries or check if the list `isEmpty()`.
 
 Apart from that, lists are quite similar to [records](../records/). They notify you `whenReady()`, can be `subscribe()` to and need to be `discard()` after usage.
 
@@ -53,4 +53,4 @@ Records are more than just their data. They have their own subscribe/discard lif
 
 Recordnames are lightweight strings that can easily be passed around, e.g. as `props` to React components or as `data-model` to an Android listview.
 
-This also addresses one of the major challenges of developing realtime apps:  Using  bandwidth efficiently and minimizing the amount of data that's send over the wire. One of the best ways to achieve this is by limiting subscriptions to the records that are currently in view. Lists help with that by providing the necessary structure to create infinite grids or panels that automatically load and discard data while the user scrolls.
+This also addresses one of the major challenges of developing realtime apps: Using bandwidth efficiently and minimizing the amount of data that's send over the wire. One of the best ways to achieve this is by limiting subscriptions to the records that are currently in view. Lists help with that by providing the necessary structure to create infinite grids or panels that automatically load and discard data while the user scrolls.

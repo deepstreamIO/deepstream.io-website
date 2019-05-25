@@ -1,12 +1,11 @@
 ---
 title: Realtime Flight Tracker
-description: Building a realtime flight tracker with deepstreamHub
+description: Building a realtime flight tracker with deepstream
 tags: [flights, web, realtime, records]
 navLabel: Realtime Flight Tracker
 ---
-This tutorial will take you through building a realtime flight tracking system with deepstreamHub. We'll be building both a backend provider process that updates the records with the location of flights, and a web based front end that allows us to visualise these. If you'd like to dive straight into the code you can take a look at the GitHub [repository](https://github.com/deepstreamIO/dsh-demo-realtime-flight-tracker).
 
-`markdown:start-deepstream-server.md`
+This tutorial will take you through building a realtime flight tracking system with deepstream. We'll be building both a backend provider process that updates the records with the location of flights, and a web based front end that allows us to visualise these. If you'd like to dive straight into the code you can take a look at the GitHub [repository](https://github.com/deepstreamIO/dsh-demo-realtime-flight-tracker).
 
 ## Realtime updates via provider
 
@@ -17,7 +16,7 @@ The first thing we'll do is create our backend process that provides the realtim
 We can get a reference to our client as follows, and then get our deepstream `List` of flights, this is the list of flights that clients will be referring to.
 
 ```javascript
-const client = deepstream('<Your app URL>')
+const client = deepstream('<Your deepstream URL>')
 client.login({}, () => {
   flightList = client.record.getList('flights')
 })
@@ -115,7 +114,7 @@ The first thing we need to do is initialise this map and our deepstream client. 
 ```javascript
 function init() {
   map = new google.maps.Map(document.getElementById('map'), { ... })
-  client = deepstream('<Your app URL>')
+  client = deepstream('<Your deepstream URL>')
   client.login({}, (success) => {
     const list = client.record.getList('flights')
     list.whenReady(renderList)
@@ -151,7 +150,6 @@ function addFlightTracking(flightId) {
   markers[flightId] = marker
 }
 ```
-
 
 After all this, we should have an application that looks as follows:
 

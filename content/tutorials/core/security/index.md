@@ -16,14 +16,15 @@ deepstream supports transport layer security for web-facing connections using HT
 
 ```yaml
 sslKey: ./my-key.key
-sslCert: ./my-cert.crt
-sslCa: ./my-ca.crt
+sslCert:  ./my-cert.key
+sslDHParams:  ./my-dhl-params.key
+sslPassphrase:  ./my-ssl-passphrase.key
 ```
 
-Often it's easier and more performant though to leave SSL termination to a load balancer (e.g. Nginx or HA Proxy). To learn more about this, head over to the [Nginx Tutorial](/tutorials/integrations/other-nginx/).
+It's highly recommended to always use a seperate process to do SSL termination. Usually via a load balancer (e.g. Nginx or HA Proxy). To learn more about this, head over to the [Nginx Tutorial](/tutorials/integrations/other-nginx/).
 
 ## Authentication
-Every incoming connection needs to pass an authentication step. This happens when the client calls `login( data, callback )`.
+Every incoming connection needs to pass an authentication step. This happens when the client calls `login(data, callback)`.
 deepstream comes with three built-in authentication mechanisms:
 
 - [none](https://deepstream.io/tutorials/core/auth-none/) allows every connection. Choose this option for public sites that don't require access controls.

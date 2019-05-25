@@ -1,21 +1,16 @@
 ---
 title: Getting started with VueJS
 description: Learn how to add realtime features to your VueJS webapp and start using our realtime database in the browser.
-tags: JavaScript, VueJS, Vue, data-sync, pub-sub, request-response, RPCs
+tags: [JavaScript, VueJS, Vue, data-sync, pub-sub, request-response, RPCs]
 navLabel: VueJS
 contentNav: true
-body_class: bright
 ---
 
-Getting started with deepstreamHub is easy and takes less than ten minutes. However, if you have any questions, please [get in touch](/contact).
+Getting started with deepstream is easy and takes less than ten minutes. However, if you have any questions, please [get in touch](/contact).
 
 This getting started guide will walk you through integrating deepstream in Vue. You will also learn how to implement the three deepstream core concepts: [Records](/tutorials/core/datasync/records/), [Events](/tutorials/core/pubsub/) and [RPCs](/tutorials/core/request-response/).
 
-First, let's start by creating a free deepstreamHub account:
-
-`markdown:start-deepstream-server.md`
-
-deepstream provides a JavaScript library which helps interact with your deepstreamHub server.
+deepstream provides a JavaScript library which helps interact with your deepstream server.
 
 ## Create a Vue App
 
@@ -36,7 +31,7 @@ After you have successfully created an Angular app, add the deepstream JS-client
 <script src="https://cdnjs.cloudflare.com/ajax/libs/deepstream.io-client-js/2.1.1/deepstream.js"></script>
 ```
 
-Get your app url from the dashboard and establish a connection to deepstreamHub using the `created` lifecycle hook:
+Get your app url from the dashboard and establish a connection to deepstream using the `created` lifecycle hook:
 
 ```js
 new Vue({
@@ -45,7 +40,7 @@ new Vue({
         ds: null,
     },
     created: function() {
-        this.ds = deepstream('<YOUR APP URL>')
+        this.ds = deepstream('<Your deepstream URL>')
         .login()
     }
 })
@@ -273,8 +268,8 @@ new Vue({
         ds: null
       },
       created: function() {
-          this.ds = deepstream('<APP-URL>')
-          .login()
+          this.ds = deepstream('<Your deepstream URL>')
+          this.ds.login()
       }
 })
 ```
@@ -288,4 +283,4 @@ new Vue({
 ```
 
 ## Where to go next?
-To learn how to use deepstreamHub with other frontend frameworks head over to the tutorial section. To learn how to use the JavaScript SDK with NodeJS rather than in a browser, head over to the [getting started with NodeJS tutorial](/tutorials/getting-started/node/).
+To learn how to use deepstream with other frontend frameworks head over to the tutorial section. To learn how to use the JavaScript SDK with NodeJS rather than in a browser, head over to the [getting started with NodeJS tutorial](/tutorials/getting-started/node/).

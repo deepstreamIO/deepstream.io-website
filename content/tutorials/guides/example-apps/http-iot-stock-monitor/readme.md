@@ -1,11 +1,11 @@
 ---
 title: IoT Fridge Monitor
-description: deepstreamHub HTTP Internet of Things Fridge Monitor tutorial
+description: deepstream HTTP Internet of Things Fridge Monitor tutorial
 tags: [HTTP, IoT, Arduino, ESP8266, WiFi]
 navLabel: IoT Fridge Monitor
 ---
 
-deepstreamHub's HTTP API is perfect for low-frequency data updates in low-power
+deepstream's HTTP API is perfect for low-frequency data updates in low-power
 environments where the cost of establishing and maintaining a WebSocket
 connection can be prohibitive.
 
@@ -20,7 +20,6 @@ I'd recommend being familiar with the basics of
 Here's how it looks:
 
 ![circuit](circuit.jpg)
-
 
 ## Hardware
 
@@ -144,7 +143,7 @@ Button released: inventory/beer
 
 ## Connecting to WiFi
 
-To submit this data to deepstreamHub we'll need an internet connection, so
+To submit this data to deepstream we'll need an internet connection, so
 we'll include the necessary libraries to use the device's WiFi chip:
 
 ```cpp
@@ -185,23 +184,19 @@ Each time a button is pressed we would like the corresponding value (stored in
 a [record](/tutorials/core/datasync/records/)) to be decremented. That requires a read
 (to get the current state) followed by a write to set the new value.
 
-If you don't have one already, you can get a free deepstreamHub account through
-the [deepstreamHub dashboard](https://dashboard.deepstreamhub.com), create a new
-application and fetch its HTTP URL from the Application Details page.
-
 You should also select the relevant TLS fingerprint below that relates to the
 subdomain in your HTTP URL. 
 
 ```cpp
-const char* deepstreamHubHttpUrl = "<YOUR HTTP URL>";
+const char* deepstreamHttpUrl = "<YOUR HTTP URL>";
 /*
  * TLS fingerprints:
  *
- * 013.deepstreamhub.com: "3A:FC:6E:78:94:18:C0:A2:36:F3:C7:DF:86:27:4B:5A:CA:CF:28:3F"
- * 035.deepstreamhub.com: "57:18:5A:22:07:94:03:EF:90:C9:C2:56:58:C9:BB:06:66:A6:EA:76"
- * 154.deepstreamhub.com: "3C:65:CA:7C:3F:43:2D:FF:A1:63:38:F3:23:D5:59:25:E4:85:8C:0F"
+ * 013.deepstream.com: "3A:FC:6E:78:94:18:C0:A2:36:F3:C7:DF:86:27:4B:5A:CA:CF:28:3F"
+ * 035.deepstream.com: "57:18:5A:22:07:94:03:EF:90:C9:C2:56:58:C9:BB:06:66:A6:EA:76"
+ * 154.deepstream.com: "3C:65:CA:7C:3F:43:2D:FF:A1:63:38:F3:23:D5:59:25:E4:85:8C:0F"
  */
-const char* deepstreamHubTlsFingerprint = "<YOUR HTTP DOMAIN FINGERPRINT>";
+const char* deepstreamTlsFingerprint = "<YOUR HTTP DOMAIN FINGERPRINT>";
 ```
 
 
@@ -219,7 +214,7 @@ JsonVariant recordRequest(RecordAction action, char *recordName, char *path = nu
     HTTPClient http;
 
     // configure client
-    http.begin(deepstreamHubHttpUrl, deepstreamHubTlsFingerprint);
+    http.begin(deepstreamHttpUrl, deepstreamTlsFingerprint);
 
     // set content type
     http.addHeader("Content-Type", "application/json");
@@ -327,14 +322,14 @@ We have to create a new `HTTPClient` for each message, so we'll create that in
 HTTPClient http;
 
 // configure client
-http.begin(deepstreamHubHttpUrl, deepstreamHubTlsFingerprint);
+http.begin(deepstreamHttpUrl, deepstreamTlsFingerprint);
 
 // ...
 
 http.end();
 ```
 
-The deepstreamHub HTTP API uses a JSON payload, so to help us build that we'll
+The deepstream HTTP API uses a JSON payload, so to help us build that we'll
 include the `ArduinoJSON` library we installed earlier.
 
 The body we're creating needs to look like this:
