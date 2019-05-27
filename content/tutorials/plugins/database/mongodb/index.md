@@ -1,6 +1,7 @@
 ---
 title: MongoDB DataBase Connector
 description: Learn how to use MongoDB with deepstream
+logoImage: mongodb.png
 ---
 
 #### What is MongoDB?

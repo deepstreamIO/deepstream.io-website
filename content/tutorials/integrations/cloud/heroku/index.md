@@ -1,6 +1,7 @@
 ---
 title: Heroku
 description: Learn how to deploy a deepstream cluster with MongoDB and Redis on Heroku
+logoImage: heroku.png
 tags: [PaaS, IaaS, Heroku, deepstream, realtime, MongoDB, Redis]
 ---
 

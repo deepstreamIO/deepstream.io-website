@@ -108,7 +108,8 @@ limit: 1000
             }
             frontmatter {
                 title,
-                description
+                description,
+                installImage
             }
         }
     }

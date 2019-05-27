@@ -1,6 +1,7 @@
 ---
 title: Redis Cache Connector
 description: Learn how to use Redis with deepstream
+logoImage: redis.png
 ---
 
 #### What is Redis?

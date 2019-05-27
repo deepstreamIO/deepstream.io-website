@@ -1,6 +1,7 @@
 ---
 title: Errors
 description: The API docs for deepstream's runtime errors
+draft: true
 ---
 
 Errors are used throughout deepstream. They can be accessed via the module.
@@ -9,6 +10,7 @@ Errors are used throughout deepstream. They can be accessed via the module.
 const deepstream = require('deepstream.io-client-js')
 deepstream.CONSTANTS.EVENTS
 ```
+
 
 ```
 {{#table}}

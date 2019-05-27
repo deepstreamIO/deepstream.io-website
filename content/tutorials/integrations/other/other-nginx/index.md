@@ -1,6 +1,7 @@
 ---
 title: Nginx
 description: Using Nginx as a reverse proxy and load balancer for Websocket traffic
+logoImage: nginx.png
 ---
 
 ## What is nginx?

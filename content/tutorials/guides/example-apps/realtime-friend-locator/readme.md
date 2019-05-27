@@ -1,5 +1,5 @@
 ---
-title: Realtime friend locator with geolocation
+title: Realtime friend locator
 description: Create a web app that returns the location of those around you in Realtime
 tags: [React, Rethinkdb, Geolocation, JavaScript, Google Maps]
 ---

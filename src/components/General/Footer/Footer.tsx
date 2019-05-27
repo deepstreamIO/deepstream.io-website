@@ -2,6 +2,11 @@ import * as React from 'react';
 import {Link} from "gatsby"
 import cn from 'classnames'
 import './Footer.scss'
+import { 
+        FaDownload, FaBook, FaCode, FaInfo, FaBullhorn,
+        FaStackOverflow, FaSlack, FaGithub, FaTwitter, 
+} from 'react-icons/fa'
+
 
 export const Footer = ({ hasSideBar }) => (
     <footer className={cn('layout-footer', {'with-side-bar': hasSideBar})}>
@@ -13,30 +18,45 @@ export const Footer = ({ hasSideBar }) => (
 
                 <div className="col col-c">
                         <h4>CONTENT</h4>
-                        <Link to="/install/">Install</Link>
-                        <Link to="/tutorials/">Tutorials</Link>
-                        <Link to="/docs/">Documentation</Link>
-                        <a href="https://deepstreamHub.com/blog/">Blog</a>
-                        <Link to="/info/">Info</Link>
+                        <Link to="/install/">
+                                <FaDownload />
+                                <span>Install</span>
+                        </Link>
+                        <Link to="/tutorials/">
+                                <FaBook />
+                                <span>Tutorials</span>
+                        </Link>
+                        <Link to="/docs/">
+                                <FaCode />
+                                <span>Documentation</span>
+                        </Link>
+                        <Link to="/releases">
+                                <FaBullhorn />
+                                <span>Releases</span>  
+                        </Link>
+                        <Link to="/info/">
+                                <FaInfo />
+                                <span>Info</span>
+                        </Link>
                 </div>
 
                 <div className="col col-d">
                         <h4>COMMUNITY</h4>
                         <a target="_blank" href="https://twitter.com/deepstreamHub">
-                        <i className="ion-social-twitter"></i>
-                        <span>Twitter</span>
+                                <FaTwitter />
+                                <span>Twitter</span>
                         </a>
                         <a target="_blank" href="https://github.com/deepstreamIO">
-                        <i className="ion-social-octocat"></i>
-                        <span>GitHub</span>
+                                <FaGithub />
+                                <span>GitHub</span>
                         </a>
                         <a target="_blank" href="https://deepstreamio-slack.herokuapp.com/">
-                        <i className="ion-ios-grid-view-outline"></i>
-                        <span>Slack</span>
+                                <FaSlack />
+                                <span>Slack</span>
                         </a>
                         <a target="_blank" href="http://stackoverflow.com/questions/tagged/deepstream.io">
-                        <i className="ion-social-buffer"></i>
-                        <span>Stack Overflow</span>
+                                <FaStackOverflow />
+                                <span>Stack Overflow</span>
                         </a>
                 </div>
 

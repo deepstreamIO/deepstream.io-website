@@ -1,7 +1,7 @@
 ---
-title: Angular 2
+title: Angular
 description: Learn how to use Angular 2 with deepstream
-draft: true
+logoImage: angular.png
 ---
 
 The "new Angular" popularly known as "Angular 2", [though a bad name](https://toddmotto.com/please-stop-worrying-about-angular-3#real-versioning), is component architected and follows the W3C component standards thereby forcing us ( for a good reason ) to build apps as reusable UI components/widgets. This means you can't continue to build apps the exact same way you did while using Angular 1.x.

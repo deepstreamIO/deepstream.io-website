@@ -1,0 +1,34 @@
+.common {
+    font-size: 16px;
+    color: #474b4c;
+    line-height: 25px;
+}
+
+.release {
+    border-radius: 2px;
+    border: 1px solid #aaa;
+    padding: 10px;
+    width: 100%;
+    transition: all 0.1s ease-in;
+}
+
+.release:hover {
+    background-color: #fefefefe;
+    cursor: pointer;
+}
+
+.label {
+    composes: common;
+    font-weight: 100;
+    line-height: 25px;
+}
+
+.version {
+    composes: common;
+    font-weight: 300;
+    margin-left: 5px;
+}
+
+.description {
+
+}

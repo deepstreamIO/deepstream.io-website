@@ -1,6 +1,7 @@
 ---
 title: AngularJS
 description: Learn how to use AngularJS with deepstream
+logoImage: angular.png
 ---
 
 Angular 2 / .io is out and has been for a while, but for native JavaScript aficionados, Angular 1 is still the tool of choice.
@@ -75,8 +76,3 @@ service( 'twoWayBind', function(){
     };
 })
 ```
-
-### Putting it all together
-To see all this in context, have a look at deepstream's [Angular 1 example app](https://github.com/deepstreamIO/ds-demo-simple-app-ng)
-
-![Simple App using deepstream and Angular](simple-app.png)

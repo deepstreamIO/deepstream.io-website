@@ -78,7 +78,8 @@ connectionEndpoints:
 
 The special 'uws'(µWebSockets) endpoint configures the built-in endpoint. To avoid starting it,
 null the 'websocket' key as follows:
-```uws
+
+```yaml
   websocket: null
 ```
 
@@ -156,7 +157,6 @@ If you are using any of the official deepstream connectors, add the name of what
 
 ### options
 Under this key, add sub key/value pairs to set the configuration options that are passed to the plugin. Each plugin should mention what configuration options you can set.
-
 
 ## Logger
 

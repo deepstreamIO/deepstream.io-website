@@ -1,6 +1,7 @@
 ---
 title: Postgres DataBase Connector
 description: Learn how to use Postgres with deepstream
+logoImage: postgres.png
 tags: [postgres, postgresql, deepstream, realtime, search]
 ---
 

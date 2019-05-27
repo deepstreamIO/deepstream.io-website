@@ -29,3 +29,11 @@
 .title {
     font-size: 3em;
 }
+
+.githubEdit {
+    margin-left: 10px;
+}
+
+.githubEdit svg {
+    font-size: 22px;
+}

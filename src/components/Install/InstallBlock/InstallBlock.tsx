@@ -16,7 +16,7 @@ export const InstallBlock: React.FunctionComponent<InstallBlockProps> = ({ url, 
     const block = <div className={cn(style.wrapper)} >
         <div className={style.content}>
             {dev && <div className={style.inDevelopment}>in development</div>}
-            {soon && <div className={style.comingSoon}>coming soon</div>}
+            {soon && <div className={style.comingSoon}>get in touch</div>}
             <img src={img} width="100" height="100" />
             <h3>{name}</h3>
         </div>

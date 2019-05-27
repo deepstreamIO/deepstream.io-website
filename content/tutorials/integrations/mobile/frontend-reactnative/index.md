@@ -1,6 +1,7 @@
 ---
 title: React Native
 description: Learn how to use React Native with deepstream
+logoImage: reactnative.png
 ---
 
 [React Native](https://facebook.github.io/react-native/) lets you build mobile apps using only JavaScript. It uses the same design as React, letting you compose a rich mobile UI from declarative components.
@@ -19,26 +20,30 @@ deepstream start
 
 ## 2. Set up the HTML side (optional)
 
-To try some quick tests between the React Native Simulator and a browser window, you can set up an HTML side folliwing the [quickstart guide](/tutorials/guides/getting-started-quickstart/).
+To try some quick tests between the React Native Simulator and a browser window, you can set up an HTML side following the [quickstart guide](/tutorials/guides/getting-started-quickstart/).
 
 ## 3. Initialize and run a new React Native application
 
 First initialize the project in your terminal
+
 ```bash
 react-native init DeepstreamReactNative
 ```
 
 Move into the project folder
+
 ```bash
 cd DeepstreamReactNative
 ```
 
 Fetch the deepstream code and the url lib it depends on
+
 ```bash
 npm install deepstream.io-client-js url --save
 ```
 
 Run the app in the iOS simulator (or check the React Native [docs](http://facebook.github.io/react-native/releases/0.23/docs/android-setup.html) for use with the Android simulator)
+
 ```bash
 react-native run-ios
 ```
@@ -103,11 +108,12 @@ Then setup the client and record like we saw in the [quickstart guide](/tutorial
 
 ```js
 constructor(props) {
-  super(props);
+  super(props)
 
-  const client = deepstream('localhost:6020').login();
-  const record = client.record.getRecord('some-name');
+  const client = deepstream('localhost:6020')
+  client.login()
 
+  const record = client.record.getRecord('some-name')
   // ...
 ```
 
@@ -119,11 +125,13 @@ Since our text element is already depending on the value of *text* in our state,
 constructor(props) {
   super(props);
 
-  const client = deepstream('localhost:6020').login();
-  const record = client.record.getRecord('some-name');
-  const text = '';
+  const client = deepstream('localhost:6020')
+  client.login()
 
-  record.subscribe('payload', (value) => this.setState({ text: value }));
+  const record = client.record.getRecord('some-name')
+  const text = ''
+
+  record.subscribe('payload', text => this.setState({ text }));
 
   // ...
 

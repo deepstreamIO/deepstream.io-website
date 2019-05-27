@@ -2,7 +2,6 @@
 title: File-based authentication
 description: A deepstream authentication mechanism that reads credentials and userdata from a file
 tags: [authentication, file, hash, crypto]
-icon: IonDocument
 ---
 
 File-based authentication allows you to store usernames, passwords or password hashes and optional meta-data in a file that will be used to authenticate incoming connections.

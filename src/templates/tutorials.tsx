@@ -24,7 +24,8 @@ export const pageQuery = graphql`
       }
       fields {
         path
-        slug
+        slug,
+        githubLink
       }
     }
   }

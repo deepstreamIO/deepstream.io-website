@@ -1,6 +1,7 @@
 ---
 title: Digital Ocean
 description: How to set up deepstream.io, Redis and MongoDB on Digital Ocean
+logoImage: digital-ocean.png
 ---
 
 How to setup a realtime server with deepstream.io, Redis and MongoDB on Ubuntu 16.04

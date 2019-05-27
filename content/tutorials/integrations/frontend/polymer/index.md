@@ -1,6 +1,7 @@
 ---
 title: Polymer
 description: Learn how to use Polymer with deepstream
+logoImage: polymer.png
 ---
 
 ![deepstream-polymer](deepstream-polymer.png)

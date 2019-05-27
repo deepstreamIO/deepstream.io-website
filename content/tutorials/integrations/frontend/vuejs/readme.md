@@ -1,6 +1,7 @@
 ---
 title: Getting started with VueJS
 description: Learn how to add realtime features to your VueJS webapp and start using our realtime database in the browser.
+logoImage: vuejs.png
 tags: [JavaScript, VueJS, Vue, data-sync, pub-sub, request-response, RPCs]
 navLabel: VueJS
 contentNav: true

@@ -76,8 +76,3 @@ client.presence.unsubscribe(presenceCallback)
 ```
 
 Presence is important because it is the only way to know the connection status of a user and further query on it for any use cases.
-
-## Video Demo
-The following is a short video of Alex Harley explaining in detail about presence in deepstream. 
-
-<iframe width="780" height="439" src="https://www.youtube.com/embed/EdYzxVKIjJs" frameborder="0" allowfullscreen></iframe>

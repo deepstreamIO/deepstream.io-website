@@ -16,7 +16,8 @@ Creates a client instance and initialises the connection to the deepstream serve
 
 ```javascript
 const deepstream = require('deepstream.io-client-js')
-const client = deepstream('localhost:6020').login()
+const client = deepstream('localhost:6020')
+client.login()
 ```
 
 ## Constants

@@ -28,20 +28,12 @@ $client->emitEvent( 'news/sports', 'something about football is happening');
 ## Creating the client
 ### DeepstreamClient( $url, $authData )
 
-{{#table mode="api"}}
--
-  arg: $url
-  typ: String
-  opt: false
-  des: App HTTP URL available in your App Admin page
--
-  arg: $authData
-  typ: Array
-  opt: true
-  des: Auth token used for all your requests
-{{/table}}
+|Argument|Type|Optional|Description|
+|---|---|---|---|
+|$url|String|false|Deepstream URL|
+|$authData|Array|true|Auth token used for all your requests|
 
-The DeepstreamClient class creates a client instance to be used for all methods calls. The token option required for the $authData is a session token returned from a previous request to the app's HTTP auth url ([see http authentication](https://deepstream.com/docs/http/v1/#authentication)) or generated via the deepstream's dashboards token auth type. If you're using open auth the the token is optional.
+The DeepstreamClient class creates a client instance to be used for all methods calls. The token option required for the $authData is a session token returned from a previous request to the app's HTTP auth url ([see http authentication](//docs/http/v1/#authentication)) or generated via the deepstream's dashboards token auth type. If you're using open auth the the token is optional.
 
 Examples:
 
@@ -58,33 +50,16 @@ $client = new DeepstreamClient( '<YOUR APP\'s HTTP URL>', array());
 
 ## Methods
 ### setRecord( $recordName, [$path], $data )
-```
-{{#table mode="api"}}
--
-  arg: $recordName
-  typ: String
-  opt: false
-  des: The name of the record e.g. "cities/hamburg".
--
-  arg: [$path]
-  typ: String
-  opt: true
-  des: 	The record path.
--
-  arg: $data
-  typ: Various
-  opt: true
-  des: The data to be set. If no path is set, this must be an object.
-{{/table}}
-```
 
-```
-{{#table mode="api"}}
--
-  ret: Boolean
-  des: The name of the record e.g. "cities/hamburg".
-{{/table}}
-```
+|Argument|Type|Optional|Description|
+|---|---|---|---|
+|$recordName|String|false|The name of the record e.g. "cities/hamburg"|
+|$path|String|true|The record path|
+|$data|JSONValue|true|The data to be set. If no path is set, this must be an object|
+
+|Returns|Description|
+|---|---|
+|Boolean|The name of the record e.g. "cities/hamburg"|
 
 Updates a record. Records that do not already exist will be created.
 The optional "path" param may be used to update only part of a record.
@@ -104,19 +79,14 @@ $client->setRecord( 'user/johndoe', 'age', '33' );
 
 ```
 ### getRecord( $recordName )
-```
-{{#table mode="api"}}
--
-  arg: $recordName
-  typ: String
-  opt: false
-  des: 	The name of the record.
-{{/table}}
-```
-<dl>
-  <dt><span class="returnLabel">Returns:</span></dt>
-  <dd>Mixed return data. If the request succeed it returns the record object otherwise false.</dd>
-</dl>
+
+|Argument|Type|Optional|Description|
+|---|---|---|---|
+|$recordName|String|false|The name of the record e.g. "cities/hamburg"|
+
+|Returns|Description|
+|---|---|
+|JSONValue|Mixed return data. If the request succeed it returns the record object otherwise false|
 
 Retrieves a Record previously created with the given name.
 
@@ -125,19 +95,14 @@ Example:
 $firstname = $client->getRecord( 'user/johndoe' )->firstname;
 ```
 ### deleteRecord( $recordName )
-```
-{{#table mode="api"}}
--
-  arg: $recordName
-  typ: String
-  opt: false
-  des: 	The name of the record.
-{{/table}}
-```
-<dl>
-  <dt><span class="returnLabel">Returns:</span></dt>
-  <dd>true if the request was successful </dd>
-</dl>
+
+|Argument|Type|Optional|Description|
+|---|---|---|---|
+|$recordName|String|false|The name of the record e.g. "cities/hamburg"|
+
+|Returns|Description|
+|---|---|
+|Boolean|true if the request was successful|
 
 Deletes a record from the cache and storage.
 Deletion will succeed even if the record does not exist.
@@ -146,20 +111,16 @@ Example:
 ```php
 $client->deleteRecord( 'user/johndoe' );
 ```
+
 ### getRecordVersion( $recordName )
-```
-{{#table mode="api"}}
--
-  arg: $recordName
-  typ: String
-  opt: false
-  des: 	The name of the record.
-{{/table}}
-```
-<dl>
-  <dt><span class="returnLabel">Returns:</span></dt>
-  <dd>The version number of the record</dd>
-</dl>
+
+|Argument|Type|Optional|Description|
+|---|---|---|---|
+|$recordName|String|false|The name of the record e.g. "cities/hamburg"|
+
+|Returns|Description|
+|---|---|
+|Number|The version number of the record|
 
 The version property may be used to ensure updates are not based on stale data.
 For an update to succeed, the version provided must be 1 greater than the current version,
@@ -174,25 +135,15 @@ $version = $client->getRecordVersion( 'user/johndoe' );
 `markdown:glossary-record.md`
 
 ### makeRpc( $rpcName, [$data] )
-```
-{{#table mode="api"}}
--
-  arg: $rpcName
-  typ: String
-  opt: false
-  des: The name of the RPC to call.
--
-  arg: [$data]
-  typ: Various
-  opt: true
-  des: The RPC data argument
 
-{{/table}}
-```
-<dl>
-  <dt><span class="returnLabel">Returns:</span></dt>
-  <dd>Mixed return data. If the request succeed it returns the response from the RPC provider, otherwise false.</dd>
-</dl>
+|Argument|Type|Optional|Description|
+|---|---|---|---|
+|$rpcName|String|false|The name of the RPC to call|
+|$data|JSONValue|true|The RPC data argument|
+
+|Returns|Description|
+|---|---|
+|JSONValue|If the request succeed it returns the response from the RPC provider, otherwise false|
 
 Executes a remote procedure call.
 
@@ -213,25 +164,15 @@ $client->makeRpc( 'logout' );
 `markdown:glossary-rpc.md`
 
 ### emitEvent( $eventName, [$data] )
-```
-{{#table mode="api"}}
--
-  arg: $eventName
-  typ: String
-  opt: false
-  des: The name of the event subscription
--
-  arg: [$data]
-  typ: Various
-  opt: true
-  des: A data payload
 
-{{/table}}
-```
-<dl>
-  <dt><span class="returnLabel">Returns:</span></dt>
-  <dd>true if the request was successful.</dd>
-</dl>
+|Argument|Type|Optional|Description|
+|---|---|---|---|
+|$eventName|String|false|The name of the event subscription|
+|$data|JSONValue|true|A data payload|
+
+|Returns|Description|
+|---|---|
+|boolean|true if the request was successful.|
 
 Emits an event
 
@@ -254,10 +195,10 @@ $client->emitEvent( 'ping' );
 `markdown:glossary-event.md`
 
 ### startBatch()
-<dl>
-  <dt><span class="returnLabel">Returns:</span></dt>
-  <dd>void.</dd>
-</dl>
+
+|Returns|Description|
+|---|---|
+|void||
 
 Initiates a set of batch operations that will be executed as a single request. No actual request will be sent until executeBatch is called. All the methods called in a batch operation will return true and the result of all operations is returned by the executeBatch method.
 
@@ -268,10 +209,10 @@ $client->startBatch();
 ```
 
 ### executeBatch()
-<dl>
-  <dt><span class="returnLabel">Returns:</span></dt>
-  <dd>An Object with the response of all operations.</dd>
-</dl>
+
+|Returns|Description|
+|---|---|
+|Object|The response of all operations.|
 
 Executes a set of batch operations previously started.
 

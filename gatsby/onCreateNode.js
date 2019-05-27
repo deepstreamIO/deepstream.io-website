@@ -25,6 +25,13 @@ module.exports = exports.onCreateNode = ({ node, actions, getNode }) => {
 
             let slug = permalink;
 
+            // Github edit link
+            createNodeField({
+                node,
+                name: 'githubLink',
+                value: `https://github.com/deepstreamIO/deepstream.io-website/blob/master/content/${relativePath}`
+            });
+
             if (!slug) {
                 // This will likely only happen for the partials in /content/home.
                 slug = `/${relativePath.replace('.md', '.html')}`;

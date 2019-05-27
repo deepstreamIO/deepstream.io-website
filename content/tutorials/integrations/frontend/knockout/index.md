@@ -1,6 +1,7 @@
 ---
 title: KnockoutJs
 description: Learn how to use KnockoutJs with deepstream
+logoImage: knockout.png
 ---
 
 ## What's KnockoutJs?

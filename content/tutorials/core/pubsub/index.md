@@ -72,8 +72,3 @@ client.event.listen('^news/.*', (eventName, response) => {
 The listen-callback is called once a matching event is subscribed to for the first time and stopped once the last subscriber for a matching event unsubscribes.
 
 Listening also keeps state. Registering as a listener for a pattern that already has matching subscriptions without an active provider will call the callback multiple times straight away, once for every matching subscription.
-
-## Video Demo 
-If you would like to learn more find out our video tutorial with Yasser Fadl, explaining more in detail about Pub/Sub in deepstream.
-
-<iframe width="780" height="439" src="https://www.youtube.com/embed/xWA6DgQ0sgU" frameborder="0" allowfullscreen></iframe>

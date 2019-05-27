@@ -1,6 +1,7 @@
 ---
 title: React
 description: Learn how to use React with deepstream
+logoImage: react.png
 ---
 
 ![deepstream-react](deepstream-react.png)

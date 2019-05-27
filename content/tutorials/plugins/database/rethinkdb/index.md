@@ -1,6 +1,7 @@
 ---
 title: RethinkDB DataBase Connector
 description: Learn how to use RethinkDB with deepstream
+logoImage: rethinkdb.png
 ---
 
 #### What is RethinkDB?

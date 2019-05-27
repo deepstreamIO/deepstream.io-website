@@ -52,7 +52,9 @@ import * as deepstream from 'deepstream.io-client-js'
 @Injectable()
 export class DsService {
   get dsInstance() {
-    return deepstream('<Your deepstream URL>').login()
+    const client = deepstream('<Your deepstream URL>')
+    client.login()
+    return client
   }
   get event () {
     return this.dsInstance.event

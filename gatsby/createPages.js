@@ -11,6 +11,8 @@ module.exports = async ({graphql, actions}) => {
     const docsTemplate = resolve(__dirname, '../src/templates/docs.tsx');
     const tutorialTemplate = resolve(__dirname, '../src/templates/tutorials.tsx');
     const installTemplate = resolve(__dirname, '../src/templates/install.tsx');
+    const infoTemplate = resolve(__dirname, '../src/templates/info.tsx');
+    const releaseTemplate = resolve(__dirname, '../src/templates/releases.tsx');
 
     // Redirect /index.html to root.
     createRedirect({
@@ -27,13 +29,15 @@ module.exports = async ({graphql, actions}) => {
             node {
               fields {
                 redirect
-                slug
+                slug,
+                githubLink
               },
               frontmatter {
                 title,
                 description,
-                draft
-              }
+                draft,
+                logoImage,
+             }
             }
           }
         }
@@ -59,7 +63,9 @@ module.exports = async ({graphql, actions}) => {
         if (
             slug.includes('install/') ||
             slug.includes('docs/') ||
-            slug.includes('tutorials/')
+            slug.includes('tutorials/') ||
+            slug.includes('releases/') ||
+            slug.includes('info/')
         ) {
             let template;
             if (slug.includes('docs/')) {
@@ -68,6 +74,10 @@ module.exports = async ({graphql, actions}) => {
                 template = tutorialTemplate;
             } else if (slug.includes('install/')) {
                 template = installTemplate;
+            } else if (slug.includes('releases/')) {
+                template = releaseTemplate;
+            } else if (slug.includes('info/')) {
+                template = infoTemplate;
             }
 
             let paths = slug.split('/').slice(1)

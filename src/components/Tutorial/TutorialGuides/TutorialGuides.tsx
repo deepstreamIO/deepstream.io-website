@@ -11,7 +11,7 @@ interface TutorialsOverviewProps {
             "frontmatter": {
                 "title": string,
                 "description": string,
-                "icon": string
+                "logoImage": string
             }
         }
     }>
@@ -23,13 +23,29 @@ interface CategoryProps {
     entry?: any
 }
 
-const Category: React.FunctionComponent<CategoryProps> = ({ title, entries, entry}) => {
+const Category: React.FunctionComponent<CategoryProps> = ({ title, entries, entry }) => {
     let children = null
     if (entries) {
         const keys = Object.keys(entries).sort()
         children = keys.map(key => <Entry key={key} entry={entries[key]}/>)
     } else {
-        children =  <Entry entry={entry} />
+        children = [<Entry entry={entry} />]
+    }
+
+    if (children.length > 5) {
+        let result = []
+        while (children.length !== 0) {
+            result.push(
+                <div className="category-page" key={result.length}>
+                    {children.splice(0, 3)}
+                </div>
+            )
+        }
+        
+        return  <div className="category-pages">
+            <h3><a>{title}</a></h3>
+            {result}
+        </div>
     }
 
     return  <div className="category">
@@ -45,7 +61,7 @@ export const TutorialsGuides: React.FunctionComponent<TutorialsOverviewProps> = 
         const entry = {
             slug: node.fields.slug,
             description: node.frontmatter.description,
-            icon: node.frontmatter.icon,
+            logoImage: node.frontmatter.logoImage,
             title: node.frontmatter.title,
         }
         const paths = entry.slug.split('/')
@@ -103,9 +119,7 @@ export const TutorialsGuides: React.FunctionComponent<TutorialsOverviewProps> = 
             </div>,
             <div>
                 <h2>Example Applications</h2>
-                <Category title="JavaScript" entries={sections.guides['example-apps'].javascript} />
-                <Category title="GeoLocation" entries={sections.guides['example-apps'].geolocation} />
-                <Category title="HTTP" entries={sections.guides['example-apps'].http} />
+                <Category title="Example Applications" entries={sections.guides['example-apps']} />
             </div>,
         ]} />
 

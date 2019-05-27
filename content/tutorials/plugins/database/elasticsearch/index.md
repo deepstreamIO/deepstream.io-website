@@ -1,6 +1,7 @@
 ---
 title: ElasticSearch DataBase Connector
 description: Learn how to use ElasticSearch with deepstream
+logoImage: elasticsearch.png
 ---
 
 #### What is ElasticSearch

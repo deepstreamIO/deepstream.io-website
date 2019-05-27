@@ -43,6 +43,12 @@
         display:none
     }
 
+    .col-c, .col-d {
+        a span {
+            margin-left: 5px;
+        }
+    }
+
     @media screen and (min-width:47em){
         .cols{
             margin: 50px 0 30px;

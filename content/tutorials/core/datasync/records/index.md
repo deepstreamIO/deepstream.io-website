@@ -111,8 +111,3 @@ This is useful to create "active" data providers - backend processes that only s
 - Listening also keeps state. Registering as a listener for a pattern that already has matching subscriptions will call the callback multiple times straight away, once for every matching subscription that doesn't have a provider.
 
 - Records have a `hasProvider` property that allows you to see if a service has accepted the listen request. This allows you to guarantee the data isn't stale.
-
-## Video Demo 
-If you would like to learn more find out our video tutorial with Yasser Fadl, explaining more in detail about records in deepstream.
-
-<iframe width="780" height="439" src="https://www.youtube.com/embed/kpsGDJlkCTE" frameborder="0" allowfullscreen></iframe>

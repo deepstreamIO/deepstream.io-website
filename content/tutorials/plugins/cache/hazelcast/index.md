@@ -1,6 +1,7 @@
 ---
 title: Hazelcast Cache Connector
 description: Learn how to use Hazelcast with deepstream
+logoImage: hazelcast.png
 ---
 
 #### What is Hazelcast?

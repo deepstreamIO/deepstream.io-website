@@ -1,6 +1,7 @@
 ---
 title: Memcached Cache Connector
 description: Learn how to use Memcached with deepstream
+logoImage: memcached.png
 ---
 
 #### What is Memcached?

@@ -29,7 +29,7 @@ limit: 1000
             frontmatter {
                 title,
                 description,
-                icon
+                logoImage
             }
         }
     }

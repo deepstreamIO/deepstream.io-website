@@ -1,6 +1,7 @@
 ---
 title: Constants
 description: A list of all constants deepstream uses
+draft: true
 ---
 
 Constants are used throughout deepstream. They can be accessed via the module.
@@ -17,22 +18,8 @@ const {
 } = require('deepstream.io');
 ```
 
-## General
-```
-{{#table mode="pipe"}}
-_default_columns: &COLS [name, value, server, client]
-meta:
-  options:
-    header: *COLS
-columns: *COLS
-list:
-- MESSAGE_SEPERATOR | ASCII 30 | ✔ | ✔ |
-- MESSAGE_PART_SEPERATOR | ASCII 31 | ✔ | ✔ |
-- SOURCE_MESSAGE_CONNECTOR | SOURCE_MESSAGE_CONNECTOR | ✔ |  |
-{{/table}}
-```
-
 ## Log Level
+
 ```
 {{#table mode="pipe"}}
 _default_columns: &COLS [name, value, server, client]

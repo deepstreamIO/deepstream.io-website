@@ -52,14 +52,14 @@ class BookItem extends Component {
         return (
             <div className="BookItem">
                 <div className="BookItem__img"
-                    style=\{{
+                    style={{
                         backgroundImage: `url($\{book.image\})`,
                         width: '800px',
                         height: 300,
                         backgroundSize: 'contain',
                         backgroundRepeat: 'no-repeat',
                         backgroundPosition: 'top left'
-                    \}}
+                    }}
                 >
                     <img
                         src={book.image}

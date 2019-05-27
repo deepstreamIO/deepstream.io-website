@@ -54,7 +54,12 @@
     transition: all 300ms ease;
   }
 
-  .category{
+  a.entry .logo-image {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .category, .category-page {
     width: 280px;
     float: left;
   }
@@ -63,7 +68,7 @@
     box-sizing: border-box;
     cursor: pointer;
     padding: 10px;
-    display: block;
+    display: flex;
   }
 
   a.entry:hover{
@@ -82,7 +87,7 @@
   a.entry h4{
     font-size: 16px;
     color: #474b4c;
-    margin: 10px 0;
+    margin: 10px 0 10px 10px;
     display: inline-block;
     font-weight: 300;
   }
