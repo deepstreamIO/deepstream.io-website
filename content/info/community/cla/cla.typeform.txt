@@ -7,11 +7,11 @@ and Django: https://www.djangoproject.com/foundation/cla/faq/.
 
 * * *
 
-This Contributor License Agreement (“Agreement”) is entered into between deepstream.io (“deepstream.io,” “we” or “us” etc.), an entity of deepstreamHub GmbH, and you (as defined and further identified below). Accordingly, you hereby agree to the following terms for your present and future contributions submitted to deepstream.io:
+This Contributor License Agreement (“Agreement”) is entered into between deepstream.io (“deepstream.io,” “we” or “us” etc.), an entity of deepstream GmbH, and you (as defined and further identified below). Accordingly, you hereby agree to the following terms for your present and future contributions submitted to deepstream.io:
 
 This version of the Agreement allows an entity (the "you") to submit Contributions to deepstream.io, to grant copyright and patent licenses thereto.
 
-If you have not already done so, please complete and sign, then scan and email a pdf file of this Agreement to admin@deepstreamHub.com.
+If you have not already done so, please complete and sign, then scan and email a pdf file of this Agreement to admin@deepstream.com.
 
 Please read this document carefully before signing and keep a copy for your records.
 

@@ -46,7 +46,7 @@ export default () => (<Layout pageClass="install-page">
                 deepstream clients let you connect to the server. The JavaScript client is polished and battletested, other clients are under development. Contributions are welcome, if you'd like to get involved meet us on <a href="https://github.com/deepstreamIO/deepstream.io/issues?q=is%3Aopen+is%3Aissue+label%3Anew-client">Github</a>.
             </p>
             <div className={cn(style.clientGrid, style.blockLink)}>
-                <InstallBlock url="/tutorials/guides/getting-started-quickstart/#getting-the-client" img="/images/install/javascript.png" name="Browser / Node" />
+                <InstallBlock url="/tutorials/getting-started/javascript/#getting-the-client" img="/images/install/javascript.png" name="Browser / Node" />
                 <InstallBlock url="/install/java" img="/images/install/java.png" name="Java" soon={true} />
                 <InstallBlock url="/install/android" img="/images/install/android.png" name="Android" soon={true} />
                 <InstallBlock url="/docs/client-swift/AnonymousRecord/" img="/images/install/ios.png" name="iOS" soon={true} />
@@ -58,7 +58,7 @@ export default () => (<Layout pageClass="install-page">
     <Section className={style.connector}>
             <h2>connectors</h2>
             <p>
-                deepstream can integrate with databases, caches and message busses using connectors:
+                deepstream can integrate with databases and caches using connectors
             </p>
             <h3 className={style.subheading}>cache connectors</h3>
             <div className={cn(style.connectorsGrid, style.blockLink)}>
@@ -76,19 +76,6 @@ export default () => (<Layout pageClass="install-page">
                 {/*<InstallBlock url="/tutorials/database/db-couchdb/" img="/images/install/couchdb.png" name="CouchDB" />*/}
                 {/*<InstallBlock url="/tutorials/database/db-dynamodb/" img="/images/install/dynamodb.png" name="Amazon DynamoDB" />*/}
             </div>
-    </Section>
-
-    <Section className={style.other}>
-        <h2>Library support</h2>
-        <p>
-            deepstream comes with a few extra bits that make working with other libraries easier
-        </p>
-        <div className={cn(style.connectorsGrid, style.blockLink)}>
-            <InstallBlock url="/tutorials/integrations/frontend-react/" img="/images/install/reactjs.png" name="React" />
-            <InstallBlock url="/tutorials/integrations/frontend-polymer/" img="/images/install/polymerjs.png" name="Polymer" />
-            <InstallBlock url="/tutorials/integrations/frontend-knockout/" img="/images/install/knockoutjs.png" name="Knockout.js" />
-            <InstallBlock url="/tutorials/integrations/db-rethinkdb/#search-provider" img="/images/install/rethinkdb.png" name="RethinkDB Search Provider" />
-        </div>
     </Section>
 </Layout>)
 

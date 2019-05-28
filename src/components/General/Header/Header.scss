@@ -1,3 +1,36 @@
+.under-construction {
+
+    background: repeating-linear-gradient(
+        45deg,
+        rgba(0, 0, 0, 0.2),
+        rgba(0, 0, 0, 0.2) 10px,
+        rgba(0, 0, 0, 0.3) 10px,
+        rgba(0, 0, 0, 0.3) 20px
+    );
+
+    z-index: 999999;
+    padding: 20px;
+
+    h1 {
+        font-weight: 500;
+        font-size: 25px;
+    }
+
+    h3 {
+        font-weight: 500;
+        font-size: 22px;
+    }
+
+    a {
+        font-weight: 500;
+        font-size: 22px;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
 .layout-header {
     position: sticky;
     top: 0;

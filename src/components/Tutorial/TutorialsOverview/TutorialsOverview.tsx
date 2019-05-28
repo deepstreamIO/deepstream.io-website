@@ -23,7 +23,7 @@ import arduinoImage from './images/arduino.png'
 export const TutorialsOverview = () => (
     <Section className="tut-overview">
         <h2 className="main">Tutorials</h2>
-        <Link to="/tutorials/guides/getting-started-quickstart/">
+        <Link to="/tutorials/getting-started/javascript/">
             <img src={quickstartImage}/>
             <h3><span className="bright">Getting Started</span></h3>
         </Link>

@@ -8,7 +8,7 @@ export const Hero = () => (
                 <h1 className="page-title">the open realtime server</h1>
                 <h2 className="page-description">a fast and secure data-sync realtime server <br />for mobile, web &amp; iot</h2>
                 <div className="buttons">
-                    <a href="/tutorials/guides/getting-started-quickstart/">
+                    <a href="/tutorials/getting-started/javascript/">
                         <i className="ion-lightbulb"></i>
                         get started
                     </a>

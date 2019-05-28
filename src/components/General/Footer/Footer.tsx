@@ -34,10 +34,10 @@ export const Footer = ({ hasSideBar }) => (
                                 <FaBullhorn />
                                 <span>Releases</span>  
                         </Link>
-                        <Link to="/info/">
+                        {/* <Link to="/info/">
                                 <FaInfo />
                                 <span>Info</span>
-                        </Link>
+                        </Link> */}
                 </div>
 
                 <div className="col col-d">

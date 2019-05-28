@@ -16,4 +16,4 @@ We use [Github](https://github.com/deepstreamIO) as the home for all of our open
 ## Other ways to get in touch
 * Ask a question tagged with `deepstream.io` on [stack overflow](http://stackoverflow.com/questions/tagged/deepstream.io)
 * Send us an email at [info@deepstream.io](mailto:info@deepstream.io)
-* Keep it professional on [LinkedIn](https://www.linkedin.com/company/deepstreamhub)
+* Keep it professional on [LinkedIn](https://www.linkedin.com/company/deepstream)
