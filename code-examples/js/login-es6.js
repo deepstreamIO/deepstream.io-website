@@ -1,4 +1,4 @@
-import deepstream from 'deepstream.io-client-js'
+import deepstream from '@deepstream/client'
 const client = deepstream('localhost:6020')
 
 try {

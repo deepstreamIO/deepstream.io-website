@@ -116,7 +116,7 @@ app.listen( port, function () {
 Did you notice the extra "user" called `data-provider` above? We'll use it to authenticate connections from backend processes that can provide data to the user. Such a "provider" would first need to connect and log into deepstream:
 
 ```javascript
-const deepstream = require( 'deepstream.io-client-js' );
+const deepstream = require( '@deepstream/client' );
 const deepstreamUrl = 'localhost:6020';
 const credentials = { username: 'data-provider', password: 'provider-pass' };
 const ds = deepstream( deepstreamUrl );

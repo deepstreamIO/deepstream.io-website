@@ -18,7 +18,7 @@ Nasdaq alone can send out tens of millions of price updates every day, and it's 
 Even worse: Most updates might be for stocks that no client is subscribed to and won't be forwarded at all.
 
 #### The Solution: Active Data Providers
-Only write to records / send events that clients are interested in. deepstream supports a feature called `listening` that lets clients listen for event or record subscriptions made by other clients. First, the listener registers for a pattern, e.g. `nasdaq/.*`. From thereon, it will be notified whenever a subscription is made or removed that matches said pattern.
+Only write to records / send events that clients are interested in. deepstream supports a feature called `listening` that lets clients listen for event or record subscriptions made by other clients. First, the listener registers for a pattern, e.g. `nasdaq/.*`. Then it will be notified once the subscription is removed via the `onStop` callback.
 
 ```javascript
 client.record.listen('nasdaq/.*', (match, response) => {

@@ -44,7 +44,7 @@ Installing deepstream in Angular projects is quite simple. Angular bundles up sc
 First, install via `npm`:
 
 ```bash
-npm install deepstream.io-client-js
+npm install @deepstream/client
 ```
 
 To tell Angular that the install dependency is a vendor file and should be loaded accordingly, add deepstream script to the `scripts` array in `./angular-cli.json`:
@@ -52,7 +52,7 @@ To tell Angular that the install dependency is a vendor file and should be loade
 ```json
 . . .
 "scripts": [
-   "../node_modules/deepstream.io-client-js/dist/deepstream.js"
+   "../node_modules/@deepstream/client/dist/deepstream.js"
  ],
 . . .
 ```

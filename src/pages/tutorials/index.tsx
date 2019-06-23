@@ -17,7 +17,10 @@ export const pageQuery = graphql`
 allMarkdownRemark(
     filter: {
     fields: {slug: {regex: "/tutorials/"}},
-    frontmatter: {draft: {ne: true}}
+    frontmatter: {
+        draft: {ne: true},
+        deepstreamVersion: {ne: "V3"}
+    }
 },
 limit: 1000
 ) {

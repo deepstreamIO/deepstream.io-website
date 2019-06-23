@@ -2,6 +2,7 @@
 title: AWS Lambda
 description: Integrating deepstream's HTTP API with AWS Lambda
 tags: [http, lambda, deepstream, record, event, rpc]
+logoImage: aws-lambda.png
 ---
 
 [Amazon Web Service's Lambda](https://aws.amazon.com/lambda/) functions are a great way to deploy external and internal functionality at a low cost. Because you only pay for what you use, Lambda is suited perfectly to short lived functions. With the introduction of deepstream's HTTP API, we no longer need to spend the time setting up a websocket connection, so we can get straight to sending data.

@@ -150,7 +150,7 @@ This configuration instructs the deepstream server to make a POST request to `ht
 From the deepstream client we can now call `client.login()`
 
 ```js
-var deepstream = require( 'deepstream.io-client-js');
+var deepstream = require( '@deepstream/client');
 var client = deepstream('localhost:6020')
   // Login method
   .login( null, ( success, clientData ) => {

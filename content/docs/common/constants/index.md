@@ -10,12 +10,12 @@ Constants are used throughout deepstream. They can be accessed via the module.
 // client
 const {
   CONSTANTS
-} = require('deepstream.io-client-js');
+} = require('@deepstream/client');
 
 // server
 const {
   constants
-} = require('deepstream.io');
+} = require('@deepstream/server');
 ```
 
 ## Log Level

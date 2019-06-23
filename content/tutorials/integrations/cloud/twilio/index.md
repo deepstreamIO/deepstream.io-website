@@ -2,7 +2,7 @@
 title: Twilio
 description: Integrating Twilio with deepstream
 tags: [phone-calling, realtime, rpcs, twilio]
-logoImage: twillio.png
+logoImage: twilio.png
 ---
 This guide will take you through integrating deepstream with Twilio's Programmable Voice API. If you'd like to dive right into the code you can have a look at the GitHub repository for this tutorial [here](https://github.com/deepstreamIO/dsh-demo-twilio-integration).
 

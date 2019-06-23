@@ -17,12 +17,11 @@ deepstream start
 
 ## Getting the client
 
-For this tutorial we'll simply get the client from a <a class="cdn-link">CDN</a>, but you can also get it as `deepstream.io-client-js` via NPM or Bower:
+For this tutorial we'll simply get the client from a <a class="cdn-link">CDN</a>, but you can also get it as `@deepstream/client` via NPM:
 
 
 ```bash
-bower install deepstream.io-client-js
-npm install deepstream.io-client-js
+npm install @deepstream/client
 ```
 
 Create an _index.html_ file and add the following to it, making sure to point to your client library:

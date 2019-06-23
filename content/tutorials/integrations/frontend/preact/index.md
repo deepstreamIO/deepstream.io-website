@@ -30,9 +30,9 @@ Install the JS library to the `ds-preact` app you just created:
 
 ```bash
 # With yarn
-yarn add deepstream.io-client-js
+yarn add @deepstream/client
 # With npm
-npm install deepstream.io-client-js --save
+npm install @deepstream/client --save
 ```
 
 Get your app url from the dashboard, establish a connection to deepstream, and login (we'll not configure any authentication, because there are no credentials required):
@@ -40,7 +40,7 @@ Get your app url from the dashboard, establish a connection to deepstream, and l
 
 ```js
 // ./src/App.js
-import createDeepstream from 'deepstream.io-client-js';
+import createDeepstream from '@deepstream/client';
 import { h, render, Component } = 'preact';
 import './App.css';
 

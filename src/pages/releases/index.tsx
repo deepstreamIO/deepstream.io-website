@@ -31,7 +31,7 @@ export default ({ data }) => {
         const release = {
             version,
             slug: node.fields.slug,
-            description: node.fields.description
+            description: node.frontmatter.description
         }
         if (!result[component]) {
             result[component] = [release]

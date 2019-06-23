@@ -85,7 +85,7 @@ Our `email-provider` now looks as follows:
 
 ```javascript
 const sendgrid = require('sendgrid')
-const deepstream = require('deepstream.io-client-js')
+const deepstream = require('@deepstream/client')
 const uuid
 
 const sg = sendgrid('<Your Sendgrid API key')

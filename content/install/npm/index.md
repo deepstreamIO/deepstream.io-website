@@ -12,13 +12,13 @@ This can be useful to build custom authentication or permissioning logic or if y
 Install the server via npm
 
 ``` bash
-npm install deepstream.io
+npm install @deepstream/server
 ```
 
 Create a js file, e.g. start.js with the following content
 
 ```javascript
-const DeepstreamServer = require('deepstream.io')
+const DeepstreamServer = require('@deepstream/server')
 const C = DeepstreamServer.constants
 /*
 The server can take
@@ -42,14 +42,14 @@ node start.js
 ```
 
 #### Using the deepstream client in Node.js
-The deepstream javascript client can be installed via [NPM](https://www.npmjs.com/package/deepstream.io-client-js) and used in Node.js.
+The deepstream javascript client can be installed via [NPM](https://www.npmjs.com/package/@deepstream/client) and used in Node.js.
 
 ```bash
-npm install deepstream.io-client-js
+npm install @deepstream/client
 ```
 
 ```javascript
-const deepstream = require('deepstream.io-client-js')
+const deepstream = require('@deepstream/client')
 const client = deepstream('localhost:6020')
 client.login()
 ```

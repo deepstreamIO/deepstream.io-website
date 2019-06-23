@@ -39,7 +39,7 @@ cd DeepstreamReactNative
 Fetch the deepstream code and the url lib it depends on
 
 ```bash
-npm install deepstream.io-client-js url --save
+npm install @deepstream/client url --save
 ```
 
 Run the app in the iOS simulator (or check the React Native [docs](http://facebook.github.io/react-native/releases/0.23/docs/android-setup.html) for use with the Android simulator)
@@ -99,7 +99,7 @@ Since we allready installed deepstream in step 3, all we need to do now is impor
 ```js
 import React, { Component } from 'react';
 import { AppRegistry, TextInput } from 'react-native';
-import deepstream from 'deepstream.io-client-js';
+import deepstream from '@deepstream/client';
 
 // ...
 ```
@@ -171,7 +171,7 @@ Your index.ios.js should now look as follows, and the app should work as shown i
 ```js
 import React, { Component } from 'react';
 import { AppRegistry, TextInput } from 'react-native';
-import deepstream from 'deepstream.io-client-js';
+import deepstream from '@deepstream/client';
 
 export default class DeepstreamReactNative extends Component {
   constructor(props) {

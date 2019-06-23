@@ -80,7 +80,7 @@ The above commands will bootstrap Express and install boilerplate dependencies f
 
 ```bash
 # Install deepstream and request
-npm install deepstream.io-client-js request
+npm install @deepstream/client request
 ```
 
 ## Subscribe and Subscribers Routes
@@ -94,7 +94,7 @@ Before creating these routes, we need to import and configure `deepstream` and `
 ```js
 // ./routes/index.js
 const request = require('request');
-const deepstream = require('deepstream.io-client-js');
+const deepstream = require('@deepstream/client');
 
 const dsClient = deepstream('<DEEPSTREAM-APP-URL>').login()
 
@@ -157,7 +157,7 @@ Before we start creating these Vue routes, let's include Vue and other supportin
    
      ...
   <!-- deepstream client -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/deepstream.io-client-js/2.1.2/deepstream.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/@deepstream/client/2.1.2/deepstream.js"></script>
   <!-- Axios for HTTP requests -->
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
    <!-- Vue core library -->

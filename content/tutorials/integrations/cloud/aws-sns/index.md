@@ -2,6 +2,7 @@
 title: AWS SNS
 description: Integrating deepstream with AWS SNS
 tags: [AWS, SNS, deepstream, events, publish, subscribe]
+logoImage: aws-sns.png
 ---
 
 This guide will take you through integrating with deepstream with Amazon Web Service's Simple Notification Service.
@@ -150,7 +151,7 @@ const handleIncomingMessage = (msgType, msgData) => {
 All that's left now is to connect our SNS-provider to the deepstream server:
 
 ```javascript
-const deepstream = require('deepstream.io-client-js')
+const deepstream = require('@deepstream/client')
 const client = deepstream('<Your app URL>')
 client.login()
 ```

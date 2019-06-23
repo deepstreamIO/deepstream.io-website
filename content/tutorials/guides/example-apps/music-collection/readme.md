@@ -30,7 +30,7 @@ ng new album-collection
 After you have successfully created an Angular app install the deepstream and the JS-client library in your new project:
 
 ```bash
-npm install deepstream.io-client-js --save
+npm install @deepstream/client --save
 ```
 
 To tell Angular that the installed dependency is a vendor file and should be loaded accordingly, add deepstream script to the `scripts` array in `./angular-cli.json`:
@@ -38,7 +38,7 @@ To tell Angular that the installed dependency is a vendor file and should be loa
 ```json
 . . .
 "scripts": [
-   "../node_modules/deepstream.io-client-js/dist/deepstream.js"
+   "../node_modules/@deepstream/client/dist/deepstream.js"
  ],
 . . .
 ```
@@ -47,7 +47,7 @@ To tell Angular that the installed dependency is a vendor file and should be loa
 
 ```ts
 import {Injectable} from "@angular/core";
-import * as deepstream from 'deepstream.io-client-js'
+import * as deepstream from '@deepstream/client'
 
 @Injectable()
 export class DsService {

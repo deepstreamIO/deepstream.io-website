@@ -2,7 +2,6 @@
 title: GitHub Integration using Java
 description: Build a GitHub issue-tracker with Java
 tags: [github, realtime, records, java, react]
-navLabel: GitHub
 deepstreamVersion: V3
 ---
 

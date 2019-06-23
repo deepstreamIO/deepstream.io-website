@@ -29,7 +29,7 @@ vue init simple ds-vue
 After you have successfully created an Angular app, add the deepstream JS-client library in your new project:
 
 ```html
-<script src="https://cdnjs.cloudflare.com/ajax/libs/deepstream.io-client-js/2.1.1/deepstream.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/@deepstream/client/2.1.1/deepstream.js"></script>
 ```
 
 Get your app url from the dashboard and establish a connection to deepstream using the `created` lifecycle hook:

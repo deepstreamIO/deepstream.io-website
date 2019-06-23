@@ -373,7 +373,7 @@ At this point, when two buyers are adding the same item to cart, each of them is
 You need to install the deepstream JS SDK:
 
 ```bash
-npm install --save deepstream.io-client-js
+npm install --save @deepstream/client
 ```
 
 and connect to deepstream using the URL you got after signing up:
@@ -381,7 +381,7 @@ and connect to deepstream using the URL you got after signing up:
 ```jsx
 // ...
 
-import deepstream from 'deepstream.io-client-js'
+import deepstream from '@deepstream/client'
 
 class App extends Component {
   constructor(props) {

@@ -14,17 +14,17 @@ module.exports = {
         }
       }
     },
-    {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
-      options: {
-        fonts: [
-          {
-            family: `Roboto`,
-            variants: [400,300,100,500,700]
-          },
-        ],
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-prefetch-google-fonts`,
+    //   options: {
+    //     fonts: [
+    //       {
+    //         family: `Roboto`,
+    //         variants: [400,300,100,500,700]
+    //       },
+    //     ],
+    //   },
+    // },
     {
       resolve: `gatsby-plugin-typescript`,
       options: {

@@ -47,6 +47,12 @@ export const WhatIsIt = () => (
                         communication. deepstream handles load-balancing, failover, data-transport and
                         message routing.</p>
                 </li>
+                {/* <li>
+                    <h3>presences <small>monitoring who is online</small></h3>
+                    <p>presences allows users to query deepstream for the status of logged in users, and
+                        subscribe to changes
+                    </p>
+                </li> */}
             </ul>
 
         </Section>

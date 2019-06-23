@@ -20,7 +20,7 @@ the [configuration and default values](/docs/server/configuration/).
 **Please note** calling `server = new Deepstream()` only creates the instance, to actually start the server, you still need to call `server.start();`
 
 ```javascript
-const Deepstream = require('deepstream.io')
+const Deepstream = require('@deepstream/server')
 const server = new Deepstream({ port:8000 })
 ```
 

@@ -33,7 +33,7 @@ cd comment-feeds
 npm install
 
 # 5. Install deepstream and other utility libraries
-npm install --save deepstream.io-client-js axios blueimp-md5
+npm install --save @deepstream/client axios blueimp-md5
 ```
 
 At step 2, where you initialize a new project, answer the questions with the following answers:
@@ -172,7 +172,7 @@ Let's create the Vue file for sign up to match the route we defined initially:
 <script>
   import axios from 'axios';
   import md5 from 'blueimp-md5';
-  import * as ds from 'deepstream.io-client-js';
+  import * as ds from '@deepstream/client';
 
   export default {
     name: 'sign-up',
@@ -405,7 +405,7 @@ The sign in flow is a lot simpler than what we had for sign up. We just need to 
 </template>
 
 <script>
-  import * as ds from 'deepstream.io-client-js';
+  import * as ds from '@deepstream/client';
   import { set } from '@/services/localStorage';
   import { $emit } from '@/services/eventHub';
 
@@ -488,7 +488,7 @@ A common trend in the web community is to add a user's name on the navigation ba
 </template>
 
 <script>
-  import * as ds from 'deepstream.io-client-js';
+  import * as ds from '@deepstream/client';
   import { $on, $emit } from '@/services/eventHub';
 
   import { get, remove } from './services/localStorage';
@@ -555,7 +555,7 @@ The container component for our comment feeds is actually the Home page. Let's c
 </template>
 
 <script>
-import * as ds from 'deepstream.io-client-js';
+import * as ds from '@deepstream/client';
 import { get } from '@/services/localStorage';
 
 import CommentList from '../components/CommentList';
@@ -592,7 +592,7 @@ The components are dependent on two other presentation components -- Comment For
 Le's begin by handling `handleNewComment`:
 
 ```js
-import * as ds from 'deepstream.io-client-js';
+import * as ds from '@deepstream/client';
 import { get } from '@/services/localStorage';
 
 import CommentList from '../components/CommentList';

@@ -19,3 +19,9 @@
     display: block;
     margin: 0 auto 20px;
 }
+
+@media (max-width: 500px) {
+    .docs a {
+        width: 100%;
+    }
+}

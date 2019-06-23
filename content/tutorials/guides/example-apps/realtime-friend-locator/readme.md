@@ -20,7 +20,7 @@ To create a map using Google Maps API, you first need to get an [API key](https:
 
 ## Setting deepstream up with React
 
-Setting up deepstream in React is actually quite simple. Once you download and install deepstream.io, connecting to the deepstream server looks like:
+Setting up deepstream in React is actually quite simple. Once you download and install deepstream, connecting to the deepstream server looks like:
 
 #### In your constructor connect to deepstream:
 
@@ -115,7 +115,7 @@ The listen method is called every time there is a change in record subscriptions
 ```js
 //server side
 const GeoSubscription = require( './geo-subscription' );
-const deepstream = require('deepstream.io-client-js');
+const deepstream = require('@deepstream/client');
 
 const ds = deepstream('ws://localhost:6020')
 ds.login()

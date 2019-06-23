@@ -81,7 +81,7 @@ Lists, on the other hand, are, as the name goes, a collection. deepstream list g
 Interacting with the deepstream server that we set up earlier requires a deepstream client. deepstream have SDKs for various possible clients, but in our case, we will make use of that of JavaScript. To install the SDK, run:
 
 ```bash
-npm install --save deepstream.io-client-js
+npm install --save @deepstream/client
 ```
 
 Services serve as excellent abstractions of data layer as well as separation of concern. deepstream provides real-time data. Therefore, it would be a good idea to abstract few of it's functionalities to a service class:
@@ -91,7 +91,7 @@ Services serve as excellent abstractions of data layer as well as separation of 
 
 import { Injectable } from '@angular/core';
 // Import deepstream
-import * as deepstream from 'deepstream.io-client-js';
+import * as deepstream from '@deepstream/client';
 
 @Injectable()
 export class DsService {

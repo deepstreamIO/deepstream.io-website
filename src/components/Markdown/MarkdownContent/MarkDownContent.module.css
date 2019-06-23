@@ -22,6 +22,12 @@
     margin-right: auto;
 }
 
+@media (max-width: 500px) {
+    .wrapper, .article {
+        width: 100%;
+    }
+}
+
 .header {
     margin-top: 80px;
 }

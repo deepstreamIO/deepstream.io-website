@@ -71,7 +71,7 @@ Once you have a server setup you can login.
 // ./index.js
 ...
 // Import deepstream
-var deepstream = require('deepstream.io-client-js');
+var deepstream = require('@deepstream/client');
 var app = Express();
 
 // Connect with App URL

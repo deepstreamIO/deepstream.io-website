@@ -1,5 +1,5 @@
 // ES5
-const deepstream = require('deepstream.io-client-js')
+const deepstream = require('@deepstream/client')
 const client = deepstream('localhost:6020');
 
 client.login({

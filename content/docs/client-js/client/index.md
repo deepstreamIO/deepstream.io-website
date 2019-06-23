@@ -3,7 +3,7 @@ title: Javascript Client
 description: The entry point API documentation for the deepstream.io js client
 ---
 
-The deepstream JavaScript client can be used by both browsers and Node.js. You can get it via NPM or Bower as `deepstream.io-client-js` or browse the source on [Github](https://github.com/deepstreamIO/deepstream.io-client-js)
+The deepstream JavaScript client can be used by both browsers and Node.js. You can get it via NPM or Bower as `@deepstream/client` or browse the source on [Github](https://github.com/deepstreamIO/@deepstream/client)
 
 ### deepstream(url, options)
 
@@ -15,7 +15,7 @@ The deepstream JavaScript client can be used by both browsers and Node.js. You c
 Creates a client instance and initialises the connection to the deepstream server. The connection will be kept in a quarantine state and won't be fully usable until `login()` is called.
 
 ```javascript
-const deepstream = require('deepstream.io-client-js')
+const deepstream = require('@deepstream/client')
 const client = deepstream('localhost:6020')
 client.login()
 ```
@@ -53,7 +53,7 @@ Authenticates the client against the server. To learn more about how authenticat
 Callback will be called with: success (Boolean), data (Object).
 
 ```javascript
-const deepstream = require('deepstream.io-client-js')
+const deepstream = require('@deepstream/client')
 const client = deepstream('localhost:6020')
 // client.getConnectionState() will now return 'AWAITING_AUTHENTICATION'
 

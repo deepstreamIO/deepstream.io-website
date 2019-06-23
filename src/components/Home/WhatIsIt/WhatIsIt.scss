@@ -7,28 +7,24 @@
     text-align: center;
 
     img {
-        width: 700px;
         position: relative;
         top: -130px;
         left: -20px;
         margin-bottom: -70px;
     }
 
-    .general {
 
-        /*float: left;*/
-        margin-right: 60px;
-        margin-left: 95px;
+    .general, .core-features {
+        flex-direction: row;
         display: flex;
         justify-content: space-between;
-        z-index: 10;
-        position: relative;
+        margin-right: 60px;
+        margin-left: 95px;
     }
 
     .general p {
         width: 300px;
     }
-
 
     .general li {
         margin-bottom: 40px;
@@ -70,11 +66,6 @@
         font-style: italic;
     }
 
-    .core-features {
-        width: 1000px;
-        margin: 0 auto;
-    }
-
     .core-features li {
         width: 260px;
         margin-right: 110px;
@@ -84,5 +75,31 @@
 
     .core-features li:last-child {
         margin-right: 0;
+    }
+
+    @media screen and (max-width: 900px) {
+        p {
+            width: 90%;
+        }
+
+        & {
+            padding-top: 40px;
+        }
+    
+        .general, .core-features {
+            flex-direction: column;
+            margin: 0;
+            padding: 0 10px 0 35px;
+        }
+
+        .core-features li {
+            margin-top: 40px;
+        }
+
+        img {
+            position: initial;
+            width: 90%;
+            margin-bottom: 50px;
+        }
     }
 }

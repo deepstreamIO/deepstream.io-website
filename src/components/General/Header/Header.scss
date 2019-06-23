@@ -1,19 +1,44 @@
-.under-construction {
+.under-construction-overlay {
 
-    background: repeating-linear-gradient(
-        45deg,
-        rgba(0, 0, 0, 0.2),
-        rgba(0, 0, 0, 0.2) 10px,
-        rgba(0, 0, 0, 0.3) 10px,
-        rgba(0, 0, 0, 0.3) 20px
-    );
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+
+    background-color: #0FBBEC;
 
     z-index: 999999;
     padding: 20px;
 
+    .elton-under-construction {
+        height: 200px;
+    }
+
+    @media (min-width: 500px) {
+        .elton-under-construction {
+            height: 300px;
+            float: left;
+            margin-right: 30px;
+        }
+    }
+
+    .under-construction {
+        max-width: 500px;
+        margin: auto;
+        margin-top: 100px;
+    }
+
+    .under-construction-redirect {
+        margin-top: 50px;
+    }
+
+    .under-construction-continue {
+        margin-top: 50px;
+    }
+
     h1 {
         font-weight: 500;
-        font-size: 25px;
     }
 
     h3 {
@@ -24,7 +49,8 @@
     a {
         font-weight: 500;
         font-size: 22px;
-
+        color: #eee;
+        
         &:hover {
             cursor: pointer;
         }
@@ -159,11 +185,11 @@
         padding: 5px;
     }
 
-    .mobile-nav li.active {
+    .mobile-nav li.a.active {
         background-color: #F6F6F6;
     }
 
-    .mobile-nav li.active > a {
+    .mobile-nav li > a.active {
         color: #00CCFE;
     }
 
@@ -193,7 +219,7 @@
             overflow: hidden;
         }
 
-        body.nav-opened .mobile-menu {
+        .mobile-menu.open {
             left: 0;
         }
 

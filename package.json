@@ -57,7 +57,7 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
-    "deploy": "aws s3 sync public s3://deepstream.io-v3"
+    "deploy": "aws s3 sync public s3://deepstream.io"
   },
   "repository": {
     "type": "git",
