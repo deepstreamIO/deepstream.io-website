@@ -1,5 +1,5 @@
 ---
-title: v4.0.0 - Server
+title: v4.0.0
 description: The massively upgraded deepstream server! Introducing too many changes to be contained within a description!
 ---
 

@@ -12,6 +12,7 @@ You can specify permission rules for the following interactions
 - `read` reading a record's data
 - `delete` deleting a record
 - `listen` listen for other clients subscribing to a record
+- `notify` whether or not the client can notify of records updated directly in database
 
 ### event
 - `publish` sending events

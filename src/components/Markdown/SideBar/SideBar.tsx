@@ -11,14 +11,14 @@ interface SideBarProps {
 
 const Section = ({ item, navigation, activePath, setOpen, open }) => (
     <div className={style.sectionLevel}>
-        <label onClick={() => open ? setOpen(null) : setOpen(item) }>{item}</label>
+        <label onClick={() => open ? setOpen(null) : setOpen(item) }>{item.replace(/-/g, ' ')}</label>
         {open ? <IoIosArrowDown /> : <IoIosArrowUp />}
         {open && createSideBarTree(navigation[item], 1, activePath)}
     </div>
 )
 
 const SubSection = ({ item, navigation, activePath }) => (<div className={style.subsectionLevel}>
-        <label>{item}</label>
+        <label>{item.replace(/-/g, ' ')}</label>
         {createSideBarTree(navigation[item], 2, activePath)}
 </div>)
 
@@ -28,8 +28,17 @@ const createSideBarTree = (navigation: any, depth: number, activePath, open? = '
             <Link to={navigation.slug}>{navigation.title}</Link>
         </div>
     } else {
-        return Object.keys(navigation).sort().map((item, index) => {
+        const items = Object.keys(navigation).sort((a, b) => {
+            if (!navigation[a].title) {
+                return a.localeCompare(b)
+            }
+            return navigation[a].title.localeCompare(navigation[b].title)
+        })
+        return items.map((item, index) => {
             if (navigation[item].leaf) {
+                if (depth === 1) {
+                    return <SubSection key={item} item={item} navigation={navigation} activePath={activePath} />
+                }
                 return createSideBarTree(navigation[item], depth, activePath)
             } else  if (depth === 0) {
                 return <Section key={item} item={item} navigation={navigation} activePath={activePath} setOpen={setOpen} open={item === open}  />

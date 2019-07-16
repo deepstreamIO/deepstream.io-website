@@ -1,5 +1,5 @@
 ---
-title: File-based authentication
+title: File Authentication
 description: A deepstream authentication mechanism that reads credentials and userdata from a file
 tags: [authentication, file, hash, crypto]
 ---

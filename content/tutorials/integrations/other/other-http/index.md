@@ -4,7 +4,7 @@ description: Learn how to use a webserver together with deepstream
 draft: true
 ---
 
-deepstream is a realtime data server and a great one of that. It is not an HTTP or general purpose webserver though. That means that if you're building a webapplication that needs to serve HTML or CSS files, images etc., you'll also need a classic HTTP server. For that, you have a number of choices
+deepstream is a realtime data server and a great one of that. It is not an HTTP or general purpose webserver though. That means that if you're building a web application that needs to serve HTML or CSS files, images etc., you'll also need a classic HTTP server. For that, you have a number of choices
 
 ## Using Nginx, Apache, Tomcat, IIS etc.
 You can use any established webserver together with deepstream. Just make sure that the URL path to route HTTP/WS traffic (by default `yourdomain.com/deepstream`) is proxied forward.

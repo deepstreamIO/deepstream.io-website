@@ -1,5 +1,5 @@
 ---
-title: v4.0.0 - JavaScript SDK
+title: v4.0.0
 description: The newly improved Typescript and ES6 SDK
 ---
 
@@ -13,15 +13,26 @@ description: The newly improved Typescript and ES6 SDK
 
 ```JavaScript
 {
-    offlineEnabled: false,
+    // Use indexdb to store data client side
+    offlineEnabled: false,]
+    // Save each update as it comes in from the server
     saveUpdatesOffline: false,
     indexdb: {
+        // The db version, incrementing this triggers a db upgrade
         dbVersion: 1,
+        // This auto updates the indexdb version if the objectStore names change
+        autoVersion: false,
+        // The key to index records by
         primaryKey: 'id',
+        // The indexdb databae name
         storageDatabaseName: 'deepstream',
+        // The default store name if not using a '/' to indicate the object store (example person/uuid)
         defaultObjectStoreName: 'records',
+        // The object store names, required in advance due to how indexdb works
         objectStoreNames: [],
+        // Things to not save, such search results
         ignorePrefixes: [],
+        // The amount of time to buffer together actions before making a request
         flushTimeout: 50
     }
 }
@@ -33,7 +44,6 @@ description: The newly improved Typescript and ES6 SDK
 export type offlineStoreWriteResponse = ((error: string | null, recordName: string) => void)
 
 export interface RecordOfflineStore {
-  isReady: boolean,
   get: (recordName: string, callback: ((recordName: string, version: number, data: RecordData) => void)) => void
   set: (recordName: string, version: number, data: RecordData, callback: offlineStoreWriteResponse) => void
   delete: (recordName: string, callback: offlineStoreWriteResponse) => void
@@ -52,12 +62,12 @@ export interface RecordOfflineStore {
 
 ```JavaScript
 const client = deepstream()
-await client.login()
-
-const record = client.record.getRecord(name)
-await record.whenReady()
-
 try {
+    await client.login()
+
+    const record = client.record.getRecord(name)
+    await record.whenReady()
+
     const data = await client.record.snapshot(name)
     const version = await client.record.head(name)
     const exists = await client.record.has(name)
@@ -104,7 +114,7 @@ client.record.listen('users/.*', (name, ({ accept, reject, onStop }) => {
 
 ## TLDR:
 
-`markdown:release-4.0-binary-protocol.md`
+`markdown:release-4.0-protobuf-protocol.md`
 
 ## Offline Storage
 

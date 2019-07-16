@@ -1,5 +1,5 @@
 ---
-title: Dynamic Permissions using Valve
+title:  Valve Dynamic Permissions
 description: Realtime permissions that are readable on both client and server
 tags: [tutorial, realtime, permissions, server, client]
 ---

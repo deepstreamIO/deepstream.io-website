@@ -1,5 +1,5 @@
 ---
-title: NPM
+title: Node / NPM / Yarn
 description: Installing deepstream via NPM and and Node.js
 ---
 
@@ -18,8 +18,8 @@ npm install @deepstream/server
 Create a js file, e.g. start.js with the following content
 
 ```javascript
-const DeepstreamServer = require('@deepstream/server')
-const C = DeepstreamServer.constants
+const { Deepstream } = require('@deepstream/server')
+
 /*
 The server can take
 1) a configuration file path
@@ -27,7 +27,7 @@ The server can take
 3) left empty to load the base configuration from the config file located within the conf directory.
 4) pass some options, missing options will be merged with the base configuration
 */
-const server = new DeepstreamServer({
+const server = new Deepstream({
   host: 'localhost',
   port: 6020
 })

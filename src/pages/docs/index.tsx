@@ -23,7 +23,7 @@ export default () => (
 
                 <Link to="/docs/server/configuration/">
                     <img src="/images/install/server.png" width="100" height="100" />
-                    Server Configuration &amp; CLI
+                    Server
                 </Link>
             </div>
         </Section>

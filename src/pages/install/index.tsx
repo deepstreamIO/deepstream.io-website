@@ -24,10 +24,11 @@ export default () => (<Layout pageClass="install-page">
             <div className={cn(style.distroGrid, style.blockLink)}>
                 <InstallBlock url="/install/osx/" img="/images/install/osx.png" name="OS X" />
                 <InstallBlock url="/install/windows/" img="/images/install/windows.png" name="Windows" />
-                <InstallBlock url="/install/ubuntu/" img="/images/install/ubuntu.png" name="Ubuntu" />
+                <InstallBlock url="/install/linux/" img="/images/install/linux.png" name="Linux" />
+                {/* <InstallBlock url="/install/ubuntu/" img="/images/install/ubuntu.png" name="Ubuntu" />
                 <InstallBlock url="/install/centos/" img="/images/install/centos.png" name="CentOs" />
                 <InstallBlock url="/install/debian/" img="/images/install/debian.png" name="Debian" />
-                <InstallBlock url="/install/aws-linux/" img="/images/install/aws.png" name="Amazon Linux AMI" />
+                <InstallBlock url="/install/aws-linux/" img="/images/install/aws.png" name="Amazon Linux AMI" /> */}
             </div>
 
             <p className={style.otherServer}>
