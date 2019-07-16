@@ -20,7 +20,7 @@ export const Header: React.FunctionComponent<HeaderProps> = () => {
             <div className="wrapper">
                 <div className="header-logo">
                     <a href="/" id="logo">
-                        <span>deepstream<em>.io</em>(under reconstruction)</span>
+                        <span>deepstream<em>.io</em></span>
                     </a>
                 </div>
 
