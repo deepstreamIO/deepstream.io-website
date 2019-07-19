@@ -51,9 +51,9 @@ There has been alot of feedback on the differences between our deepstreamHub and
 
 We converted the majority of the codebase to typescript, for the benefit of future code maintenance as well making it easier for people to contribute.
 
-This also means we now had declerations for all the possible plugin interfaces which should make it much easier for people to write their own once they fork the V4 connector template.
+This also means we now had declerations for all the possible plugin interfaces which should make it much easier for people to write their own once they fork the V4 plugin template.
 
-Current custom external connectors are:
+Current custom external plugins are:
 
 - Authentication
 - Permissioning
@@ -63,10 +63,9 @@ Current custom external connectors are:
 - State Registry Factory
 - Subscription Registry Factory
 - Monitoring
-- State Registry Factory
 - Generic Plugins
 
-All these connectors need to extend or implement the same plugin interface (via the @deepstream/types package)
+All these plugins need to extend or implement the same plugin interface (via the @deepstream/types package)
 
 ```
 abstract class DeepstreamPlugin<PluginConfig> {

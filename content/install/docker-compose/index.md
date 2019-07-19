@@ -23,7 +23,7 @@ services:
         image: deepstreamio/deepstream.io
         ports:
             - "6020:6020"
-            - "6021:6021"
+            - "6030:8080"
         volumes:
             - ./conf:/etc/deepstream
         depends_on:
@@ -75,23 +75,18 @@ The easiest way to do this is by copying all the files from the [conf/](https://
 Then change the plugins section to:
 
 ```yaml
-plugins:
-  message:
+cache:
     name: redis
     options:
-      host: redis
-      port: 6379
-  cache:
-    name: redis
-    options:
-      host: redis
-      port: 6379
-  storage:
+        host: redis
+        port: 6379
+
+storage:
     name: rethinkdb
     options:
-      host: rethinkdb
-      port: 28015
-      splitChar: /
+        host: rethinkdb
+        port: 28015
+        splitChar: /
 ```
 
 Now you can run all containers with just one command:

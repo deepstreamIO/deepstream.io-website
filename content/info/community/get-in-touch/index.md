@@ -13,7 +13,5 @@ There should always be someone around on the [deepstream.io slack channel](https
 ## Drop by our Github
 We use [Github](https://github.com/deepstreamIO) as the home for all of our open source code, issues and discussions. You should come by some time.
 
-## Other ways to get in touch
+## Raise a question via Stack Overflow
 * Ask a question tagged with `deepstream.io` on [stack overflow](http://stackoverflow.com/questions/tagged/deepstream.io)
-* Send us an email at [info@deepstream.io](mailto:info@deepstream.io)
-* Keep it professional on [LinkedIn](https://www.linkedin.com/company/deepstream)

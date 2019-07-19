@@ -36,9 +36,9 @@ const createSideBarTree = (navigation: any, depth: number, activePath, open? = '
         })
         return items.map((item, index) => {
             if (navigation[item].leaf) {
-                if (depth === 1) {
-                    return <SubSection key={item} item={item} navigation={navigation} activePath={activePath} />
-                }
+                // if (depth === 1) {
+                //     return <SubSection key={item} item={item} navigation={navigation} activePath={activePath} />
+                // }
                 return createSideBarTree(navigation[item], depth, activePath)
             } else  if (depth === 0) {
                 return <Section key={item} item={item} navigation={navigation} activePath={activePath} setOpen={setOpen} open={item === open}  />

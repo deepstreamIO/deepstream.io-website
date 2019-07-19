@@ -74,18 +74,4 @@ If you're using deepstream from Node, it's also possible to download connectors 
 ## Writing your own connector
 If you can't find a connector for your system of choice, you can also write your own quite easily in C++ with Node bindings or in Node.js. If you're happy with the way your connector turned out, please consider contributing it. To do so, have a look at deepstream's [contribution guidelines](/info/contribution-guidelines/)
 
-To get started, just clone or fork the [cache-and-storage-connector-template](//github.com/deepstreamIO/deepstream.io-cache-and-storage-connector-template) and fill in the blanks. To see if it works, update the `settings` variable on line 7 of the [test file](//github.com/deepstreamIO/deepstream.io-cache-and-storage-connector-template/blob/master/test/cache-connectorSpec.js) and run the tests with `npm test`. Please note: The tests are very high level and only cover basic functionality. It will make sense to add additional tests that are specific to your connector.
-
-#### Some considerations when implementing a cache/storage connector
-
-**initialisation**
-If your connector requires an initialisation step, e.g. establishing a connection to the db/cache, its `isReady` property should initially be set to `false`. Once the connection to the cache / database is established, set `isReady` to `true` and emit a `ready` event by calling `this.emit( 'ready' );`.
-
-**general errors**
-Whenever a generic error occurs (e.g. a connectivity error or any other error that's not directly related to a `get`, `set` or `delete` operation, your connector should emit an `error` event and send the error message as a parameter, e.g. this.emit( 'error', 'connection lost' );
-
-**operation-specific errors**
-Whenever an error occurs as part of a `get`, `set` or `delete` operation, pass it to the callback as the first argument, otherwise pass `null`.
-
-**serialization**
-The values that are passed to `set()` will be raw JavaScript objects and are expected to be returned by `get()` as such. It's therefor up to your connector to handle serialisation / de-serialisation, e.g. as Binary Data, JSON or message-pack. Some systems (e.g. MongoDB) can also handle raw JSON directly.
+For a guide into how to implement your own connection, please refer to the [storage plugin](../../../guides/plugins/storage/) and [cache plugin](../../../guides/plugins/cache/) guides.

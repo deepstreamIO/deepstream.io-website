@@ -36,6 +36,7 @@ section.
 With deepstream as a back-end, it makes sense to store all forum threads in
 records (this is the [data-sync concept](/tutorials/core/datasync/records/)).
 The following Valve snippet gives new users read-only access:
+
 ```yaml
 record:
 	"*":
@@ -181,6 +182,7 @@ other clients subscribing to records (the [record tutorial](/tutorials/core/data
 elaborates on these operations and it explains the differences between
 unsubscribing from, discarding, and deleting records). The following snippet is
 the default Valve code for records:
+
 ```yaml
 record:
 	"*":
@@ -208,6 +210,7 @@ Valve.
 
 deepstream can notify you when authenticated users log in. The permissioning key
 is called `presence` and the only option is to allow or disallow listening:
+
 ```yaml
 presence:
 	"*":
@@ -220,6 +223,7 @@ presence:
 [Events](/tutorials/core/pubsub/) can be published and subscribed to.
 Moreover, a client emitting events may listen to event subscriptions. The
 actions can be permissioned in the section `events`:
+
 ```yaml
 events:
 	"*":
@@ -256,6 +260,7 @@ config file as base directory.
 In summary, if the permissioning rules can be found in `conf/permissions.yml`
 and if the configuration file is `conf/config.yml`, then a minimal config for
 file-based permissioning looks as follows:
+
 ```yaml
 permission:
 	type: config

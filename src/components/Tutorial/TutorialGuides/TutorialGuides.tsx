@@ -87,6 +87,8 @@ export const TutorialsGuides: React.FunctionComponent<TutorialsOverviewProps> = 
         }
     })
 
+    console.log(sections)
+
     return <Section className="section-overview">
         <Section columnClassName="entries" columns={[
             <div>
@@ -98,15 +100,8 @@ export const TutorialsGuides: React.FunctionComponent<TutorialsOverviewProps> = 
             </div>,
             <div>
                 <h2>Security</h2>
-                <Category title="Authentication" entries={{
-                ...sections.core.auth,
-                // 'jwt-auth': sections.guides['jwt-auth']
-            }} />
-            <Category title="Permissioning" entries={{
-                ...sections.core.permission,
-                'user-specific-data': sections.guides['user-specific-data'],
-                permissioning: sections.guides.permissioning,
-            }} />
+                <Category title="Authentication" entries={sections.core.auth} />
+                <Category title="Permissioning" entries={sections.core.permission} />
             </div>
         ]} />
 
@@ -118,7 +113,7 @@ export const TutorialsGuides: React.FunctionComponent<TutorialsOverviewProps> = 
             </div>,
             <div>
                 <h2>Example Applications</h2>
-                <Category title="Example Applications" entries={sections.guides['example-apps']} />
+                <Category title="Example Applications" entries={sections['example-apps']} />
             </div>,
         ]} />
 
@@ -134,6 +129,13 @@ export const TutorialsGuides: React.FunctionComponent<TutorialsOverviewProps> = 
                 <h2>Working with deepstream</h2>
                  <Category title="Server" entries={sections.core.server} />
                  <Category title="Usage with other Servers" entries={sections.integrations.other} />
+            </div>
+        ]} />
+
+        <Section columnClassName="entries" columns={[
+            <div>
+                <h2>Extending deepstream</h2>
+                <Category title="Writing your own plugin" entries={sections['custom-plugins']} />
             </div>
         ]} />
 

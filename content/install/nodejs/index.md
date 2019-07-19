@@ -7,7 +7,7 @@ description: Installing deepstream via NPM and and Node.js
 
 deepstream can also be installed as an [NPM package](https://www.npmjs.com/package/deepstream.io) and offers a Node.js API to interact with it programmatically.
 
-This can be useful to build custom authentication or permissioning logic or if you want to use the server [on top of a HTTP server like Express](/tutorials/integrations/other-http/). You can view the full Node.js API [here](/docs/server/node-api/).
+This can be useful to build custom authentication or permissioning logic. You can view the full Node.js API [here](/docs/server/node-api/).
 
 Install the server via npm
 

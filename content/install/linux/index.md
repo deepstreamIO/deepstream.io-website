@@ -3,27 +3,35 @@ title: Installing on Linux
 description: Learn how to install deepstream on Linux
 ---
 
-deepstream is available as a binary
+<a class="install-link" data-os="linux"></a>
 
+Download the server from the link above and unzip it.
 
-```bash
-```
+![Linux directory](linux-directory.png)
 
 ## Starting deepstream
-After installing, use the deepstream command to start the server via its [command line interface](/docs/server/command-line-interface/).
+You can start the server by simply running it on the command line
+
 ```bash
-deepstream start
+./deepstream
+```
+
+Learn more about deepstream's [command line interface](/docs/server/command-line-interface/) and its [configuration file](/docs/server/configuration/).
+
+## Install as a service
+
+You can install deepstream as a service, which automatically restarts it on failure and all those other linux service
+goodies. To do so just run:
+
+```bash
+./deepstream service add -c /path/to/config -l /path/to/logs
+```
+
+After installing, you can start and stop deepstream simply by doing:
+
+```bash
+deepstream service start
 ```
 
 ![Starting deepstream on linux](../linux-start.png)
 
-### Configuring deepstream
-You can either change deepstream's [configuration file](/docs/server/configuration/) directly in `/etc/deepstream` or create a copy and run deepstream with the `-c` flag. (Important, make sure to update all relative paths within the configuration after copying it).
-
-```bash
-$ cd ~
-$ cp /etc/deepstream/* .
-$ ls
-config.yml  permissions.yml  users.yml
-$ deepstream start -c config.yml
-```

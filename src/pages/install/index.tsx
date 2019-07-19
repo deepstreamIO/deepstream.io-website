@@ -19,25 +19,16 @@ export default () => (<Layout pageClass="install-page">
     <Section className={style.server}>
             <h2>deepstream.io server</h2>
             <p>
-                the deepstream server comes as standalone executable for Mac and Windows and as package for major Linux distributions.
+                the deepstream server comes as a standalone executable for Mac, Windows and Linux, run via docker and used via node if you want to do some wizadry
             </p>
             <div className={cn(style.distroGrid, style.blockLink)}>
                 <InstallBlock url="/install/osx/" img="/images/install/osx.png" name="OS X" />
                 <InstallBlock url="/install/windows/" img="/images/install/windows.png" name="Windows" />
                 <InstallBlock url="/install/linux/" img="/images/install/linux.png" name="Linux" />
-                {/* <InstallBlock url="/install/ubuntu/" img="/images/install/ubuntu.png" name="Ubuntu" />
-                <InstallBlock url="/install/centos/" img="/images/install/centos.png" name="CentOs" />
-                <InstallBlock url="/install/debian/" img="/images/install/debian.png" name="Debian" />
-                <InstallBlock url="/install/aws-linux/" img="/images/install/aws.png" name="Amazon Linux AMI" /> */}
-            </div>
-
-            <p className={style.otherServer}>
-                or use the official docker image or compose file to make using deepstream within your container architecture a breeze. deepstream also can be installed via NPM and used from Node.js
-            </p>
-            <div className={cn(style.otherServerGrid, style.blockLink)}>
-                <InstallBlock url="/install/docker-image/" img="/images/install/docker.png" name="Docker Image" />
-                <InstallBlock url="/install/docker-compose/" img="/images/install/compose.png" name="Compose File" />
-                <InstallBlock url="/install/npm/" img="/images/install/npm.png" name="NPM package (Node.js)" />
+                <InstallBlock url="/install/nodejs/" img="/images/install/nodejs.png" name="Node.js" />
+                <InstallBlock url="/install/docker/" img="/images/install/docker.png" name="Docker" />
+                <InstallBlock url="/install/docker-compose/" img="/images/install/compose.png" name="Compose" />
+                {/* <InstallBlock url="/install/kubernetes/" img="/images/install/kurbernetes.png" name="Kubernetes" /> */}
             </div>
     </Section>
 
