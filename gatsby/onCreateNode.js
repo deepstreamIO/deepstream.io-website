@@ -40,8 +40,15 @@ module.exports = exports.onCreateNode = ({ node, actions, getNode }) => {
             // Used to generate URL to view this content.
             createNodeField({
                 node,
-                name: 'slug',
+                name: 'weightedSlug',
                 value: slug,
+            });
+
+            // Used to generate URL to view this content.
+            createNodeField({
+                node,
+                name: 'slug',
+                value: slug.replace(/(\d\d)-/g, ''),
             });
 
             // Used to generate a GitHub edit link.

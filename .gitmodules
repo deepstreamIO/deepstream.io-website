@@ -1,0 +1,3 @@
+[submodule "code-examples/server/example-plugins"]
+	path = code-examples/server/example-plugins
+	url = git@github.com:deepstreamIO/deepstream.io-example-plugins.git

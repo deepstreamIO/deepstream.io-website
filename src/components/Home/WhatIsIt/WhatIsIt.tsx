@@ -15,10 +15,8 @@ export const WhatIsIt = () => (
                 </li>
                 <li>
                     <h3>how do I use it?</h3>
-                    <p>Deepstream is installed like most http servers or databases – via yum, apt &amp; co on
-                        Linux, brew on Mac or as downloadable Mac &amp; Windows executable. To connect and
-                        interact with the deepstream server you need a SDK, currently available for JS, Node,
-                        Java, Android, iOS, C++ or PHP and coming soon for .NET, Python and Go.</p>
+                    <p>Deepstream can be run as a executable on Linux, Mac &amp; Windows executable. To connect and
+                        interact with the deepstream server you need a SDK or via HTTP.</p>
                 </li>
             </ul>
 
@@ -39,20 +37,39 @@ export const WhatIsIt = () => (
                     <h3>events <small>publish subscribe messaging</small></h3>
                     <p>events allow for high performance, many-to-many messaging. deepstream provides topic
                         based routing from sender to subscriber, data serialisation and subscription
-                        listening.</p>
+                        listening</p>
                 </li>
                 <li>
                     <h3>rpcs <small>request response workflows</small></h3>
                     <p>remote procedure calls allow for secure and highly available request response
                         communication. deepstream handles load-balancing, failover, data-transport and
-                        message routing.</p>
+                        message routing</p>
                 </li>
-                {/* <li>
-                    <h3>presences <small>monitoring who is online</small></h3>
-                    <p>presences allows users to query deepstream for the status of logged in users, and
-                        subscribe to changes
+            </ul>
+            <ul className="core-features" style={{ marginTop: '50px' }}>
+                <li>
+                    <h3>presence <small>monitoring who is online</small></h3>
+                    <p>presences allows users to query deepstream for the status of logged in users and 
+                        subscribe to anyone logging in or out over the state of the entire cluster
                     </p>
-                </li> */}
+                </li>
+                <li>
+                    <h3>listening <small>responsive subscriptions</small></h3>
+                    <p>
+                        deepstream was built to help you manage your microservices and keep data transfer
+                        and costs down to a minimum. Listening is a powerful tool that allows your microservices
+                        to be aware of the active requirements of all applications and only publish realtime-data 
+                        when it's actually needed
+                    </p>
+                </li>
+                <li>
+                    <h3>security <small>authorize everything</small></h3>
+                    <p>
+                        deepstream have a powerful security blanket that allows you to permission each connection
+                        and message going through your system. Easily allow or deny messages in realtime based on 
+                        user roles, data or even the content of another record
+                    </p>
+                </li>
             </ul>
 
         </Section>

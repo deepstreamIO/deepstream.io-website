@@ -87,21 +87,19 @@ export const TutorialsGuides: React.FunctionComponent<TutorialsOverviewProps> = 
         }
     })
 
-    console.log(sections)
-
     return <Section className="section-overview">
         <Section columnClassName="entries" columns={[
             <div>
                 <h2>Core Concepts</h2>
-                <Category title="Data-Sync" entries={sections.core.datasync} />
-                <Category title="Events" entry={sections.core.pubsub} />
-                <Category title="RPC" entry={sections.core['request-response']} />
-                <Category title="Presence" entry={sections.core.presence} />
+                <Category key="data-sync" title="Data-Sync" entries={sections.core.datasync} />
+                <Category key="events" title="Events" entry={sections.core.pubsub} />
+                <Category key="rpc" title="RPC" entry={sections.core['request-response']} />
+                <Category key="presence" title="Presence" entry={sections.core.presence} />
             </div>,
             <div>
                 <h2>Security</h2>
-                <Category title="Authentication" entries={sections.core.auth} />
-                <Category title="Permissioning" entries={sections.core.permission} />
+                <Category key="authentication" title="Authentication" entries={sections.core.auth} />
+                <Category key="permissioning" title="Permissioning" entries={sections.core.permission} />
             </div>
         ]} />
 

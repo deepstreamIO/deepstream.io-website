@@ -1,3 +1,3 @@
-module.exports = exports.onCreateNode = ({ page, actions }) => {
+module.exports = exports.onCreatePage = ({ page, actions }) => {
     return page
 }

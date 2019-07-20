@@ -28,13 +28,11 @@ const createSideBarTree = (navigation: any, depth: number, activePath, open? = '
             <Link to={navigation.slug}>{navigation.title}</Link>
         </div>
     } else {
-        const items = Object.keys(navigation).sort((a, b) => {
-            if (!navigation[a].title) {
-                return a.localeCompare(b)
-            }
-            return navigation[a].title.localeCompare(navigation[b].title)
-        })
+        const items = Object.keys(navigation).sort((a, b) => navigation[a].order - navigation[b].order)
         return items.map((item, index) => {
+            if (item === 'order') {
+                return null
+            }
             if (navigation[item].leaf) {
                 // if (depth === 1) {
                 //     return <SubSection key={item} item={item} navigation={navigation} activePath={activePath} />

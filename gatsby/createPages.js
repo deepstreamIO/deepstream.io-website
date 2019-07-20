@@ -30,6 +30,7 @@ module.exports = async ({graphql, actions}) => {
               fields {
                 redirect
                 slug,
+                weightedSlug,
                 githubLink
               },
               frontmatter {
@@ -54,7 +55,8 @@ module.exports = async ({graphql, actions}) => {
     const navigation = {}
 
     allMarkdown.data.allMarkdownRemark.edges.forEach(edge => {
-        const { slug } = edge.node.fields;
+        let { slug, weightedSlug } = edge.node.fields;
+        console.log(edge.node.fields)
         const { title, description, draft, deepstreamVersion } = edge.node.frontmatter;
 
         if (draft) {
@@ -85,8 +87,15 @@ module.exports = async ({graphql, actions}) => {
                 template = infoTemplate;
             }
 
-            let paths = slug.split('/').slice(1)
-            paths.reduce((nav, path, index) => {
+            let paths = weightedSlug.split('/').slice(1)
+            paths.reduce((nav, path, index, paths) => {
+                let order = 100
+
+                const match = path.match(/(\d\d)-(.*)/)
+                if (match) {
+                    path = match[2]
+                }
+
                 if (nav[path] === undefined) {
                     const shorterTitle = title
                         .replace('DataBase Connector', '')
@@ -94,14 +103,25 @@ module.exports = async ({graphql, actions}) => {
                         .replace('Endpoint', '')
                         .replace('Logger', '')
                     if (index === paths.length - 2) {
+                        const match = paths[paths.length - 2].match(/(\d\d)-(.*)/)
+                        if (match) {
+                            order = Number(match[1])
+                        }
                         nav[path] = {
                             slug,
                             title: shorterTitle,
                             description,
-                            leaf: true
+                            leaf: true,
+                            order
                         }
                     } else {
-                        nav[path] = {}
+                        const match = paths[index].match(/(\d\d)-(.*)/)
+                        if (match) {
+                            order = Number(match[1])
+                        }
+                        nav[path] = {
+                            order
+                        }
                     }
                 }
                 return nav[path]
