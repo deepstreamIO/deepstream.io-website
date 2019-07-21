@@ -3,7 +3,7 @@ title: Javascript Client
 description: The entry point API documentation for the deepstream.io js client
 ---
 
-The deepstream JavaScript client can be used by both browsers and Node.js. You can get it via NPM or Bower as `@deepstream/client` or browse the source on [Github](https://github.com/deepstreamIO/@deepstream/client)
+The deepstream JavaScript client can be used by both browsers and Node.js. You can get it via NPM or Bower as `@deepstream/client` or browse the source on [Github](https://github.com/deepstreamIO/deepstream.io-client-js)
 
 ### deepstream(url, options)
 

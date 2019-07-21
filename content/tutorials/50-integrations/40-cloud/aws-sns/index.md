@@ -27,7 +27,7 @@ In this tutorial, we’ll build a “sns-provider”, a node process that subscr
 
 -Forward incoming messages as deepstream events
 
-This looks like a lot, but we'll be able to accomplish with a relatively small amount of code. If you prefer diving right into the code, check out the [github](https://github.com/deepstreamIO/dsh-demo-sns-integration) repo. Here's a high level overview of what our setup will look like.
+This looks like a lot, but we'll be able to accomplish with a relatively small amount of code. If you prefer diving right into the code, check out the [github](https://github.com/deepstreamIO/demos-js/tree/master/aws/sns) repo. Here's a high level overview of what our setup will look like.
 
 ![setup-overview](setup-overview.png)
 

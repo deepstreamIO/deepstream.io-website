@@ -3,6 +3,7 @@ title: Realtime Comment Feed
 description: Learn how to create a realtime comment feeds with authentication using Vue
 tags: [Javascript, Vue, lists, records]
 navLabel: Comment Feed using Vue
+draft: true
 ---
 This walkthrough covers the fundamentals of what it takes to build a realtime comment feed application. Therefore, if you desire to add a feature like Facebook-style comments in your next app, then this is definitely what you need to read.
 
@@ -204,12 +205,6 @@ Vue files allow you to define markup (HTML),  logic (JS) and styles (CSS) in a s
 
 The JavaScript section just imports few helper libraries and creates a component skeleton with our form model data as well as deepstream initialization. We will see what axios and md5 imports will help us do in a moment.
 
-deepstream `<APP-URL>` is available on the dashboard after [creating an account](https://dashboard.deepstream.com/signup/). The url contains an `apiKey` query string, which we will also need when creating users via the REST endpoint:
-
-```
-wss://<SUB>.deepstream.com?apiKey=<APIKEY>
-```
-
 ### Handling Signup
 
 The `handleSubmit` method which the form invokes is where the user's signup journey begins. The flow for this example is as follows:
@@ -278,7 +273,7 @@ The `handleSubmit` method which the form invokes is where the user's signup jour
     >
     >What you can do is have a server that [generates a token](/tutorials/guides/jwt-auth/) for you which you can store as a cookie. 
     >
-    >deepstream allows you to use [webhook authentication](https://deepstream.com/tutorials/guides/http-webhook-auth) in achieving such flow.
+    >deepstream allows you to use [webhook authentication](/tutorials/guides/http-webhook-auth) in achieving such flow.
 
     An event is also emitted to tell the rest of our app that are interested in the new state change.
 

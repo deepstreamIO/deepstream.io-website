@@ -4,7 +4,7 @@ description: Integrating Sendgrid with deepstream
 tags: [rpcs, sendgrid, realtime, email]
 logoImage: sendgrid.png
 ---
-This guide will take you through integrating deepstream with Sendgrid's Email API. If you'd like to dive right into the code you can have a look at the GitHub repository for this tutorial [here](https://github.com/deepstreamIO/dsh-demo-sendgrid-integration).
+This guide will take you through integrating deepstream with Sendgrid's Email API. If you'd like to dive right into the code you can have a look at the GitHub repository for this tutorial [here](https://github.com/deepstreamIO/demos-js/tree/master/integration/sendgrid).
 
 There are many use cases for sending emails in applications, from reminders to promotional emails and more. We'll be showing how to create a simple `email-provider`, that sends a password reset email for your users when requested. We'll be using the deepstream [JavaScript client SDK](/docs/client-js/client/) and the [Sendgrid SDK for NodeJs](https://github.com/sendgrid/sendgrid-nodejs).
 

@@ -3,6 +3,7 @@ title: Mailchimp
 description: How to integrate deepstream with Mailchimp
 tags: [Vue, Mailchimp, Events, Pub/Sub]
 logoImage: mailchimp.png
+draft: true
 ---
 To effectively manage customers, you need proper customer care and customer engagement. This is possible through any media means but more powerful when you have your customers' contacts (most especially emails). 
 
@@ -326,7 +327,3 @@ This is what the form looks like:
 ```
 
 ![Subscription Form](/assets/img/tutorial/mailchimp-integration/form.png)
-
-## Final Notes
-- deepstream events can be setup both on the client side of your app as well as the server side. In such cases, both will still communicate effectively.
-- Demo: https://ds-mailchimp-demo.herokuapp.com

@@ -3,6 +3,7 @@ title: AWS Lambda
 description: Integrating deepstream's HTTP API with AWS Lambda
 tags: [http, lambda, deepstream, record, event, rpc]
 logoImage: aws-lambda.png
+draft: true
 ---
 
 [Amazon Web Service's Lambda](https://aws.amazon.com/lambda/) functions are a great way to deploy external and internal functionality at a low cost. Because you only pay for what you use, Lambda is suited perfectly to short lived functions. With the introduction of deepstream's HTTP API, we no longer need to spend the time setting up a websocket connection, so we can get straight to sending data.
@@ -35,7 +36,7 @@ The first thing we need to do is create our Lambda function with an S3 upload tr
 
 ![1](1.png)
 
-Make sure when setting it up that you configure your `HTTP_URL` environment variable - this is the URL that we'll be using to send data to deepstream. You can get this URL from the [Admin](https://dashboard.deepstream.com/#/apps) page of your application.
+Make sure when setting it up that you configure your `HTTP_URL` environment variable - this is the URL that we'll be using to send data to deepstream.
 
 ![http-url](2.png)
 
@@ -94,7 +95,7 @@ zip -r ../lambda-test.zip *
 
 Now that we're broadcasting data on updates, we just need to subscribe some clients to the `deployment` topic so that they get notified during a deployment.
 
-Let's imagine that we're deploying version `1.2.3` of our `dsh-admin-endpoint`. With the [JavaScript SDK](https://deepstream.com/docs/client-js/client/) we could get updates as follows:
+Let's imagine that we're deploying version `1.2.3` of our `dsh-admin-endpoint`. With the [JavaScript SDK](/docs/client-js/client/) we could get updates as follows:
 
 ```javascript
 const client = deepstream('<Your App URL>')

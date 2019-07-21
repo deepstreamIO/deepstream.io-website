@@ -42,7 +42,7 @@ Fetch the deepstream code and the url lib it depends on
 npm install @deepstream/client url --save
 ```
 
-Run the app in the iOS simulator (or check the React Native [docs](http://facebook.github.io/react-native/releases/0.23/docs/android-setup.html) for use with the Android simulator)
+Run the app in the iOS simulator (or check the React Native [docs](https://facebook.github.io/react-native/docs/getting-started.html) for use with the Android simulator)
 
 ```bash
 react-native run-ios

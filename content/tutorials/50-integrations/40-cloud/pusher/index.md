@@ -4,8 +4,7 @@ description: Integrating Pusher with deepstream
 tags: [pusher, deepstream, integration, events, realtime]
 logoImage: pusher.png
 ---
-This guide will take you through integrating deepstream's events with Pusher's event system. If you'd like to dive right into the code you can have a look at the GitHub repository for this tutorial [here](https://github.com/deepstreamIO/dsh-demo-pusher
--integration).
+This guide will take you through integrating deepstream's events with Pusher's event system. If you'd like to dive right into the code you can have a look at the GitHub repository for this tutorial [here](https://github.com/deepstreamIO/demos-js/tree/master/integration/pusher).
 
 Whether you have legacy components using Pusher and you're moving towards deepstream, or you want the additional features deepstream provides on top of an event system, integrating deepstream and forwarding events is easy. We'll be using the deepstream [JavaScript client SDK](/docs/client-js/client/), the [Pusher client SDK for JavaScript](https://github.com/pusher/pusher-js) and the [Pusher server SDK for JavaScript](https://github.com/pusher/pusher-http-node).
 
