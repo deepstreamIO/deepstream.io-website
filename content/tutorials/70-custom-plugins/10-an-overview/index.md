@@ -81,7 +81,7 @@ The main performance benefit you always want to implement with cache layers is t
 and values so that retrieving thousands of records in one go is significantly faster!
 
 To see a guide of a Cache plugin that stores data in memory please look [here](./cache/). Once 
-your comfortable with it take a look at [redis](./), [memcache](./) and hazelcast(./) 
+your comfortable with it take a look at [redis](), [memcache](./) and hazelcast(./) 
 implementations for further inspiration!
 
 ## Storage
@@ -107,10 +107,10 @@ please look [here](./logger/)
 
 A connection endpoint is the deepstream nervous system. Without it you can't get any messages back and forth between 
 it and the outside world. We provide three build in solutions, [ws](./ws), [uWebsockets.js](./uws) and HTTP via a
-standard called [JIF (JSON interchangeable format)](./). 
+standard called JIF. 
 
-However its super simple to build your own, which in turn will allow you to create your own crazy protocols. To see
-a wacky example of a emoticon based protocol please look [here](./connection-endpoint/)
+However its super simple to build your own, which in turn will allow you to create your own crazy protocols. Since this is 
+quite a large plugin we'll be releasing the documentation after the official V4 release.
 
 ## Monitoring
 
@@ -129,9 +129,10 @@ To see an example clustering plugin that allows nodes to talk to each other usin
 
 ## Locks
 
-Deepstream needs distributed locks for listening. The build in mechanism works fine, but if you want all state to live in an external system (like redis) you can easily build your own.
+Deepstream needs distributed locks for listening. The build in mechanism works fine, but if you want all state to live in an external system (like redis) you can build your own.
 
-To see an example lock plugin that uses redis to hold/release and expire them please look [here](./locks/)
+If anyone would like a guide on how to write your own please let us know!
+
 
 ## Cluster Registry
 

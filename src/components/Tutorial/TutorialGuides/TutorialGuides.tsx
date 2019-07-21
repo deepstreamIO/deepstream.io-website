@@ -6,7 +6,8 @@ interface TutorialsOverviewProps {
     edges: Array<{
         "node": {
             "fields": {
-                "slug": string
+                "slug": string,
+                "weightedSlug": string
             },
             "frontmatter": {
                 "title": string,
@@ -26,10 +27,10 @@ interface CategoryProps {
 const Category: React.FunctionComponent<CategoryProps> = ({ title, entries, entry }) => {
     let children = null
     if (entries) {
-        const keys = Object.keys(entries).sort()
+        const keys = Object.keys(entries).sort((a,b) => entries[a].weight - entries[b].weight)
         children = keys.map(key => <Entry key={key} entry={entries[key]}/>)
     } else {
-        children = [<Entry entry={entry} />]
+        children = [<Entry key="single" entry={entry} />]
     }
 
     if (children.length > 5) {
@@ -63,8 +64,15 @@ export const TutorialsGuides: React.FunctionComponent<TutorialsOverviewProps> = 
             description: node.frontmatter.description,
             logoImage: node.frontmatter.logoImage,
             title: node.frontmatter.title,
+            weight: 100
         }
-        const paths = entry.slug.split('/')
+        const weightedPaths = node.fields.weightedSlug.split('/')
+        if (weightedPaths[weightedPaths.length -2 ].match(/(\d\d)-/)) {
+            entry.weight = Number(weightedPaths[weightedPaths.length -2 ].match(/(\d\d)-/)![1])
+        }
+        let paths = node.fields.slug.split('/')
+       
+
         if (!sections[paths[2]]) {
             sections[paths[2]] = {}
         }
@@ -126,7 +134,7 @@ export const TutorialsGuides: React.FunctionComponent<TutorialsOverviewProps> = 
             <div>
                 <h2>Working with deepstream</h2>
                  <Category title="Server" entries={sections.core.server} />
-                 <Category title="Usage with other Servers" entries={sections.integrations.other} />
+                 <Category title="Usage with other Servers" entries={sections.integrations['other-servers']} />
             </div>
         ]} />
 

@@ -98,10 +98,10 @@ module.exports = async ({graphql, actions}) => {
 
                 if (nav[path] === undefined) {
                     const shorterTitle = title
-                        .replace('DataBase Connector', '')
-                        .replace('Cache Connector', '')
-                        .replace('Endpoint', '')
-                        .replace('Logger', '')
+                        // .replace('DataBase Connector', '')
+                        // .replace('Cache Connector', '')
+                        // .replace('Endpoint', '')
+                        // .replace('Logger', '')
                     if (index === paths.length - 2) {
                         const match = paths[paths.length - 2].match(/(\d\d)-(.*)/)
                         if (match) {

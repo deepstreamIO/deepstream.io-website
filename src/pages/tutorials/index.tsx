@@ -6,11 +6,10 @@ import {Hero} from "../../components/General/Hero/Hero"
 import {graphql} from "gatsby"
 
 export default (props: any) => (<Layout>
-        <Hero type={HeroType.tutorials}/>
-        {/*<TutorialsOverview/>*/}
-        <TutorialsGuides edges={props.data.allMarkdownRemark.edges}/>
-    </Layout>
-)
+    <Hero type={HeroType.tutorials}/>
+    {/*<TutorialsOverview/>*/}
+    <TutorialsGuides edges={props.data.allMarkdownRemark.edges}/>
+</Layout>)
 
 export const pageQuery = graphql`
 {
@@ -27,7 +26,8 @@ limit: 1000
     edges {
         node {
             fields {
-                slug
+                slug,
+                weightedSlug
             }
             frontmatter {
                 title,
