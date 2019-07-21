@@ -20,7 +20,7 @@ Because they complement each other quite well!
 - Databases (storage) are slower to read or write to, but offer efficient long-term storage for larger amounts of data and allow for more elaborate ways of querying (e.g. full-text search, SQL joins etc.)
 
 ## Why doesn't deepstream store data itself?
-deepstream is sometimes compared to projects like [Firebase](https://firebase.google.com/) (now part of Google Cloud Platform) or [RethinkDB](http://rethinkdb.com/) with [Horizon](https://horizon.io/) - realtime databases that let users create streaming queries.
+deepstream is sometimes compared to projects like [Firebase](https://firebase.google.com/) (now part of Google Cloud Platform)  - realtime databases that let users create streaming queries.
 
 While deepstream is a great fit for similar use-cases, it's conceptually quite different: deepstream's design-philosophy is inspired by the way multiplayer-game servers or financial streaming works, rather than by datastores.
 

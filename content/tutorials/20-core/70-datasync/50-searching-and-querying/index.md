@@ -10,7 +10,7 @@ deepstream is a fast transactional realtime server, but doesn't store any data i
 Let's look at some examples:
 
 ## RethinkDB
-deepstream comes with a pre-build connector to expose RethinkDB's realtime search capabilities as a dynamic [List](//tutorials/core/datasync/lists/).
+deepstream comes with a pre-build connector to expose RethinkDB's realtime search capabilities as a dynamic [List](/tutorials/core/datasync/lists/).
 
 To use it, [install RethinkDB as a storage option](/tutorials/plugins/database/rethinkdb/) and then use [our connector](https://github.com/deepstreamIO/deepstream.io-provider-search-rethinkdb) to use the database seamlessly in your applications.
 

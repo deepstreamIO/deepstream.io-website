@@ -4,7 +4,7 @@ description: Integrating Twilio with deepstream
 tags: [phone-calling, realtime, rpcs, twilio]
 logoImage: twilio.png
 ---
-This guide will take you through integrating deepstream with Twilio's Programmable Voice API. If you'd like to dive right into the code you can have a look at the GitHub repository for this tutorial [here](https://github.com/deepstreamIO/dsh-demo-twilio-integration).
+This guide will take you through integrating deepstream with Twilio's Programmable Voice API. If you'd like to dive right into the code you can have a look at the GitHub repository for this tutorial [here](https://github.com/deepstreamIO/demos-js/tree/master/integration/twilio).
 
 There are many use cases for creating calls in applications, from reminders to voice messages and more. We'll be showing how to create a simple call-provider that calls numbers when requested. We'll be using the deepstream [JavaScript client SDK](/docs/client-js/client/) and the [Twilio SDK for NodeJs](https://github.com/twilio/twilio-node).
 

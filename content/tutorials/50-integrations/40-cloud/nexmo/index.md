@@ -5,7 +5,7 @@ tags: [text-messaging, realtime, rpcs, nexmo]
 logoImage: nexmo.png
 ---
 
-This guide will take you through integrating deepstream with Nexmo's SMS API. If you'd like to dive right into the code you can have a look at the GitHub repository for this tutorial [here](https://github.com/deepstreamIO/dsh-demo-nexmo-integration).
+This guide will take you through integrating deepstream with Nexmo's SMS API. If you'd like to dive right into the code you can have a look at the GitHub repository for this tutorial [here](https://github.com/deepstreamIO/demos-js/tree/master/integration/nexmo).
 
 There are many use cases for sending SMS's in applications, from multi-factor authentication to alerts and more. We'll be showing how to create a simple sms-provider, that sends SMS's when requested. We'll be using the deepstream [JavaScript client SDK](/docs/client-js/client/) and the [Nexmo SDK for NodeJs](https://github.com/Nexmo/nexmo-node).
 
@@ -40,7 +40,7 @@ nexmo.message.sendSms(sender, recipient, message, callback)
 To create a `nexmo-provider`, all we need to do is provide an `RPC` method, and whenever it is invoked, send an SMS.
 
 ```javascript
-const client = deepstream('<Your app URL>')
+const client = deepstream()
 client.login()
 
 client.rpc.provide('send-sms', (data, response) => {

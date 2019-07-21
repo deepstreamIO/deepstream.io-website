@@ -57,7 +57,7 @@ Authentication provides three pieces of functionality to deepstream:
 3) It returns clientData, which is data that is forwarded to the client on login
 
 To see a guide of an Authentication plugin that only allows users to login with a preconfigured 
-token please look here [here](./authentication/)
+token please look [here](../authentication/)
 
 ## Permissioning
 
@@ -68,7 +68,7 @@ generate their own permissioning logic, which can allow you to interact with thi
 implement smarter caching depending on your use case.
 
 To see a guide of a Permission plugin that only allows users to interact with actions that have 
-their userId in the name please look [here](./permission/)
+their userId in the name please look [here](../permission/)
 
 ## Cache
 
@@ -80,7 +80,7 @@ your own by implementing it's simple API.
 The main performance benefit you always want to implement with cache layers is to seperate the version
 and values so that retrieving thousands of records in one go is significantly faster!
 
-To see a guide of a Cache plugin that stores data in memory please look [here](./cache/). Once 
+To see a guide of a Cache plugin that stores data in memory please look [here](../cache/). Once 
 your comfortable with it take a look at [redis](), [memcache](./) and hazelcast(./) 
 implementations for further inspiration!
 
@@ -101,13 +101,12 @@ with logs is usually quite expensive and so is better to leave for seperate proc
 easily integrate with multiple logging solutions and send your logs directly to your logging frameworks.
 
 To see a guide of a simple log plugin that buffers debug logs in memory until an error occurs (helps debugging!)
-please look [here](./logger/)
+please look [here](../logger/)
 
 ## Connection Endpoints
 
 A connection endpoint is the deepstream nervous system. Without it you can't get any messages back and forth between 
-it and the outside world. We provide three build in solutions, [ws](./ws), [uWebsockets.js](./uws) and HTTP via a
-standard called JIF. 
+it and the outside world. We provide three build in solutions, [ws](https://github.com/websockets/ws), [uWebsockets.js](https://github.com/uNetworking/uWebSockets.js/) and HTTP via a standard called JIF. 
 
 However its super simple to build your own, which in turn will allow you to create your own crazy protocols. Since this is 
 quite a large plugin we'll be releasing the documentation after the official V4 release.

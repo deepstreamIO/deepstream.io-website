@@ -33,7 +33,7 @@ $client->emitEvent( 'news/sports', 'something about football is happening');
 |$url|String|false|Deepstream URL|
 |$authData|Array|true|Auth token used for all your requests|
 
-The DeepstreamClient class creates a client instance to be used for all methods calls. The token option required for the $authData is a session token returned from a previous request to the app's HTTP auth url ([see http authentication](//docs/http/v1/#authentication)) or generated via the deepstream's dashboards token auth type. If you're using open auth the the token is optional.
+The DeepstreamClient class creates a client instance to be used for all methods calls. The token option required for the $authData is a session token returned from a previous request to the app's HTTP auth url ([see http authentication](/docs/http/v1/#authentication)) or generated via the deepstream's dashboards token auth type. If you're using open auth the the token is optional.
 
 Examples:
 

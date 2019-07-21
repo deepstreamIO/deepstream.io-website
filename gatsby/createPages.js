@@ -56,7 +56,6 @@ module.exports = async ({graphql, actions}) => {
 
     allMarkdown.data.allMarkdownRemark.edges.forEach(edge => {
         let { slug, weightedSlug } = edge.node.fields;
-        console.log(edge.node.fields)
         const { title, description, draft, deepstreamVersion } = edge.node.frontmatter;
 
         if (draft) {

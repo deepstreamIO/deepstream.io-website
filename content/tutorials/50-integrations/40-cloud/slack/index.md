@@ -5,7 +5,7 @@ tags: [slack, realtime, messaging, events]
 logoImage: slack.png
 ---
 
-This guide will take you through integrating deepstream with Slack's Incoming Webhook API. If you'd like to dive right into the code you can have a look at the GitHub repository for this tutorial [here](https://github.com/deepstreamIO/dsh-demo-slack-integration).
+This guide will take you through integrating deepstream with Slack's Incoming Webhook API. If you'd like to dive right into the code you can have a look at the GitHub repository for this tutorial [here](https://github.com/deepstreamIO/demos-js/tree/master/integration/slack).
 
 There are many use cases for sending messages to Slack in applications, from reminders and alerts and more. We'll be showing you how to create a simple form where users can send feedback to a slack channel. We'll be using the deepstream [JavaScript client SDK](/docs/client-js/client/) and the [Slack SDK for NodeJs](https://github.com/twilio/twilio-node).
 

@@ -27,7 +27,7 @@ It's highly recommended to always use a seperate process to do SSL termination. 
 Every incoming connection needs to pass an authentication step. This happens when the client calls `login(data, callback)`.
 deepstream comes with three built-in authentication mechanisms:
 
-- [none](https://deepstream.io/tutorials/core/auth-none/) allows every connection. Choose this option for public sites that don't require access controls.
+- [none](/tutorials/core/auth/none/) allows every connection. Choose this option for public sites that don't require access controls.
 - [file](https://deepstream.io/tutorials/core/auth-file/) reads authentication data from a static file. This is a good choice for public read / private write use cases, e.g. sports result pages that let every user visit, but only a few backend processes update the result.
 - [http](https://deepstream.io/tutorials/core/auth/http-webhook/) contacts a configurable HTTP webhook to ask if a user is allowed to connect. This is the most flexible option as it allows you to write a tiny http server in any language that can connect to databases, active directories, oAuth providers or whatever else your heart desires.
 

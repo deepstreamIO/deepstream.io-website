@@ -38,7 +38,7 @@ const record = client.record.getRecord('user/johndoe')
 |---|---|---|---|
 |name|String|false|The name of the list.|
 
-Retrieves or creates a [List](../datasync-list/) with the given name. Lists are arrays of recordNames that clients can manipulate and observe. You can learn more about them in the [list tutorial](//tutorials/core/datasync/lists/).
+Retrieves or creates a [List](../datasync-list/) with the given name. Lists are arrays of recordNames that clients can manipulate and observe. You can learn more about them in the [list tutorial](/tutorials/core/datasync/lists/).
 
 [[info]]
 | The list will be loaded asynchronously. To ensure the list is loaded put your logic into the [whenReady](/tutorials/core/datasync/records/) callback.

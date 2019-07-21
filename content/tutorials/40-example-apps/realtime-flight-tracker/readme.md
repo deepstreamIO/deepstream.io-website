@@ -11,7 +11,7 @@ This tutorial will take you through building a realtime flight tracking system w
 
 To provide these updates, we'll be polling an endpoint for the location of flights. Since the flights aren't necessarily updated every second, we'll be naively interpolating the data points to create a smoother experience for the end user.
 
-The first thing we'll do is create our backend process that provides the realtime updates to our clients. The only dependencies we'll have for this provider will be the [deepstream Javascript client](https://github.com/deepstreamIO/@deepstream/client) and [needle](https://github.com/tomas/needle), a nice wrapper for making HTTP requests.
+The first thing we'll do is create our backend process that provides the realtime updates to our clients. The only dependencies we'll have for this provider will be the [deepstream Javascript client](https://github.com/deepstreamIO/deepstream.io-client-js) and [needle](https://github.com/tomas/needle), a nice wrapper for making HTTP requests.
 
 We can get a reference to our client as follows, and then get our deepstream `List` of flights, this is the list of flights that clients will be referring to.
 
