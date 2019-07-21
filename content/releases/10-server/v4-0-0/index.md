@@ -32,18 +32,18 @@ description: The massively upgraded deepstream server! Introducing too many chan
 
 I wanted to leave this part till the end, but it's the biggest loss with upgrading to V4 and will be an instant blocker for some users.
 
-We are sad to say that we haven't yet migrated the V3 non browser and node SDKs to V4. The reason is because the underlying protocol has changed and the way SDKs were written in V3 constructed and parsed string messages all over the code base. This design has unfortunately meant that while we could write a binary to text parser in the Java SDK it would just make it maintenance hell.
+We are sad to say that we haven't yet migrated the V3 non browser and node SDKs to V4. The reason is that underlying protocol has changed and the way SDKs were written in V3 constructed and parsed string messages all over the code base. This design has unfortunately meant that while we could write a binary to text parser in the Java SDK it would just make it maintenance hell.
 
-Our Swift SDK has been ambitious from the start, using J2OBJC in order to convert the java code to Objective C with thick polyfills for java methods. While this approach has worked its really hard to maintain and build.
+Our Swift SDK has been ambitious from the start, using J2OBJC in order to convert the java code to Objective C with thick polyfills for java methods. While this approach has generally worked, it is really hard to maintain and build.
 
 Our goal going forward is to write a single Kotlin SDK that can run on both iOS and Java. We would also have it run a much more minimal set of functionality, allowing the SDK to only consume strings rather than objects. This would allow us to integrate easily with many of the different flavours of JSON libraries out there.
 
-Because we used protobuf however the good news is we can easily create protocol objects using a generator, which means we can immediately focus on SDKs and less
+Because we used Protobuf, however, the good news is we can easily create protocol objects using a generator, which means we can immediately focus on SDKs and less
 so on lower level binary parsing!
 
 ## This website
 
-There has been alot of feedback on the differences between our deepstreamHub and deepstream documentation and offerings, where some users were not certain where the line was drawn between open source and enterprise. We also have over a hundred pages of documentation in a world where some of yesterday's hot trends (For example knockout, angularJS) have been replaced by others (React, Vue). And even within the one library approaches have been deprecated, replaced or advised against (React mixins, stateful components and hooks). While we love keeping up to date with all the latests chatter in devops and developer land, it's pretty much impossible to do so while also focusing on integrating important features into deepstreams core. As such I'm happy to say we have migrated all of our OS documentation and website back to opensource using the amazing [Gatsby]() framework. Every page can now be edited by the community, and adding pages is as easy as writing a markdown document, adding some images and letting the build take care of the rest. If you would like to do anything fancy your more than welcome to add a React component! It's worth noting that while all content has been migrated across the css can and will still need an insane amount of ❤️ since that was ported and not rewritten from the original website.
+There has been a lot of feedback on the differences between our deepstreamHub and deepstream documentation and offerings, where some users were not certain where the line was drawn between open source and enterprise. We also have over a hundred pages of documentation in a world where some of yesterday's hot trends (For example Knockout, AngularJS) have been replaced by others (React, Vue). And even within the one library, approaches have been deprecated, replaced or advised against (React mixins, stateful components, and hooks). While we love keeping up to date with all the latest chatter in DevOps and developer land, it's pretty much impossible to do so while also focusing on integrating important features into deepstream's core. As such, I'm happy to say we have migrated all of our OS documentation and website back to opensource using the amazing [Gatsby]() framework. Every page can now be edited by the community, and adding pages is as easy as writing a markdown document, adding some images and letting the build take care of the rest. If you would like to do anything fancy, you are more than welcome to add a React component! It's worth noting that while all content has been migrated across the css can and will still need an insane amount of ❤️ since that was ported and not rewritten from the original website.
 
 `markdown:release-4.0-protobuf-protocol.md`
 
@@ -51,7 +51,7 @@ There has been alot of feedback on the differences between our deepstreamHub and
 
 We converted the majority of the codebase to typescript, for the benefit of future code maintenance as well making it easier for people to contribute.
 
-This also means we now had declerations for all the possible plugin interfaces which should make it much easier for people to write their own once they fork the V4 plugin template.
+This also means that we now have declarations for all possible plugin interfaces which should make it much easier for people to write their own, once they fork the V4 plugin template.
 
 Current custom external plugins are:
 
@@ -86,7 +86,7 @@ Improvements to the startup lifecyle also means that deepstream now launches eve
 4) Plugins
 5) Connection Endpoints
 
-This means by the time your custom plugins are initialized Deepstream has all the services started. The reason why isn't the last lifecyle before running is because once the server is stopped you would usually want to drain all the connections before stopping your own custom logic. If you need to access the connection-endpoint directly please raise an issue, it's easy to add a hook however simpler APIs are always better.
+This means by the time your custom plugins are initialized, Deepstream has all the services started. The reason why this isn't the last lifecyle before running is because once the server is stopped you would usually want to drain all the connections before stopping your own custom logic. If you need to access the connection-endpoint directly please raise an issue: it's easy to add a hook, however, simpler APIs are always better.
 
 ## Monitoring
 
@@ -140,7 +140,7 @@ Using the following plugins:
 
 - Cluster node
 
-A cluster node is the core of clustering and is responsible for serializing the messages to send, as well as subscribing to any messages in the cluster it may be interested in. The default supplied version with deepstream is a vertical message bus for use with node Clustering. It's very easy to write your own though!
+A cluster node is the core of clustering and is responsible for serializing the messages to send, as well as subscribing to any messages in the cluster it may be interested in. The default supplied version with deepstream is a vertical message bus for use with node clustering. It's very easy to write your own though!
 
 ```
 interface DeepstreamClusterNode  {
@@ -169,8 +169,7 @@ interface DeepstreamLockRegistry  {
 
 - State Registries Factory
 
-The state registry is responsible for holding the state of subscriptions across the cluster. The default implementation is distributed, using add/remove and reconciliation checks. However this is one of the more expensive operations in deepstream due to consistency checks. By being a plugin we could also use a redis
-based approach, as long as we figure out how to clear down the state if a server died ungracefully.
+The state registry is responsible for holding the state of subscriptions across the cluster. The default implementation is distributed, using add/remove and reconciliation checks. However, this is one of the more expensive operations in deepstream due to consistency checks. By being a plugin we could also use a Redis based approach, as long as we figure out how to clear down the state if a server died ungracefully.
 
 ```
 type StateRegistryCallback = (name: string) => void
@@ -218,7 +217,7 @@ interface ClusterRegistry {
 
 ## Performance Improvements
 
-Things have changed quite a bit in the nodeJS world. [Node 10]() came out with the inclusion of a [new garabage collector](), async/await has changed the coding landscape and V8 has been optimised for all the ES6 improvements. However there's unforuntately a bit of a dark side to all of this. In order to improve performance for the ES6 features most developers now use, the actual performance of ES5 has taken a hit. While there were talks about potentially switching to a totally different language instead a total rewrite would have been absolutely impossible. So instead we targeted what I like to call optimistic optimizations, which mean in the worse case scenario it won't make any difference at all, but if your lucky you could get boosts of multiple factors.
+Things have changed quite a bit in the NodeJS world. [Node 10]() came out with the inclusion of a [new garbage collector](), async/await has changed the coding landscape, and V8 has been optimized for all the ES6 improvements. However, there's unfortunately a bit of a dark side to all of this. In order to improve performance for the ES6 features most developers now use, the actual performance of ES5 has taken a hit. While there were talks about potentially switching to a totally different language instead a total rewrite would have been absolutely impossible. So instead we targeted what I like to call optimistic optimizations, which mean in the worst-case scenario it won't make any difference at all, but if you're lucky you could get boosts of multiple factors.
 
 So what falls under these optimizations?
 
@@ -226,13 +225,13 @@ In this current release there are three parts:
 
 ### Lazy data parsing
 
-So the downside behind using JSON as a data payload is that its not exactly fast. Without knowing your schema upfront and given that each record, event or request/response can literally contain anything there's little we can do currently to improve that. So what we do instead is just ignore the whole parsing aspect altogether on the server unless needed. What this means is as far as deepstream is concerned, as long as you don't need to access the data you'll never actually parse it. There are three places where the data payload is actually required.
+So the downside behind using JSON as a data payload is that its not exactly fast. Without knowing your schema upfront and given that each record, event or request/response can literally contain anything, there's little we can do currently to improve that. So what we do instead is to just ignore the whole parsing aspect altogether on the server unless needed. What this means is as far as deepstream is concerned, as long as you don't need to access the data you'll never actually parse it. There are three places where the data payload is actually required.
 
 1) Permissions, only if you access the `data` value.
 
 2) Record patches. A record patch (setting a value with a path) has to apply the patch onto the current value requiring both the previous and value to be parsed (bandwidth vs CPU usage tradeoff).
 
-3) Storage adaptors. This is unfortunately unavoidable currently as some storage adaptors don't accept buffers or strings directly. This means even though we pass the data all the way to the storage SDK optimially we have to parse it just for the SDK to serialize it again =(. On that topic as well node hasn't made it too easy with most libraries using the Buffer wrapper while ignoring the more optimial (and not so nice to use) Array Buffer. We are looking at extending our storage API's going forward to allow deepstream to pick between a buffer and string argument to allow optimal paths when possible.
+3) Storage adaptors. This is unfortunately unavoidable currently as some storage adaptors don't accept buffers or strings directly. This means even though we pass the data all the way to the storage SDK optimally we have to parse it just for the SDK to serialize it again =(. On that topic as well node hasn't made it too easy with most libraries using the Buffer wrapper while ignoring the more optimal (and not so nice to use) Array Buffer. We are looking at extending our storage API's going forward to allow deepstream to pick between a buffer and string argument to allow optimal paths when possible.
 
 ### Seperation of data storage concerns
 
@@ -256,7 +255,7 @@ That just made searching an absolute pain, so what we done is transformed the da
 }
 ```
 
-Reason it's an object instead is incase we ever decided to add more meta data going forward. The issue with this however is we needed to load the entire record into memory and transform it whenever want to do anything. When you start thinking in bulk (hundreds or thousands of subscriptions) the objects, CPU cycles and immediate gc this uses is just, well, useless.
+The reason it's an object instead is in case we ever decided to add more metadata going forward. The issue with this, however, is we needed to load the entire record into memory and transform it whenever we want to do anything. When you start thinking in bulk (hundreds or thousands of subscriptions) the objects, CPU cycles, and immediate gc this uses is just, well, useless.
 
 So how did we decide on optimizing this? By no longer doing any of the transform logic in the core server. This means rather than deepstream calling into storage using this:
 
@@ -279,7 +278,7 @@ public set (
 )
 ```
 
-It looks like a tiny change and for all our current adaptors it's fully backwards compatible. However the goal is for us to start using things like custom redis commands to store these entries seperately in the cache:
+It looks like a tiny change and for all our current adaptors it's fully backwards compatible. However the goal is for us to start using things like custom Redis commands to store these entries seperately in the cache:
 
 |Name|Example value|Description|
 |---|---|---|
@@ -288,7 +287,7 @@ It looks like a tiny change and for all our current adaptors it's fully backward
 
 This allows us to then do awesome things going forward like:
 
-- Validating the version number doesn't conflict on the cache rather than in the server, critical when clustering
+- Validating the the version number doesn't conflict with the one in the cache rather than in the server, critical when clustering
 - Only requesting the version number of records instead of the entire data-set when using offline-storage or doing a head/has
 - Potentially storing deepstream data in a meta collection for clear seperation
 
@@ -298,7 +297,7 @@ This was probably one of the biggest under the hood improvements, and although i
 
 So whats the difference?
 
-In V3 if you subscribed to a few thousand records the only optimization that would occur is that it would be sent as an individual websocket frame. So something like this (excuse the repetitiveness):
+In V3 if you've subscribed to a few thousand records the only optimization that would occur is that it would be sent as an individual websocket frame. So something like this (excuse the repetitiveness):
 
 Sends:
 
@@ -349,8 +348,8 @@ The reason why we have a `missing` argument in the response is because we aren't
 
 ### Notify API
 
-Deepstream is used in multiple different ways and scenarios. Some users have played with it on their IoT devices, combining HTTP output from sensors and websocket connections for interactive realtime dashboards. Others have used it for communication applications and gaming. However one thing was pretty much always a given, integrating deepstream for records into an existing app, specially one that is crud/HTTP based was a pain. Your application would
-update your data via your current trusted/battle tested approach and you just want deepstream to consume those changes. Prior to this you would need to set the data using `setData` APIs. Not any more! As long your database is deepstream compatible (and if not, you can always write a thin StoragePlugin to conform to your standards!) then all you need to do is notify deepstream something changed in the database.
+Deepstream is used in multiple different ways and scenarios. Some users have played with it on their IoT devices, combining HTTP output from sensors and WebSocket connections for interactive realtime dashboards. Others have used it for communication applications and gaming. However, one thing was pretty much always a given, integrating deepstream for records into an existing app, especially one that is crud/HTTP based was a pain. Your application would
+update your data via your current trusted/battle-tested approach, and you just want deepstream to consume those changes. Prior to this, you would need to set the data using `setData` APIs. Not any more! As long your database is deepstream compatible (and if not, you can always write a thin StoragePlugin to conform to your standards!) then all you need to do is notify deepstream something changed in the database.
 
 Lets see code!
 
@@ -388,7 +387,7 @@ This will do the following on deepstream:
     5) Notify all interested users
     6) Send to other nodes in cluster to notify their users
 
-That is done for every single update. So if your updating a thousand records thats 6000 steps. So if your writing things really quickly it will get quite busy quite fast. Previously we optimised this by having config (still supported) like `hotPathPrefixes` which skips the second step.
+That is done for every single update. So if you're updating a thousand records that's 6000 steps. So if you're writing things really quickly it will get quite busy quite fast. Previously we optimized this by having config-options (still supported) like `hotPathPrefixes` which skips the second step.
 
 Now with 
 
