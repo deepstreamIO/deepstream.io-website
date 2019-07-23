@@ -46,7 +46,7 @@ A custom plugin is something that can add new functionality to connect your worl
 The custom plugin API currently is just in its infancy, and we're hoping that we get requests of useful (and crazy!)
 ideas to help us mold it into something even more powerful!
 
-To see an example custom plugin that listens to user logins/logouts, logs detailed information and sends an event please look [here](./custom-plugin/)
+To see an example custom plugin that listens to user logins/logouts, logs detailed information and sends an event please look [here](../custom-plugin/)
 
 ## Authentication
 
@@ -117,14 +117,14 @@ Monitoring is a new API that allows users to track all high level actions that h
 pretty display using a system such as grafana. This plugin will offer rich APIs with time, but for now covers the essentials needed to get that warm fuzzy feeling when everything is going right.
 
 To see an example monitoring plugin that exposes a HTTP server to allow users to query it's currently state please
-look [here](./monitoring/)
+look [here](../monitoring/)
 
 ## Cluster Node
 
 The almighty cluster node! This plugin is the only one that isn't shipped with a default setting (although we are looking into vertical clustering!). It's responsible for allowing deepstream nodes to communicate with each other.
 There's no magic to this, purely just a `send`, `sendDirect` and `recieve` method. 
 
-To see an example clustering plugin that allows nodes to talk to each other using redis please look [here](./cluster-node/)
+To see an example clustering plugin that allows nodes to talk to each other using redis please look [here](../cluster-node/)
 
 ## Locks
 
@@ -147,6 +147,6 @@ presence, subscriptions and listening across multiple nodes. This API is current
 
 ## Subscription Registry Factory
 
-The Subscription Registry is sort of like the dispatch centre of deepstream. It holds all subscriptions and gets told whenever someone susbcribes or unsubscribes to anything. It's also responsible for sending those messages out
+The Subscription Registry is sort of like the dispatch centre of deepstream. It holds all subscriptions and gets told whenever someone subscribes or unsubscribes to anything. It's also responsible for sending those messages out
 to all interested clients. This is a plugin purely because we want to start experimenting with different broadcast 
 patterns and allowing users to decide which one makes most sense. We'll be adding an example plugin to this in the future as it's quite complex. However if anyone is interested please raise a git issue and we'll be more than happy to run you through it!

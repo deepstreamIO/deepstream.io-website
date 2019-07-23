@@ -127,4 +127,4 @@ It wouldn't be fair to say that this overhaul has no downsides. There have been 
 
 ### Why yet another proprietry standard?
 
-Because deepstream offers some very specific features, and has alot more on the way. For example we currently have a unique concept such as listening. Trying to use a realtime standard (which there aren't many of) would seriously hinder development. That being said deepstream allows swapping out of protocols quite easily as long as theres an interop layer so feel free to create compatability protocols to work with your favourite SDKs!
+Because deepstream offers some very specific features, and has alot more on the way. For example we currently have a unique concept such as listening. Trying to use a realtime standard (which there aren't many of) would seriously hinder development. That being said deepstream allows swapping out of protocols quite easily as long as theres an interop layer so feel free to create compatibility protocols to work with your favourite SDKs!

@@ -18,13 +18,17 @@ description: The massively upgraded deepstream server! Introducing too many chan
 ### Improvements
 
 - Lazy data parsing
-- Improved deepstream lifecyle
+- Improved deepstream lifecycle
 - Upgraded development tools
 - New deepstream.io website
 
-### Backwards compatability
+### Backwards compatibility
 
 - All V3 SDKs no longer compatible due to protobuf binary protocol
+
+### Upgrade guide
+
+You can see the upgrade guide for backwards compatibility [here](/tutorials/upgrade-guides/v4/server/)
 
 ## TLDR:
 

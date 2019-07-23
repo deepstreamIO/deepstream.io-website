@@ -151,5 +151,12 @@ export const TutorialsGuides: React.FunctionComponent<TutorialsOverviewProps> = 
                 <Category title="Deployment &amp; PaaS" entries={sections.integrations.cloud} />
             </div>
         ]} />
+
+        <Section columnClassName="entries" columns={[
+            <div>
+                <h2>Upgrade Guides</h2>
+                <Category title="Upgrading to V4" entries={sections['upgrade-guides'].v4} />
+            </div>
+        ]} />
     </Section>
 }
