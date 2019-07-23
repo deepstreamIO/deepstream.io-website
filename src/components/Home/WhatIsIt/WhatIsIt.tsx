@@ -54,7 +54,7 @@ export const WhatIsIt = () => (
                     </p>
                 </li>
                 <li>
-                    <h3>listening <small>responsive subscriptions</small></h3>
+                    <h3>listening <small>reactive subscriptions</small></h3>
                     <p>
                     listening enables you to monitor your client's subscriptions actively and only provide data when it's actually needed. This significantly reduces data-throughput and costs, especially across larger micro-service architectures.
                     </p>
