@@ -20,7 +20,7 @@ the [configuration and default values](/docs/server/configuration/).
 **Please note** calling `server = new Deepstream()` only creates the instance, to actually start the server, you still need to call `server.start();`
 
 ```javascript
-const Deepstream = require('@deepstream/server')
+const { Deepstream } = require('@deepstream/server')
 const server = new Deepstream({ port:8000 })
 ```
 
@@ -66,8 +66,8 @@ Actually these options can be passed by an configuration object, but if you use 
 
 These options might have a different name and location in the structure of the configuration object. If you use `set()` you also need to provide the instantiated instance as the `value`.
 
-- `authenticationHandler`
-- `permissionHandler`
+- `authentication`
+- `permission`
 - `logger`
 - `cache`
 - `storage`
@@ -93,7 +93,7 @@ server.set('sslCert', fs.readFileSync('./keys/cert.pem', 'utf8'))
 * @type authenticationHandler
 * @default OpenPermissionHandler (same as `{auth:{type: none}}` in the default config)
 */
-server.set('authenticationHandler', new OAuthHandler())
+server.set('authentication', new OAuthHandler())
 
 /**
 * An object that that exposes a canPerformAction function.
@@ -101,7 +101,7 @@ server.set('authenticationHandler', new OAuthHandler())
 * @type permissionHandler
 * @default ConfigPermissionHandler (with arguments from the default config)
 */
-server.set('permissionHandler', new LdapPermissionHandler())
+server.set('permission', new LdapPermissionHandler())
 
 /**
 * A logger
