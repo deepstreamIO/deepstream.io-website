@@ -1,6 +1,3 @@
-
-## Binary Protocol
-
 The driver behind pretty much all of the V4 refactor was our move from our old text based protocol to binary. Before you ask, while we might add actual binary data support in deepstream we still currently use it to parse JSON payloads. But it makes building SDKs and new features so much easier. Seriously. LIKE SO MUCH EASIER.
 
 Okay so first things first, the structure of text vs binary messages:

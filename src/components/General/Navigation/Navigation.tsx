@@ -12,10 +12,5 @@ export const Navigation = ({ mobile = false }) => (
                 </li>
             ))
         }
-        <li className="navigation-link">
-            <a href="https://deepstreamhub.com/enterprise">
-                enterprise
-            </a>
-        </li>
     </ul>
 )

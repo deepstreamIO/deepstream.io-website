@@ -1,0 +1,31 @@
+.elton {
+    width: 30%;
+    height: 30%;
+    display: inline-block;
+}
+
+.content {
+    display: inline-block;
+    vertical-align: top;
+    margin: 50px;
+    max-width: 450px;
+}
+
+.content h1 {
+    font-size: 50px;
+}
+
+.content a, .content p {
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.content a {
+    color: #0FBBEC;
+}
+
+@media (max-width: 800px) {
+    .elton {
+        width: 100%;
+    }
+}

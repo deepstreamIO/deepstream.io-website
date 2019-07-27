@@ -11,7 +11,7 @@ With SNS we can send the same message to Smartphones, Email inboxes and VoIP cli
 
 In this quick guide we'll show you how to do this with deepstream, we'll be using the [JavaScript client SDK](/docs/client-js/client/) and the [AWS client sdk for NodeJs](https://aws.amazon.com/sdk-for-node-js/).
 
-{{> start-deepstream-server}}
+`markdown:setting-up-deepstream.md`
 
 ## The basic setup
 
@@ -65,13 +65,13 @@ server.on('request', (request, response) => {
   request.setEncoding( 'utf8' )
 
   //concatenate POST data
-  var msgBody = ''
+  let msgBody = ''
   request.on('data', (data) => {
     msgBody += data
   })
   request.on( 'end', function(){
-    var msgData = JSON.parse(msgBody)
-    var msgType = request.headers['x-amz-sns-message-type']
+    const msgData = JSON.parse(msgBody)
+    const msgType = request.headers['x-amz-sns-message-type']
     handleIncomingMessage(msgType, msgData)
   })
 

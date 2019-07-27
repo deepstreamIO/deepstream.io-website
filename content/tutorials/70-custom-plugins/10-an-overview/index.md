@@ -7,7 +7,7 @@ Deepstream at is core is a collection of plugins, handlers and a protocol that i
 
 There are currently a total of 7 plugins that are required by deepstream to run, all of which have defaults built in. Before we dive into those, let's first look at the core `PluginAPI`:
 
-```
+```typescript
 interface PluginOptionsConfig {
     ... all options go here ...
 }

@@ -10,7 +10,7 @@ This guide will take you through integrating deepstream with Slack's Incoming We
 There are many use cases for sending messages to Slack in applications, from reminders and alerts and more. We'll be showing you how to create a simple form where users can send feedback to a slack channel. We'll be using the deepstream [JavaScript client SDK](/docs/client-js/client/) and the [Slack SDK for NodeJs](https://github.com/twilio/twilio-node).
 
 
-{{> start-deepstream-server}}
+`markdown:setting-up-deepstream.md`
 
 
 ## High level overview
@@ -53,7 +53,7 @@ Running the above code will send the message `Hello world!` to our new feedback 
 
 ## Integrating it with deepstream
 
-{{> glossary event=true noHeadline=true}}
+`markdown:glossary-event.md`
 
 
 

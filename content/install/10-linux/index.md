@@ -29,5 +29,5 @@ After installing, you can start and stop deepstream simply by doing:
 deepstream service start
 ```
 
-![Starting deepstream on linux](../linux-start.png)
+![Starting deepstream on linux](../deepstream-v4.png)
 

@@ -56,8 +56,8 @@ Processes can register as providers for multiple RPCs and many processes can pro
 Providers themselves are also able to reject requests (e.g. because they're under heavy load) using `response.reject()` which will prompt deepstream to re-route the request to another available provider.
 
 ```javascript
-//Limiting to 50 simultanious tasks at a time
-var inProgress = 0;
+//Limiting to 50 simultaneous tasks at a time
+let inProgress = 0;
 client.rpc.provide('task', async (data, response) => {
     inProgress++;
 

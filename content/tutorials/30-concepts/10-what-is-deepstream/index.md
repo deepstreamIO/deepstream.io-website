@@ -50,9 +50,7 @@ deepstream can optionally be integrated with three types of systems:
 - Databases can be used for long-term data storage and querying
 - Caches can be used for fast, short-term data access
 
-Connectors are available for many popular systems, e.g. [RethinkDB](/tutorials/plugins/database/rethinkdb/), [MongoDB](/tutorials/plugins/database/mongodb/), [Redis](/tutorials/plugins/cache/redis/) or [ElasticSearch](/tutorials/plugins/database/elasticsearch/) and can also easily be written yourself. This animation aims to provide an impression of how deepstream interacts with other systems
-
-![how it works](/tutorials/core/cluster-messaging/internal-workings.svg)
+Connectors are available for many popular systems, e.g. [RethinkDB](/tutorials/plugins/database/rethinkdb/), [MongoDB](/tutorials/plugins/database/mongodb/), [Redis](/tutorials/plugins/cache/redis/) or [ElasticSearch](/tutorials/plugins/database/elasticsearch/) and can also easily be written yourself.
 
 If no external system is specified, deepstream will run as a single node and store data in internal memory, but won't persist it to disk.
 

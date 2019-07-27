@@ -53,31 +53,48 @@ The following configuration shows how to use nginx as a load balancer, SSL termi
 ```nginx
 worker_processes  1;
 
-error_log /usr/local/nginx/logs/error.log info;
-
 events {
     worker_connections  1024;
 }
 
-stream {
-    upstream backend {
-        # define all http/ws endpoints
-        server localhost:6020;
+http {   
+    map $http_upgrade $connection_upgrade {
+        default upgrade;
+        '' close;
+    }
+
+    upstream websocket {
+      server localhost:6020; #Websockets
+    }
+
+    upstream httpendpoint {
+      server localhost:8080; #HTTP
     }
 
     server {
-        listen     443 ssl #external websocket port;
-        proxy_pass backend;
+       listen 9090 ssl;
+       server_name localhost;
 
-        # SSL Termination, comment this section if you don't
-        # want to use WSS (don't forget to remove the ssl after listen)
-        ssl_certificate         /etc/ssl/certs/yourcert.crt;
-        ssl_certificate_key     /etc/ssl/certs/yourkey.key;
-        ssl_protocols           TLSv1 TLSv1.1 TLSv1.2;
-        ssl_ciphers             HIGH:!aNULL:!MD5;
-        ssl_session_cache       shared:SSL:20m;
-        ssl_session_timeout     4h;
-        ssl_handshake_timeout   30s;
-    }
+       ssl_protocols       TLSv1 TLSv1.1 TLSv1.2;
+       ssl_ciphers         HIGH:!aNULL:!MD5;
+
+       ssl_certificate /etc/ssl/certs/cert.crt;
+       ssl_certificate_key  /etc/ssl/certs/key.key;
+
+       # Deepstream websocket redirect
+       location /deepstream {
+            proxy_pass http://websocket;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection "Upgrade";
+       }
+
+        # Deepstream http endpoint
+        location /http {
+            proxy_pass http://httpendpoint;
+            proxy_http_version 1.1;
+            rewrite ^/http(.*) /$1 break;
+        }
+   }
 }
 ```

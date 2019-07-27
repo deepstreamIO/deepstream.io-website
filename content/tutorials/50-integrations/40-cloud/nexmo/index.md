@@ -11,7 +11,7 @@ There are many use cases for sending SMS's in applications, from multi-factor au
 
 A common use case for sending SMS's is in restaurants where they send out the shifts each employee has for the week. We'll be creating a simple web form where we can send an employee their shifts for the week.
 
-{{> start-deepstream-server}}
+`markdown:setting-up-deepstream.md`
 
 ## Get started with Nexmo
 

@@ -8,7 +8,7 @@ This guide will take you through integrating deepstream with Sendgrid's Email AP
 
 There are many use cases for sending emails in applications, from reminders to promotional emails and more. We'll be showing how to create a simple `email-provider`, that sends a password reset email for your users when requested. We'll be using the deepstream [JavaScript client SDK](/docs/client-js/client/) and the [Sendgrid SDK for NodeJs](https://github.com/sendgrid/sendgrid-nodejs).
 
-{{> start-deepstream-server}}
+`markdown:setting-up-deepstream.md`
 
 ## Get started with Sendgrid
 
@@ -38,7 +38,7 @@ client.API(request, (error, response) => {
 
 ## Integrating it with deepstream
 
-{{> glossary rpc=true noHeadline=true}}
+`markdown:glossary-rpc.md`
 
 
 Let's next create our `email-provider`, all we need to do is provide an `RPC` method called `password-reset` and whenever it is invoked, send an email prompting the user to reset their password.

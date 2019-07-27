@@ -20,10 +20,10 @@ support.
 As usual if you find a bug or need help getting the client to build on your
 architecture, please feel free to create an issue [on the client GitHub
 repository](https://github.com/deepstreamIO/deepstream.io-client-cpp/issues) 
-or [get in touch](/contact) through one of our other support channels.
+or get in touch through one of our other support channels.
 {{/infobox}}
 
-{{> start-deepstream-server}}
+`markdown:setting-up-deepstream.md`
 
 
 ## Connect to deepstream and log in
@@ -89,7 +89,7 @@ using deepstream::json;
 
 ## Events (publish-subscribe)
 
-{{> glossary event=true noHeadline=true}}
+`markdown:glossary-event.md`
 
 
 

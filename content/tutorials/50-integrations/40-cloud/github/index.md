@@ -28,7 +28,7 @@ If you'd like to follow along, you can clone
 [the completed project](http://github.com/deepstreamIO/ds-tutorial-github-board) 
 on GitHub.
 
-{{> start-deepstream-server}}
+`markdown:setting-up-deepstream.md`
 
 -   Create an application through the deepstream dashboard, and make a note
     of the corresponding application url.

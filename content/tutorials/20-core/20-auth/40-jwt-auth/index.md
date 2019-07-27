@@ -35,7 +35,7 @@ Looking back at the flow described above, JWT needs to be put somewhere in the p
 
 ## The simple, but less secure one
 
-![JWT Authentication Flow Simple](deepstream-jwt-auth-flow-simple.png)
+![JWT Authentication Flow Simple](./deepstream-jwt-auth-flow-simple.png)
 
 In this scenario, the deepstream client sends the user's credential to deepstream which forwards it to a configured HTTP endpoint.
 
@@ -51,7 +51,7 @@ Likewise, this approach requires the web application itself and all its assets t
 ## The complicated, secure one
 The recommended workflow looks as follows:
 
-![JWT-Auth Flow](deepstream-jwt-auth-flow.PNG)
+![JWT-Auth Flow](deepstream-jwt-auth-flow.png)
 
 The steps shown here are
 
@@ -91,11 +91,11 @@ Just two inputs -- a username and a password. Once te user hits login, the crede
 
 ```js
 // . . .
-var jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 
 app.post('/handle-login', function(req, res, next) {
   
-   var users = {
+   const users = {
     wolfram: {
       username: 'wolfram',
       password: 'password'
@@ -107,7 +107,7 @@ app.post('/handle-login', function(req, res, next) {
     // . . .
   }
 
-  var user = users[req.body.username];
+  const user = users[req.body.username];
 
   if (!user) {
       res.status(403).send('Invalid User')
@@ -119,7 +119,7 @@ app.post('/handle-login', function(req, res, next) {
 
         // if user is found and password is right
         // create a token
-        var token = jwt.sign(user, 'abrakadabra');
+        const token = jwt.sign(user, 'abrakadabra');
 
         // return the information including token as JSON
         // set token to cookie using the httpOnly flag
@@ -150,8 +150,8 @@ This configuration instructs the deepstream server to make a POST request to `ht
 From the deepstream client we can now call `client.login()`
 
 ```js
-var deepstream = require( '@deepstream/client');
-var client = deepstream('localhost:6020')
+const deepstream = require( '@deepstream/client');
+const client = deepstream('localhost:6020')
   // Login method
   .login( null, ( success, clientData ) => {
 
@@ -172,10 +172,10 @@ Upon calling `ds.login()` deepstream posts the connection data to the configured
 
 ```js
 //. . .
-var jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 
 app.post('/check-token', function(req, res) {
-  var token = getCookie(req.body.connectionData.headers.cookie, 'access_token');
+  const token = getCookie(req.body.connectionData.headers.cookie, 'access_token');
   jwt.verify(token, 'abrakadabra', function(err, decoded) {      
       if (err) {
         res.status(403).send('Failed to authenticate token.' );    
@@ -189,8 +189,8 @@ app.post('/check-token', function(req, res) {
 });
 
 function getCookie( src, name ) {
-  var value = "; " + src;
-  var parts = value.split("; " + name + "=");
+  const value = "; " + src;
+  const parts = value.split("; " + name + "=");
   if (parts.length == 2) return parts.pop().split(";").shift();
 }
 ```
@@ -203,11 +203,11 @@ This covers the general JWT authentication flow - however using JWT we can also 
 Express makes this easy by adding a middleware function that checks for the existence of a valid JWT before proceeding to process a request.
 
 ```js
-var jwt = require('jsonwebtoken');
-var authMiddleware = function(req, res, next) {
+const jwt = require('jsonwebtoken');
+const authMiddleware = function(req, res, next) {
 
 
-  var token = req.cookies.access_token;
+  const token = req.cookies.access_token;
   
   // decode token
   if (token) {

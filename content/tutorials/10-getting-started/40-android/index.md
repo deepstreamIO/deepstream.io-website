@@ -7,7 +7,7 @@ deepstreamVersion: V3
 
 This guide will take you through getting started on Android with deepstream's three core concepts: [Records](/tutorials/guides/records), [Events](/tutorials/guides/events) and [RPCs](/tutorials/guides/remote-procedure-calls/).
 
-{{> start-deepstream-server}}
+`markdown:setting-up-deepstream.md`
 
 ## Connect to deepstream and log in
 
@@ -30,7 +30,7 @@ client.login();
 From here, whenever we have a reference to our factory we can do `factory.getClient()` and get the same client back. Our `MainActivity` is just a basic `Activity` with buttons pointing to our three pages `EventActivity`, `RpcActivity` and `RecordActivity`. So we'll ignore that for now and jump right into events.
 
 ## Event (publish-subscribe)
-{{> glossary event=true noHeadline=true}}
+`markdown:glossary-event.md`
 
 
 
@@ -70,7 +70,7 @@ After this, we should have something that looks like the following:
 ![event-gif](event-demo.gif)
 
 ## Records (data-sync)
-{{> glossary record=true noHeadline=true}}
+`markdown:glossary-record.md`
 
 
 
@@ -147,7 +147,7 @@ Finally, we should have something that looks like this:
 ![record-gif](record-demo.gif)
 
 ## RPCs (request-response)
-{{> glossary rpc=true noHeadline=true}}
+`markdown:glossary-rpc.md`
 
 
 

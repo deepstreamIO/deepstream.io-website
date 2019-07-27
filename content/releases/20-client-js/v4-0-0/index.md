@@ -114,6 +114,8 @@ client.record.listen('users/.*', (name, ({ accept, reject, onStop }) => {
 
 ## TLDR:
 
+## Binary Protocol
+
 `markdown:release-4.0-protobuf-protocol.md`
 
 ## Offline Storage

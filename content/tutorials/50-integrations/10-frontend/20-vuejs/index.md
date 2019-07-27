@@ -27,7 +27,7 @@ vue init simple ds-vue
 After you have successfully created an Angular app, add the deepstream JS-client library in your new project:
 
 ```html
-<script src="https://cdnjs.cloudflare.com/ajax/libs/@deepstream/client/2.1.1/deepstream.js"></script>
+<script src="https://cdn.deepstream.io/js/client/latest/ds.min.js"></script>
 ```
 
 Get your app url from the dashboard and establish a connection to deepstream using the `created` lifecycle hook:
@@ -55,7 +55,7 @@ The hook will connect to your deepstream server and login only when the componen
 Creating a new record or retrieving an existent one works the same way
 
 ```javascript
-var myRecord = ds.record.getRecord( 'test/johndoe' );
+const myRecord = ds.record.getRecord( 'test/johndoe' );
 ```
 
 Values can be stored using the `.set()` method

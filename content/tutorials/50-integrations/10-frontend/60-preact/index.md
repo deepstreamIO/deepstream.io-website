@@ -12,7 +12,7 @@ This is a Preact guide that will take you through deepstream's three core concep
 
 `create-preact-app` will assist you to scaffold a new Preact app easily, and we'll use the <a href="/docs/client-js/client/">JavaScript client SDK</a> to interact with deepstream.
 
-{{> start-deepstream-server}}
+`markdown:setting-up-deepstream.md`
 
 ## Create a Preact App
 Install `create-preact-app` globally, and use the tool to scaffold a new app:
@@ -59,12 +59,12 @@ export default App;
 ```
 
 ## Records (realtime datastore)
-{{> glossary record=true noHeadline=true}}
+`markdown:glossary-record.md`
 
 Creating a new record or retrieving an existent one works the same way:
 
 ```javascript
-var myRecord = ds.record.getRecord( 'test/johndoe' );
+const myRecord = ds.record.getRecord( 'test/johndoe' );
 ```
 
 Values can be stored using the `.set()` method:
@@ -155,7 +155,7 @@ class Record extends Component {
 ```
 
 ## Events (publish-subscribe)
-{{> glossary event=true noHeadline=true}}
+`markdown:glossary-event.md`
 
 ![Publish-Subscribe](/assets/img/tutorial/browser-app/pubsub.gif)
 
@@ -183,7 +183,7 @@ handleClick(e) {
 ```
 
 ## RPCs (request-response)
-{{> glossary rpc=true noHeadline=true}}
+`markdown:glossary-rpc.md`
 
 ![Request Response](/assets/img/tutorial/browser-app/request-response.gif)
 
@@ -193,7 +193,7 @@ You can make a request using `.make()`:
 handleClick(e) {
     // read the value from the input field
     // and convert it into a number
-    var data = {
+    const data = {
         a: parseFloat(this.state.a),
         b: parseFloat(this.state.b)
     };
@@ -201,7 +201,6 @@ handleClick(e) {
     // Make a request for `multiply-number` with our data object
     // and wait for the response
     this.rpc.make('multiply-number', data, function( err, resp ){
-        
         //display the response (or an error)
         this.setState({displayResponse: resp || err.toString()});
     }.bind(this));

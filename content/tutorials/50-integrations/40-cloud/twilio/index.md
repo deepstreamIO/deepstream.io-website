@@ -10,7 +10,7 @@ There are many use cases for creating calls in applications, from reminders to v
 
 In this tutorial, we'll be creating a simple form where we can create personalised calls to invite people to a party, that will then afterwards play Never Gonna Give You Up by Rick Astley.
 
-{{> start-deepstream-server}}
+`markdown:setting-up-deepstream.md`
 
 ## High level overview
 
@@ -48,7 +48,7 @@ The `url` you're provided with after clicking `create` will be the `url` you nee
 
 ## Integrating it with deepstream
 
-{{> glossary rpc=true noHeadline=true}}
+`markdown:glossary-rpc.md`
 
 Let's next create our `call-provider`, all we need to do is provide an `RPC` method called `phone-call` and whenever it is invoked, create a phone call to the number given to us.
 

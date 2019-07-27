@@ -41,6 +41,8 @@ run the file with node
 node start.js
 ```
 
+![Starting deepstream via node](../deepstream-v4.png)
+
 #### Using the deepstream client in Node.js
 The deepstream javascript client can be installed via [NPM](https://www.npmjs.com/package/@deepstream/client) and used in Node.js.
 

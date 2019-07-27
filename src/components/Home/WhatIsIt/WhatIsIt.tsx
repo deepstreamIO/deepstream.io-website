@@ -49,7 +49,7 @@ export const WhatIsIt = () => (
             <ul className="core-features" style={{ marginTop: '50px' }}>
                 <li>
                     <h3>presence <small>monitoring who is online</small></h3>
-                    <p>presences allows you to query deepstream for the status of logged-in users and 
+                    <p>presence allows you to query deepstream for the status of logged-in users and 
                         subscribe to anyone logging in or out across the entire cluster.
                     </p>
                 </li>
@@ -64,7 +64,7 @@ export const WhatIsIt = () => (
                     <p>
                         deepstream's finegrained identity and permission system allows you to permission each connection
                         and message going through your system. Easily accept or deny messages in realtime based on 
-                        user roles, data or even cross references to existing records record.
+                        user roles, data or even cross references to existing records.
                     </p>
                 </li>
             </ul>

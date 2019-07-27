@@ -49,6 +49,8 @@ so on lower level binary parsing!
 
 There has been a lot of feedback on the differences between our deepstreamHub and deepstream documentation and offerings, where some users were not certain where the line was drawn between open source and enterprise. We also have over a hundred pages of documentation in a world where some of yesterday's hot trends (For example Knockout, AngularJS) have been replaced by others (React, Vue). And even within the one library, approaches have been deprecated, replaced or advised against (React mixins, stateful components, and hooks). While we love keeping up to date with all the latest chatter in DevOps and developer land, it's pretty much impossible to do so while also focusing on integrating important features into deepstream's core. As such, I'm happy to say we have migrated all of our OS documentation and website back to opensource using the amazing [Gatsby]() framework. Every page can now be edited by the community, and adding pages is as easy as writing a markdown document, adding some images and letting the build take care of the rest. If you would like to do anything fancy, you are more than welcome to add a React component! It's worth noting that while all content has been migrated across the css can and will still need an insane amount of ❤️ since that was ported and not rewritten from the original website.
 
+## Binary Protocol
+
 `markdown:release-4.0-protobuf-protocol.md`
 
 ## Typescript

@@ -3,8 +3,9 @@ title: Realtime Comment Feed
 description: Learn how to create a realtime comment feeds with authentication using Vue
 tags: [Javascript, Vue, lists, records]
 navLabel: Comment Feed using Vue
-draft: true
+deepstreamHub: true
 ---
+
 This walkthrough covers the fundamentals of what it takes to build a realtime comment feed application. Therefore, if you desire to add a feature like Facebook-style comments in your next app, then this is definitely what you need to read.
 
 This article is built with Vue and covers the following significant topics:

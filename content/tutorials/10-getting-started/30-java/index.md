@@ -7,7 +7,7 @@ deepstreamVersion: V3
 
 This guide will show you how to build backend processes in Java using deepstream's three core concepts: [Records](/tutorials/guides/records/), [Events](/tutorials/guides/events/) and [RPCs](/tutorials/guides/remote-procedure-calls/).
 
-{{> start-deepstream-server}}
+`markdown:setting-up-deepstream.md`
 
 ## Connect to deepstream and log in
 
@@ -31,7 +31,7 @@ client.login();
 
 ## Records (realtime datastore)
 
-{{> glossary record=true noHeadline=true}}
+`markdown:glossary-record.md`
 
 Creating a new record or retrieving an existent one is done using `getRecord()`
 
@@ -79,7 +79,7 @@ record.subscribe( "firstname", new RecordPathChangedCallback() {
 you can remove subscriptions with `unsubscribe()`, tell the server you're no longer interested in the record using `.discard()` or delete it using `.delete()`.
 
 ## Events (publish-subscribe)
-{{> glossary event=true noHeadline=true}}
+`markdown:glossary-event.md`
 
 Clients and backend processes can receive events using `.subscribe()`
 
@@ -98,7 +98,7 @@ client.event.emit( "test-event", "some data");
 ```
 
 ## RPCs (request-response)
-{{> glossary rpc=true noHeadline=true}}
+`markdown:glossary-rpc.md`
 
 You can make a request using `.make()`
 

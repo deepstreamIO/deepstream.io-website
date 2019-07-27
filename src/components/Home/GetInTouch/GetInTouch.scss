@@ -1,54 +1,37 @@
 .get-in-touch {
     padding-bottom: 40px;
 
- .github {
-    border: 1px solid #ddd;
-    background-image: url(/images/logos/github.png);
-    background-repeat: no-repeat;
-    background-position: 15px center;
-    padding: 10px;
-    width: 50%;
-    margin: 0 auto;
-    padding-left: 80px;
-}
-
- .github .git-text {
-    display: inline-block;
-    max-width: 372px;
-    font-size: 16px;
-    color: #647276;
-}
-
- .github .git-text a {
-    font-size: 16px;
-    color: #000;
-}
-
- .github .git-btn {
-    display: inline-block;
-}
-
  .links {
     width: 50%;
     margin: 0 auto;
 }
 
  .links a {
+    width: calc(100% / 3);
     padding: 40px 14px 40px 67px;
     cursor: pointer;
     background-repeat: no-repeat;
     background-position: 15px center;
     display: block;
-    width: 50%;
     float: left;
     font-size: 16px;
     font-weight: 300;
     transition: all 400ms ease;
 }
 
+@media (max-width: 700px) {
+    .links a {
+        width: 100%;
+    }
+}
+
  .links a:hover {
     background-color: #0FBBEC;
     color: #fff;
+}
+
+.links a.github {
+    background-image: url(/images/logos/github.png);
 }
 
  .links a.twitter {

@@ -124,7 +124,7 @@ ds.on( 'error', function(error) {
     console.log(error);
 });
 
-var geoSubscriptions = {};
+const geoSubscriptions = {};
 
 //here we listen to the list we created upon logging in.
 //the match will contain all the information in our list after the "/.*" . We our sending the match to the geoSubscription module, where we will extract its data and perform a RethinkDB query.
@@ -165,9 +165,7 @@ In order to perform geospatial queries in RethinkDB, we need to convert the long
 ```js
 _queryDb() {
     // *match* is returned as a string, and needs to be broken into an array, and extracted as follows
-    var lat = + this.match.split( '/' )[ 1 ];
-    var lng = + this.match.split( '/' )[ 2 ];
-    var radius = + this.match.split( '/' )[ 3 ];
+    const [, lat, lng, radius] = + this.match.split( '/' );
 
     r.db('realtime').table('user').filter(function( user ) {
             //performs a geospatial query based on two object points in RethinkDB
@@ -217,7 +215,7 @@ _onGetEntries( users ) {
 }
 
 _updateMarkers( userRecordNames ) {
-    for( var i = 0; i < userRecordNames.length; i++) {
+    for( let i = 0; i < userRecordNames.length; i++) {
         if( !this.markers[ userRecordNames[ i ] ] ) {
             //for each list entry, we create a new marker instance,
             //where we can subscribe to the record corresponding with the list entry
@@ -225,7 +223,7 @@ _updateMarkers( userRecordNames ) {
         }
     }
 
-    for( var userRecordName in this.markers ) {
+    for( let userRecordName in this.markers ) {
         if( userRecordNames.indexOf( userRecordName ) === -1 ) {
             this.markers[ userRecordName ].destroy();
             delete this.markers[ userRecordName ];

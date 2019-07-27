@@ -97,7 +97,7 @@ app.use(bodyParser.json());
 
 app.post('/authenticate-user', function (req, res) {
     console.log( 'received auth request for ' + req.body.authData.username );
-    var user = users[ req.body.authData.username ];
+    const user = users[ req.body.authData.username ];
     if( user && user.password === req.body.authData.password ) {
         res.status( 200 ).json({
             username: req.body.authData.username,
@@ -140,8 +140,8 @@ const userdata = {
 }
 
 ds.rpc.provide( 'get-price', ( data, response ) => {
-    var discount = userdata[ data.username ].discount;
-    var finalPrice = itemPrice - ( discount * itemPrice );
+    const discount = userdata[ data.username ].discount;
+    const finalPrice = itemPrice - ( discount * itemPrice );
     response.send( finalPrice );
 });
 ```

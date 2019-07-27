@@ -23,7 +23,7 @@ The `todo/` part of the name identifies the category the record belongs to and s
 To organize our tasks in a list called `todos`, we would need to explicitly create it using
 
 ```javascript
-var todos = ds.record.getList( 'todos' );
+const todos = ds.record.getList( 'todos' );
 ```
 
 and add our recordnames as entries

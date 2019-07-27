@@ -3,6 +3,7 @@ title: Realtime Chat in Browser
 description: Learn how to create a realtime chat app in the browser
 tags: [Javascript, Angular, lists, records]
 navLabel: Realtime Chat in Browser
+deepstreamHub: true
 ---
 
 Let's build a realtime chat App in browser. We'll be implementing quite a few features and showing you just how easy it is to do this with deepstream. Upon completion you will be able to:
@@ -58,10 +59,10 @@ The function checks if the current user is in the system or not. If not the user
 ```javascript
 userId = 'users/' + clientData.id
 userEmail = email
-var list = ds.record.getList('users');
+const list = ds.record.getList('users');
 list.whenReady(()=>{
   if(list.getEntries().indexOf(userId)===-1) {
-    var rec = ds.record.getRecord(userId);
+    const rec = ds.record.getRecord(userId);
     rec.whenReady(()=> {
       rec.set('email', email)
       list.addEntry(userId);
@@ -76,10 +77,10 @@ This is how the full Angular deepstream service should look like in this app:
 
 ```javascript
 chatApp.service('deepstreamService', function($q, $http) {
-  var deepstreamService =  {}
-  var userId;
-  var userEmail;
-  var ds = deepstream( 'wss://154.dsh.cloud?apiKey=ceb0c746-d4d5-4e1d-910e-8db2916819ea');
+  const deepstreamService =  {}
+  let userId;
+  let userEmail;
+  const ds = deepstream( 'wss://154.dsh.cloud?apiKey=ceb0c746-d4d5-4e1d-910e-8db2916819ea');
   function signUp(email, password) {
     $http.post(
       'https://api.dsh.cloud/api/v1/user-auth/678bd5dd-1700-4f8a-8e35-cd1552d4576c',
@@ -109,10 +110,10 @@ chatApp.service('deepstreamService', function($q, $http) {
         else {
           userId = 'users/' + clientData.id
           userEmail = email
-          var list = ds.record.getList('users');
+          const list = ds.record.getList('users');
           list.whenReady(()=>{
             if(list.getEntries().indexOf(userId)===-1) {
-              var rec = ds.record.getRecord(userId);
+              const rec = ds.record.getRecord(userId);
               rec.whenReady(()=> {
                 rec.set('email', email)
                 list.addEntry(userId);
@@ -156,7 +157,7 @@ At this stage you have a deepstream `List` called `users` that contains the user
 Now you need to do is get the list of user ids in our application. You can do this through the `getList` method, which will return all the `Record` names in the list.
 
 ```javascript
-var list = ds.record.getList('users');
+const list = ds.record.getList('users');
 ```
 
 Next you will to create a local list on the scope, this will include the user's email, as well as the id.
@@ -210,7 +211,7 @@ This is how the chat navigation can look in the HTML:
 
   ```javascript
   ds.presence.getAll((onlineUsers) => {
-    var online = [];
+    const online = [];
     onlineUsers.forEach(function(item) {
       online.push('users/' + item);
     })
@@ -245,8 +246,8 @@ This is how the chat navigation can look in the HTML:
   This is how it happens (we will first remove the 'users/' part of the id):
 
   ```javascript
-  var chatName = [userId.substring(6),friendId.substring(6)].sort().join('::');
-  var chatList = ds.record.getList(chatName);
+  const chatName = [userId.substring(6),friendId.substring(6)].sort().join('::');
+  const chatList = ds.record.getList(chatName);
   ```
 
   When a user is writing text in the input field, and presses enter, a few things happen. First, a unique recordId is initiated. Then a record is set with this id, containing the message, email of the sender, a unique message id and the time.
@@ -254,7 +255,7 @@ This is how the chat navigation can look in the HTML:
 
   ```javascript
   $scope.submit = function() {
-    var record = ds.record.getRecord(ds.getUid())
+    const record = ds.record.getRecord(ds.getUid())
     record.whenReady(()=> {
       record.set({
         content: $scope.newMessage,
@@ -277,7 +278,7 @@ This is how the chat navigation can look in the HTML:
 
 ```javascript
 function addChatMessage(recordName) {
-  var rec = ds.record.getRecord(recordName);
+  const rec = ds.record.getRecord(recordName);
   rec.whenReady(()=>{
     $scope.messages.push(rec);
     if (!$scope.$$phase) {

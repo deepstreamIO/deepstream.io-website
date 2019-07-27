@@ -1,6 +1,6 @@
 ---
 title: Live Progress Bar
-description: Learn how to create a Live Progress Bar using deestream
+description: Learn how to create a Live Progress Bar using deepstream
 tags: [realtime]
 ---
 
@@ -35,10 +35,10 @@ npm install wt-cli
 
 ```js
 // ./index.js
-var Express = require('express');
-var Webtask = require('webtask-tools');
-var bodyParser = require('body-parser');
-var app = Express();
+const Express = require('express');
+const Webtask = require('webtask-tools');
+const bodyParser = require('body-parser');
+const app = Express();
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
@@ -71,11 +71,11 @@ Once you have a server setup you can login.
 // ./index.js
 ...
 // Import deepstream
-var deepstream = require('@deepstream/client');
-var app = Express();
+const deepstream = require('@deepstream/client');
+const app = Express();
 
 // Connect with App URL
-var client = deepstream('localhost:6020')
+const client = deepstream('localhost:6020')
 client.login();
 ```
 
@@ -85,7 +85,7 @@ With deepstream setup, it's time to simulate a long request and send out realtim
 
 ```js
 app.post('/post', (req, res) => {
-  var postProgressPromise = function() {
+  const postProgressPromise = function() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         client.event.emit('progress', {slot:15, msg: 'Posting...'})
@@ -94,7 +94,7 @@ app.post('/post', (req, res) => {
     })
   }
 
-  var receiveProgressPromise = function() {
+  const receiveProgressPromise = function() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         client.event.emit('progress', {slot:30, msg: 'Receiving...'})
@@ -103,7 +103,7 @@ app.post('/post', (req, res) => {
     })
   }
 
-  var processProgressPromise = function() {
+  const processProgressPromise = function() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         client.event.emit('progress', {slot:30, msg: 'Processing...'})
@@ -112,7 +112,7 @@ app.post('/post', (req, res) => {
     })
   }
 
-  var completeProgressPromise = function() {
+  const completeProgressPromise = function() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         client.event.emit('progress', {slot:30, msg: 'Completing...'})
@@ -121,7 +121,7 @@ app.post('/post', (req, res) => {
     })
   }
 
-  var endProgressPromise = function() {
+  const endProgressPromise = function() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         client.event.emit('progress:end')
@@ -151,9 +151,10 @@ After a second or two (which is a simulating a real live long request), we emit 
 Let's see how we can consume our API and effectively use it to build an engaging user experience. Vue is easy to setup in any environment, let's use it to quickly make a simple frontend:
 
 ```js
-var client = deepstream('<App-URL>').login();
+const client = deepstream('<App-URL>')
+client.login();
 
-var App = new Vue({
+const App = new Vue({
   created: function() {
     client.event.subscribe('progress', (p) => {
       this.disabled = true

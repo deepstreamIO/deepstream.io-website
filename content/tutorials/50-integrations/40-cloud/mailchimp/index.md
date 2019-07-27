@@ -20,7 +20,7 @@ This article will show you how to seamlessly integrate Mailchimp with deepstream
 [Getting started with deepstream is easy](/tutorials/getting-started/javascript) and takes less than ten minutes. However, if you have any questions, please [get in touch](/contact).
 
 
-{{> start-deepstream-server}}
+`markdown:setting-up-deepstream.md`
 
 Setting up deepstream is easy: 
 
@@ -41,7 +41,7 @@ Setting up deepstream is easy:
 ## deepstream Events
 Before we dive deep, it's important to understand what deepstream feature we will be making use of.
 
-{{> glossary event=true noHeadline=true}}
+`markdown:glossary-event.md`
 
 
 
@@ -158,7 +158,7 @@ Before we start creating these Vue routes, let's include Vue and other supportin
    
      ...
   <!-- deepstream client -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/@deepstream/client/2.1.2/deepstream.js"></script>
+  <script src="https://cdn.deepstream.io/js/client/latest/ds.min.js"></script>
   <!-- Axios for HTTP requests -->
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
    <!-- Vue core library -->

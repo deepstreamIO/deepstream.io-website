@@ -64,7 +64,7 @@ Whenever a text is being entered in the input field, two things should happen - 
 
 ```javascript
 addTodo() {
-    var id = 'todo/' + ds.getUid();
+    const id = 'todo/' + ds.getUid();
     ds.record.getRecord(id).set({
       title: this.state.newTodo,
       isDone: false

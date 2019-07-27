@@ -83,7 +83,7 @@ These help bridge between Swift and the deepstream SDK. The rest of the guide wi
 
 <img src="/assets/img/tutorial/ios-app/swift-extensions-2.png" height="100">
 
-{{> start-deepstream-server}}
+`markdown:setting-up-deepstream.md`
 
 ## Connect to deepstream and log in
 
@@ -112,7 +112,7 @@ if (loginResult.getErrorEvent() == nil) {
 ```
 
 ## Records (realtime datastore)
-{{> glossary record=true noHeadline=true}}
+`markdown:glossary-record.md`
 
 Creating a new record or retrieving an existent one works the same way
 
@@ -237,7 +237,7 @@ func editingChanged(_ sender: UITextField) {
 ```
 
 ## Events (publish-subscribe)
-{{> glossary event=true noHeadline=true}}
+`markdown:glossary-event.md`
 
 ![Publish-Subscribe](/assets/img/tutorial/ios-app/pubsub.gif)
 
@@ -300,7 +300,7 @@ func publishButtonPressed(_ sender: Any) {
 ```
 
 ## RPCs (request-response)
-{{> glossary rpc=true noHeadline=true}}
+`markdown:glossary-rpc.md`
 
 ![Request Response](/assets/img/tutorial/ios-app/request-response.gif)
 

@@ -12,4 +12,6 @@ You can start the server by _double clicking_ the executable file or via `CMD`
 deepstream.exe start
 ```
 
+![Starting deepstream on windows](../deepstream-v4.png)
+
 Learn more about deepstream's [command line interface](/docs/server/command-line-interface/) and its [configuration file](/docs/server/configuration/).

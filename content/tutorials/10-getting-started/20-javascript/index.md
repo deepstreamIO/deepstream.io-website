@@ -17,7 +17,7 @@ deepstream start
 
 ## Getting the client
 
-For this tutorial we'll simply get the client from a <a class="cdn-link">CDN</a>, but you can also get it as `@deepstream/client` via NPM:
+For this tutorial we'll simply get the client hosted on deepstream.io, but you can also get it as `@deepstream/client` via NPM:
 
 
 ```bash
@@ -30,7 +30,7 @@ Create an _index.html_ file and add the following to it, making sure to point to
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="cdn-url"></script>
+    <script src="https://cdn.deepstream.io/js/client/latest/ds.min.js"></script>
   </head>
   <body>
     <input type="text" />

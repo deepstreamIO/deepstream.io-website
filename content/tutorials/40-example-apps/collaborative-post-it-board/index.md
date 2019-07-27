@@ -48,14 +48,14 @@ When a user submits their credentials, they trigger a login to the board:
 $( 'form' ).on( 'submit', function( event ){
    event.preventDefault();
 
-var authData = {
+const authData = {
   username: $( 'form input[type="text"]' ).val(),
   password: $( 'form input[type="password"]' ).val()
 };
 
 ds.login( authData, function( success, loginData ) {
   if( success ) {
-    var isDesktop = $( window ).width() > 800;
+    const isDesktop = $( window ).width() > 800;
     new Board( ds, isDesktop );
     $( 'form' ).hide();
    } else {

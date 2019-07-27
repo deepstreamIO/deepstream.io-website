@@ -3,6 +3,7 @@ title: Activity Streams / Facebook feed
 description: Example app showing how to build activity streams with deepstream events
 tags: [JavaScript, streams, feeds, events, pub-sub]
 navLabel: Activity Streams
+deepstreamVersion: 'V3'
 ---
 
 With deepstream's realtime events, you can easily build an activity steam just like you see on your Facebook wall. These events are emitted as a result of an action, thereby triggering updates to all subscribed clients.

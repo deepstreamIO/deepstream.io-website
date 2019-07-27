@@ -68,13 +68,7 @@ export class AppComponent {
 }
 ```
 
-Depending on your Typescript configuration, calling `deepstream` from nowhere might throw and error. You can shut Typescript up by adding the following just after the imports:
-
-```js
-import { Component, OnInit } from '@angular/core';
-// Type deepstream with any
-declare var deepstream:any;
-```
+Depending on your Typescript configuration, calling `deepstream` from nowhere might throw an error. 
 
 ## 3. Create deepstream Service (DsService)
 deepstream will work perfectly fine when used directly in the component but as your project grows large, you might find yourself in the deep mess of violating [DRY](https://en.wikipedia.org/wiki/Don't_repeat_yourself). A common pattern in Angular (both 1.x and the newer versions) is to create a service that abstracts a group of tasks so this services can be used and re-used by multiple components if need be.
@@ -84,7 +78,6 @@ In our case, we need a service to group all our deepstream task and expose metho
 ```js
 // ./src/app/services/ds.service.ts
 import { Injectable } from '@angular/core';
-declare var deepstream:any;
 
 @Injectable()
 export class DsService {
@@ -103,7 +96,6 @@ The `dsInstance` is public (though we know the deal with privacy in JavaScript) 
 ```js
 // ./src/app/services/ds.service.ts
 import { Injectable } from '@angular/core';
-declare var deepstream:any;
 
 @Injectable()
 export class DsService {
