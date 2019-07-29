@@ -3,7 +3,7 @@ title: Docker Compose
 description: Run deepstream together with a RethinkDB storage provider, a Redis cache provider and a RethinkDB search provider which allows to subscribe to realtime queries.
 ---
 
-Get more details about Docker in general and about the deepstream standalone Docker image in the [Docker&nbsp;image&nbsp;tutorial](../docker-image/)
+Get more details about Docker in general and about the deepstream standalone Docker in the [Docker&nbsp;image&nbsp;tutorial](../docker/)
 
 ### What is Docker Compose?
 

@@ -68,5 +68,3 @@ docker logs -f deepstream.io
 
 The `-f` option will keep the process alive and follow output.
 
-If you want to build the Docker image from the Dockerfile and use a docker-compose file instead you can checkout
-our [Docker Repository on GitHub](https://github.com/deepstreamIO/deepstream.io-docker)
