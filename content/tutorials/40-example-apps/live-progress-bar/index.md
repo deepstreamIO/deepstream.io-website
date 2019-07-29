@@ -31,7 +31,7 @@ npm install wt-cli
 ```
 
 - Create a [Webtask Account](https://webtask.io)
-- Create an `inde.js` in the root of an empty project folder with:
+- Create an `index.js` in the root of an empty project folder with:
 
 ```js
 // ./index.js

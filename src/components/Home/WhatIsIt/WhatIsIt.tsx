@@ -34,7 +34,7 @@ export const WhatIsIt = () => (
                         for the modelling of relational datastructures.</p>
                 </li>
                 <li>
-                    <h3>events <small>publis-subscribe messaging</small></h3>
+                    <h3>events <small>publish-subscribe messaging</small></h3>
                     <p>events allow for high-performance, many-to-many messaging. deepstream provides topic
                         based routing from publisher to subscriber, data-serialisation and subscription
                         listening.</p>
