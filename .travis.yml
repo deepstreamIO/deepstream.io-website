@@ -1,6 +1,11 @@
 sudo: false
 language: node_js
 
+before_install:
+  - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules;
+  - git submodule update --init --recursive
+  # - gem install fpm --conservative || echo "FPM install failed"
+
 node_js:
   - "10"
 
