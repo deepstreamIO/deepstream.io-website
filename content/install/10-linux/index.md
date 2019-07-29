@@ -26,7 +26,7 @@ goodies. To do so just run:
 After installing, you can start and stop deepstream simply by doing:
 
 ```bash
-deepstream service start
+./deepstream service start
 ```
 
 ![Starting deepstream on linux](../deepstream-v4.png)
