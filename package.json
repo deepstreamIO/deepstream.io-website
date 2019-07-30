@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "deepstream.io-website",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
-  "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "description": "The deepstream.io website",
+  "version": "1.0.0",
+  "author": "Yasser Fadl <yasser.fadl@gmail.com>",
   "dependencies": {
     "@types/classnames": "^2.2.9",
     "@types/react-helmet": "^5.0.8",
@@ -65,9 +65,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/deepstreamIO/deepstream.io-website"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/deepstreamIO/deepstream.io-website"
   }
 }
