@@ -20,6 +20,10 @@ __Connected__
 The connection is established; everything is fine.
 
 __Not Connected__
+
+### RECONNECTING
+The connection was lost to server. The client makes reconnection attempts.
+
 ### CLOSED
 The connection was deliberately closed by the user via `client.close()`. No reconnection attempts will be made. The client also starts in this state, but almost immediatly switches to `AWAITING_CONNECTION`.
 
@@ -64,6 +68,7 @@ client.on('connectionStateChanged', connectionState => {
         case 'OPEN':
             connectionStateIndicator.addClass('good')
             break
+        case 'CLOSED':
         case 'ERROR':
             connectionStateIndicator.addClass('bad')
             break
