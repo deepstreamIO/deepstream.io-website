@@ -27,7 +27,7 @@ client.login()
 ## Events
 
 ### connectionStateChanged
-Emitted every time the connectionstate changes. The connectionState is passed to the callback and can also be retrieved using <a href="#getConnectionState()">getConnectionState()</a>. A list of possible connection states is available [here](/docs/common/constants/#connection-states)
+Emitted every time the connectionstate changes. The connectionState is passed to the callback and can also be retrieved using <a href="#getConnectionState()">getConnectionState()</a>. A list of possible connection states is available [here](/tutorials/concepts/connectivity/index.html#connection-states)
 
 ### error
 Aggregates all errors that are encountered. Some errors like `CONNECTION_ERROR` or `MESSAGE_PARSE_ERROR` are exlusively emitted by the client.
@@ -88,7 +88,7 @@ client.close()
 ```
 
 ### getConnectionState()
-Returns the current connectionState. Please find a list of available connectionStates [here](/docs/common/constants/#connection-state).
+Returns the current connectionState. Please find a list of available connectionStates [here](/tutorials/concepts/connectivity/index.html#connection-states).
 
 ### getUid()
 Returnes a unique id. The uid starts with a Base64 encoded timestamp to allow for semi-sequentual ordering and ends with a random string.
