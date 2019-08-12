@@ -46,7 +46,7 @@ Emitted if the record encounters an error. The error message is passed to the ev
 
 ### whenReady(callback)
 
-|Argument|Type|Optionl|Description|
+|Argument|Type|Optional|Description|
 |---|---|---|---|
 |callback|Function|true|A function that should be invoked as soon as the record is ready.|
 
@@ -64,7 +64,7 @@ await record.whenReady()
 
 ### set(path, value, callback)
 
-|Argument|Type|Optionl|Description|
+|Argument|Type|Optional|Description|
 |---|---|---|---|
 |path|String|true|A particular path within the JSON structure that should be set|
 |value|Various|false|The value the record or path should be set to|
@@ -116,7 +116,7 @@ record.set('personalData.firstname', 'Homer', err => {
 
 ### get(path)
 
-|Argument|Type|Optionl|Description|
+|Argument|Type|Optional|Description|
 |---|---|---|---|
 |path|String|true|A particular path within the JSON structure that should be retrieved.|
 
@@ -130,7 +130,7 @@ record.get('personalData.firstname') // 'Homer'
 
 ### subscribe(path, callback, triggerNow)
 
-|Argument|Type|Optionl|Description|
+|Argument|Type|Optional|Description|
 |---|---|---|---|
 |path|String|true|A path within the JSON structure that should be subscribed to.|
 |callback|Function|false|A function that is called whenever the value changes and the data passed through.|
@@ -162,7 +162,7 @@ user.subscribe('status', statusChanged, true)
 
 ### unsubscribe(path, callback)
 
-|Argument|Type|Optionl|Description|
+|Argument|Type|Optional|Description|
 |---|---|---|---|
 |path|String|true|The path that was previously used for subscribe.|
 |callback|Function|false|The previously registered callback function.|
