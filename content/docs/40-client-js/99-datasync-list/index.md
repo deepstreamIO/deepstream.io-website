@@ -48,7 +48,7 @@ Emitted if the list encounters an error. The error message is passed to the even
 
 ### whenReady( callback )
 
-|Argument|Type|Options|Description|
+|Argument|Type|Optional|Description|
 |---|---|---|---|
 |callback|Function|true|A function that will be invoked as soon as the list is ready. Receives the list as an argument|
 
@@ -84,7 +84,7 @@ console.log( entries ) // [ 'car/1', 'car2' ]
 
 ### setEntries( entries )
 
-|Argument|Type|Options|Description|
+|Argument|Type|Optional|Description|
 |---|---|---|---|
 |entries|Array|false|An array of record name strings|
 
@@ -96,7 +96,7 @@ list.setEntries( [ 'car/1', 'car/2' ] );
 
 ### addEntry( entry, index )
 
-|Argument|Type|Options|Description|
+|Argument|Type|Optional|Description|
 |---|---|---|---|
 |entry|String|false|A record name that should be added to the list|
 |index|Number|true|An optional index that the new entry should be inserted at. If omitted, the new entry is appended to the end of the list.|
@@ -113,7 +113,7 @@ function addCar( number ) {
 
 ### removeEntry( entry, index )
 
-|Argument|Type|Options|Description|
+|Argument|Type|Optional|Description|
 |---|---|---|---|
 |entry|String|false|A record name that should be removed to the list|
 |index|Number|true|An optional index that the entry should be removed from at. If ommited, all entries of the given name will be removed.|
@@ -128,7 +128,7 @@ function removeCar( carRecord ) {
 
 ### subscribe( callback, triggerNow )
 
-|Argument|Type|Options|Description|
+|Argument|Type|Optional|Description|
 |---|---|---|---|
 |callback|Function|false|A callback function that will be called whenever the content of the list changes|
 |triggerNow|Boolean|true|If true, the callback function will be called immediately with the current value|
@@ -144,7 +144,7 @@ list.subscribe( listChanged, false );
 
 ### unsubscribe( callback )
 
-|Argument|Type|Options|Description|
+|Argument|Type|Optional|Description|
 |---|---|---|---|
 |callback|Function|true|The previously registered callback function. If ommited, all listeners will be unsubscribed.|
 
