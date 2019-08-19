@@ -14,7 +14,7 @@ description: The newly improved Typescript and ES6 SDK
 ```JavaScript
 {
     // Use indexdb to store data client side
-    offlineEnabled: false,]
+    offlineEnabled: false,
     // Save each update as it comes in from the server
     saveUpdatesOffline: false,
     indexdb: {
@@ -137,7 +137,7 @@ The reason why it would be production ready for read only scenarios is because t
 - User opens app first time, data is requested from server and stored on client side.
 - User loses connection to app, but from an app perspective functionality remains the same
 - User is back online
-- Deepstream requests the version of the record on deepstream. If its the same as the one locally it sends all the modifications as the next update, it it isn't, it requests the data and just updates it.
+- User requests the version of the record on deepstream. If its the same as the one locally it, so doesn't do anything more. If it isn't, it requests the data and assumes its the latest (using a remote wins algorithm).
 
 ## Typescript
 

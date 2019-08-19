@@ -40,7 +40,7 @@ For example, the event message looks something like this:
 
 ```proto
 message EventMessage {
-    required RPC_ACTION action = 1;
+    required EVENT_ACTION action = 1;
     string data = 2;
     string correlationId = 3;
     bool isError = 4;
@@ -125,6 +125,6 @@ It wouldn't be fair to say that this overhaul has no downsides. There have been 
 
 1) If you count messages in the billions, those extra bytes add up. Data bandwidth is quite expensive on cloud systems so lack of compression isn't just a latency issue anymore. Protobuf has some very good compression algorithms which defeats JSON objects in most cases.
 
-### Why yet another proprietry standard?
+### Why yet another proprietary standard?
 
 Because deepstream offers some very specific features, and has alot more on the way. For example we currently have a unique concept such as listening. Trying to use a realtime standard (which there aren't many of) would seriously hinder development. That being said deepstream allows swapping out of protocols quite easily as long as theres an interop layer so feel free to create compatibility protocols to work with your favourite SDKs!
