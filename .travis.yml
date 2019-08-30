@@ -31,6 +31,7 @@ deploy:
   skip_cleanup: true
   acl: public_read
   local_dir: public
+  region: eu-central-1
   on:
     tags: true
 
