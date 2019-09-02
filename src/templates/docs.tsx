@@ -22,7 +22,6 @@ export const pageQuery = graphql`
         title
       }
       fields {
-        path
         slug,
         githubLink,
         weightedSlug

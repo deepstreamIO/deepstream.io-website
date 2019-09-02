@@ -8,9 +8,9 @@ import { Section } from "../../components/General/Section/Section"
 import { graphql, Link } from "gatsby"
 
 const Release = ({ release }) => {
-    const {version, description, slugDir} = release
+    const {version, description, slug } = release
     return <li className={style.release}>
-        <Link to={slugDir}>
+        <Link to={slug}>
             <div className={style.releaseVersion}>
                 <label className={style.label}>Version:</label>
                 <span className={style.version}>{version}</span>
@@ -31,7 +31,6 @@ export default ({ data }) => {
         const release = {
             version,
             slug: node.fields.slug,
-            slugDir: node.fields.slugDir,
             description: node.frontmatter.description
         }
         if (!result[component]) {
@@ -67,7 +66,6 @@ limit: 1000
         node {
             fields {
                 slug,
-                slugDir
             }
             frontmatter {
                 title,

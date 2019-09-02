@@ -23,7 +23,6 @@ module.exports = async ({graphql, actions}) => {
               fields {
                 slug,
                 weightedSlug,
-                slugDir,
                 githubLink
               },
               frontmatter {
@@ -111,19 +110,14 @@ module.exports = async ({graphql, actions}) => {
                 return nav[path]
             }, navigation)
 
-            const createArticlePage = path => {
-                createPage({
-                    path: path,
-                    component: template,
-                    context: {
-                        slug,
-                        navigation: navigation[paths[0]]
-                    },
-                });
-            }
-
-            // Register primary URL.
-            createArticlePage(slug);
+            createPage({
+                component: template,
+                path: slug,
+                context: {
+                    slug,
+                    navigation: navigation[paths[0]]
+                },
+            });
         }
     });
 };

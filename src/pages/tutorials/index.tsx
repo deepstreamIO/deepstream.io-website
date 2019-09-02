@@ -28,7 +28,6 @@ limit: 1000
             fields {
                 slug,
                 weightedSlug,
-                slugDir
             }
             frontmatter {
                 title,

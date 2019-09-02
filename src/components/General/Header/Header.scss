@@ -207,10 +207,11 @@
 
 .algolia-docsearch-wrapper {
     position: relative;
+    display: inline-block;
 
     svg {
         position: absolute;
-        top: 26px;
+        top: 28px;
         right: 20px;
         fill: #d3d3d3;
     }
