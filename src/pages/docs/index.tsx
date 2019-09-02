@@ -12,6 +12,10 @@ export default () => (
                     <img src="/images/install/javascript.png" width="100" height="100" />
                     JavaScript Client API
                 </Link>
+                <Link to="/docs/client-java-v2/DeepstreamClient/">
+                    <img src="/images/install/java.png" width="100" height="100" />
+                    Java Client API (V2)
+                </Link>
                 <Link to="/docs/client-http/v1/">
                     <img src="/images/logos/http.png" width="100" height="100" />
                     HTTP API
@@ -20,7 +24,6 @@ export default () => (
                     <img src="/images/logos/php.png" width="100" height="100" />
                     PHP API
                 </Link>
-
                 <Link to="/docs/server/configuration/">
                     <img src="/images/install/server.png" width="100" height="100" />
                     Server
