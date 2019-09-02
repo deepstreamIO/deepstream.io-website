@@ -89,7 +89,7 @@ implementations for further inspiration!
 The storage API is a subset of the Cache API. It's used alot less frequent than the cache layer, 
 once for each write, but only once for a record thoughout the records entire lifetime!
 
-To see a guide of a simple storage plugin that stores it's data please look [here](./storage). 
+To see a guide of a simple storage plugin that stores it's data please look [here](../storage).
 Word of advice though, please don't use this system in production unless your okay with insanely
 slow speeds.
 
