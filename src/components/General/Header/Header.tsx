@@ -7,6 +7,7 @@ import { Navigation } from '../Navigation/Navigation'
 
 import { IoIosMenu } from 'react-icons/io'
 import { MobileMenu } from '../MobileMenu/MobileMenu';
+import { FaSearch } from 'react-icons/fa';
 
 interface HeaderProps {
 }
@@ -29,6 +30,10 @@ export const Header: React.FunctionComponent<HeaderProps> = () => {
                 </span>
 
                 <div className="nav desktop-nav">
+                    <span className="algolia-docsearch-wrapper">
+                        <input id="algolia-docsearch" />
+                        <FaSearch />
+                    </span>
                     <Navigation/>
                 </div>
 

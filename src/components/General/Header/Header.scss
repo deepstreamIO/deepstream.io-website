@@ -1,62 +1,3 @@
-.under-construction-overlay {
-
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-
-    background-color: #0FBBEC;
-
-    z-index: 999999;
-    padding: 20px;
-
-    .elton-under-construction {
-        height: 200px;
-    }
-
-    @media (min-width: 500px) {
-        .elton-under-construction {
-            height: 300px;
-            float: left;
-            margin-right: 30px;
-        }
-    }
-
-    .under-construction {
-        max-width: 500px;
-        margin: auto;
-        margin-top: 100px;
-    }
-
-    .under-construction-redirect {
-        margin-top: 50px;
-    }
-
-    .under-construction-continue {
-        margin-top: 50px;
-    }
-
-    h1 {
-        font-weight: 500;
-    }
-
-    h3 {
-        font-weight: 500;
-        font-size: 22px;
-    }
-
-    a {
-        font-weight: 500;
-        font-size: 22px;
-        color: #eee;
-        
-        &:hover {
-            cursor: pointer;
-        }
-    }
-}
-
 .layout-header {
     position: sticky;
     top: 0;
@@ -255,5 +196,22 @@
             font-weight: 500;
             text-decoration: none;
         }
+    }
+}
+
+#algolia-docsearch {
+    margin: 22px 15px;
+    width: 150px;
+    padding: 0;
+}
+
+.algolia-docsearch-wrapper {
+    position: relative;
+
+    svg {
+        position: absolute;
+        top: 26px;
+        right: 20px;
+        fill: #d3d3d3;
     }
 }

@@ -133,6 +133,15 @@ module.exports = {
         pageTransitionDelay: 0,
         cookieDomain: "deepstream.io",
       },
+    },
+    {
+      resolve: `gatsby-plugin-algolia-docsearch`,
+      options: {
+        apiKey: '792b342727cbc7164f4ef510b726cfa5', 
+        indexName: 'deepstream', 
+        inputSelector: '#algolia-docsearch', 
+        debug: false // Set debug to true if you want to inspect the dropdown 
+      }
     }
   ],
 }
