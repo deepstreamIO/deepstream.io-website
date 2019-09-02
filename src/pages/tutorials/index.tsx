@@ -27,8 +27,8 @@ limit: 1000
         node {
             fields {
                 slug,
-                weightedSlug
-                
+                weightedSlug,
+                slugDir
             }
             frontmatter {
                 title,

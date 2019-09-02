@@ -59,12 +59,17 @@ module.exports = exports.onCreateNode = ({ node, actions, getNode }) => {
                 value: path.join(sourceInstanceName, relativePath),
             });
 
-            // Used by createPages() above to register redirects.
             createNodeField({
                 node,
-                name: 'redirect',
-                value: buildRedirectString(permalink, redirect_from),
+                name: 'slugDir',
+                value: slug.replace(/(\d\d)-/g, '').replace('index.html', ''),
             });
+
+            // createNodeField({
+            //     node,
+            //     name: 'redirect',
+            //     value: buildRedirectString(permalink, redirect_from),
+            // });
 
             return;
     }

@@ -7,7 +7,8 @@ interface TutorialsOverviewProps {
         "node": {
             "fields": {
                 "slug": string,
-                "weightedSlug": string
+                "weightedSlug": string,
+                "slugDir": string
             },
             "frontmatter": {
                 "title": string,
@@ -61,6 +62,7 @@ export const TutorialsGuides: React.FunctionComponent<TutorialsOverviewProps> = 
     edges.forEach(({ node }) => {
         const entry = {
             slug: node.fields.slug,
+            slugDir: node.fields.slugDir,
             description: node.frontmatter.description,
             logoImage: node.frontmatter.logoImage,
             title: node.frontmatter.title,

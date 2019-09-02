@@ -21,9 +21,9 @@ module.exports = async ({graphql, actions}) => {
           edges {
             node {
               fields {
-                redirect
                 slug,
                 weightedSlug,
+                slugDir,
                 githubLink
               },
               frontmatter {
@@ -86,19 +86,14 @@ module.exports = async ({graphql, actions}) => {
                 }
 
                 if (nav[path] === undefined) {
-                    const shorterTitle = title
-                        // .replace('DataBase Connector', '')
-                        // .replace('Cache Connector', '')
-                        // .replace('Endpoint', '')
-                        // .replace('Logger', '')
                     if (index === paths.length - 2) {
                         const match = paths[paths.length - 2].match(/(\d\d)-(.*)/)
                         if (match) {
                             order = Number(match[1])
                         }
                         nav[path] = {
-                            slug,
-                            title: shorterTitle,
+                            slug: slug.replace('index.html', ''),
+                            title,
                             description,
                             leaf: true,
                             order
@@ -124,12 +119,6 @@ module.exports = async ({graphql, actions}) => {
                         slug,
                         navigation: navigation[paths[0]]
                     },
-                });
-
-                createRedirect({
-                    fromPath: path.replace('/index.html', '/'),
-                    redirectInBrowser: true,
-                    toPath: path,
                 });
             }
 
