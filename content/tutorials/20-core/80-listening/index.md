@@ -64,27 +64,25 @@ function startApp(){
 
 let interval
 
-function onMatch(subject, isSubscribed, response) {
-  if (isSubscribed) {
-      response.accept()
-      // optionally add a condition to 
-      // reject a request with response.reject() 
-      interval = setInterval(()=> {
-        client.event.emit(subject, "here's your weather data")
-      }, 2000)
-  } else {
-     // if your event is being continously emmitted
-     // stop emitting it here
-     clearInterval(interval)
-  }
+function onMatch(subject, response) {
+  response.accept()
+  // optionally add a condition to 
+  // reject a request with response.reject() 
+  interval = setInterval(()=> {
+    client.event.emit(subject, "here's your weather data")
+  }, 2000)
+
+  response.onStop(() => {
+    // if your event is being continously emmitted
+    // stop emitting it here
+    clearInterval(interval)
+  })
 }
 ```
 
 In the above function,
 
 - `subject` is the full path i.e, the event that the client has subscribed to, which in this case will start with `weather/germany/`.
-
-- `isSubscribed` is a boolean variable which can be used to handle subcribe and unsubscribe to events separately i.e, you can use the `isSubscribed` flag to implement whether to start or stop sending the data depending on whether the client has subscribed or unsubscribed to the pattern.
 
 - `response` is an object that comes with two functions, `response.accept()` or `response.reject()`. You can use either one depending on various conditions such as how much is the current data provider loaded, etc.
 
@@ -112,7 +110,7 @@ When you execute this app, the following happens:
 2. You run the client which will subscribe to berlin's weather using `weather/germany/berlin`
 3. Since, this event matches with what the data provider has been listening to, the `onMatch` callback function would be called
 4. Inside the `onMatch` function, since the client has subscribed to the event, the data provider would accept the request and start emitting the event every two seconds
-5. However, as soon as the client unsubscribes from the event (which here is after a timeout of 10 seconds), the else condition of `isSubscribed` is handled in the `onMatch` function, where we just stop emitting the event.
+5. However, as soon as the client unsubscribes from the event (which here is after a timeout of 10 seconds), the `onStop` callback in the `onMatch` function is called and we just stop emitting the event.
 
 ### Listening with records
 
@@ -141,23 +139,23 @@ function startApp(){
 
 let interval
 
-function onMatch(subject, isSubscribed, response) {
-  if (isSubscribed) {
-      response.accept()
-      // optionally do response.reject() based on some condition
-      interval = setInterval(() => {
-        client.record.setData(subject, { price: /* price from Nasdaq stream */ })  
-      })
-  } else {
+function onMatch(subject, response) {
+  response.accept()
+  // optionally do response.reject() based on some condition
+  interval = setInterval(() => {
+    client.record.setData(subject, { price: /* price from Nasdaq stream */ })  
+  })
+
+  response.onStop(() => {
     console.log('stopped publishing data')
     clearInterval(interval)
-  }
+  })
 }
 ```
 
 So, what's happening here is exactly the same as we saw in the previous example of using listening with events in deepstream.
 
-Whenever a client subscribes to a record that starts with `nasdaq/*`, the onMatch callback will be fired and the `isSubscribed` condition will be evaluated to true. The else condition will be executed when the client unsubsribes from this record.
+Whenever a client subscribes to a record that starts with `nasdaq/*`, the onMatch callback will be fired. The `onStop` callback will be executed when the last client unsubsribed from this record.
 
 Let's see how the client side code will look like:
 
@@ -206,14 +204,14 @@ client.login({}, (success, data) => {
   }
 })
 
-function onMatch(subject, isSubscribed, response) {
-  if (isSubscribed) {
-      response.accept()
-      // optionally handle response.reject() 
-      // handle list subsribe'
-  } else {
-      // handle list discard
-  }
+function onMatch(subject response) {
+  response.accept()
+  // optionally handle response.reject() 
+  // handle list subsribe'
+
+  response.onStop(() => {
+  // handle list discard
+  })
 }
 ```
 

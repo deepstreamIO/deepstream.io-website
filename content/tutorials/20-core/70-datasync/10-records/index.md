@@ -106,7 +106,7 @@ client.record.listen('settings/.*', (match, response) => {
 
 This is useful to create "active" data providers - backend processes that only send out data that's actually requested. A few things worth mentioning about listening:
 
-- The listen-callback is called with once the first client subscribes to a matching record and onStop is called once the last subscriber for a matching record unsubscribes.
+- The listen-callback is called once the first client subscribes to a matching record and `onStop` is called once the last subscriber for a matching record unsubscribes.
 
 - Listening also keeps state. Registering as a listener for a pattern that already has matching subscriptions will call the callback multiple times straight away, once for every matching subscription that doesn't have a provider.
 
