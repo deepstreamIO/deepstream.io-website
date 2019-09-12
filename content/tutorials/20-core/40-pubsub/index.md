@@ -54,7 +54,7 @@ Listeners can register for a pattern described by a regular expression, e.g. `'^
 
 ```javascript
 // Client B
-client.event.listen('^news/.*', (eventName, response) => {
+client.event.listen('^news/.*', (eventName, isSubscribed, response) => {
   console.log(eventName) // 'news/sports'
   if (/* if you want to provide */) {
     // start publishing data via `client.event.emit(eventName, /* data */)`
