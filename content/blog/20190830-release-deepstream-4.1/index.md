@@ -1,5 +1,5 @@
 ---
-title: v4.1.0
+title: "Release: Deepstream 4.1" 
 description: Deepstream V3 and below compatibility support!
 ---
 

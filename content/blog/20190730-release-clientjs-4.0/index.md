@@ -1,5 +1,5 @@
 ---
-title: v4.0.0
+title: "Release: Javascript/Node 4.0" 
 description: The newly improved Typescript and ES6 SDK
 ---
 

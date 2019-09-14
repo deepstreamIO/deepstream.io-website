@@ -6,7 +6,8 @@ import {Dictionary} from "ts-essentials"
 export enum HeroType {
     tutorials = 'tutorial',
     docs = 'docs',
-    info = 'info'
+    info = 'info',
+    blog = 'blog'
 }
 
 const Content: Dictionary<{ image: string, title: string }, HeroType> = {
@@ -21,6 +22,10 @@ const Content: Dictionary<{ image: string, title: string }, HeroType> = {
     [HeroType.info]: {
         image: '/images/eltons/elton-info.svg',
         title: ''
+    },
+    [HeroType.blog]: {
+        image: '/images/eltons/elton-info.svg',
+        title: 'Blog & Releases'
     }
 }
 

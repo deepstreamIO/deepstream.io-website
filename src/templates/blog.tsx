@@ -1,8 +1,8 @@
-import React from 'react';
-import {graphql} from 'gatsby';
-import MarkdownContent from "../components/Markdown/MarkdownContent/MarkdownContent"
+import React from 'react'
+import {graphql} from 'gatsby'
+import MarkdownContent from '../components/Markdown/MarkdownContent/MarkdownContent'
 
-interface InstallProps {
+interface BlogProps {
     data: any
     location: string,
     pageContext: {
@@ -10,12 +10,12 @@ interface InstallProps {
     }
 }
 
-export const Install: React.FunctionComponent<InstallProps> = ({ data, location, pageContext }) => (
+export const Blog: React.FunctionComponent<BlogProps> = ({ data, location, pageContext }) => (
     <MarkdownContent data={data} location={location} navigation={pageContext.navigation} />
 )
 
 export const pageQuery = graphql`
-  query TemplateInstallMarkdown($slug: String!) {
+  query TemplateBlogMarkdown($slug: String!) {
     markdownRemark(fields: {slug: {eq: $slug}}) {
       html
       frontmatter {
@@ -24,10 +24,11 @@ export const pageQuery = graphql`
       }
       fields {
         slug,
-        githubLink
+        githubLink,
+        weightedSlug
       }
     }
   }
 `;
 
-export default Install
+export default Blog

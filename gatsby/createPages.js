@@ -3,16 +3,12 @@
 const { resolve } = require('path');
 
 module.exports = async ({graphql, actions}) => {
-    const { createPage, createRedirect } = actions;
-
-    // Used to detect and prevent duplicate redirects
-    const redirectToSlugMap = {};
+    const { createPage } = actions;
 
     const docsTemplate = resolve(__dirname, '../src/templates/docs.tsx');
     const tutorialTemplate = resolve(__dirname, '../src/templates/tutorials.tsx');
-    const installTemplate = resolve(__dirname, '../src/templates/install.tsx');
     const infoTemplate = resolve(__dirname, '../src/templates/info.tsx');
-    const releaseTemplate = resolve(__dirname, '../src/templates/releases.tsx');
+    const blogTemplate = resolve(__dirname, '../src/templates/blog.tsx');
 
     const allMarkdown = await graphql(
         `
@@ -32,7 +28,7 @@ module.exports = async ({graphql, actions}) => {
                 logoImage,
                 deepstreamVersion,
                 deepstreamHub
-             }
+              }
             }
           }
         }
@@ -55,11 +51,13 @@ module.exports = async ({graphql, actions}) => {
             return
         }
 
+        let weightPattern = /(\d\d)-(.*)/
+
         if (
             slug.includes('install/') ||
             slug.includes('docs/') ||
             slug.includes('tutorials/') ||
-            slug.includes('releases/') ||
+            slug.includes('blog/') ||
             slug.includes('info/')
         ) {
             let template;
@@ -67,26 +65,25 @@ module.exports = async ({graphql, actions}) => {
                 template = docsTemplate;
             } else if (slug.includes('tutorials/')) {
                 template = tutorialTemplate;
-            } else if (slug.includes('install/')) {
-                template = installTemplate;
-            } else if (slug.includes('releases/')) {
-                template = releaseTemplate;
+            } else if (slug.includes('blog/')) {
+                template = blogTemplate;
+                weightPattern = /(\d\d\d\d\d\d\d\d)-(.*)/
             } else if (slug.includes('info/')) {
                 template = infoTemplate;
-            }
+            } 
 
             let paths = weightedSlug.split('/').slice(1)
             paths.reduce((nav, path, index, paths) => {
                 let order = 100
 
-                const match = path.match(/(\d\d)-(.*)/)
+                const match = path.match(weightPattern)
                 if (match) {
                     path = match[2]
                 }
 
                 if (nav[path] === undefined) {
                     if (index === paths.length - 2) {
-                        const match = paths[paths.length - 2].match(/(\d\d)-(.*)/)
+                        const match = paths[paths.length - 2].match(weightPattern)
                         if (match) {
                             order = Number(match[1])
                         }
@@ -98,7 +95,7 @@ module.exports = async ({graphql, actions}) => {
                             order
                         }
                     } else {
-                        const match = paths[index].match(/(\d\d)-(.*)/)
+                        const match = paths[index].match(weightPattern)
                         if (match) {
                             order = Number(match[1])
                         }
