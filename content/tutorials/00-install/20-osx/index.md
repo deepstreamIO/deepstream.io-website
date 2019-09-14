@@ -2,6 +2,7 @@
 title: Installing on OSX
 description: Find out how to get deepstream running on OSX
 installImage: osx.png
+redirectFrom: [/install/osx/]
 ---
 
 Download the latest server artifact [deepstream.io-mac-VERSION.zip](https://github.com/deepstreamIO/deepstream.io/releases) and unzip it.

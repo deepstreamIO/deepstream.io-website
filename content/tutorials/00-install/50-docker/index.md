@@ -1,6 +1,7 @@
 ---
 title: Docker Image
 description: Run a deepstream standalone container from an image. This tutorial will also explain how to build the image manually.
+redirectFrom: [/install/docker/]
 ---
 
 ### What is Docker?

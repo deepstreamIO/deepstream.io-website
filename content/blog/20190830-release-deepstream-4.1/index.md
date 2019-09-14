@@ -1,6 +1,7 @@
 ---
 title: "Release: Deepstream 4.1" 
 description: Deepstream V3 and below compatibility support!
+redirectFrom: [/releases/server/v4-1-0/]
 ---
 
 ### Features:

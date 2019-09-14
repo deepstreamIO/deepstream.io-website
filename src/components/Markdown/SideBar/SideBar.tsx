@@ -25,10 +25,15 @@ const SubSection = ({ item, navigation, activePath }) => (<div className={style.
 const createSideBarTree = (navigation: any, depth: number, activePath, open? = '', setOpen?) => {
     if (navigation.leaf) {
         return <div key={navigation.slug} className={cn(style.leaf, { [style.activeLeaf]: activePath === navigation.slug })}>
-            <Link to={navigation.slug.replace('index.html', '')}>{navigation.title}</Link>
+            <Link to={navigation.slug}>{navigation.title}</Link>
         </div>
     } else {
-        const items = Object.keys(navigation).sort((a, b) => navigation[a].order - navigation[b].order)
+        const items = Object.keys(navigation).sort((a, b) => {
+            if (navigation[a].slug && navigation[a].slug.includes('blog')) {
+                return navigation[b].order - navigation[a].order
+            }
+            return navigation[a].order - navigation[b].order
+        })
         return items.map((item, index) => {
             if (item === 'order') {
                 return null

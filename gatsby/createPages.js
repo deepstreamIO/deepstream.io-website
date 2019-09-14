@@ -5,9 +5,6 @@ const { resolve } = require('path');
 module.exports = async ({graphql, actions}) => {
     const { createPage, createRedirect } = actions;
 
-    // Used to detect and prevent duplicate redirects
-    const redirectToSlugMap = {};
-
     const docsTemplate = resolve(__dirname, '../src/templates/docs.tsx');
     const tutorialTemplate = resolve(__dirname, '../src/templates/tutorials.tsx');
     const infoTemplate = resolve(__dirname, '../src/templates/info.tsx');
@@ -126,12 +123,14 @@ module.exports = async ({graphql, actions}) => {
 
             // Register redirects as well if the markdown specifies them.
             if (redirectFrom) {
-                const toPath = slug.startsWith('/') ? slug : `/${slug}`;
-                createRedirect({
-                    fromPath: redirectFrom,
-                    redirectInBrowser: true,
-                    toPath,
-                });
+                redirectFrom.forEach(redirect => {
+                    const toPath = slug.startsWith('/') ? slug : `/${slug}`;
+                    createRedirect({
+                        fromPath: redirect,
+                        redirectInBrowser: true,
+                        toPath,
+                    });
+                })
            }
         }
     });

@@ -1,6 +1,7 @@
 ---
 title: Installing on Windows
 description: Find out how to get deepstream running on Windows
+redirectFrom: [/install/windows/]
 ---
 
 Download the latest server artifact [deepstream.io-windows-VERSION.zip](https://github.com/deepstreamIO/deepstream.io/releases) and unzip it.

@@ -1,6 +1,7 @@
 ---
 title: Node / NPM / Yarn
 description: Installing deepstream via NPM and and Node.js
+redirectFrom: [/install/nodejs/]
 ---
 
 ![Node.js](nodejs.png)

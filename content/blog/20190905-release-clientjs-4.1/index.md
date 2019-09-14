@@ -1,6 +1,7 @@
 ---
 title: "Release: Javascript/Node 4.1" 
 description: Default Timer Implementation
+redirectFrom: [/releases/server/v4-1-0/]
 ---
 
 Including a default implementation of timeouts using the native setTimeout API. The interval based one was created in order to mitigate the insane amount
