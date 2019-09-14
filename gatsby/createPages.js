@@ -3,12 +3,16 @@
 const { resolve } = require('path');
 
 module.exports = async ({graphql, actions}) => {
-    const { createPage } = actions;
+    const { createPage, createRedirect } = actions;
+
+    // Used to detect and prevent duplicate redirects
+    const redirectToSlugMap = {};
 
     const docsTemplate = resolve(__dirname, '../src/templates/docs.tsx');
     const tutorialTemplate = resolve(__dirname, '../src/templates/tutorials.tsx');
     const infoTemplate = resolve(__dirname, '../src/templates/info.tsx');
     const blogTemplate = resolve(__dirname, '../src/templates/blog.tsx');
+    const guideTemplate = resolve(__dirname, '../src/templates/guides.tsx');
 
     const allMarkdown = await graphql(
         `
@@ -27,7 +31,8 @@ module.exports = async ({graphql, actions}) => {
                 draft,
                 logoImage,
                 deepstreamVersion,
-                deepstreamHub
+                deepstreamHub,
+                redirectFrom
               }
             }
           }
@@ -45,7 +50,7 @@ module.exports = async ({graphql, actions}) => {
 
     allMarkdown.data.allMarkdownRemark.edges.forEach(edge => {
         let { slug, weightedSlug } = edge.node.fields;
-        const { title, description, draft, deepstreamVersion, deepstreamHub } = edge.node.frontmatter;
+        const { title, description, draft, deepstreamVersion, deepstreamHub, redirectFrom } = edge.node.frontmatter;
 
         if (draft || deepstreamVersion === 'V3' || deepstreamHub === true) {
             return
@@ -54,6 +59,7 @@ module.exports = async ({graphql, actions}) => {
         let weightPattern = /(\d\d)-(.*)/
 
         if (
+            slug.includes('guides/') ||
             slug.includes('install/') ||
             slug.includes('docs/') ||
             slug.includes('tutorials/') ||
@@ -65,6 +71,8 @@ module.exports = async ({graphql, actions}) => {
                 template = docsTemplate;
             } else if (slug.includes('tutorials/')) {
                 template = tutorialTemplate;
+            } else if (slug.includes('guides/')) {
+                template = guideTemplate;
             } else if (slug.includes('blog/')) {
                 template = blogTemplate;
                 weightPattern = /(\d\d\d\d\d\d\d\d)-(.*)/
@@ -115,6 +123,16 @@ module.exports = async ({graphql, actions}) => {
                     navigation: navigation[paths[0]]
                 },
             });
+
+            // Register redirects as well if the markdown specifies them.
+            if (redirectFrom) {
+                const toPath = slug.startsWith('/') ? slug : `/${slug}`;
+                createRedirect({
+                    fromPath: redirectFrom,
+                    redirectInBrowser: true,
+                    toPath,
+                });
+           }
         }
     });
 };

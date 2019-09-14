@@ -15,3 +15,5 @@ deepstream.exe start
 ![Starting deepstream on windows](../deepstream-v4.png)
 
 Learn more about deepstream's [command line interface](/docs/server/command-line-interface/) and its [configuration file](/docs/server/configuration/).
+
+`markdown:starting-deepstream-hints.md`

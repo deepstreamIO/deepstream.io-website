@@ -25,9 +25,9 @@ export default () => (<Layout pageClass="install-page">
                 <InstallBlock url="/tutorials/install/osx/" img="/images/install/osx.png" name="OS X" />
                 <InstallBlock url="/tutorials/install/windows/" img="/images/install/windows.png" name="Windows" />
                 <InstallBlock url="/tutorials/install/linux/" img="/images/install/linux.png" name="Linux" />
-                <InstallBlock url="/tutorials/install/nodejs/" img="/images/install/nodejs.png" name="Node.js" />
                 <InstallBlock url="/tutorials/install/docker/" img="/images/install/docker.png" name="Docker" />
-                <InstallBlock url="/tutorials/install/docker-compose/" img="/images/install/compose.png" name="Compose" />
+                <InstallBlock url="/tutorials/install/nodejs/" img="/images/install/nodejs.png" name="Node.js" />
+                {/* <InstallBlock url="/tutorials/install/docker-compose/" img="/images/install/compose.png" name="Compose" /> */}
                 {/* <InstallBlock url="/install/kubernetes/" img="/images/install/kurbernetes.png" name="Kubernetes" /> */}
             </div>
     </Section>

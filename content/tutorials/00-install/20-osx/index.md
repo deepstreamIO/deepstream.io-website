@@ -15,6 +15,8 @@ You can start the server via command line
 
 Learn more about deepstream's [command line interface](/docs/server/command-line-interface/) and its [configuration file](/docs/server/configuration/).
 
+`markdown:starting-deepstream-hints.md`
+
 ## Homebrew
 
 [[info]]

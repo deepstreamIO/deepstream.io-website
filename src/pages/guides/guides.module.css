@@ -1,0 +1,22 @@
+.guides {
+    padding: 0 50px;
+}
+
+.guide {
+    width: 300px;
+    display: inline-block;
+}
+
+.guide:hover {
+    background-color: #ececec;
+    cursor: pointer;
+}
+
+.guideImage {
+
+}
+
+.guideTitle {
+    text-align: center;
+    margin-top: 20px;
+}

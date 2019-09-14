@@ -14,6 +14,8 @@ You can start the server by simply running it on the command line
 
 Learn more about deepstream's [command line interface](/docs/server/command-line-interface/) and its [configuration file](/docs/server/configuration/).
 
+`markdown:starting-deepstream-hints.md`
+
 ## Install as a service
 
 As of 2.4, deepstream comes with ability to automatically setup and run as a service on machines supporting init.d or systemd.
@@ -51,4 +53,3 @@ If you want to make sure the service configuration is set correctly, or if you f
 ```bash
 deepstream service add --dry-run
 ```
-
