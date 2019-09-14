@@ -9,7 +9,8 @@ announced with associated documentation as part of the epic of updating all deep
 The first endpoint is mqtt! This allows us to support mqtt auth (using username and password), retain using records and QoS 1 using write acks. The only issue is since mqtt only supports one sort
 of concept (with flags distinguishing them) we bridge both events and records together. That means if you subscribe to 'weather/london', you'll get the update from both a client doing `event.emit('weather/london')` and `record.setData('weather/london')`.
 
-So for example, using the following nodeJS mqtt code:
+So for example, using the following nodeJS mqtt code we can get any mqtt device to be controlled by a 
+browser client (not that this is totally useful!):
 
 ```js
 const mqtt = require('mqtt')
@@ -26,30 +27,40 @@ const client  = mqtt.connect('mqtt://localhost:1883', {
  
 client.on('connect', function () {
     if (!err) {
-      setInterval(() => {
-        client.publish('weather/london', 
-            JSON.stringify({  temperature: 12 }), 
-            { 
-                // This tells deepstream it's a record, which will save it in the database
-                retain: true, 
-                // This tells deepstream it's a write ack, so will get a confirmation
-                qos: 1 
-            }, 
-            console.log
-        )
-      }, 1000)
+        // Lets add a kill switch for fun
+        client.subscribe('start/weather/london', function (err) {
+            console.log('subscribed to the kill switch')
+        })
+        // Lets add a kill switch for fun
+        client.subscribe('stop/weather/london', function (err) {
+            console.log('subscribed to the kill switch')
+        })
     }
-  })
-
-  // Lets add a kill switch for fun
-  client.subscribe('stop-subscribing', function (err) {
-      console.log('subscribed to the kill switch')
   })
 })
  
+let publishInterval = null
 client.on('message', function (topic, message) {
-    if ('stop-subscribing') {
-        client.end()
+    if (topic === 'stop-publishing') {
+        clearInterval(publishInterval)
+        publishInterval = null
+    }
+    else if (topic === 'start-publishing') {
+        if (publishInterval) {
+            return
+        }
+        publishInterval = setInterval(() => {
+            client.publish('weather/london', 
+                JSON.stringify({  temperature: 12 }), 
+                { 
+                    // This tells deepstream it's a record, which will save it in the database
+                    retain: true, 
+                    // This tells deepstream it's a write ack, so will get a confirmation
+                    qos: 1 
+                }, 
+                console.log
+            )
+        }, 1000)
     }
 })
 ```
@@ -63,12 +74,16 @@ await client.login({
     username: 'my-username',
     password: 'my-user-password',
 })
+
+// This example assumes the mqtt client is already logged in and subscribed
+client.event.emit('start/weather/london')
+
 const room = client.record.getRecord('weather/london')
 await room.whenReady()
 room.susbcribe(console.log)
 
 setTimeout(() => {
-    client.event.emit('stop-subscribing')
+    client.event.emit('stop/weather/london')
 }, 5000)
 ```
 
