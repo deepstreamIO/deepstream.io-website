@@ -1,7 +1,8 @@
 ---
-title:  Valve Dynamic Permissions
+title:  Valve Dynamic
 description: Realtime permissions that are readable on both client and server
 tags: [tutorial, realtime, permissions, server, client]
+redirectFrom: [/tutorials/core/permission/dynamic/]
 ---
 
 Oh dear...permissions! Permissions are always super-hard to explain. I've read tutorials using The Simpsons, The Fellowship of the Ring and even the Olsen Twins to explain concepts like "access groups" and "right-inheritance".

@@ -1,6 +1,7 @@
 ---
-title: Permissioning
-description: Learn permissioning with Valve
+title: Valve Introduction
+description: Learn permissions with Valve
+redirectFrom: [/tutorials/core/permission/conf-simple/]
 ---
 
 deepstream uses a powerful permission-language called Valve that allows you to specify which user can perform which action with which data.

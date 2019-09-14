@@ -6,6 +6,7 @@ description: How to send different data for each user
 A frequent requirement for any app is the need to send different data to
 different users. Whether it's updates to a social feed, discounts for frequent
 buyers, a list of matches on a dating platform, or any other kind of private or at least user-specific information.
+
 Fortunately, all three of deepstream's core concepts - data-sync,
 publish-subscribe, and request-response - provide various means to achieve this. The trick? Combine user-specific record or event names with deepstream's permissioning language [Valve](/tutorials/core/permission/conf-simple/).
 
@@ -13,7 +14,7 @@ publish-subscribe, and request-response - provide various means to achieve this.
 Providing private or user-specific records is as simple as including the username in the record name. If your social network has a profile for Lisa Miller, simply store the profile in a record called `profile/lisa-miller`:
 
 ```javascript
-const profile = ds.record.getRecord( 'profile/lisa-miller' );
+const profile = ds.record.getRecord('profile/lisa-miller')
 ```
 
 Now we need to make sure that everyone can read that profile but only Lisa can
@@ -29,6 +30,7 @@ How does this rule work? First we specify `profile/$username` as a pattern. When
 `read: true` makes sure that everyone can read the record's data. `user.id === $username` ensures that the `$username` part of the record name needs to match the username the user is currently logged in with if they wish to write.
 
 ## User-Specific RPCs
+
 Ok, so far, so simple. Let's look at a more advanced example including an HTTP
 authentication endpoint and a backend process that provides user-specific data
 as a response to remote procedure calls (RPCs). Say we're running an online

@@ -1,6 +1,7 @@
 ---
-title: Valve Permissioning Advanced
+title: Valve Advanced
 description: Learn how to unlock the full potential of Valve
+redirectFrom: [/tutorials/core/permission/conf-advanced/]
 ---
 
 Ok, time for some advanced valve rules. To get up to speed with the basics, head over to the [simple permission rules example](/tutorials/core/permission/conf-simple/).
