@@ -2,7 +2,7 @@
   "name": "deepstream.io-website",
   "private": true,
   "description": "The deepstream.io website",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "author": "Yasser Fadl <yasser.fadl@gmail.com>",
   "dependencies": {
     "@types/classnames": "^2.2.9",
