@@ -54,8 +54,8 @@ Listeners can register for a pattern described by a regular expression, e.g. `'^
 
 ```javascript
 // Client B
-client.event.listen('^news/.*', (eventName, response) => {
-  console.log(eventName) // 'news/sports'
+client.event.listen('^news/.*', (match, response) => {
+  console.log(match) // 'news/sports'
   if (/* if you want to provide */) {
     // start publishing data via `client.event.emit(eventName, /* data */)`
     response.accept()
@@ -69,6 +69,6 @@ client.event.listen('^news/.*', (eventName, response) => {
 })
 ```
 
-The listen-callback is called once a matching event is subscribed to for the first time and stopped once the last subscriber for a matching event unsubscribes.
+The listen-callback is called once the first client subscribes to a matching event and `onStop` is called once the last subscriber for a matching event unsubscribes.
 
 Listening also keeps state. Registering as a listener for a pattern that already has matching subscriptions without an active provider will call the callback multiple times straight away, once for every matching subscription.

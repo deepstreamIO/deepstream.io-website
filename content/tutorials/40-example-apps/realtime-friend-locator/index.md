@@ -110,7 +110,7 @@ onPositionUpdate( position ) {
 
 Now we are ready to find all the users who are within a kilometer radius of us, and who are logged in to the app. We will be using the listen method to pull our data out of this list we created, that contains our latitude and longitude.
 
-The listen method is called every time there is a change in record subscriptions, with our *isSubscribed* callback either returning true if there is a subscription, or false if there is not. Once there are events to subscribe to and we accept the response, we can start publishing data that will be populated from our database. There is more information about this in the  [events turorial](/tutorials/core/active-data-providers/).
+The listen method is called every time there is a change in record subscriptions. Once there are events to subscribe to and we accept the response, we can start publishing data that will be populated from our database. There is more information about this in the  [events turorial](/tutorials/core/active-data-providers/).
 
 ```js
 //server side
@@ -129,20 +129,20 @@ const geoSubscriptions = {};
 //here we listen to the list we created upon logging in.
 //the match will contain all the information in our list after the "/.*" . We our sending the match to the geoSubscription module, where we will extract its data and perform a RethinkDB query.
 
-ds.record.listen('users_within_radius/.*', (match, isSubscribed, response) => {
-    if( isSubscribed ) {
-        //start publishing data
-        response.accept();
-        if( !geoSubscriptions[ match ] ) {
-            geoSubscriptions[ match ] = new GeoSubscription( match, ds );
-        }
-    } else {
+ds.record.listen('users_within_radius/.*', (match, response) => {
+    //start publishing data
+    response.accept();
+    if( !geoSubscriptions[ match ] ) {
+        geoSubscriptions[ match ] = new GeoSubscription( match, ds );
+    }
+
+    response.onStop(() => {
         //stop publishing data
         if( geoSubscriptions[ match ]) {
             geoSubscriptions[ match ].destroy();
             delete geoSubscriptions[ match ];
         }
-    }
+    })
 })
 ```
 

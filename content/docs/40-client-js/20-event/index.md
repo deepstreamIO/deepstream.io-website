@@ -59,17 +59,16 @@ client.event.emit('notifications', 'Maria just came online')
 |Argument|Type|Optional|Description|
 |---|---|---|---|
 |pattern|String (regex)|false|The pattern to match events which subscription status you want to be informed of|
-|callback|Function|false|A function that will be called whenever an event has been initially subscribed to or is no longer subscribed. Arguments are (String) match, (Boolean) isSubscribed, and response (Object)|
+|callback|Function|false|A function that will be called whenever an event matching the `pattern` has been initially subscribed to. When there are no more subscriptions to any events matching `pattern`, the callback passed to `response.onStop()` is called. Arguments are (String) match, and response (Object)|
 
 Registers the client as a listener for event subscriptions made by other clients. This is useful to create active data providers - processes that only send events if clients are actually interested in them. You can find more about listening in the [events tutorial](/tutorials/core/pubsub/#how-to-listen-for-event-subscriptions).
 
-The callback is invoked with three arguments:
-- **eventName**: the name of the event that has been matched against the provided pattern
-- **isSubscribed**: a boolean indicating whether the event is subscribed or unsubscribed
+The callback is invoked with two arguments:
+- **match**: the name of the event that has been matched against the provided pattern
 - **response**: contains two functions (`accept` and `reject`), one of them needs to be called
 
 ```javascript
-client.event.listen('^news/.*', (eventName, isSubscribed, response) => {
+client.event.listen('^news/.*', (match, response) => {
   // see tutorial for more details
 })
 ```
