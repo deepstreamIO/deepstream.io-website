@@ -153,7 +153,7 @@ client.record.setData('user/homer', 'son', 'Bart', (err) => {
 |Argument|Type|Optional|Description|
 |---|---|---|---|
 |pattern|String (regex)|false|The pattern to match records which subscription status you want to be informed of|
-|callback|Function|false|A function that will be called whenever an event has been initially subscribed to or is no longer subscribed. Arguments are (String) match, and response (Object).|
+|callback|Function|false|A function that will be called whenever a record matching the `pattern` has been initially subscribed to. When there are no more subscriptions to any records matching `pattern`, the callback passed to `response.onStop()` is called. Arguments are (String) match, and response (Object).|
 
 Allows to listen for record subscriptions made by other clients. This is useful to create "active" data providers, e.g. providers that only provide data for records that users are actually interested in. You can find more about listening in the [record tutorial](/tutorials/core/datasync/records/).
 
