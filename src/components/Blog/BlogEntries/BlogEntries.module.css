@@ -1,0 +1,32 @@
+.entries {
+    
+}
+
+.entry {
+    display: block;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 2px;
+}
+
+.entry:hover {
+    background-color: #ececec;
+    cursor: pointer;
+}
+
+.entry > * {
+    display: inline-block;
+}
+
+.entry > img, .entry > .gatsby-image-wrapper {
+    width: 50px;  
+}
+
+.entry > span {
+    padding-left: 20px;
+    width: calc(100% - 50px);
+}
+
+.release {
+    color: red;
+}

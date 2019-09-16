@@ -5,14 +5,11 @@ const { resolve } = require('path');
 module.exports = async ({graphql, actions}) => {
     const { createPage, createRedirect } = actions;
 
-    // Used to detect and prevent duplicate redirects
-    const redirectToSlugMap = {};
-
     const docsTemplate = resolve(__dirname, '../src/templates/docs.tsx');
     const tutorialTemplate = resolve(__dirname, '../src/templates/tutorials.tsx');
-    const installTemplate = resolve(__dirname, '../src/templates/install.tsx');
     const infoTemplate = resolve(__dirname, '../src/templates/info.tsx');
-    const releaseTemplate = resolve(__dirname, '../src/templates/releases.tsx');
+    const blogTemplate = resolve(__dirname, '../src/templates/blog.tsx');
+    const guideTemplate = resolve(__dirname, '../src/templates/guides.tsx');
 
     const allMarkdown = await graphql(
         `
@@ -31,8 +28,9 @@ module.exports = async ({graphql, actions}) => {
                 draft,
                 logoImage,
                 deepstreamVersion,
-                deepstreamHub
-             }
+                deepstreamHub,
+                redirectFrom
+              }
             }
           }
         }
@@ -49,17 +47,20 @@ module.exports = async ({graphql, actions}) => {
 
     allMarkdown.data.allMarkdownRemark.edges.forEach(edge => {
         let { slug, weightedSlug } = edge.node.fields;
-        const { title, description, draft, deepstreamVersion, deepstreamHub } = edge.node.frontmatter;
+        const { title, description, draft, deepstreamVersion, deepstreamHub, redirectFrom } = edge.node.frontmatter;
 
         if (draft || deepstreamVersion === 'V3' || deepstreamHub === true) {
             return
         }
 
+        let weightPattern = /(\d\d)-(.*)/
+
         if (
+            slug.includes('guides/') ||
             slug.includes('install/') ||
             slug.includes('docs/') ||
             slug.includes('tutorials/') ||
-            slug.includes('releases/') ||
+            slug.includes('blog/') ||
             slug.includes('info/')
         ) {
             let template;
@@ -67,26 +68,27 @@ module.exports = async ({graphql, actions}) => {
                 template = docsTemplate;
             } else if (slug.includes('tutorials/')) {
                 template = tutorialTemplate;
-            } else if (slug.includes('install/')) {
-                template = installTemplate;
-            } else if (slug.includes('releases/')) {
-                template = releaseTemplate;
+            } else if (slug.includes('guides/')) {
+                template = guideTemplate;
+            } else if (slug.includes('blog/')) {
+                template = blogTemplate;
+                weightPattern = /(\d\d\d\d\d\d\d\d)-(.*)/
             } else if (slug.includes('info/')) {
                 template = infoTemplate;
-            }
+            } 
 
             let paths = weightedSlug.split('/').slice(1)
             paths.reduce((nav, path, index, paths) => {
                 let order = 100
 
-                const match = path.match(/(\d\d)-(.*)/)
+                const match = path.match(weightPattern)
                 if (match) {
                     path = match[2]
                 }
 
                 if (nav[path] === undefined) {
                     if (index === paths.length - 2) {
-                        const match = paths[paths.length - 2].match(/(\d\d)-(.*)/)
+                        const match = paths[paths.length - 2].match(weightPattern)
                         if (match) {
                             order = Number(match[1])
                         }
@@ -98,7 +100,7 @@ module.exports = async ({graphql, actions}) => {
                             order
                         }
                     } else {
-                        const match = paths[index].match(/(\d\d)-(.*)/)
+                        const match = paths[index].match(weightPattern)
                         if (match) {
                             order = Number(match[1])
                         }
@@ -118,6 +120,18 @@ module.exports = async ({graphql, actions}) => {
                     navigation: navigation[paths[0]]
                 },
             });
+
+            // Register redirects as well if the markdown specifies them.
+            if (redirectFrom) {
+                redirectFrom.forEach(redirect => {
+                    const toPath = slug.startsWith('/') ? slug : `/${slug}`;
+                    createRedirect({
+                        fromPath: redirect,
+                        redirectInBrowser: true,
+                        toPath,
+                    });
+                })
+           }
         }
     });
 };

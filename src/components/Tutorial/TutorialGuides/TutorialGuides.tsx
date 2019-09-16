@@ -132,9 +132,8 @@ export const TutorialsGuides: React.FunctionComponent<TutorialsOverviewProps> = 
                 {/*<Category title="Logger Connectors" entries={sections.plugins.logger} />*/}
             </div>,
             <div>
-                <h2>Working with deepstream</h2>
-                 <Category title="Server" entries={sections.core.server} />
-                 <Category title="Usage with other Servers" entries={sections.integrations['other-servers']} />
+            <h2>Cloud</h2>
+                <Category title="Deployment &amp; PaaS" entries={sections.integrations.cloud} />
             </div>
         ]} />
 
@@ -142,13 +141,6 @@ export const TutorialsGuides: React.FunctionComponent<TutorialsOverviewProps> = 
             <div>
                 <h2>Extending deepstream</h2>
                 <Category title="Writing your own plugin" entries={sections['custom-plugins']} />
-            </div>
-        ]} />
-
-        <Section columnClassName="entries" columns={[
-            <div>
-                <h2>Cloud</h2>
-                <Category title="Deployment &amp; PaaS" entries={sections.integrations.cloud} />
             </div>
         ]} />
 

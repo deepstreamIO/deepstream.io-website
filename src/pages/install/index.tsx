@@ -22,25 +22,35 @@ export default () => (<Layout pageClass="install-page">
                 the deepstream server comes as a standalone executable for Mac, Windows and Linux, run via docker and used via node if you want to do some wizadry
             </p>
             <div className={cn(style.distroGrid, style.blockLink)}>
-                <InstallBlock url="/install/osx/" img="/images/install/osx.png" name="OS X" />
-                <InstallBlock url="/install/windows/" img="/images/install/windows.png" name="Windows" />
-                <InstallBlock url="/install/linux/" img="/images/install/linux.png" name="Linux" />
-                <InstallBlock url="/install/nodejs/" img="/images/install/nodejs.png" name="Node.js" />
-                <InstallBlock url="/install/docker/" img="/images/install/docker.png" name="Docker" />
-                <InstallBlock url="/install/docker-compose/" img="/images/install/compose.png" name="Compose" />
+                <InstallBlock url="/tutorials/install/osx/" img="/images/install/osx.png" name="OS X" />
+                <InstallBlock url="/tutorials/install/windows/" img="/images/install/windows.png" name="Windows" />
+                <InstallBlock url="/tutorials/install/linux/" img="/images/install/linux.png" name="Linux" />
+                <InstallBlock url="/tutorials/install/docker/" img="/images/install/docker.png" name="Docker" />
+                <InstallBlock url="/tutorials/install/nodejs/" img="/images/install/nodejs.png" name="Node.js" />
+            </div>
+    </Section>
+
+    <Section className={style.server}>
+            <h2>deployments</h2>
+            <p>
+                how to deploy deepstream in different environments
+            </p>
+            <div className={cn(style.distroGrid, style.blockLink)}>
+                <InstallBlock url="/tutorials/devops/nginx/" img="/images/logos/nginx.png" name="Nginx" />
+                <InstallBlock url="/tutorials/devops/docker-compose/" img="/images/install/compose.png" name="Compose" />
                 {/* <InstallBlock url="/install/kubernetes/" img="/images/install/kurbernetes.png" name="Kubernetes" /> */}
             </div>
     </Section>
 
     <Section className={style.clients}>
-            <h2>deepstream.io clients</h2>
+            <h2>clients</h2>
             <p>
                 deepstream clients let you connect to the server. The JavaScript client is polished and battletested, other clients are under development. Contributions are welcome, if you'd like to get involved meet us on <a href="https://github.com/deepstreamIO/deepstream.io/issues?q=is%3Aopen+is%3Aissue+label%3Anew-client">Github</a>.
             </p>
             <div className={cn(style.clientGrid, style.blockLink)}>
                 <InstallBlock url="/tutorials/getting-started/javascript/#getting-the-client" img="/images/install/javascript.png" name="Browser / Node" />
-                <InstallBlock url="/install/java" img="/images/install/java.png" name="Java" soon={true} />
-                <InstallBlock url="/install/android" img="/images/install/android.png" name="Android" soon={true} />
+                <InstallBlock url="/tutorials/install/java" img="/images/install/java.png" name="Java" soon={true} />
+                <InstallBlock url="/tutorials/install/android" img="/images/install/android.png" name="Android" soon={true} />
                 <InstallBlock url="/docs/client-swift/AnonymousRecord/" img="/images/install/ios.png" name="iOS" soon={true} />
                 <InstallBlock url="https://github.com/deepstreamIO/deepstream.io/issues/72" img="/images/install/python.png" name="Python" soon={true} />
                 <InstallBlock url="https://github.com/deepstreamIO/deepstream.io/issues/70" img="/images/install/dotnet.png" name=".NET" soon={true} />

@@ -34,9 +34,8 @@ module.exports = exports.onCreateNode = ({ node, actions, getNode }) => {
             createNodeField({
                 node,
                 name: 'slug',
-                value: slug.replace(/(\d\d)-/g, ''),
+                value: slug.includes('blog') ? slug : slug.replace(/(\d\d)-/g, ''),
             });
-
             return;
     }
 };
