@@ -33,7 +33,7 @@ deploy:
   local_dir: public
   region: eu-central-1
   on:
-    tags: true
+    branch: staging
 
 notifications:
   email: false
