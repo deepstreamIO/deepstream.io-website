@@ -4,6 +4,7 @@ import React from 'react';
 import {Layout} from "../../General/Layout/Layout"
 import {SideBar} from "../SideBar/SideBar"
 import { FaGithub } from 'react-icons/fa';
+import { WIP } from '../../General/WIP/WIP';
 
 interface MarkdownContentProps {
     data: any
@@ -13,7 +14,7 @@ interface MarkdownContentProps {
 
 export const MarkdownContent: React.FunctionComponent<MarkdownContentProps> = ({ data, location, navigation }) => {
     const { html } = data.markdownRemark
-    const { title, description } = data.markdownRemark.frontmatter
+    const { title, description, wip } = data.markdownRemark.frontmatter
     const { githubLink } = data.markdownRemark.fields
 
     return <Layout location={location} hasSideBar={true}>
@@ -25,6 +26,7 @@ export const MarkdownContent: React.FunctionComponent<MarkdownContentProps> = ({
                         <a className={style.githubEdit} href={githubLink}><FaGithub /></a>
                     </h1>
                     {description && <h3 className={style.description}>{description}</h3>}
+                    {wip && <WIP />}
                 </header>
                 <div
                     className={`${style.content} content`}

@@ -29,7 +29,8 @@ module.exports = async ({graphql, actions}) => {
                 logoImage,
                 deepstreamVersion,
                 deepstreamHub,
-                redirectFrom
+                redirectFrom,
+                wip
               }
             }
           }
