@@ -1,33 +1,33 @@
 ---
-title: Redis Cache Connector
-description: Learn how to use Redis with deepstream for cache
+title: Redis Cluster Connector
+description: Learn how to use Redis with deepstream for clustering
 logoImage: redis.png
 ---
 
 `markdown:redis-description.md`
 
-#### How to use Redis as a cache with deepstream?
+#### How to use Redis for clustering with deepstream?
 
-Install via commandline or if you're using deepstream in Node.js via [NPM](https://www.npmjs.com/package/@deepstream/cache-redis)
+Install via [NPM](https://www.npmjs.com/package/@deepstream/clusternode-redis)
 
 ```bash
-    deepstream install cache redis
+npm install --save @deepstream/clusternode-redis
 ```
 
 And can be enabled in your config file as follows:
 
 ```yaml
-cache:
+clusterNode:
   name: redis
   options:
     host: localhost
     port: 6379
 ```
 
-Both connectors work with Redis clusters as well. Just adjust your options as follows:
+Or to connect it to a redis cluster:
 
 ```yaml
-cache:
+clusterNode:
   name: redis
   options:
     nodes:

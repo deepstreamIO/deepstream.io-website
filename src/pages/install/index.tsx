@@ -78,6 +78,22 @@ export default () => (<Layout pageClass="install-page">
                 {/*<InstallBlock url="/tutorials/database/db-couchdb/" img="/images/install/couchdb.png" name="CouchDB" />*/}
                 {/*<InstallBlock url="/tutorials/database/db-dynamodb/" img="/images/install/dynamodb.png" name="Amazon DynamoDB" />*/}
             </div>
+            <h3 className={style.subheading}>cluster connectors</h3>
+            <div className={cn(style.connectorsGrid, style.blockLink)}>
+                <InstallBlock url="/tutorials/plugins/clusternode/redis/" img="/images/install/redis.png" name="Redis" />
+            </div>
+            <h3 className={style.subheading}>monitoring connectors</h3>
+            <div className={cn(style.connectorsGrid, style.blockLink)}>
+                <InstallBlock url="/tutorials/plugins/monitoring/http/" img="/images/logos/http.png" name="HTTP" />
+            </div>
+            <h3 className={style.subheading}>connection endpoints</h3>
+            <div className={cn(style.connectorsGrid, style.blockLink)}>
+                <InstallBlock url="/tutorials/plugins/connection-endpoint/node-http/" img="/images/logos/http.png" name="HTTP" />
+                <InstallBlock url="/tutorials/plugins/connection-endpoint/ws-websocket/" img="/images/logos/websocket.png" name="Node WebSocket" />
+                <InstallBlock url="/tutorials/plugins/connection-endpoint/uws-websocket/" img="/images/logos/uws.svg" name="UWS WebSocket" />
+                <InstallBlock url="/tutorials/plugins/connection-endpoint/mqtt/" img="/images/logos/mqtt.png" name="MQTT" />
+                <InstallBlock url="/tutorials/plugins/connection-endpoint/v3-compatibility/" img="/images/eltons/elton-robot.png" name="V3" />
+            </div>
     </Section>
 </Layout>)
 
