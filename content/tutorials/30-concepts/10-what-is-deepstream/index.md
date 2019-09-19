@@ -35,6 +35,7 @@ deepstream provides three core concepts:
 - **[Data-sync:](/tutorials/core/datasync/records/)** stateful and persistent JSON objects that can be manipulated in whole or in parts and are synchronized across all connected clients
 - **[Pub-Sub:](/tutorials/core/pubsub/)** many-to-many messaging based on subscriptions to topics
 - **[Request-Response:](/tutorials/core/request-response/)** Question/Answer workflows
+- **[Presence:](/tutorials/core/presence/)** Question/Answer workflows
 
 ### What does it not do?
 deepstream is a realtime data server that can handle all aspects of your application's logic. But: 
@@ -66,11 +67,8 @@ which data.
 deepstream nodes are built as small, single threaded processes with asynchronous I/O that scale in clusters, designed to work well in cloud environments. A single node can comfortably stream 160.000-200.000 updates a second.
 Recent benchmarks ran a cluster of six nodes on AWS EC2 t2.medium instances for an hour, delivering four billion messages (at a total AWS cost of 36 cents).
 
-### How fast is it?
-Benchmarks have shown that even under load the average latency for deepstream messages is ~1ms. The biggest factor in deepstream deployments is usually network proximity - if your server is in Sweden, but your users are in Japan, your information will need time to travel.
-
 ### What is it written in?
-A fast and efficient combination of low level C for messaging and networking and Node logic, compiled into a self contained executable.
+Mostly nodeJS, with native nodeJS plugins like the uws websocket server that be used for superior memory and cpu efficiency.
 
 ### Who’s behind it?
 It was started by Yasser Fadl and Wolfram Hempel, two trading technology geeks that used to build similar systems for Investment Banks and Hedge Funds in London until they’ve got somewhat irritated by this world and decided to move into open source.
