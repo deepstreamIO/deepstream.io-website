@@ -17,8 +17,8 @@ Using the `getAll()` method we can retrieve the status of connected clients at a
 If you would like to see all the users who are online in your application, you could just do the following:
 
 ```javascript
-client.presence.getAll((usernames) => {
-  // ['Homer', 'Marge', 'Lisa']
+client.presence.getAll((error, usernames) => {
+  // error = null, usernames = ['Homer', 'Marge', 'Lisa']
 })
 ```
 
@@ -27,12 +27,15 @@ The above function would return all the users who are currently logged in into y
 Optionally, you can retrieve the online/offline status of only selected users and not everyone else by doing the following:
 
 ```javascript
-client.presence.getAll(['Homer', 'Marge', 'Lisa'], (result) => {
-    /*
-        'Homer': true,
-        'Marge': true,
-        'Lisa': false
-    */
+client.presence.getAll(['Homer', 'Marge', 'Lisa'], (error, result) => {
+  /*
+    error = null,
+    clients = {
+      'Homer': true,
+      'Marge': true,
+      'Lisa': false
+    }
+  */
 })
 ```
 
