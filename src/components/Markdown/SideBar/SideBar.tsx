@@ -51,7 +51,6 @@ const createSideBarTree = (navigation: any, depth: number, activePath, open? = '
         } else  if (depth === 0) {
             return <Section key={item} item={item} navigation={navigation} activePath={activePath} setOpen={setOpen} open={item === open} openSubNav={openSubNav} setOpenSubNav={setOpenSubNav} />
         } else {
-            console.log(openSubNav, activePath, item)
             return <SubSection key={item} item={item} navigation={navigation} activePath={activePath} openSubNav={openSubNav === item} setOpenSubNav={setOpenSubNav} />
         }
     })

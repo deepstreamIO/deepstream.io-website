@@ -33,25 +33,25 @@ export const MarkdownContent: React.FunctionComponent<MarkdownContentProps> = ({
     const { title, description, wip } = data.markdownRemark.frontmatter
     const { githubLink } = data.markdownRemark.fields
 
-    const pathsnames = location.pathname.split('/')
-    const subItems = navigation[pathsnames[2]]
-    const items = Object.keys(subItems).filter(s => s !== 'order').sort((a, b) => {
-        if (subItems[a].slug && subItems[a].slug.includes('blog')) {
-            return subItems[b].order - subItems[a].order
-        }
-        return subItems[a].order - subItems[b].order
-    })
     let previousItem = null
     let nextItem = null
-    const index = items.indexOf(pathsnames[3])
-    if (index > 0) {
-        previousItem = subItems[items[index - 1]]
+    const pathsnames = location.pathname.split('/')
+    const subItems = navigation[pathsnames[2]]
+    if (subItems) {
+        const items = Object.keys(subItems).filter(s => s !== 'order').sort((a, b) => {
+            if (subItems[a].slug && subItems[a].slug.includes('blog')) {
+                return subItems[b].order - subItems[a].order
+            }
+            return subItems[a].order - subItems[b].order
+        })
+        const index = items.indexOf(pathsnames[3])
+        if (index > 0) {
+            previousItem = subItems[items[index - 1]]
+        }
+        if (index < items.length - 1) {
+            nextItem = subItems[items[index + 1]]
+        }
     }
-    if (index < items.length - 1) {
-        nextItem = subItems[items[index + 1]]
-    }
-
-    console.log(previousItem, nextItem)
 
     return <Layout location={location} hasSideBar={true}>
         <div className={style.wrapper}>
