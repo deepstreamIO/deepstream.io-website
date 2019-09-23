@@ -27,7 +27,7 @@ list.removeEntry('d')
 - Get them:
 
 ```javascript
-console.log(list.getEntires())
+console.log(list.getEntries())
 ```
 
 - Subscribe to changes:
@@ -75,7 +75,6 @@ const addPostitToBoard = async () => {
 
     const list = client.record.getList('board')
     list.addEntry(positId)
-    list.discard()
 }
 ```
 
