@@ -67,4 +67,4 @@ curl -X POST -H "Content-Type: application/json" -d '{
 }' "<YOUR HTTP URL>"
 ```
 
-For more information see [deepstream HTTP docs](/docs/http/v1).
+For more information see [deepstream HTTP docs](/docs/client-http/v1/).
