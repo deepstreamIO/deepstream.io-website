@@ -1,6 +1,6 @@
 ---
-title: Grouping Post-Its Together
-description: Grouping Post-Its
+title: Creating postits
+description: Creating a postit
 ---
 
 ## Creating a postit

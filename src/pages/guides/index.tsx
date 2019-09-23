@@ -12,22 +12,22 @@ export default () => (
             <div className={style.guides}>
                 <h2 className={style.guideSectionHeader}>Frontend Apps</h2>
                 <div>
-                    <Link to="/guides/browser/weather-app/" className={style.guide}>
+                    {/* <Link to="/guides/browser/weather-app/" className={style.guide}>
                         <img className={style.guideImage} src="/images/eltons/elton-docs.svg" />
                         <h1 className={style.guideTitle}>Weather App</h1>
-                    </Link>
+                    </Link> */}
                     <Link to="/guides/browser/post-it-board/" className={style.guide}>
                         <img className={style.guideImage} src="/images/eltons/elton-docs.svg" />
                         <h1 className={style.guideTitle}>PostIt Board</h1>
                     </Link>
-                    <Link to="/guides/browser/color-picker/" className={style.guide}>
+                    {/* <Link to="/guides/browser/color-picker/" className={style.guide}>
                         <img className={style.guideImage} src="/images/eltons/elton-docs.svg" />
                         <h1 className={style.guideTitle}>Weather App</h1>
-                    </Link>
+                    </Link> */}
                 </div>
             </div>
 
-            <div className={style.guides}>
+            {/* <div className={style.guides}>
                 <h2 className={style.guideSectionHeader}>Deployment Guides</h2>
                 <div>
                     <Link to="/guides/devops/docker-compose/" className={style.guide}>
@@ -39,7 +39,7 @@ export default () => (
                         <h1 className={style.guideTitle}>Nginx</h1>
                     </Link>
                 </div>
-            </div>
+            </div> */}
             
         </Section>
     </Layout>

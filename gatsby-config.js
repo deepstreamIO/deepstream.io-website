@@ -61,9 +61,6 @@ module.exports = {
       options: {
         plugins: [
           {
-            resolve: "gatsby-remark-code-buttons"
-          },
-          {
             resolve: "gatsby-remark-embed-markdown",
             options: {
               directory: `${__dirname}/markdown-templates/`,

@@ -3,11 +3,6 @@ title: Logging in to your boards
 description: How to login to the server using storage auth
 ---
 
----
-title: Logging in
-description: Logging into the deepstream from a JS client
----
-
 The next step is to create a deepstream client, login and initialize the application.
 
 ## Setting up Authentication on the backend

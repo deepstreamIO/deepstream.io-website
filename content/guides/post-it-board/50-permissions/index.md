@@ -1,6 +1,6 @@
 ---
 title: Permissioning it all
-description: Grouping PostIts
+description: Adding some permissions
 ---
 
 ## Permissions
