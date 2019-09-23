@@ -77,16 +77,16 @@ When the delete button is being pressed, a function like this should be invoked:
 
 ```javascript
 removeTodo() {
-    this.props.list.removeEntry( this.record.name );
-    this.record.delete();
-  }
-  ```
+  this.props.list.removeEntry( this.record.name );
+  this.record.delete();
+}
+```
 
-  To update a record, for example the title, use this:
+To update a record, for example the title, use this:
 
-  ```javascript
-        this.record.set('title', title);
-  ```
+```javascript
+this.record.set('title', title);
+```
 
 In case all the checkboxes are checked, and the "Clear Completed" button is being pressed, this how you would empty the whole list:
 

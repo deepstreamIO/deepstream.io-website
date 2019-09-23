@@ -70,8 +70,6 @@ Let's briefly discuss what events are in deepstream context.
 
 `markdown:glossary-event.md`
 
-Events, aka Pub/Sub, allows communication using a Publish-Subscribe pattern. A client/server emits an event, which is known as publishing and all connected (subscribed) clients/servers are triggered with the event's payload if any. This is a common pattern, not just in realtime systems, but software engineering generally.
-
 Clients and backend processes can receive events using `.subscribe()`
 
 ```javascript

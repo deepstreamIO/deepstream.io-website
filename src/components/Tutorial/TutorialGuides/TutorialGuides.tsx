@@ -118,7 +118,7 @@ export const TutorialsGuides: React.FunctionComponent<TutorialsOverviewProps> = 
                 <Category title="Mobile Frameworks" entries={sections.integrations.mobile} />
             </div>,
             <div>
-                <h2>Example Applications</h2>
+                <h2>Example Applications Walkthrough</h2>
                 <Category title="Example Applications" entries={sections['example-apps']} />
             </div>,
         ]} />
