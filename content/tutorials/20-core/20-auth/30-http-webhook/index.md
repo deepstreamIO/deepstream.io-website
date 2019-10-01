@@ -19,6 +19,9 @@ options:
   endpointUrl: https://someurl.com/auth-user
   permittedStatusCodes: [ 200 ]
   requestTimeout: 2000
+  retryStatusCodes: [ 404, 504 ]
+  retryAttempts: 3
+  retryInterval: 5000
 ```
 
 In the `options` key, set an `endpointUrl` for an authentication service that deepstream will send a `POST` request to, `permittedStatusCodes` to the list of accepted http codes for successful authentication, and `requestTimeout`is the timeout value (in milliseconds).
