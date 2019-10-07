@@ -4,6 +4,8 @@ description: Learn how to use Hazelcast with deepstream
 logoImage: hazelcast.png
 ---
 
+*** Hazelcast not upgraded to V4/V5. Please raise a github issue if you require this ***
+
 #### What is Hazelcast?
 Hazelcast is a distributed caching layer, organized as a grid of independent nodes that sync their state. On top of that, Hazelcast allows to perform computations based on the stored data and even supports basic server side messaging.
 
@@ -14,15 +16,11 @@ Where Hazelcast really comes into its own is the additional Map-Reduce functiona
 ![Hazelcast Diagram](hazelcast-diagram.png)
 
 #### Using Hazelcast with deepstream
-deepstream comes with a cache connector for Hazelcast. Simply install it via the command line
-
-```bash
-deepstream install cache hazelcast
-```
+deepstream comes with a cache connector for Hazelcast preinstalled
 
 ![Hazelcast install console output](console-output.png)
 
-or, if you're using deepstream in Node, [get it from NPM](https://www.npmjs.com/package/deepstream.io-cache-hazelcast)
+or, if you're using deepstream in Node, [get it from NPM](https://www.npmjs.com/package/@deepstream/cache-hazelcast)
 
 #### Configuring the Hazelcast connector
 

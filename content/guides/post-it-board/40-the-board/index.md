@@ -1,6 +1,6 @@
 ---
 title: Grouping Post-Its Together
-description: Grouping Post-Its
+description: "Step five: Grouping Post-Its"
 ---
 
 So we managed to create a postit which is kept in sync across multiple browsers. All thats left now is for us to be able to add more of them with different types.

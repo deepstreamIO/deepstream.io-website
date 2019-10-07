@@ -1,11 +1,25 @@
 ---
 title: Permissioning it all
-description: Adding some permissions
+description: "Step six: Adding some permissions"
 ---
 
-## Permissions
+So our app is now up and running, but before you can go and deploy this for the world you probably want to first add some permissions to stop people directly manipulating your data in an invalid way.
 
-Deepstream comes with a powerful permissioning language called Valve, which can be used to create rules to allow/deny all possible client actions. Going back to our last requirement, we want to only allow the creator to update his/her own cards. Since we’ve made the username part of the recordname, this is rather straightforward. Let’s take a look at how we can implement that in our pemission.yml config file.
+The permissions we want to add are:
+
+- Only allow users to edit their own postits
+- Only allow users to add postits
+- Only allow an admin user to delete postits
+
+In order to this we will be using a powerful permission language called Valve. This allows us to create rules that can validate every message that comes from a client before it effects any state at all on the server.
+
+In order to permission the data we'll need to have access to the users id and role. The will be required in order to solve our applications requirements. In order to do 
+
+### Only allow users to edit their own postits
+
+Comparing the users id with an id in the payload or the actual record name is the perfect way to guarantee only the specific user can edit their own postit
+
+You can access the id on a user simply by referencing the `user.id` property. The userid here is the one that is returned by the storage adaptor we setup earlier 
 
 ```yaml
 record:

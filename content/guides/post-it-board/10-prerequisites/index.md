@@ -1,6 +1,6 @@
 ---
 title: Prerequisite
-description: What you need to know before starting this guide
+description: "Step one: What you need to know before starting this guide"
 ---
 
 In order to build this application we are going to go as bare bone minimum as possible. What this means is we just be be using good old [jQuery](//jquery.com/) and deepstream.

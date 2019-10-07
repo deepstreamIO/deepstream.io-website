@@ -8,11 +8,7 @@ logoImage: redis.png
 
 #### How to use Redis as a cache with deepstream?
 
-Install via commandline or if you're using deepstream in Node.js via [NPM](https://www.npmjs.com/package/@deepstream/cache-redis)
-
-```bash
-    deepstream install cache redis
-```
+It comes preinstalled with the binary or if you're using deepstream in Node.js via [NPM](https://www.npmjs.com/package/@deepstream/cache-redis)
 
 And can be enabled in your config file as follows:
 

@@ -21,19 +21,7 @@ deepstream offers a database connector plugin for RethinkDB and optionally also 
 
 **Installing the RethinkDB storage connector**
 
-You can install the rethinkdb connector via deepstream's commandline interface, using:
-
-```bash
-deepstream install storage rethinkdb
-```
-
-or in windows
-```bash
-deepstream.exe install storage rethinkdb
-```
-
-resulting in
-![deepstream RethinkDB connector install command line output](rethinkdb-deepstream-install-console-output.png)
+The rethinkdb connector comes preinstalled in the deepstream binary.
 
 If you're using deepstream's Node.js interface, you can also install it as an [NPM module](https://www.npmjs.com/package/deepstream.io-storage-rethinkdb)
 

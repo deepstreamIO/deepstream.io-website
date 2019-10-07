@@ -1,6 +1,6 @@
 ---
 title: Creating postits
-description: Creating a postit
+description: "Step four: Creating a postit"
 ---
 
 ## Creating a postit

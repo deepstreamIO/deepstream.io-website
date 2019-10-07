@@ -73,17 +73,10 @@ Usually by using a poll agent like logstash, this takes the json object, transfo
 
 #### How to install HTTP monitoring?
 
-Install via [NPM](https://www.npmjs.com/package/@deepstream/monitoring-http)
-
-```bash
-npm install --save @deepstream/monitoring-http
-```
+It's prebuilt into deepstream core, so all you need to do is enable it as follows in your config file:
 
 ```yaml
 monitoring:
-  name: http
-  options:
-    port: 9090
-    host: 0.0.0.0
+  type: http
 ```
 

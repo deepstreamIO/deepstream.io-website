@@ -8,11 +8,7 @@ logoImage: redis.png
 
 #### How to use Redis for clustering with deepstream?
 
-Install via [NPM](https://www.npmjs.com/package/@deepstream/clusternode-redis)
-
-```bash
-npm install --save @deepstream/clusternode-redis
-```
+The nodejs cluster comes preinstalled in the node binary, and can also be installed via [NPM](https://www.npmjs.com/package/@deepstream/clusternode-redis) if your using as node.
 
 And can be enabled in your config file as follows:
 

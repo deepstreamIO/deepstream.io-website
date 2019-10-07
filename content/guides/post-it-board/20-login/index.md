@@ -1,6 +1,6 @@
 ---
 title: Logging in to your boards
-description: How to login to the server using storage auth
+description: "Step three: How to login to the server using storage auth"
 ---
 
 The next step is to create a deepstream client, login and initialize the application.
@@ -13,18 +13,19 @@ In order to use Storage Authentication please enable the following auth module i
 
 ```yaml
 auth:
-  type: storage
-  options:
-    # the table users are stored in storage
-    table: 'Users'
-    # automatically create users if they don't exist in the database
-    createUser: true
-    # the name of a HMAC digest algorithm
-    hash: 'md5'
-    # the number of times the algorithm should be applied
-    iterations: 100
-    # the length of the resulting key
-    keyLength: 32
+  -
+    type: storage
+    options:
+      # the table users are stored in storage
+      table: 'Users'
+      # automatically create users if they don't exist in the database
+      createUser: true
+      # the name of a HMAC digest algorithm
+      hash: 'md5'
+      # the number of times the algorithm should be applied
+      iterations: 100
+      # the length of the resulting key
+      keyLength: 32
 ```
 
 This will tell deepstream to authenticate your users against the usernames and passwords stored in the database under a table called Users. We also set `createUser` to true, which means any user logging in with a username that doesn't already exist will be created in the database, useful for merging a signup/login form into one (mostly a development feature).
