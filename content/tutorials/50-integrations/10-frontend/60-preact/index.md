@@ -38,7 +38,7 @@ npm install @deepstream/client --save
 Get your app url from the dashboard, establish a connection to deepstream, and login (we'll not configure any authentication, because there are no credentials required):
 
 
-```js
+```javascript
 // ./src/App.js
 import createDeepstream from '@deepstream/client';
 import { h, render, Component } = 'preact';
@@ -82,7 +82,7 @@ Let's set up two-way bindings with an input field - whenever a path within our r
 
 First, we setup the record and subscribe for changes in the constructor:
 
-```js
+```javascript
 // ./src/Record/Record.js
 // . . .
 class Record extends Component {
@@ -110,7 +110,7 @@ class Record extends Component {
 
 then we create the render method for the template which includes the input fields:
 
-```js
+```javascript
 // . . .
 class Record extends Component {
     // . . .
@@ -134,7 +134,7 @@ class Record extends Component {
 
 and finally, we add the `handleChange` method to sync the input fields state:
 
-```js
+```javascript
 class Record extends Component {
     // . . .
     handleChange(e) {

@@ -24,7 +24,7 @@ Setting up deepstream in React is actually quite simple. Once you download and i
 
 #### In your constructor connect to deepstream:
 
-```js
+```javascript
 this.ds = deepstream('<Your deepstream url>');
 // handle error here, in case of error
 this.ds.on( 'error', this._onError.bind( this ) );
@@ -34,7 +34,7 @@ to keep things simple for this tutorial, we will skip password authentication, a
 
 #### To handle login, once a user has submitted their name:
 
-```js
+```javascript
 login( username, callback ) {
     this.username = username;
     this.callback = callback;
@@ -69,13 +69,13 @@ _onRecordCheckComplete( record ) {
 
 Now that a user is logged in, we need to get their latitudinal and longitudinal coordinates. HTML5 makes this easy with its [navigator object](https://developer.mozilla.org/en-US/docs/Web/API/Navigator) that we can query for coordinates. Once we have their coordinates, we can listen to the user's position updates with the *watchPosition* method:
 
-```js
+```javascript
 navigator.geolocation.watchPosition();
 ```
 
 This method gets called every time the logged in user's position changes. So we will want to pass to it a callback that will update the user's coordinates, and do a geospatial query upon position change. This will look like:
 
-```js
+```javascript
 navigator.geolocation.watchPosition( this.onPositionUpdate.bind( this ) );
 
 onPositionUpdate( position ) {
@@ -90,7 +90,7 @@ onPositionUpdate( position ) {
 
 In this function, we will also want to create a list that contains the user's current latitude and longitude. This list is what we will listen to on the backend to run our database queries:
 
-```js
+```javascript
 onPositionUpdate( position ) {
     this.pos = {
         lat: position.coords.latitude,
@@ -112,7 +112,7 @@ Now we are ready to find all the users who are within a kilometer radius of us, 
 
 The listen method is called every time there is a change in record subscriptions. Once there are events to subscribe to and we accept the response, we can start publishing data that will be populated from our database. There is more information about this in the  [events turorial](/tutorials/core/active-data-providers/).
 
-```js
+```javascript
 //server side
 const GeoSubscription = require( './geo-subscription' );
 const deepstream = require('@deepstream/client');
@@ -152,7 +152,7 @@ In our *GeoSubscription* class, we now can run a geospatial query with the longi
 
 First, in your constructor, access the list that was passed into the match:
 
-```js
+```javascript
 this.list = this.ds.record.getList( match );
 this.list.whenReady(this._queryDb.bind( this ));
 ```
@@ -162,7 +162,7 @@ here is a link to the [RethinkDB api](https://www.rethinkdb.com/api/javascript/)
 
 In order to perform geospatial queries in RethinkDB, we need to convert the longitude and latitude into an object point (*r.point()*). It would be wonderful to convert latitude and longitude into these points upon directly receiving them, but deepstream can't store database specific structures.
 
-```js
+```javascript
 _queryDb() {
     // *match* is returned as a string, and needs to be broken into an array, and extracted as follows
     const [, lat, lng, radius] = + this.match.split( '/' );
@@ -203,12 +203,12 @@ _updateList( err, result ) {
 
 Now back to the client-side code. Recall that we subscribed to our list in our *onPositionUpdate* function:
 
-```js
+```javascript
 this.list.subscribe( this._onGetEntries.bind( this ) );
 ```
 As the list of users is updated from our database query, we can now loop through the results and start putting markers on our map:
 
-```js
+```javascript
 _onGetEntries( users ) {
     let recordNames = this.list.getEntries();
     this._updateMarkers( recordNames );
@@ -233,14 +233,14 @@ _updateMarkers( userRecordNames ) {
 ```
 In the Marker class, we can now subscribe to each user's record who is within our radius, get their coordinates, and place a marker at their location. If a user logs off or walks out of range, the list will be updated, and the record will be unsubscribed to.
 
-```js
+```javascript
 //subscribe to each record of a user within radius
 this.record = dsService.ds.record.getRecord( 'user/' + recordName )
 this.record.subscribe( 'position', this._updateMarkerPosition.bind( this ), true );
 ```
 Now, fill your map with Markers using Google Maps API!
 
-```js
+```javascript
 
 destroy() {
     //make sure to call the setMap(null) function on the marker you are destroying, or it will remain on the map

@@ -88,7 +88,7 @@ We just need to add two endpoints to the express app, `/subscribe` and `/subscri
 
 Before creating these routes, we need to import and configure `deepstream` and `request`. We also need to create a config object that stores our Mailchimp credentials.
 
-```js
+```javascript
 // ./routes/index.js
 const request = require('request');
 const deepstream = require('@deepstream/client');
@@ -110,7 +110,7 @@ The list id can be retrieved from the list's settings page:
 
 Now let's take a look at the `/subscribe` route:
 
-```js
+```javascript
 // ./routes/index.js
 router.post('/subscribe', function(req, res) {
   const requestBody = req.body;
@@ -134,7 +134,7 @@ When the request completes, we use deepstream to emit a `subscribe` event with t
 
 The `/subscribers` route is simpler because we are just requesting for existing contact lists:
 
-```js
+```javascript
 // ./routes/index.js
 router.get('/subscribers', function(req, res) {
   request.get({url:`https://us9.api.mailchimp.com/3.0/lists/${mailchimpConfig.listId}/members`}, ( err, httpResponse, body ) => {
@@ -170,7 +170,7 @@ Before we start creating these Vue routes, let's include Vue and other supportin
 
 We need two routes: one (`/`) to show all the list of subscribers and another (`/subscribe`) to hold the subscription form. 
 
-```js
+```javascript
 // ./public/javascripts/script.js
 const App = {
     template: '#main'
@@ -222,7 +222,7 @@ It also uses the `App` component as it's entry component. `App` uses a `script` 
 
 The `Home` component which is mounted on the `/` route is responsible for displaying the list of existing subscribers.
 
-```js
+```javascript
 // ./public/javascripts/script.js
 const Home = { 
     template: '#home',
@@ -279,7 +279,7 @@ The subscribers are rendered by iterating over the `subscribers` array and displ
 ## Creating Subscribers
 The `Subscribe` component mounted on `/subscribe` route is responsible for using a form to collect email addresses and subscribe them to the Mailchimp list:
 
-```js
+```javascript
 // ./public/javascripts/script.js
 const Subscribe = { 
         template: '#subscribe',

@@ -59,7 +59,7 @@ To tell Angular that the install dependency is a vendor file and should be loade
 
 You can see that installation was successful by running the following command in your `AppComponent`'s constructor:
 
-```js
+```javascript
 export class AppComponent {
     constructor() {
         // Logs the deepstream function
@@ -75,7 +75,7 @@ deepstream will work perfectly fine when used directly in the component but as y
 
 In our case, we need a service to group all our deepstream task and expose methods to our components to interact with:
 
-```js
+```javascript
 // ./src/app/services/ds.service.ts
 import { Injectable } from '@angular/core';
 
@@ -93,7 +93,7 @@ export class DsService {
 
 The `dsInstance` is public (though we know the deal with privacy in JavaScript) so you can access all `deepstream`'s method from it. If that you think this is all you need from such service, fine, but you can also wrap the common methods by creating more members on the service:
 
-```js
+```javascript
 // ./src/app/services/ds.service.ts
 import { Injectable } from '@angular/core';
 
@@ -127,7 +127,7 @@ Those are the three methods we need to log in, create or get a record and create
 ## 4. Login to deepstream
 Authenticating to deepstream server does not require credentials and for simple stuffs like a demo, you can go ahead and perform and anonymous authentication:
 
-```js
+```javascript
 // ./src/app/app.component.ts
 import { Component, OnInit } from '@angular/core';
 import { DsService } from './services/ds.service';
@@ -173,7 +173,7 @@ The `ngOnInit` method is a lifecycle method that is called when the component is
 
 Let's create another method that will be called when the user creates a chat message:
 
-```js
+```javascript
 // ./src/app/app.component.ts
 import { Component, OnInit } from '@angular/core';
 import { DsService } from './services/ds.service';
@@ -227,7 +227,7 @@ The `chats` property, for now, is undefined and is supposed to be a [deepstream 
 
 We can create this list when the component is ready, and subscribe to it as well so as to print the `chats` as they come in:
 
-```js
+```javascript
 // ./src/app/app.component.ts
 // ...
 

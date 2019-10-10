@@ -32,7 +32,7 @@ After you have successfully created an Angular app, add the deepstream JS-client
 
 Get your app url from the dashboard and establish a connection to deepstream using the `created` lifecycle hook:
 
-```js
+```javascript
 new Vue({
     el: '#app',
     data: {
@@ -73,7 +73,7 @@ Let's set up two-way bindings with an input field - whenever a path within our r
 
 Let's see an example:
 
-```js
+```javascript
 const Record = {
     template: `
         	<div class="group realtimedb">
@@ -137,7 +137,7 @@ ds.event.emit( 'test-event', {some: 'data'} );
 
 A simple example:
 
-```js
+```javascript
 const Events = {
     template: `
         	<div class="group pubsub">
@@ -203,7 +203,7 @@ ds.rpc.provide( 'multiply-numbers', function( data, response ){
 
 For example:
 
-```js
+```javascript
 const RPC = {
     template: `
         	<div class="group reqres">
@@ -255,7 +255,7 @@ The button click makes the request and the `created` hook handles the response u
 
 The examples can be assembled together in a parent `App` component:
 
-```js
+```javascript
 new Vue({
       el: '#app',
       components: {

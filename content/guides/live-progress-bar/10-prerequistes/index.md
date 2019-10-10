@@ -11,7 +11,7 @@ npm install wt-cli
 - Create a [Webtask Account](https://webtask.io)
 - Create an `index.js` in the root of an empty project folder with:
 
-```js
+```javascript
 // ./index.js
 const Express = require('express');
 const Webtask = require('webtask-tools');
@@ -36,6 +36,6 @@ wt create
 
 Visit the URL logged to the console and expect the following response body:
 
-```js
+```javascript
 {text: 'hi'}
 ```

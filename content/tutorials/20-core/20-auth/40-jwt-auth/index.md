@@ -89,7 +89,7 @@ We'll start by creating a static HTML page with a simple login form.
 
 Just two inputs -- a username and a password. Once te user hits login, the credentials are sent to a `/handle-login` route. Using [Node](https://nodejs.org) with [Express](http://expressjs.com/) the route can be handled using the following approach:
 
-```js
+```javascript
 // . . .
 const jwt = require('jsonwebtoken');
 
@@ -149,7 +149,7 @@ This configuration instructs the deepstream server to make a POST request to `ht
 ## deepstream Login
 From the deepstream client we can now call `client.login()`
 
-```js
+```javascript
 const deepstream = require( '@deepstream/client');
 const client = deepstream('localhost:6020')
   // Login method
@@ -170,7 +170,7 @@ Your next login attempt will produce the following log:
 ## HTTP Auth Call
 Upon calling `ds.login()` deepstream posts the connection data to the configured `/check-token` route:
 
-```js
+```javascript
 //. . .
 const jwt = require('jsonwebtoken');
 
@@ -202,7 +202,7 @@ This covers the general JWT authentication flow - however using JWT we can also 
 
 Express makes this easy by adding a middleware function that checks for the existence of a valid JWT before proceeding to process a request.
 
-```js
+```javascript
 const jwt = require('jsonwebtoken');
 const authMiddleware = function(req, res, next) {
 

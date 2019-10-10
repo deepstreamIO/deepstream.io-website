@@ -52,21 +52,21 @@ So lets tie these into the board. What we want to do is:
 - render everything on that list initially
 - whenever the list has a new postit added, render that as well
 - add a new post-it onto the board
-- delete all the postits on the board
+- delete all entries on the board
 
 ```javascript
 const createAndMonitorPostits = () => {
     const list = client.record.getList('board')
     await list.whenReady()
+    // Create postits that have already added
     list.getEntries().forEach(createPostit)
+    // Create postits as they are added
     list.on('entry-added', createPostit)
 }
 ```
 
 Whenever a user clicks on a small postit in the header, we want to add that 
-as a new postit to the board. Given we don't actually discard or remove lists 
-this code is generous with the record lifecycle events. Normally you would want to
-discard any record or list that is no longer used.
+as a new postit to the board.
 
 ```javascript
 const addPostitToBoard = async () => {
@@ -74,7 +74,18 @@ const addPostitToBoard = async () => {
     createPostit(positId, { type: POSTIT_TYPE.MAD, position: { top: 0, left: 0 }, content: '' })
 
     const list = client.record.getList('board')
+    await list.whenReady()
     list.addEntry(positId)
 }
 ```
 
+And finally, whenever a user clicks on the eraser the entire board will be wiped clean
+
+```javascript
+const clearBoard = async () => {
+    const list = client.record.getList('board')
+    await list.whenReady()
+    await client.record.delete(list.getEntries()) // TODO: This API is still a WIP coming out in V5
+    list.setEntries([])
+}
+```

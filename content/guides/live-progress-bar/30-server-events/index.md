@@ -3,7 +3,7 @@
 
 With deepstream setup, it's time to simulate a long request and send out realtime events for each of the completed stages:
 
-```js
+```javascript
 app.post('/post', (req, res) => {
   const postProgressPromise = function() {
     return new Promise((resolve, reject) => {

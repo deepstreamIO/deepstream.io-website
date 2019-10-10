@@ -1,0 +1,100 @@
+/**
+* Reset
+*/
+body {
+    margin: 0;
+}
+
+/**
+* Form
+*/
+form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 150px;
+}
+form label {
+    display: inline-block;
+    width: 70px;
+    margin: 2px;
+}
+form input {
+    border-radius: 5px;
+}
+form button {
+    margin-top: 10px;
+    width: 200px;
+}
+
+/**
+* Board
+*/
+.board-wrapper {
+    display: none;
+    height: 100%;
+}
+.board-wrapper > header {
+    height: 35px;
+}
+.board {
+    min-height: calc( 100% - 35px);
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/**
+* Postit
+*/
+.postit {
+    position: relative;
+    display: inline-block;
+}
+.postit-header {
+    position: absolute;
+    width: 100%;
+    height: 30px;
+}
+.postit-copy {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    height: 125px;
+    outline: none;
+    border: none;
+    resize: none;
+}
+.postit-inner:after {
+    content: "";
+    height: 55%;
+    position: absolute;
+    width: 50%;
+    z-index: -2;
+    transform: skew(-8deg) rotate(-6deg);
+    bottom: 16px;
+    left: 10px;
+    box-shadow: -5px 10px 10px rgba(0, 0, 0, 0.5);
+}
+.postit-inner {
+    line-height: 60px;
+    min-height: 200px;
+    min-width: 200px;
+    padding: 45px 20px 10px;
+    border-radius: 0 0 0 200px/0 0 0 10px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+.postit-copy {
+    font-size: 25px;
+    font-family: 'Reenie Beanie', cursive;
+}
+/**
+* Colors
+*/
+[data-type="sad"] .postit-inner {
+    background-image: -webkit-linear-gradient(top, #b0e1ec 15%, #baebf6 20%, #baebf6 33%);
+}
+[data-type="happy"] .postit-inner {
+    background-image: -webkit-linear-gradient(top, #f5e38c 15%, #ffed96 20%, #ffed96 33%);
+}
+[data-type="mad"] .postit-inner {
+    background-image: -webkit-linear-gradient(top, #e6a7a8 15%, #f0b1b2 20%, #f0b1b2 33%);
+}

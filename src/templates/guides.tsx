@@ -1,7 +1,6 @@
 import React from 'react'
 import {graphql} from 'gatsby'
 import MarkdownContent from '../components/Markdown/MarkdownContent/MarkdownContent'
-
 interface GuidesProps {
     data: any
     location: string,

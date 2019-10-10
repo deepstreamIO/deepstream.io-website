@@ -53,7 +53,7 @@ Usually, both the Android and iOS index files are redirected to a central app. T
 
 Replace the contents of index.ios.js with the following to get a simple text input field in your app:
 
-```js
+```javascript
 import React, { Component } from 'react';
 import { AppRegistry, TextInput } from 'react-native';
 
@@ -96,7 +96,7 @@ AppRegistry.registerComponent(
 
 Since we allready installed deepstream in step 3, all we need to do now is import it:
 
-```js
+```javascript
 import React, { Component } from 'react';
 import { AppRegistry, TextInput } from 'react-native';
 import deepstream from '@deepstream/client';
@@ -106,7 +106,7 @@ import deepstream from '@deepstream/client';
 
 Then setup the client and record like we saw in the [quickstart guide](/tutorials/guides/getting-started-quickstart/)
 
-```js
+```javascript
 constructor(props) {
   super(props)
 
@@ -121,7 +121,7 @@ constructor(props) {
 
 Since our text element is already depending on the value of *text* in our state, we only need to make sure to update that value whenever our record changes:
 
-```js
+```javascript
 constructor(props) {
   super(props);
 
@@ -142,7 +142,7 @@ constructor(props) {
 
 For the full circle, we will also have to push any change in our text input back to the server. To achieve that, let's create a method and bind it to the input's onTextChange:
 
-```js
+```javascript
 constructor(props) {
 
   // ...
@@ -152,7 +152,7 @@ constructor(props) {
   this.state = { record, text, setRecordFn }
 ```
 
-```js
+```javascript
 render() {
   const { text, setRecordFn } = this.state
 
@@ -168,7 +168,7 @@ render() {
 
 Your index.ios.js should now look as follows, and the app should work as shown in the animation. Happy developing!
 
-```js
+```javascript
 import React, { Component } from 'react';
 import { AppRegistry, TextInput } from 'react-native';
 import deepstream from '@deepstream/client';

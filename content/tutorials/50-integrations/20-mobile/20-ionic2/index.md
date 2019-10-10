@@ -86,7 +86,7 @@ npm install --save @deepstream/client
 
 Services serve as excellent abstractions of data layer as well as separation of concern. deepstream provides real-time data. Therefore, it would be a good idea to abstract few of it's functionalities to a service class:
 
-```js
+```javascript
 // ./src/shared/ds.service.ts
 
 import { Injectable } from '@angular/core';
@@ -130,7 +130,7 @@ export class DsService {
 ## Authenticate Client
 Client authentication is achieved by sending authentication payload to the deepstream server. This payload can be forwarded to an HTTP server to validate credentials. This example does not require any payload or credential validation. However, deepstream still requires that the login method is called to open a connection. The login method can be called without credentials if none exists:
 
-```js
+```javascript
 // ./src/pages/home/home.ts
 
 import { Component } from '@angular/core';
@@ -247,7 +247,7 @@ With deepstream list, we can group chats' records as a collection, iterate over 
 
 First, create a property to hold the list, then use record's `getList()` method to create the record, and finally subscribe to this to update the data bound to the view:
 
-```js
+```javascript
 export class HomePage {
 
   // . . .

@@ -7,7 +7,7 @@ The next step is to create a deepstream client, login and initialize the applica
 
 ## Setting up Authentication on the backend
 
-In this guide we be using Storage Authentication, feel free to refer the [Authentication](/docs/general/authentication/) page to try out other types of authentication or look at some of the alternative different guides.
+In this guide we be using Storage Authentication, feel free to refer the [Authentication](/tutorials/) page to try out other types of authentication or look at some of the alternative different guides.
 
 In order to use Storage Authentication please enable the following auth module in your server config
 
@@ -73,7 +73,7 @@ Within the database, the user structure will be as follows:
     "id": "uuid",
     "username": "string: a unique username",
     "password": "string: hashed password",
-    "clientData": "JSON object: to be returned to client after succesful login",
+    "clientData": "JSON object: to be returned to client after successful login",
     "serverData": "JSON object: to be used on server for permissions"
 }
 ```

@@ -1,245 +1,321 @@
 <html>
-    <head>
-        <!-- Styling for the board -->
-        <style>
-            /**
-            * Reset
-            */
-            body {
-                margin: 0;
-            }
+  <head>
+    <style>
+      /**
+    * Reset
+    */
+      body {
+        margin: 0;
+      }
 
-            /**
-            * Form
-            */
-            form {
-                display: flex;
-                align-items: center;
-                flex-direction: column;
-                margin-top: 150px;
-            }
-            form label {
-                display: inline-block;
-                width: 70px;
-                margin: 2px;
-            }
-            form input {
-                border-radius: 5px;
-            }
-            form button {
-                margin-top: 10px;
-                width: 200px;
-            }
+      /**
+    * Form
+    */
+      form {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 150px;
+      }
+      form label {
+        display: inline-block;
+        width: 70px;
+        margin: 2px;
+      }
+      form input {
+        border-radius: 5px;
+      }
+      form button {
+        margin-top: 10px;
+        width: 200px;
+      }
 
-            /**
-            * Board
-            */
-            .board-wrapper {
-                display: none;
-                height: 100%;
-            }
-            .board-wrapper > header {
-                height: 35px;
-            }
-            .board {
-                min-height: calc( 100% - 35px);
-                position: relative;
-                background-color: rgba(0, 0, 0, 0.05);
-            }
+      /**
+    * Board
+    */
+      .board-wrapper {
+        display: none;
+        height: 100%;
+      }
+      .board-wrapper > header {
+        height: 35px;
+      }
+      .board {
+        min-height: calc(100% - 35px);
+        position: relative;
+        background-color: rgba(0, 0, 0, 0.05);
+      }
 
-            /**
-            * Postit
-            */
-            .postit {
-                position: relative;
-                display: inline-block;
-            }
-            .postit-header {
-                position: absolute;
-                width: 100%;
-                height: 30px;
-            }
-            .postit-copy {
-                width: 100%;
-                background-color: rgba(0, 0, 0, 0);
-                height: 125px;
-                outline: none;
-                border: none;
-                resize: none;
-            }
-            .postit-inner:after {
-                content: "";
-                height: 55%;
-                position: absolute;
-                width: 50%;
-                z-index: -2;
-                transform: skew(-8deg) rotate(-6deg);
-                bottom: 16px;
-                left: 10px;
-                box-shadow: -5px 10px 10px rgba(0, 0, 0, 0.5);
-            }
-            .postit-inner {
-                line-height: 60px;
-                min-height: 200px;
-                min-width: 200px;
-                padding: 45px 20px 10px;
-                border-radius: 0 0 0 200px/0 0 0 10px;
-                box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-            }
-            .postit-copy {
-                font-size: 25px;
-                font-family: 'Reenie Beanie', cursive;
-            }
-            /**
-            * Colors
-            */
-            [data-type="sad"] .postit-inner {
-                background-image: -webkit-linear-gradient(top, #b0e1ec 15%, #baebf6 20%, #baebf6 33%);
-            }
-            [data-type="happy"] .postit-inner {
-                background-image: -webkit-linear-gradient(top, #f5e38c 15%, #ffed96 20%, #ffed96 33%);
-            }
-            [data-type="mad"] .postit-inner {
-                background-image: -webkit-linear-gradient(top, #e6a7a8 15%, #f0b1b2 20%, #f0b1b2 33%);
-            }
-        </style>
+      /**
+    * Postit
+    */
+      .postit {
+        position: absolute;
+        display: inline-block;
+      }
+      .postit-header {
+        position: absolute;
+        width: 100%;
+        height: 30px;
+      }
+      .postit-copy {
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0);
+        height: 125px;
+        outline: none;
+        border: none;
+        resize: none;
+      }
+      .postit-inner:after {
+        content: "";
+        height: 55%;
+        position: absolute;
+        width: 50%;
+        z-index: -2;
+        transform: skew(-8deg) rotate(-6deg);
+        bottom: 16px;
+        left: 10px;
+        box-shadow: -5px 10px 10px rgba(0, 0, 0, 0.5);
+      }
+      .postit-inner {
+        line-height: 60px;
+        min-height: 200px;
+        min-width: 200px;
+        padding: 45px 20px 10px;
+        border-radius: 0 0 0 200px/0 0 0 10px;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3),
+          0 0 40px rgba(0, 0, 0, 0.1) inset;
+      }
+      .postit-copy {
+        font-size: 25px;
+        font-family: "Reenie Beanie", cursive;
+      }
+      header > .postit {
+        position: absolute;
+        top: -90px;
+        transform: scale(0.2);
+        z-index: 99;
+      }
+      header > * {
+        cursor: pointer;
+      }
 
-        <script type="text/javascript" src="https://cdn.deepstream.io/js/client/latest/ds.min.js"></script>
-        <script type="text/javascript" src="https://unpkg.com/interactjs/dist/interact.min.js"></script>
-    </head>
-    <body>
-        <!-- Template to clone for postit -->
-        <template id="postit-template">
-            <div class="postit" draggable="true">
-                <div class="postit-header">
-                </div>
-                <div class="postit-inner">
-                    <textarea class="postit-copy"></textarea>
-                </div>
-            </div>
-        </template>
-        <!-- The login form -->
-        <form id="login">
-            <div>
-                <label for="login-name">Name:</label>
-                <input required minlength="3" id="login-name" type="text" />
-            </div>
-            <div>
-                <label for="login-password">Password:</label>
-                <input required minlength="3" id="login-password" type="password"/>
-            </div>
-            <button for="">
-                Login
-            </button>
-        </form>
-        <!-- The board -->
-        <div class="board-wrapper">
-            <header>
-            </header>
-            <div class="board">
-
-            </div>
+      /**
+    * Colors
+    */
+      [data-type="sad"] .postit-inner {
+        background-image: -webkit-linear-gradient(
+          top,
+          #b0e1ec 15%,
+          #baebf6 20%,
+          #baebf6 33%
+        );
+      }
+      [data-type="happy"] .postit-inner {
+        background-image: -webkit-linear-gradient(
+          top,
+          #f5e38c 15%,
+          #ffed96 20%,
+          #ffed96 33%
+        );
+      }
+      [data-type="mad"] .postit-inner {
+        background-image: -webkit-linear-gradient(
+          top,
+          #e6a7a8 15%,
+          #f0b1b2 20%,
+          #f0b1b2 33%
+        );
+      }
+    </style>
+    <script
+      type="text/javascript"
+      src="https://cdn.deepstream.io/js/client/latest/ds.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://unpkg.com/interactjs/dist/interact.min.js"
+    ></script>
+  </head>
+  <body>
+    <!-- Template to clone for postit -->
+    <template id="postit-template">
+      <div class="postit" draggable="true">
+        <div class="postit-header"></div>
+        <div class="postit-inner">
+          <textarea class="postit-copy"></textarea>
         </div>
-        <!-- The application code -->
-        <script type="text/javascript">
-            const POSTIT_TYPE = {
-                HAPPY: 'happy',
-                SAD: 'sad',
-                MAD: 'mad'
+      </div>
+    </template>
+    <!-- The login form -->
+    <form id="login">
+      <div>
+        <label for="login-name">Name:</label>
+        <input required minlength="3" id="login-name" type="text" />
+      </div>
+      <div>
+        <label for="login-password">Password:</label>
+        <input required minlength="3" id="login-password" type="password" />
+      </div>
+      <button for="">
+        Login
+      </button>
+    </form>
+    <!-- The board -->
+    <div class="board-wrapper">
+      <header></header>
+      <div class="board"></div>
+    </div>
+    <!-- The application code -->
+    <script type="text/javascript">
+      const POSTIT_TYPE = {
+        HAPPY: "happy",
+        SAD: "sad",
+        MAD: "mad"
+      };
+
+      const addHeaderPostits = (addHeaderPostitClicked, clearPostitBoard) => {
+        Object.keys(POSTIT_TYPE).forEach((type, index) => {
+          const template = document.querySelector("#postit-template");
+          const clone = document.importNode(template.content, true);
+          const postit = clone.children[0];
+          postit.style = `right: ${-100 * (index - 1)}px;`;
+          postit.setAttribute("draggable", false);
+          postit.setAttribute("data-type", POSTIT_TYPE[type]);
+          postit.querySelector(".postit-copy").setAttribute("disabled", true);
+          postit.onclick = e => {
+            const type = e.currentTarget.getAttribute("data-type");
+            addHeaderPostitClicked(type);
+          };
+          document.querySelector(".board-wrapper > header").appendChild(clone);
+        });
+      };
+
+      const addPostit = (
+        id,
+        postitData,
+        onContentChanged,
+        onPositionChange
+      ) => {
+        const template = document.querySelector("#postit-template");
+        const clone = document.importNode(template.content, true);
+
+        const postit = clone.children[0];
+        postit.id = id;
+        postit.setAttribute("data-type", postitData.type);
+        postit.setAttribute("disabled", true);
+        postit.style = `top: ${postitData.top}px; left: ${postitData.left}px;`;
+
+        const postitCopy = clone.querySelector(".postit-copy");
+        postitCopy.value = postitData.content;
+        postitCopy.onkeyup = () => {
+          onContentChanged(postitCopy.value);
+        };
+
+        interact(`#${id}`).draggable({
+          listeners: {
+            move(event) {
+              onPositionChange({
+                left: event.rect.left,
+                top: event.rect.top
+              });
             }
+          }
+        });
 
-            const addPostit = (id, postitData, onContentChanged, onPositionChange) => {
-                const template = document.querySelector('#postit-template')
-                const clone = document.importNode(template.content, true)
+        document.querySelector(".board").appendChild(clone);
+      };
+      const updatePostitContent = (id, content) => {
+        document.querySelector(`#${id} .postit-copy`).value = content;
+      };
+      const updatePostitPosition = (id, position) => {
+        document.querySelector(
+          `#${id}`
+        ).style = `top: ${position.top}px; left: ${position.left}px;`;
+      };
+      const removePostit = id => {
+        document
+          .querySelector(".board")
+          .removeChild(document.querySelector(`#${id}`));
+      };
 
-                const postit = clone.children[0]
-                postit.id = id
-                postit.setAttribute('data-type', postitData.type)
-                postit.style = `top: ${postitData.top}px; left: ${postitData.left}px;`
-                
-                const postitCopy = clone.querySelector('.postit-copy')
-                postitCopy.value = postitData.content
-                postitCopy.onkeyup = () => {
-                    onContentChanged(postitCopy.value)
-                }
+      const client = deepstream("localhost:6020/deepstream");
 
-                interact(`#${id}`).draggable({
-                    listeners: {
-                        move (event) {
-                            onPositionChange({
-                                left: event.rect.left,
-                                top: event.rect.top
-                            })
-                        },
-                    }
-                })
+      const createPostit = async (postitUid, initialData) => {
+        const record = client.record.getRecord(postitUid);
+        await record.whenReady();
 
-                document.querySelector('.board').appendChild(clone)
-            }
-            const updatePostitContent = (id, content) => {
-                document.querySelector(`#${id} .postit-copy`).value = content
-            }
-            const updatePostitPosition = (id, position) => {
-                document.querySelector(`#${id}`).style = `top: ${position.top}px; left: ${position.left}px;`
-            }
-            const removePostit = (id) => {
-                document.querySelector('.board').removeChild(document.querySelector(`#${id}`))
-            }
+        if (initialData) {
+          record.set(initialData);
+        }
 
-            const client = deepstream('localhost:6020/deepstream')
+        const postit = addPostit(
+          postitUid,
+          record.get(),
+          newContent => record.set("content", newContent),
+          newPosition => record.set("position", newPosition)
+        );
 
-            const createPostit = async (postitUid, initialData) => {
-                const record = client.record.getRecord(postitUid)
-                await record.whenReady()
+        record.subscribe(
+          "content",
+          content => updatePostitContent(postitUid, content),
+          true
+        );
+        record.subscribe(
+          "position",
+          position => updatePostitPosition(postitUid, position),
+          true
+        );
 
-                if (initialData) {
-                    record.set(initialData)
-                }
+        record.on("delete", () => deletePostit(postitUid));
+      };
 
-                const postit = addPostit(
-                    postitUid, 
-                    record.get(), 
-                    newContent => record.set('content', newContent), 
-                    newPosition => record.set('position', newPosition)
-                )
+      const createAndMonitorPostits = async () => {
+        const list = client.record.getList("board");
+        await list.whenReady();
+        list.getEntries().forEach(postitId => createPostit(postitId));
+        list.on("entry-added", recordName => createPostit(recordName));
+      };
 
-                record.subscribe('content', content => updatePostitContent(postitUid, content), true)
-                record.subscribe('position', position => updatePostitPosition(postitUid, position), true)
-            }
+      const addPostitToBoard = async type => {
+        const positId = client.getUid();
+        createPostit(positId, {
+          type,
+          position: { top: 0, left: 0 },
+          content: ""
+        });
 
-            const createAndMonitorPostits = async () => {
-                const list = client.record.getList('board')
-                await list.whenReady()
-                list.getEntries().forEach(postitId => createPostit(postitId))
-                list.on('entry-added', createPostit)
-            }
+        const list = client.record.getList("board");
+        await list.whenReady();
+        list.addEntry(positId);
+        list.discard();
+      };
 
-            const addPostitToBoard = async (type) => {
-                const positId = client.getUid()
-                createPostit(positId, { type, position: { top: 0, left: 0 }, content: '' })
+      const clearBoard = async () => {
+        const list = client.record.getList("board");
+        await list.whenReady();
+        await client.record.delete(list.getEntries()); // TODO: This API is still a WIP coming out in V5
+        list.setEntries([]);
+      };
 
-                const list = client.record.getList('board')
-                await list.whenReady()
-                list.addEntry(positId)
-                list.discard()
-            }
-
-            const form = document.querySelector('form')
-            form.onsubmit = async (event) => {
-                event.preventDefault()
-                try {
-                    const clientData = await client.login({
-                        username: document.querySelector('form input[type="text"]').value,
-                        password: document.querySelector('form input[type="password"]').value
-                    })
-                    form.style = "display: none;"
-                    document.querySelector('.board-wrapper').style = "display: block;"
-                    createAndMonitorPostits()
-                    addPostitToBoard(POSTIT_TYPE.MAD)
-                } catch (e) {
-                    console.error('Error logging in', e)
-                }
-            }
-        </script>
-    </body>
-<html>
+      const form = document.querySelector("form");
+      form.onsubmit = async event => {
+        event.preventDefault();
+        try {
+          const clientData = await client.login({
+            username: document.querySelector('form input[type="text"]').value,
+            password: document.querySelector('form input[type="password"]')
+              .value
+          });
+          form.style = "display: none;";
+          document.querySelector(".board-wrapper").style = "display: block;";
+          createAndMonitorPostits();
+          addHeaderPostits(addPostitToBoard, clearBoard);
+        } catch (e) {
+          console.error("Error logging in", e);
+        }
+      };
+    </script>
+  </body>
+  <html></html>
+</html>

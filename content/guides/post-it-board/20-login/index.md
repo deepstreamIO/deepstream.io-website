@@ -86,21 +86,21 @@ And will be saved in a table/collection called `User` with the uuid specified. T
 In order to login via the browser, we will simply add a submit event listener on the form that will try login the form when the submit button is hit.
 
 ```javascript
-$('form').on('submit', async (event) => {
-  event.preventDefault()
-
-  try {
-    const clientData = await client.login({
-      username: $( 'form input[type="text"]' ).val(),
-      password: $( 'form input[type="password"]' ).val()
-    })
-    $('form').removeClass('error')
-    $('form').hide()
-    // Not really needed in the guide, but good to know
-    console.log(`Client id is ${clientData.id}`)
-  } catch (e) {
-    console.error('Error logging in', e)
-    $('form').addClass('error')
-  }
-})
+const form = document.querySelector('form')
+form.onsubmit = async (event) => {
+    event.preventDefault()
+    try {
+        const clientData = await client.login({
+            username: document.querySelector('form input[type="text"]').value,
+            password: document.querySelector('form input[type="password"]').value
+        })
+        form.style = "display: none;"
+        document.querySelector('.board-wrapper').style = "display: block;"
+        // We'll cover these in the next couple pages
+        createAndMonitorPostits()
+        addHeaderPostits(addPostitToBoard, clearBoard)
+    } catch (e) {
+        console.error('Error logging in', e)
+    }
+}
 ```

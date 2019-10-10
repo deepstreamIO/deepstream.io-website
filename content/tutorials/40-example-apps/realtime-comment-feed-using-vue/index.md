@@ -47,7 +47,7 @@ In as much as we are making a "single page app", we need to create different vie
 
 Vue's route engine simplifies single page app routing. It was included during the installation, therefore there is no need to install. We just need to set it up:
 
-```js
+```javascript
 // ./src/main.js
 
 import Vue from 'vue';
@@ -68,7 +68,7 @@ new Vue({
 
 Let's take another important step to create the router configurations:
 
-```js
+```javascript
 // ./src/router/index.js
 
 import Vue from 'vue';
@@ -213,7 +213,7 @@ The `handleSubmit` method which the form invokes is where the user's signup jour
 1. Submit user credentials via a form.
 2. Attempt login first. If successful, it means the user exists, so just log them in and store their credentials in localStorage:
 
-    ```js
+    ```javascript
     ...
     import { set } from '@/services/localStorage';
     import { $emit } from '@/services/eventHub';
@@ -249,7 +249,7 @@ The `handleSubmit` method which the form invokes is where the user's signup jour
 
     If login is NOT successful, we call the `createUser` method which will be handled in the __#3__. Otherwise, we use a localStorage service to persist the credentials:
 
-    ```js
+    ```javascript
     // ./src/services/localStorage.js
     export const set = (name, data) => {
       window.localStorage.setItem(name, JSON.stringify(data));
@@ -280,7 +280,7 @@ The `handleSubmit` method which the form invokes is where the user's signup jour
 
     The `eventHub` service is handy for making inter-component communication. This example app is simple enough not to use a state management tool. Dispatching and listening to component events are just enough. This is what the hub looks like:
 
-    ```js
+    ```javascript
     // ./src/services/eventHub.js
     import Vue from 'vue';
 
@@ -298,7 +298,7 @@ The `handleSubmit` method which the form invokes is where the user's signup jour
 3. If not successful, make a post request to the `user-signup` endpoint to create a new user.
 4. Log user in when sign-up post request is complete successfully
 
-    ```js
+    ```javascript
     export default {
       name: 'sign-up',
       data() {
@@ -342,7 +342,7 @@ The user signup endpoint allows only email and password. What happens to the nam
 
 The ID of the record will be the same with the user's auth ID so we can easily fish the record when a user logs in:
 
-```js
+```javascript
 export default {
    name: 'sign-up',
    data() {
@@ -587,7 +587,7 @@ The components are dependent on two other presentation components -- Comment For
 
 Le's begin by handling `handleNewComment`:
 
-```js
+```javascript
 import * as ds from '@deepstream/client';
 import { get } from '@/services/localStorage';
 
@@ -643,7 +643,7 @@ Note we have a `comments` array that is bound to the view. This array will be po
 
 Still, in the `created` hook, let's implement the above-listed ways:
 
-```js
+```javascript
 created() {
     this.auth = get('ds:cred');
     if (!this.auth || !this.auth.email) this.$router.push('/sign-in');
@@ -673,7 +673,7 @@ We also attach a listener to `entry-added` so when we call `addEntry` from `hand
 
 Now let's see what `getListEntryRecord` looks like:
 
-```js
+```javascript
 methods: {
     /*...*/
     getListEntryRecord(entry) {

@@ -3,7 +3,7 @@ title: Creating postits
 description: "Step four: Creating a postit"
 ---
 
-## Creating a postit
+## Quick explanation of available APIs
 
 Okay so in the skeleton provided earlier we have a basic function to allow postits to be created as follows:
 
@@ -28,7 +28,7 @@ updatePostitPosition('postit/uuid', {
 
 ## Creating a postit
 
-Now comes the fun part—getting all the cards to remain in sync across all browsers/phones. Let’s take a step back and first look at data-sync and how it is used. We’ll be using [records](/tutorials/core/datasync/records/) to represent each indivudal postit. A record is just a convenient way of storing and manipulating JSON with data-sync built in.
+Now comes the fun part—getting all the cards to remain in sync across all connected devices. Let’s take a step back and first look at data-sync and how it is used. We’ll be using [records](/tutorials/core/datasync/records/) to represent each individual postit. A record is just a convenient way of storing and manipulating JSON with data-sync built in.
 
 Core concepts: 
 
@@ -37,6 +37,9 @@ Core concepts:
 ```javascript
 const recordName = client.getUid()
 const record = client.record.getRecord(recordName)
+// This next line waits for the record data to be loaded from the server
+// before continuing. Useful to avoid getting into async issues
+await record.whenReady()
 ```
 
 - You can set its data:
@@ -50,7 +53,7 @@ record.set({
   },
   content: 'This card is awesome!',
   type: 'glad'
-});
+})
 ```
 
 - Get data:
@@ -59,11 +62,19 @@ record.set({
 console.log(record.get())
 ```
 
-- Subscribe to changes:
+- Subscribe to changes on the entire data:
 
 ```javascript
 record.subscribe(data => {
   console.log(`Card ${record.name} changed!`, data)
+})
+```
+
+- Subscribe to changes to a specific part of the data:
+
+```javascript
+record.subscribe('position', newPosition => {
+  console.log(`Card ${record.name} position changed!`, newPosition)
 })
 ```
 
@@ -81,12 +92,18 @@ const createPostit = async (postitUid, initialData) => {
     const postit = addPostit(
         postitUid, 
         record.get(), 
+        // Callback whenever user does a keypress
         newContent => record.set('content', newContent), 
+        // Callbac whenever the postit moves
         newPosition => record.set('position', newPosition)
     )
 
     record.subscribe('content', content => updatePostitContent(postitUid, content), true)
     record.subscribe('position', position => updatePostitPosition(postitUid, position), true)
+
+    record.on('delete', (record) => {
+      removePostit(postitUid)
+    })
 }
 ```
 

@@ -25,7 +25,6 @@ Running any service via docker is my personal favorite way, since upgrading, tag
 ```bash
 docker run \
     -p 6020:6020 \
-    -p 8080:8080 \
     deepstreamio/deepstream.io:latest-alpine
 ```
 
@@ -34,7 +33,6 @@ Keep in mind we'll also need to be modifying the config file. The most effective
 ```bash
 docker run \
     -p 6020:6020 \
-    -p 8080:8080 \
     -v /conf:/etc/conf/deepstream
     deepstreamio/deepstream.io:latest-alpine
 ```
@@ -75,11 +73,11 @@ const deepstream = new Deepstream(null)
 
 ```js
 const deepstream = new Deepstream({
-    auth: {
+    auth: [{
         path: './src/authentication/custom-authentication-plugin.js'.
         options: {
         }
-    }
+    }]
 })
 ```
 

@@ -2,7 +2,7 @@
 
 Once we have logged in we can start reacting to users logging in and out by doing the following:
 
-```js
+```javascript
 function initializeApplication(data) {
     //store the client's id
     userId = data.id
