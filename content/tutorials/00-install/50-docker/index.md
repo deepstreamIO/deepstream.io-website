@@ -28,7 +28,7 @@ And that's it!
 
 If you want to override some of the config or run deepstream in the background keep reading.
 
-If you'd like a bit more than just a single deepstream node, head over to the [Docker Compose tutorial](../docker-compose/), describing how to set up deepstream with a connected database, cache and search containers that act as the cache and storage layer for deepstream.
+If you'd like a bit more than just a single deepstream node, head over to the [Docker Compose tutorial](https://deepstream.io/tutorials/devops/docker-compose/), describing how to set up deepstream with a connected database, cache and search containers that act as the cache and storage layer for deepstream.
 
 Let's start by installing the image from the DockerHub registry by running this command:
 
