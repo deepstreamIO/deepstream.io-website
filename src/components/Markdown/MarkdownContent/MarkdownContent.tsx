@@ -10,7 +10,8 @@ import { Link } from 'gatsby';
 interface MarkdownContentProps {
     data: any
     location: string
-    navigation: any
+    navigation: any,
+    numbers: boolean
 }
 
 
@@ -28,7 +29,7 @@ const NavigateBack: React.FunctionComponent<any> = ({ item }) => {
     </div>
 }
 
-export const MarkdownContent: React.FunctionComponent<MarkdownContentProps> = ({ data, location, navigation }) => {
+export const MarkdownContent: React.FunctionComponent<MarkdownContentProps> = ({ numbers = false, data, location, navigation }) => {
     const { html } = data.markdownRemark
     const { title, description, wip } = data.markdownRemark.frontmatter
     const { githubLink } = data.markdownRemark.fields
@@ -75,7 +76,7 @@ export const MarkdownContent: React.FunctionComponent<MarkdownContentProps> = ({
                     </div>
                 </footer>
             </article>
-            <SideBar navigation={navigation} currentLocation={location} />
+            <SideBar numbers={numbers} navigation={navigation} currentLocation={location} />
         </div>
     </Layout>
 }
