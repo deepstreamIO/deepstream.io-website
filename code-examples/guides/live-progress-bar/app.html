@@ -1,0 +1,76 @@
+<html>
+  <head>
+    <style>
+      #app {
+        width: 500px;
+        margin: auto;
+        text-align: center;
+      }
+
+      #app > * {
+        margin-top: 10px;
+      }
+    </style>
+    <script
+      type="text/javascript"
+      src="https://cdn.deepstream.io/js/client/latest/ds.min.js"
+    ></script>
+  </head>
+  <body>
+
+    <div id="app">
+        <div id="progress-bar-wrapper">
+            <progress max="100" value="0"></progress>
+            <div id="message">Hello</div>
+        </div>
+        <form id="submit-form">
+            <button>Submit</button>
+        </form>
+    </div>
+
+    <!-- The application code -->
+    <script type="text/javascript">
+      const client = deepstream("localhost:6020/deepstream")
+      client.login()
+
+      const form = document.getElementById('submit-form')
+      form.onsubmit = async event => {
+        event.preventDefault()
+        const id = Math.random()
+        try {
+            client.event.subscribe(`progress:${id}`, updateProgressBar)
+            const data = await postData('http://localhost:9090/post', { id })
+            updateProgressBar({ percentage: 100 })
+        } catch (error) {
+            console.error(error)
+        } finally {
+          client.event.unsubscribe(`progress:${id}`, updateProgressBar)
+        }
+      }
+
+      function updateProgressBar ({ percentage, message = '' }) {
+        const progressBarWrapper = document.querySelector('#progress-bar-wrapper')
+        progressBarWrapper.style = percentage === 100 ? "opacity: 0;" : "opacity: 1;"
+
+        const progressBar = document.querySelector('progress')
+        progressBar.value = percentage
+
+        const messageElement = document.querySelector('#message')
+        messageElement.innerText = message
+      }
+
+      async function postData(url = '', data = {}) {
+        const response = await fetch(url, {
+          method: 'POST',
+          mode: 'cors',
+          withCredentials: true,
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        })
+        return await response.json()
+      }
+    </script>
+  </body>
+</html>

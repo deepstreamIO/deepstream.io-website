@@ -2,7 +2,7 @@
 title: Collaborative Post-It Board
 description: Creating a Retrospective Board with deepstream
 tags: [Javascript, lists, records]
-redirectFrom: [/guides/browser/post-it-board/]
+redirectFrom: [/guides/post-it-board/]
 ---
 
 With more and more teams working remotely, tools have sprung up everywhere, shifting online processes. The fun part behind retrospective planning poker and other methods was always the interactivity, seeing cards move around and identifying barely readable scribbles.

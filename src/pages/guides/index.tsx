@@ -5,6 +5,7 @@ import { HeroType, Hero } from '../../components/General/Hero/Hero';
 import { Section } from '../../components/General/Section/Section';
 import { Link } from 'gatsby';
 import BoardRealtimeImage from '../../../content/guides/post-it-board/board.png';
+import LiveProgressBarImage from '../../../content/guides/live-progress-bar/progress-bar.png';
 
 export default () => (
     <Layout>
@@ -17,9 +18,13 @@ export default () => (
                         <img className={style.guideImage} src="/images/eltons/elton-docs.svg" />
                         <h1 className={style.guideTitle}>Weather App</h1>
                     </Link> */}
-                    <Link to="/guides/browser/post-it-board/" className={style.guide}>
+                    <Link to="/guides/post-it-board/" className={style.guide}>
                         <img className={style.guideImage} src={BoardRealtimeImage} />
                         <h1 className={style.guideTitle}>PostIt Board</h1>
+                    </Link>
+                    <Link to="/guides/live-progress-bar/" className={style.guide}>
+                        <img className={style.guideImage} src={LiveProgressBarImage} />
+                        <h1 className={style.guideTitle}>Live Progress Bar</h1>
                     </Link>
                     {/* <Link to="/guides/browser/color-picker/" className={style.guide}>
                         <img className={style.guideImage} src="/images/eltons/elton-docs.svg" />

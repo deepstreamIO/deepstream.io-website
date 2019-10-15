@@ -1,20 +1,18 @@
-## Serverless Server
+---
+title: Prerequisite
+description: "Step one: What you need to know before starting this guide"
+---
 
-The title is twisted but, yeah, that's what it is. The "severless" concept does not imply that servers do not exist, but the details about the server do not need to be known by they developer. Just write your code and deploy. In this example, we will make use of [Webtask](https://webtask.io) as our serverless platform.
+We will provide two simple files, one server side for the progress bar and another
+for the front-end visualization
 
-- Install Webtask:
+## Server
 
-```bash
-npm install wt-cli
-```
-
-- Create a [Webtask Account](https://webtask.io)
-- Create an `index.js` in the root of an empty project folder with:
+Create an `index.js` in the root of an empty project folder with:
 
 ```javascript
 // ./index.js
 const Express = require('express');
-const Webtask = require('webtask-tools');
 const bodyParser = require('body-parser');
 const app = Express();
 
@@ -25,17 +23,17 @@ app.get('/', (req, res) => {
   res.json({text: 'hi'})
 })
 
-module.exports = Webtask.fromExpress(app);
+app.listen(9090)
 ```
 
-- Run the app:
-
-```bash
-wt create
-```
-
-Visit the URL logged to the console and expect the following response body:
+Visit the URL localhost:9090 and expect the following response body:
 
 ```javascript
 {text: 'hi'}
 ```
+
+## Visual Progress Bar
+
+In the spirit of vanilla JS, we will be putting everything in the same (tiny) HTML file
+
+`embed:guides/live-progress-bar/skeleton.html`

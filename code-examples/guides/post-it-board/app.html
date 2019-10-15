@@ -239,7 +239,7 @@
           .removeChild(document.querySelector(`#${id}`));
       };
 
-      const client = deepstream("localhost:6020/deepstream");
+      const client = deepstream("localhost:6020/deepstream")
 
       const createPostit = async (postitUid, initialData) => {
         const record = client.record.getRecord(postitUid);
