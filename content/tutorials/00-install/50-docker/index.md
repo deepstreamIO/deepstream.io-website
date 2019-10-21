@@ -21,7 +21,7 @@ Docker provides a lightweight solution to spin up fully functioning deepstream e
 To get a deepstream server running quickly you can just do:
 
 ```bash
-docker run -p 6020:6020 -p 8080:8080 deepstreamio/deepstream.io
+docker run -p 6020:6020 deepstreamio/deepstream.io
 ```
 
 And that's it! 
@@ -39,7 +39,7 @@ docker pull deepstreamio/deepstream.io
 Now create a container from this image and assign the container's name to `deepstream.io`:
 
 ```bash
-docker create -t -p 6020:6020 -p 8080:8080 \
+docker create -t -p 6020:6020 \
   --name deepstream.io \
   -v $(pwd)/conf:/usr/local/deepstream/conf \
   -v $(pwd)/var:/usr/local/deepstream/var \

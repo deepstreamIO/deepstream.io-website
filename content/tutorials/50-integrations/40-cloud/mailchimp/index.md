@@ -91,7 +91,7 @@ Before creating these routes, we need to import and configure `deepstream` and `
 ```javascript
 // ./routes/index.js
 const request = require('request');
-const deepstream = require('@deepstream/client');
+const { DeepstreamClient } = require('@deepstream/client');
 
 const dsClient = deepstream('<DEEPSTREAM-APP-URL>').login()
 

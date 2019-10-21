@@ -3,6 +3,7 @@ title: Nginx
 description: Using Nginx as a reverse proxy and load balancer for Websocket traffic
 logoImage: nginx.png
 redirectFrom: [/tutorials/integrations/other-servers/http/, /tutorials/integrations/other-servers/nginx/]
+wip: true
 ---
 
 ## What is nginx?
@@ -64,12 +65,8 @@ http {
         '' close;
     }
 
-    upstream websocket {
-      server localhost:6020; #Websockets
-    }
-
-    upstream httpendpoint {
-      server localhost:8080; #HTTP
+    upstream deepstream {
+      server localhost:6020;
     }
 
     server {
@@ -84,17 +81,16 @@ http {
 
        # Deepstream websocket redirect
        location /deepstream {
-            proxy_pass http://websocket;
+            proxy_pass http://deepstream;
             proxy_http_version 1.1;
             proxy_set_header Upgrade $http_upgrade;
             proxy_set_header Connection "Upgrade";
        }
 
         # Deepstream http endpoint
-        location /http {
-            proxy_pass http://httpendpoint;
+        location / {
+            proxy_pass http://deepstream;
             proxy_http_version 1.1;
-            rewrite ^/http(.*) /$1 break;
         }
    }
 }

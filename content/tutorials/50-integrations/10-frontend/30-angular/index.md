@@ -86,7 +86,7 @@ export class DsService {
     public dsInstance;
 
     constructor() {
-       this.ds = this.dsInstance = deepstream('localhost:6020');
+       this.ds = this.dsInstance = new DeepstreamClient('localhost:6020');
     }
 }
 ```
@@ -104,7 +104,7 @@ export class DsService {
     public dsInstance;
 
     constructor() {
-      this.ds = this.dsInstance = deepstream('localhost:6020');
+      this.ds = this.dsInstance = new DeepstreamClient('localhost:6020');
     }
 
     login (credentials?, loginHandler?) {

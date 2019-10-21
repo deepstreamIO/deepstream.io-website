@@ -47,7 +47,7 @@ Consider the following:
 
 ```javascript
 // server.js
-const deepstream = require('@deepstream/client')
+const { DeepstreamClient } = require('@deepstream/client')
 const client = deepstream('<APP URL>')
 
 client.login({}, (success, data) => {
@@ -122,7 +122,7 @@ Our data provider would look like this:
 
 ```javascript
 // server.js
-const deepstream = require('@deepstream/client')
+const { DeepstreamClient } = require('@deepstream/client')
 const client = deepstream('<APP URL>')
 
 client.login({}, (success, data) => {
@@ -193,7 +193,7 @@ So, here is a sample code for listening with lists, which is pretty much self ex
 
 ```javascript
 // server.js
-const deepstream = require('@deepstream/client')
+const { DeepstreamClient } = require('@deepstream/client')
 const client = deepstream('<APP URL>')
 
 client.login({}, (success, data) => {

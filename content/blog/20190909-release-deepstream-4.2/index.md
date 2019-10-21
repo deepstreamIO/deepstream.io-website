@@ -68,8 +68,8 @@ client.on('message', function (topic, message) {
 You can listen in on the events using a normal deepstream client:
 
 ```javascript
-const deepstream = require('@deepstream/client')
-const client = deepstream('localhost:6020')
+const { DeepstreamClient } = require('@deepstream/client')
+const client = new DeepstreamClient('localhost:6020')
 await client.login({
     username: 'my-username',
     password: 'my-user-password',

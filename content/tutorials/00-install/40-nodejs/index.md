@@ -49,7 +49,7 @@ npm install @deepstream/client
 ```
 
 ```javascript
-const deepstream = require('@deepstream/client')
-const client = deepstream('localhost:6020')
+const { DeepstreamClient } = require('@deepstream/client')
+const client = new DeepstreamClient('localhost:6020')
 client.login()
 ```

@@ -24,7 +24,6 @@ services:
         image: deepstreamio/deepstream.io
         ports:
             - "6020:6020"
-            - "6030:8080"
         volumes:
             - ./conf:/conf
         depends_on:

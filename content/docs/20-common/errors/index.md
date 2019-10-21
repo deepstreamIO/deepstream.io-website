@@ -7,7 +7,7 @@ draft: true
 Errors are used throughout deepstream. They can be accessed via the module.
 
 ```javascript
-const deepstream = require('@deepstream/client')
+const { DeepstreamClient } = require('@deepstream/client')
 deepstream.CONSTANTS.EVENTS
 ```
 

@@ -151,7 +151,7 @@ const handleIncomingMessage = (msgType, msgData) => {
 All that's left now is to connect our SNS-provider to the deepstream server:
 
 ```javascript
-const deepstream = require('@deepstream/client')
+const { DeepstreamClient } = require('@deepstream/client')
 const client = deepstream('<Your app URL>')
 client.login()
 ```

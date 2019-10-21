@@ -24,7 +24,7 @@ To do this we'll just need a simple back-end process that converts the Pusher ev
 
 ```javascript
 const Pusher = require('pusher-js/node')
-const deepstream = require('@deepstream/client')
+const { DeepstreamClient } = require('@deepstream/client')
 
 client.login()
 
@@ -39,7 +39,7 @@ channel.bind('client-notification', (data) => {
 Now any deepstream client that is subscribed to the `notification` topic as follows is able to receive events from Pusher.
 
 ```javascript
-const deepstream = require('@deepstream/client')
+const { DeepstreamClient } = require('@deepstream/client')
 
 client.login()
 
@@ -61,7 +61,7 @@ pusher.bind('client-notification', (data) => {
 Another common use case is to have some back end process sending events to interested clients periodically. While you're migrating the Pusher clients to deepstream, you can easily start sending the events via deepstream as follows.
 
 ```javascript
-const deepstream = require('@deepstream/client')
+const { DeepstreamClient } = require('@deepstream/client')
 const Pusher = require('pusher')
 
 const client = deepstream('<Your app URL>')

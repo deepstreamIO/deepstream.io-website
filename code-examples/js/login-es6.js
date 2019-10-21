@@ -1,5 +1,5 @@
 import deepstream from '@deepstream/client'
-const client = deepstream('localhost:6020')
+const client = new DeepstreamClient('localhost:6020')
 
 try {
   const clientData = await client.login({

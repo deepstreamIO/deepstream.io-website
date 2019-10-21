@@ -151,7 +151,7 @@ From the deepstream client we can now call `client.login()`
 
 ```javascript
 const deepstream = require( '@deepstream/client');
-const client = deepstream('localhost:6020')
+const client = new DeepstreamClient('localhost:6020')
   // Login method
   .login( null, ( success, clientData ) => {
 

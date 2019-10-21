@@ -110,7 +110,7 @@ Then setup the client and record like we saw in the [quickstart guide](/tutorial
 constructor(props) {
   super(props)
 
-  const client = deepstream('localhost:6020')
+  const client = new DeepstreamClient('localhost:6020')
   client.login()
 
   const record = client.record.getRecord('some-name')
@@ -125,7 +125,7 @@ Since our text element is already depending on the value of *text* in our state,
 constructor(props) {
   super(props);
 
-  const client = deepstream('localhost:6020')
+  const client = new DeepstreamClient('localhost:6020')
   client.login()
 
   const record = client.record.getRecord('some-name')
@@ -177,7 +177,7 @@ export default class DeepstreamReactNative extends Component {
   constructor(props) {
     super(props);
 
-    const client = deepstream('localhost:6020')
+    const client = new DeepstreamClient('localhost:6020')
     client.login();
     const record = client.record.getRecord('some-name');
     const text = '';

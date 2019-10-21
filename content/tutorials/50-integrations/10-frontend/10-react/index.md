@@ -38,10 +38,10 @@ npm install @deepstream/client deepstream.io-tools-react --save
 Next: connect to the server, log in and register the client instance with deepstream-react. Sounds tougher than it is:
 
 ```javascript
-const deepstream = require('@deepstream/client')
+const { DeepstreamClient } = require('@deepstream/client')
 const DeepstreamMixin = require('deepstream.io-tools-react')
 
-const client = deepstream('localhost:6020').login({}, () => {
+const client = new DeepstreamClient('localhost:6020').login({}, () => {
   //ReactDOM.render call will go in here
 })
 DeepstreamMixin.setDeepstreamClient(client)

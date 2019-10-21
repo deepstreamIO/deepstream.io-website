@@ -115,7 +115,7 @@ The listen method is called every time there is a change in record subscriptions
 ```javascript
 //server side
 const GeoSubscription = require( './geo-subscription' );
-const deepstream = require('@deepstream/client');
+const { DeepstreamClient } = require('@deepstream/client');
 
 const ds = deepstream('ws://localhost:6020')
 ds.login()

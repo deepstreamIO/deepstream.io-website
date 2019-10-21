@@ -56,7 +56,7 @@ Start the deepstream server and you should see the authentication type confirmed
 In your application code you can now connect to the deepstream server and try to login a user.
 
 ```javascript
-const deepstream = require('@deepstream/client')
+const { DeepstreamClient } = require('@deepstream/client')
 const client = deepstream('localhost:6021')
 
 client.login({
