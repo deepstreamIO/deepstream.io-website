@@ -21,6 +21,6 @@ Learn more about deepstream's [command line interface](/docs/server/command-line
 ## Homebrew
 
 [[info]]
-| Homebrew is not yet up to date with the V4 version. If you are able to help update it please reach out!
+| Homebrew is not yet up to date with the V5 version. If you are able to help update it please reach out!
 
 ![Starting deepstream on osx](../deepstream-v4.png)

@@ -16,22 +16,28 @@ interface MarkdownContentProps {
 
 
 const NavigateForward: React.FunctionComponent<any> = ({ item }) => {
-    return <div className={style.nextItem}>
+    return item.slug ? <div className={style.nextItem}>
         <Link to={item.slug}>{item.title}</Link>
         <FaArrowRight />
-    </div>
+    </div> : null
 }
 
 const NavigateBack: React.FunctionComponent<any> = ({ item }) => {
-    return <div className={style.previousItem}>
+    return item.slug ? <div className={style.previousItem}>
         <FaArrowLeft />
         <Link to={item.slug}>{item.title}</Link>
+    </div> : null
+}
+
+const VersionChanged: React.FunctionComponent<{ action: 'Added' | 'Removed' | 'Deprecated', version: number }> = ({ action, version}) => {
+    return <div className={style.versionchanged}>
+        {action} in version {version}
     </div>
 }
 
 export const MarkdownContent: React.FunctionComponent<MarkdownContentProps> = ({ numbers = false, data, location, navigation }) => {
     const { html } = data.markdownRemark
-    const { title, description, wip } = data.markdownRemark.frontmatter
+    const { title, description, wip, addedInVersion, deprecatedInVersion, removedInVersion } = data.markdownRemark.frontmatter
     const { githubLink } = data.markdownRemark.fields
 
     let previousItem = null
@@ -64,6 +70,9 @@ export const MarkdownContent: React.FunctionComponent<MarkdownContentProps> = ({
                     </h1>
                     {description && <h3 className={style.description}>{description}</h3>}
                     {wip && <WIP gitHubLink={githubLink} />}
+                    {addedInVersion && <VersionChanged action="Added" version="5" />}
+                    {deprecatedInVersion && <VersionChanged action="Deprecated" version="5" />}
+                    {removedInVersion && <VersionChanged action="Removed" version="5" />}
                 </header>
                 <div
                     className={`${style.content} content`}

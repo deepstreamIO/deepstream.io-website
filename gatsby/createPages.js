@@ -11,6 +11,9 @@ module.exports = async ({graphql, actions}) => {
     const blogTemplate = resolve(__dirname, '../src/templates/blog.tsx');
     const guideTemplate = resolve(__dirname, '../src/templates/guides.tsx');
 
+    // deprecatedInVersion,
+    // removedInVersion,
+    
     const allMarkdown = await graphql(
         `
       {
@@ -28,6 +31,7 @@ module.exports = async ({graphql, actions}) => {
                 draft,
                 logoImage,
                 deepstreamVersion,
+                addedInVersion,
                 deepstreamHub,
                 redirectFrom,
                 wip

@@ -1,7 +1,7 @@
 ---
 title: "Release: Javascript/Node 5.0" 
 description: Better Typescript
-redirectFrom: [/releases/server/v5-0-0/]
+redirectFrom: [/releases/clientjs/v5-0-0/]
 ---
 
 This version bump is mainly to respect the major version of the deepstream server, and is fully compatible with V4.

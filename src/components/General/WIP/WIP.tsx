@@ -9,8 +9,7 @@ export const WIP: React.FunctionComponent<WIPProps> = ({ gitHubLink }) => {
    return <div className={style.wip}>
         <img className={style.image} src="/images/eltons/elton-docs.svg" />
         <p className={style.help}>
-            This page needs to be improved! If you feel like adding a few details, totally revamping it or fixing
-            a spelling mistake or two feel free to raise a PR <a className={style.editLink} href={gitHubLink}>here</a>
+            This page needs to be improved/might be out of date! <a className={style.editLink} href={gitHubLink}>Raise a PR</a> if you feel like adding a few details or totally revamping it.
         </p>
     </div>
 }

@@ -49,8 +49,8 @@ export default () => (<Layout pageClass="install-page">
             </p>
             <div className={cn(style.clientGrid, style.blockLink)}>
                 <InstallBlock url="/tutorials/getting-started/javascript/#getting-the-client" img="/images/install/javascript.png" name="Browser / Node" />
-                <InstallBlock url="/tutorials/install/java" img="/images/install/java.png" name="Java" soon={true} />
-                <InstallBlock url="/tutorials/install/android" img="/images/install/android.png" name="Android" soon={true} />
+                <InstallBlock url="/tutorials/getting-started/java/" img="/images/install/java.png" name="Java" />
+                <InstallBlock url="/tutorials/getting-started/android/" img="/images/install/android.png" name="Android" />
                 <InstallBlock url="/docs/client-swift/AnonymousRecord/" img="/images/install/ios.png" name="iOS" soon={true} />
                 <InstallBlock url="https://github.com/deepstreamIO/deepstream.io/issues/72" img="/images/install/python.png" name="Python" soon={true} />
                 <InstallBlock url="https://github.com/deepstreamIO/deepstream.io/issues/70" img="/images/install/dotnet.png" name=".NET" soon={true} />
@@ -62,6 +62,27 @@ export default () => (<Layout pageClass="install-page">
             <p>
                 deepstream can integrate with databases and caches using connectors
             </p>
+            <h3 className={style.subheading}>http services</h3>
+            <div className={cn(style.connectorsGrid, style.blockLink)}>
+                <InstallBlock url="/tutorials/plugins/http-service/node-and-ws/" img="/images/logos/websocket.png" name="Node / WS" />
+                <InstallBlock url="/tutorials/plugins/http-service/uws/" img="/images/logos/uws.svg" name="UWS" />
+            </div>
+            <h3 className={style.subheading}>connection endpoints</h3>
+            <div className={cn(style.connectorsGrid, style.blockLink)}>
+                <InstallBlock url="/tutorials/plugins/connection-endpoint/http/" img="/images/logos/http.png" name="HTTP" />
+                <InstallBlock url="/tutorials/plugins/connection-endpoint/websocket-binary/" img="/images/logos/binary.png" name="Binary Websocket" />
+                <InstallBlock url="/tutorials/plugins/connection-endpoint/websocket-json/" img="/images/logos/json.png" name="JSON WebSocket" />
+                <InstallBlock url="/tutorials/plugins/connection-endpoint/websocket-v3/" img="/images/eltons/elton-robot.png" name="V3 WebSocket" />
+                <InstallBlock url="/tutorials/plugins/connection-endpoint/mqtt/" img="/images/logos/mqtt.png" name="MQTT" />
+            </div>
+            <h3 className={style.subheading}>cluster connectors</h3>
+            <div className={cn(style.connectorsGrid, style.blockLink)}>
+                <InstallBlock url="/tutorials/plugins/clusternode/redis/" img="/images/install/redis.png" name="Redis" />
+            </div>
+            <h3 className={style.subheading}>monitoring connectors</h3>
+            <div className={cn(style.connectorsGrid, style.blockLink)}>
+                <InstallBlock url="/tutorials/plugins/monitoring/http/" img="/images/logos/http.png" name="HTTP" />
+            </div>
             <h3 className={style.subheading}>cache connectors</h3>
             <div className={cn(style.connectorsGrid, style.blockLink)}>
                 <InstallBlock url="/tutorials/plugins/cache/redis/" img="/images/install/redis.png" name="Redis" />
@@ -77,22 +98,6 @@ export default () => (<Layout pageClass="install-page">
                 {/*<InstallBlock url="/tutorials/database/db-leveldb/" img="/images/install/leveldb.png" name="LevelDB" />*/}
                 {/*<InstallBlock url="/tutorials/database/db-couchdb/" img="/images/install/couchdb.png" name="CouchDB" />*/}
                 {/*<InstallBlock url="/tutorials/database/db-dynamodb/" img="/images/install/dynamodb.png" name="Amazon DynamoDB" />*/}
-            </div>
-            <h3 className={style.subheading}>cluster connectors</h3>
-            <div className={cn(style.connectorsGrid, style.blockLink)}>
-                <InstallBlock url="/tutorials/plugins/clusternode/redis/" img="/images/install/redis.png" name="Redis" />
-            </div>
-            <h3 className={style.subheading}>monitoring connectors</h3>
-            <div className={cn(style.connectorsGrid, style.blockLink)}>
-                <InstallBlock url="/tutorials/plugins/monitoring/http/" img="/images/logos/http.png" name="HTTP" />
-            </div>
-            <h3 className={style.subheading}>connection endpoints</h3>
-            <div className={cn(style.connectorsGrid, style.blockLink)}>
-                <InstallBlock url="/tutorials/plugins/connection-endpoint/node-http/" img="/images/logos/http.png" name="HTTP" />
-                <InstallBlock url="/tutorials/plugins/connection-endpoint/ws-websocket/" img="/images/logos/websocket.png" name="Node WebSocket" />
-                <InstallBlock url="/tutorials/plugins/connection-endpoint/uws-websocket/" img="/images/logos/uws.svg" name="UWS WebSocket" />
-                <InstallBlock url="/tutorials/plugins/connection-endpoint/mqtt/" img="/images/logos/mqtt.png" name="MQTT" />
-                <InstallBlock url="/tutorials/plugins/connection-endpoint/v3-compatibility/" img="/images/eltons/elton-robot.png" name="V3" />
             </div>
     </Section>
 </Layout>)

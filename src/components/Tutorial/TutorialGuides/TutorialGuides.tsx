@@ -148,6 +148,7 @@ export const TutorialsGuides: React.FunctionComponent<TutorialsOverviewProps> = 
             <div>
                 <h2>Upgrade Guides</h2>
                 <Category title="Upgrading to V4" entries={sections['upgrade-guides'].v4} />
+                <Category title="Upgrading to V5" entries={sections['upgrade-guides'].v5} />
             </div>,
             <div>
                 <h2>WebRTC</h2>

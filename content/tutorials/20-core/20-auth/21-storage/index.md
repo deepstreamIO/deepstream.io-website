@@ -2,6 +2,7 @@
 title: Storage Authentication
 description: A deepstream authentication mechanism that reads credentials and userdata via the storage adaptor
 tags: [authentication, database, hash, crypto]
+addedInVersion: 5.0
 ---
 
 Storage-based authentication allows you to store usernames, password hashes and optional meta-data in a table within

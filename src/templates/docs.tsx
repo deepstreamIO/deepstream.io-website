@@ -20,7 +20,8 @@ export const pageQuery = graphql`
       html
       frontmatter {
         title,
-        wip
+        wip,
+        addedInVersion
       }
       fields {
         slug,
