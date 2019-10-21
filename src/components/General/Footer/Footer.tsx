@@ -63,7 +63,7 @@ export const Footer = ({ hasSideBar }) => (
                 <div className="col col-b">
                         <h4>COMPANY</h4>
                         <ul>
-                                <li>deepstreamHub GmbH</li>
+                                <li>deepstreamHub GmbH .i.L.</li>
                                 <li>c/o Office Club</li>
                                 <li>Pappelallee 78/79</li>
                                 <li>10437 Berlin</li>
@@ -73,6 +73,6 @@ export const Footer = ({ hasSideBar }) => (
                 </div>
         </div>
         <div className="copyright">
-        &copy; {new Date(Date.now()).getFullYear()} deepstreamHub GmbH
+        &copy; {new Date(Date.now()).getFullYear()} deepstreamHub GmbH .i.L.
         </div>
 </footer>)
