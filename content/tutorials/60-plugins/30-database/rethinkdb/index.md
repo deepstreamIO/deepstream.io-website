@@ -46,7 +46,7 @@ storage:
     database: someDb
 
     # optional table name for records without a splitChar
-    # defaults to deepstream_records
+    # defaults to deepstream_docs
     defaultTable: someTable
 
     # optional character that's used as part of the
