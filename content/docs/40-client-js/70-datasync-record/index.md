@@ -114,6 +114,35 @@ record.set('personalData.firstname', 'Homer', err => {
 })
 ```
 
+### setWithAck(path, value)
+
+|Argument|Type|Optional|Description|
+|---|---|---|---|
+|path|String|true|A particular path within the JSON structure that should be set|
+|value|Various|false|The value the record or path should be set to|
+
+Used to set the record's data and can be called with a value. A path can optionally be included.
+
+This function returns a promise that fulfills when writing to cache or storage completed thus slowing down the operation.
+
+[[info]]
+| After awaiting `setWithAck`, the data is persisted so using `get` will retrieve the updated record.
+
+```javascript
+// Set the entire record's data with write acknowledgement
+await record.setWithAck({
+  personalData: {
+    firstname: 'Homer',
+    lastname: 'Simpson',
+    status: 'married'
+  },
+  children: ['Bart', 'Maggie', 'Lisa']
+});
+
+// Update only firstname with write acknowledgement
+await record.setWithAck('personalData.firstname', 'Marge')
+```
+
 ### get(path)
 
 |Argument|Type|Optional|Description|
