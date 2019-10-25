@@ -2,9 +2,12 @@
 title: Realtime Comment Feed
 description: Learn how to create a realtime comment feeds with authentication using Vue
 tags: [Javascript, Vue, lists, records]
-navLabel: Comment Feed using Vue
-deepstreamHub: true
 ---
+
+<h1 style="border: 1px solid black; padding: 10px; border-radius: 2px; font-size: 25px; margin-top: 20px;">
+    Help needed to update and migrate to 
+    <a style="font-size: 25px; color: #0FBBEC;" href="/guides">Guides Section</a>
+</h1>
 
 This walkthrough covers the fundamentals of what it takes to build a realtime comment feed application. Therefore, if you desire to add a feature like Facebook-style comments in your next app, then this is definitely what you need to read.
 

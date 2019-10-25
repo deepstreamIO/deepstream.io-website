@@ -32,7 +32,6 @@ module.exports = async ({graphql, actions}) => {
                 logoImage,
                 deepstreamVersion,
                 addedInVersion,
-                deepstreamHub,
                 redirectFrom,
                 wip
               }
@@ -52,9 +51,9 @@ module.exports = async ({graphql, actions}) => {
 
     allMarkdown.data.allMarkdownRemark.edges.forEach(edge => {
         let { slug, weightedSlug } = edge.node.fields;
-        const { title, description, draft, deepstreamVersion, deepstreamHub, redirectFrom } = edge.node.frontmatter;
+        const { title, description, draft, deepstreamVersion, redirectFrom } = edge.node.frontmatter;
 
-        if (draft || deepstreamVersion === 'V3' || deepstreamHub === true) {
+        if (draft || deepstreamVersion === 'V3') {
             return
         }
 

@@ -2,8 +2,13 @@
 title: Music Collection (CRUD)
 description: Realtime state management in CRUD apps using deepstream events
 tags: [Events, Angular, Javascript, CRUD, Pub-Sub]
-navLabel: Music Collection
 ---
+
+<h1 style="border: 1px solid black; padding: 10px; border-radius: 2px; font-size: 25px; margin-top: 20px;">
+    Help needed to update and migrate to 
+    <a style="font-size: 25px; color: #0FBBEC;" href="/guides">Guides Section</a>
+</h1>
+
 A common concern in component architecture is passing data around (mostly from parent to grandchildren, grandchildren to parent and among sibling components). The first thing that could come to mind is to use a Flux implementation, but sometimes this becomes an overkill. When that is the case, you could decide to opt for an event hub.
 
 Speaking of events, rather than a local event hub, you could employ deepstream event to not only manage state for you but provide this state to all connected clients in realtime.
@@ -52,7 +57,7 @@ import * as deepstream from '@deepstream/client'
 @Injectable()
 export class DsService {
   get dsInstance() {
-    const client = deepstream('<Your deepstream URL>')
+    const client = new DeepstreamClient('localhost:6020')
     client.login()
     return client
   }

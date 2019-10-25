@@ -21,7 +21,7 @@ sslDHParams:  ./my-dhl-params.key
 sslPassphrase:  ./my-ssl-passphrase.key
 ```
 
-It's highly recommended to always use a seperate process to do SSL termination. Usually via a load balancer (e.g. Nginx or HA Proxy). To learn more about this, head over to the [Nginx Tutorial](/tutorials/integrations/other-nginx/).
+It's highly recommended to always use a seperate process to do SSL termination. Usually via a load balancer (e.g. Nginx or HA Proxy). To learn more about this, head over to the [Nginx Tutorial](/tutorials/devops/nginx/).
 
 ## Authentication
 Every incoming connection needs to pass an authentication step. This happens when the client calls `login(data, callback)`.

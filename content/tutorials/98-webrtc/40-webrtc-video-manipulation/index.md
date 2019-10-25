@@ -97,7 +97,7 @@ At this point you should see two identical video-clips - one on a video tag, one
 ```
 
 ## 5. Turn the manipulated video data into a stream
-The only thing left at this point is to establish a [simple peer connection](https://deepstreamhub.com/tutorials/protocols/webrtc-datachannels/) and provide a video stream from our output canvas using its `.captureStream()` method.
+The only thing left at this point is to establish a [simple peer connection](/tutorials/webrtc//webrtc-datachannels/) and provide a video stream from our output canvas using its `.captureStream()` method.
 
 ```javascript
 const p2pConnection = new SimplePeer({

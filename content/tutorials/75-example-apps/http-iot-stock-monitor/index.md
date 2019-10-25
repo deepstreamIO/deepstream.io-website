@@ -1,10 +1,14 @@
 ---
-title: IoT Light Sensor
-description: deepstream HTTP Internet of Things Light Sensor tutorial
+title: IoT Fridge Monitor
+description: deepstream HTTP Internet of Things Fridge Monitor tutorial
 tags: [HTTP, IoT, Arduino, ESP8266, WiFi]
-navLabel: IoT Light Sensor
-contentNav: true
 ---
+
+<h1 style="border: 1px solid black; padding: 10px; border-radius: 2px; font-size: 25px; margin-top: 20px;">
+    Help needed to update and migrate to 
+    <a style="font-size: 25px; color: #0FBBEC;" href="/guides">Guides Section</a>
+</h1>
+
 
 deepstream's HTTP API is perfect for low-frequency data updates in low-power
 environments where the cost of establishing and maintaining a WebSocket
@@ -28,15 +32,11 @@ Here's how it looks:
   available through merchants and action sites for as little as $5. The one
   we're using is listed as an "Elegiant Nodemcu Lua ESP8266 ESP 12E" and cost
   €10 delivered.
-- An electronics breadboard and jumper cables.
-- A photoresistor/LDR like [this one](http://uk.farnell.com/excelitas-tech/vt90n1/ldr-200kohm-80mw-vt900-series/dp/2293503).
-- 1 x 20kΩ resistor (a pull-up for the photoresistor).
-- 2 x status LEDs – 1 red, 1 green.
-- 2 x 330Ω resistors for the LEDs.
+- An electronics breadboard with jumper cables.
+- 4 x momentary switches
+- 4 x 220Ω pull-up resistors for the switches.
 
 ![Schematic](schematic.png)
-
-The circuit is very simple to put together, just make sure the LEDs are correctly oriented.
 
 ## Setting up
 
@@ -59,66 +59,97 @@ The empty sketch defines two functions:
 To make debugging easier, we can enable debugging over a serial connection.
 
 To do so, simply add the following to the `setup()` function:
-
 ```cpp
 Serial.begin(115200);
 ```
 
 and open `Tools > Serial Monitor` to see any output generated.
 
-## Reading the sensor
+## Reading the button state
 
-To start with, we'll want to read the sensor.
+To start with, we'll write some code to read the button inputs, allowing us to
+respond to button presses when they occur.
 
-The analog input pin is the one labelled `A0`, and a global variable of the
-same name is defined. 
-
-We need to initialize this as an input before we read from it:
+First we'll declare some variables to store state.
 
 ```cpp
-const int sensorPin = A0;
+// the four digital inputs connected to momentary switches
+const int btn0 = D0;
+const int btn1 = D1;
+const int btn2 = D2;
+const int btn3 = D3;
 
+// the last read state of each button where 
+// true  --> pressed
+// false --> not pressed
+bool btnState0, btnState1, btnState2, btnState3;
+```
+
+We also need to initialize the pins as inputs before we read:
+
+```cpp
 void setup() {
+    // for debug logging
     Serial.begin(115200);
 
-    // initialize sensor
-    pinMode(sensorPin, INPUT);
+    // initialize buttons
+    pinMode(btn0, INPUT);
+    pinMode(btn1, INPUT);
+    pinMode(btn2, INPUT);
+    pinMode(btn3, INPUT);
+
+    // initial button state
+    btnState0 = btnState1 = btnState2 = btnState3 = false;
 }
 ```
 
-Now in `loop()` we can use the function `analogRead(int pin)` to read the value
-on the sensor and `Serial.printf()` to print the value.
+Now in `loop()` we can use the function `checkBtn` to check the state of each of the buttons.
 
-The variable `readDelayMs` defines the amount of time between readings in milliseconds.
-
-The value will be an integer between 0 and 1024 corresponding to the brightness level.
+The variable `readDelayMs` defines the amount of time between readings in
+milliseconds.
 
 ```cpp
-const int readDelayMs = 10000;
+const int readDelayMs = 100;
 
 void loop() {
-    int level = analogRead(sensorPin);
-    Serial.printf("Light level: %d\n", level);
+    checkBtn(btn0, btnState0, "inventory/cola");
+    checkBtn(btn1, btnState1, "inventory/beer");
+    checkBtn(btn2, btnState2, "inventory/water");
+    checkBtn(btn3, btnState3, "inventory/apfelschorle");
 
     delay(readDelayMs);
+}
+
+void checkBtn(
+    const int btn, // the pin that the button is connected to
+    bool &btnState, // the current state of the button
+    char *recordName // the name of the record we will update
+    ) {
+    if (digitalRead(btn) == LOW && !btnState) {
+        // button pressed
+        Serial.printf("Button pressed: %s\n", recordName);
+        btnState = true;
+    } else if (digitalRead(btn) == HIGH && btnState) {
+        // button released
+        Serial.printf("Button released: %s\n", recordName);
+        btnState = false;
+    }
 }
 ```
 
 If you build and upload the script now and look in the `Serial Monitor` window
 you should see log lines, with the value changing as the light level changes e.g.
-
 ```
-Light level: 270
-Light level: 373
-Light level: 384
+Button pressed: inventory/water
+Button released: inventory/water
+Button pressed: inventory/beer
+Button released: inventory/beer
 ```
 
 ## Connecting to WiFi
 
-To submit this data to deepstream we'll need an internet connection, and for
-that we'll use the chip's builtin WiFi and networking functionality. 
-
-Include the following headers:
+To submit this data to deepstream we'll need an internet connection, so
+we'll include the necessary libraries to use the device's WiFi chip:
 
 ```cpp
 #include <ESP8266WiFiMulti.h>
@@ -144,6 +175,7 @@ void setup() {
 void loop() {
     if (WiFiMulti.run() != WL_CONNECTED) {
       delay(200);
+      Serial.print("."); // indicate that device is still connecting
       return;
     }
 
@@ -153,38 +185,139 @@ void loop() {
 
 ## Building a request
 
-We're going to be writing the light level into a
-[record](/tutorials/core/datasync/records/) each time it's read, so let's create a
-function called `updateRecord` that takes the level as an argument, and call it
-in `loop()`.
+Each time a button is pressed we would like the corresponding value (stored in
+a [record](/tutorials/core/datasync/records/)) to be decremented. That requires a read
+(to get the current state) followed by a write to set the new value.
 
-```cpp
-void loop() {
-    // print level...
-    updateRecord(level);
-    // delay
-}
-
-void updateRecord(int level) {
-    // ...
-}
-```
-
-You'll also need to select the relevant TLS fingerprint that relates to the
-subdomain in your HTTP URL, or you can follow 
-[the instructions here](https://github.com/esp8266/Arduino/issues/2556#issuecomment-271372001)
-to generate your own: 
+You should also select the relevant TLS fingerprint below that relates to the
+subdomain in your HTTP URL. 
 
 ```cpp
 const char* deepstreamHttpUrl = "<YOUR HTTP URL>";
 /*
- * Generated TLS fingerprints:
+ * TLS fingerprints:
  *
  * 013.deepstream.com: "3A:FC:6E:78:94:18:C0:A2:36:F3:C7:DF:86:27:4B:5A:CA:CF:28:3F"
  * 035.deepstream.com: "57:18:5A:22:07:94:03:EF:90:C9:C2:56:58:C9:BB:06:66:A6:EA:76"
  * 154.deepstream.com: "3C:65:CA:7C:3F:43:2D:FF:A1:63:38:F3:23:D5:59:25:E4:85:8C:0F"
  */
 const char* deepstreamTlsFingerprint = "<YOUR HTTP DOMAIN FINGERPRINT>";
+```
+
+
+Using the HTTP API is very similar for record reads and writes, so let's write
+a function that can do both called `recordRequest`:
+
+```cpp
+#include <ArduinoJson.h> // a library for parsing and serializing JSON objects
+
+// the possible record actions
+enum class RecordAction { Read, Write, Head };
+
+// make an HTTP request to read or write a record
+JsonVariant recordRequest(RecordAction action, char *recordName, char *path = nullptr, JsonVariant data = {}) {
+    HTTPClient http;
+
+    // configure client
+    http.begin(deepstreamHttpUrl, deepstreamTlsFingerprint);
+
+    // set content type
+    http.addHeader("Content-Type", "application/json");
+
+    // create message body
+    jsonBuffer.clear();
+    JsonObject& root = jsonBuffer.createObject();
+    JsonArray& body = root.createNestedArray("body");
+    JsonObject& message = body.createNestedObject();
+    message["topic"] = "record";
+
+    switch (action) {
+        case RecordAction::Read:
+            message["action"] = "read";
+            break;
+        case RecordAction::Head:
+            message["action"] = "head";
+            break;
+        case RecordAction::Write:
+            message["action"] = "write";
+            // only writes have a payload
+            if (path != nullptr) {
+                message["path"] = "amount";
+            }
+            message["data"] = data;
+            break;
+        default:
+            Serial.printf("Unknown record action %d\n", static_cast<int>(action));
+    }
+
+    message["recordName"] = recordName;
+
+    // copy object into array
+    size_t requestBodySize = root.measureLength() + 1;
+    char requestBody[requestBodySize];
+    root.printTo(requestBody, requestBodySize);
+
+    // log request
+    Serial.print("request: ");
+    root.printTo(Serial);
+    Serial.println();
+
+    // make request
+    int httpCode = http.POST(requestBody);
+
+    int result = -1;
+    if(httpCode == HTTP_CODE_OK) {
+        // parse response
+        String payload = http.getString();
+        jsonBuffer.clear();
+        JsonObject& resp = jsonBuffer.parseObject(payload);
+        if (!resp.success()) {
+            // failed to parse JSON response
+            Serial.printf("Failed to parse response: %s\n", payload.c_str());
+        } else if (!resp["body"][0]["success"]) {
+            // failed to update record
+            Serial.printf("Record update error: %s\n", resp["body"][0]["error"]);
+        } else {
+            // record update success
+            Serial.println("Record was updated successfully!");
+            result = resp["body"][0]["data"];
+        }
+    } else if (httpCode < 0) {
+        // handle HTTP client error
+        Serial.printf("Request failed, error: %s\n", http.errorToString(httpCode).c_str());
+    } else {
+        // handle HTTP error response
+        Serial.printf("Error response %d: %s\n", httpCode, http.getString().c_str());
+    }
+
+    http.end();
+    return result;
+}
+```
+
+Finally we can add a short function `decRecord` that simply reads the current
+state of the record, increments the `amount` parameter, and writes it back:
+```cpp
+void checkBtn(const int btn, bool &btnState, char *recordName) {
+    // ...
+    } else if (digitalRead(btn) == HIGH && btnState) {
+        // button released
+        btnState = false;
+        decRecord(recordName);
+    }
+}
+
+void decRecord(char *recordName) {
+    JsonVariant recordData = recordRequest(RecordAction::Read, recordName);
+    if (!recordData.is<JsonObject>()) {
+        Serial.println("Decrement aborted");
+        return;
+    }
+    int amount = recordData["amount"];
+    Serial.printf("Record read: %d\n", amount);
+    amount--;
+    recordRequest(RecordAction::Write, recordName, "amount", amount);
+}
 ```
 
 We have to create a new `HTTPClient` for each message, so we'll create that in
@@ -205,13 +338,21 @@ The deepstream HTTP API uses a JSON payload, so to help us build that we'll
 include the `ArduinoJSON` library we installed earlier.
 
 The body we're creating needs to look like this:
+
+```json
+{
+  "topic": "record",
+  "action": "read",
+  "recordName": "inventory/beer"
+}
+```
 ```json
 {
   "topic": "record",
   "action": "write",
-  "recordName": "readings/light-level",
-  "path": "value",
-  "data": 534 /* value read from the sensor */
+  "recordName": "inventory/beer",
+  "path": "amount",
+  "data": 25
 }
 ```
 
@@ -340,26 +481,3 @@ void updateRecord(int level) {
 }
 ```
 
-## Subscribing to updates
-
-Now let's display those updates as they happen using Javascript and log them to the console:
-
-```html
-<head>
-    <script src="http://code.deepstream.io/js/latest/deepstream.min.js"></script>
-    <script type="text/javascript">
-      const ds = deepstream('<Your deepstream URL>')
-      ds.login()
-    
-      const record = ds.record.getRecord('readings/light-level')
-      record.subscribe('value', (value) => {
-        console.log('Light level update:', value)
-      })
-    </script>
-</head>
-```
-
-This simple setup has all the elements required to aggregate and display
-readings from millions of incoming sensors.
-
-For the full code, please take a look at the GitHub <a href="https://github.com/deepstreamIO/dsh-tutorial-http-iot">repository</a>.

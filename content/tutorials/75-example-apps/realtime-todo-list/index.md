@@ -5,6 +5,11 @@ tags: [Javascript, React, lists, records]
 navLabel: Realtime Todo List
 ---
 
+<h1 style="border: 1px solid black; padding: 10px; border-radius: 2px; font-size: 25px; margin-top: 20px;">
+    Help needed to update and migrate to 
+    <a style="font-size: 25px; color: #0FBBEC;" href="/guides">Guides Section</a>
+</h1>
+
 You probably know the [TodoMVC](http://todomvc.com/) project (if not, take a look). We believe that deepstream's lists and records can simplify the development and implementation of many kinds of project, ToDomvc and the like are good examples for that.
 This tutorial will show you how to use deepstream's records and lists for building a realtime TodoList app with React.
 We definitely recommend being familiar with [Records](/tutorials/core/datasync/records/) and [Lists](/tutorials/core/datasync/lists/) before giving this a go, and, of course, with the React framework.

@@ -4,7 +4,7 @@ description: Learn how to read, transfer, receive and download a file between tw
 tags: [WebRTC, FileReader, Blob, Download Blob, JavaScript]
 ---
 
-WebRTC makes it possible to transfer any file between two browsers using [data-channels](https://deepstreamhub.com/tutorials/protocols/webrtc-datachannels/) and binary data.
+WebRTC makes it possible to transfer any file between two browsers using [data-channels](/tutorials/webrtc//webrtc-datachannels/) and binary data.
 
 ## How does binary data work in browsers
 The current generation of browsers allow you to send arrays of bytes - groups of eight zeros or ones that can specify numbers between 0 and 255. To work with these, they provide a number of concepts - `Uint8Array`s  to store them in, `FileReader`s to create them and `Blob`s to assemble them. Transports like Websockets and WebRTC allow for the transmission of raw byte streams.
@@ -13,7 +13,7 @@ The current generation of browsers allow you to send arrays of bytes - groups of
 Transferring files between two browsers means working directly with binary data. There is no `sendFile()` or `onFileReceived` API - instead its up to the developer to get the file from a [file input](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input), via [drag and drop](https://www.html5rocks.com/en/tutorials/casestudies/box_dnd_download/) or - if you're building a chrome app with elevated permissions - from the [file system API](https://developer.chrome.com/apps/fileSystem), read it using a [FileReader](https://developer.mozilla.org/en/docs/Web/API/FileReader), transmit it in chunks, reassemble it on the other side and finally trick the browser into downloading it.
 
 ## Establishing a manipulated P2P Connection
-For this tutorial we assume you already know how to establish a connection between two peers as described in [the first tutorial](https://deepstreamhub.com/tutorials/protocols/webrtc-datachannels/). There is one extra bit we have to do though: By default Chrome caps the transfer rate for WebRTC datachannels to 30 kbps - at this speed downloading GTA 5 on Steam would take a solid 25 days nonstop.
+For this tutorial we assume you already know how to establish a connection between two peers as described in [the first tutorial](/tutorials/webrtc//webrtc-datachannels/). There is one extra bit we have to do though: By default Chrome caps the transfer rate for WebRTC datachannels to 30 kbps - at this speed downloading GTA 5 on Steam would take a solid 25 days nonstop.
 
 Fortunately, the offer [sdp](https://andrewjprokop.wordpress.com/2013/09/30/understanding-session-description-protocol-sdp/) is just a string - which means we can fiddle with it before sending. This can be done by adding this line to our outgoing signal callback:
 
@@ -166,4 +166,4 @@ function endDownload() {
 }
 ```
 
-Phew - that was hard. But hey, it's the last tutorial in this series. All that's left now is to wrap up with [an overview of what it takes to use WebRTC in production apps](https://deepstreamhub.com/tutorials/protocols/webrtc-in-production/)
+Phew - that was hard. But hey, it's the last tutorial in this series. All that's left now is to wrap up with [an overview of what it takes to use WebRTC in production apps](/tutorials/webrtc/webrtc-in-production/)

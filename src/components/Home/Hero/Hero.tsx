@@ -8,13 +8,11 @@ export const Hero = () => (
                 <h1 className="page-title">the open realtime server</h1>
                 <h2 className="page-description">a fast and secure data-sync realtime server <br />for mobile, web &amp; iot</h2>
                 <div className="buttons">
-                    <a href="/tutorials/getting-started/javascript/">
-                        <i className="ion-lightbulb"></i>
-                        get started
+                    <a href="/tutorials/concepts/what-is-deepstream/">
+                        what is it?
                     </a>
-                    <a href="/install/">
-                        <i className="ion-ios-navigate-outline"></i>
-                        install
+                    <a href="/tutorials/getting-started/javascript/">
+                        get started
                     </a>
                 </div>
             </div>

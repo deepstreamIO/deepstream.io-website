@@ -4,6 +4,11 @@ description: Create a web app that returns the location of those around you in R
 tags: [React, Rethinkdb, Geolocation, JavaScript, Google Maps]
 ---
 
+<h1 style="border: 1px solid black; padding: 10px; border-radius: 2px; font-size: 25px; margin-top: 20px;">
+    Help needed to update and migrate to 
+    <a style="font-size: 25px; color: #0FBBEC;" href="/guides">Guides Section</a>
+</h1>
+
 ![Locate Your Friends](locator.gif)
 
 One of the exciting things about deepstream is that it allows you to get geospatial updates in realtime. In this tutorial, we are going to make an app that shows the location of all members, who are logged in, who are within a one kilometer radius. We will be using RethinkDB in combination with deepstream to do our geospatial queries, and google maps to display our results.
@@ -25,7 +30,7 @@ Setting up deepstream in React is actually quite simple. Once you download and i
 #### In your constructor connect to deepstream:
 
 ```javascript
-this.ds = deepstream('<Your deepstream url>');
+this.ds = new DeepstreamClient('localhost:6020');
 // handle error here, in case of error
 this.ds.on( 'error', this._onError.bind( this ) );
 ```

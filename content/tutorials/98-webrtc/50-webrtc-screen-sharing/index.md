@@ -127,7 +127,7 @@ as well as pointers to the content script
    "all_frames": true,
    "run_at": "document_end",
    // your domain here, only HTTPS works!
-   "matches": ["https://deepstreamhub.com/*"]
+   "matches": ["https://deepstream.io/*"]
 }]
 ```
 

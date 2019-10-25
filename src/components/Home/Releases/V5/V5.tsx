@@ -15,7 +15,7 @@ export const V5 = () => (
             <img className={style.image} src="images/eltons/elton-zombie.svg"/>
             <ul className={style.content}>
                 <li><Link to="/blog/20190920-release-deepstream-5.0/#combined-authentication-handler">Combined Auth Handler</Link></li>
-                <li><Link to="/blog/20190920-release-deepstream-5.0/#builtin-http-monitoring">HTTP Monitoring</Link></li>
+                <li><Link to="/tutorials/plugins/monitoring/http/">HTTP Monitoring</Link></li>
                 <li><Link to="/tutorials/core/auth/storage/">Storage Authentication</Link></li>
                 <li><Link to="/guides/">Guides</Link></li>
             </ul>

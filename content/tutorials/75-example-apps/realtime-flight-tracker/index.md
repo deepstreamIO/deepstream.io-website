@@ -2,8 +2,12 @@
 title: Realtime Flight Tracker
 description: Building a realtime flight tracker with deepstream
 tags: [flights, web, realtime, records]
-navLabel: Realtime Flight Tracker
 ---
+
+<h1 style="border: 1px solid black; padding: 10px; border-radius: 2px; font-size: 25px; margin-top: 20px;">
+    Help needed to update and migrate to 
+    <a style="font-size: 25px; color: #0FBBEC;" href="/guides">Guides Section</a>
+</h1>
 
 This tutorial will take you through building a realtime flight tracking system with deepstream. We'll be building both a backend provider process that updates the records with the location of flights, and a web based front end that allows us to visualise these. If you'd like to dive straight into the code you can take a look at the GitHub [repository](https://github.com/deepstreamIO/dsh-demo-realtime-flight-tracker).
 
@@ -16,7 +20,7 @@ The first thing we'll do is create our backend process that provides the realtim
 We can get a reference to our client as follows, and then get our deepstream `List` of flights, this is the list of flights that clients will be referring to.
 
 ```javascript
-const client = deepstream('<Your deepstream URL>')
+const client = new DeepstreamClient('localhost:6020')
 client.login({}, () => {
   flightList = client.record.getList('flights')
 })
@@ -114,7 +118,7 @@ The first thing we need to do is initialise this map and our deepstream client. 
 ```javascript
 function init() {
   map = new google.maps.Map(document.getElementById('map'), { ... })
-  client = deepstream('<Your deepstream URL>')
+  client = new DeepstreamClient('localhost:6020')
   client.login({}, (success) => {
     const list = client.record.getList('flights')
     list.whenReady(renderList)

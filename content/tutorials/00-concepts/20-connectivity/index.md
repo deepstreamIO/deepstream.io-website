@@ -45,6 +45,7 @@ State after the client was initialised, but before `.login()` was called.
 State after `.login()` was called, but before the response from the platform is received.
 
 ## An Example
+
 ```javascript
 const options = {
     // Reconnect after 10, 20 and 30 seconds
@@ -57,7 +58,7 @@ const options = {
     heartbeatInterval: 60000
 };
 
-const client = deepstream('<url>', options)
+const client = new DeepstreamClient('<url>', options)
 client.login()
 
 // Assume we're updating a green/yellow/red indicator for connectionState with jQuery

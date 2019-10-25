@@ -38,7 +38,7 @@ new Vue({
         ds: null,
     },
     created: function() {
-        this.ds = deepstream('<Your deepstream URL>')
+        this.ds = new DeepstreamClient('localhost:6020')
         .login()
     }
 })
@@ -266,7 +266,7 @@ new Vue({
         ds: null
       },
       created: function() {
-          this.ds = deepstream('<Your deepstream URL>')
+          this.ds = new DeepstreamClient('localhost:6020')
           this.ds.login()
       }
 })
