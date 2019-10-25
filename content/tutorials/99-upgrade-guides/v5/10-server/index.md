@@ -21,7 +21,7 @@ In V4 we introduced the ability to have custom plugins, and as we added new ones
 don't want to be bogged down by simple details like reading config files, adjusting relative paths and ensuring
 they exist. So we introduced two new helper macros.
 
-- fileLoad(filename.yml)
+#### fileLoad(filename.yml)
 
 ```yaml
 # reading users and passwords from a file
@@ -33,12 +33,13 @@ options:
 
 This macro will:
 
-1) Ensure the file exists
-2) Load the file from the file system
-3) Attempt to parse the file (currently supporting json and yml extensions), otherwise just leave it as text.
-4) If that all works, replaces the `fileLoad(users.yml)` with the actual data
+1. Ensure the file exists
+2. Load the file from the file system
+3. Attempt to parse the file (currently supporting json and yml extensions), otherwise just leave it as text.
+4. If that all works, replaces the `fileLoad(users.yml)` with the actual data
 
-- file(filename.yml)
+
+#### file(filename.yml)
 
 ```yaml
 type: uws
@@ -56,7 +57,7 @@ library underneath).
 
 This change is more of a infrastructure concern *IF* you used both HTTP and WS at the same time.
 
-If you use nginx please look at the (new simplified config)[/tutorials/devops/nginx/] to get deepstream
+If you use nginx please look at the [new simplified config](/tutorials/devops/nginx/) to get deepstream
 working.
 
 The idea is now *EVERYTHING* (minus MQTT) runs on port 6020, which makes deployments much easier. This
@@ -106,20 +107,20 @@ all the servers at the same time on different ports if you want (for example tex
 
 The following config is now used for deepstream, please note the following important changes:
 
-- All server based concepts like path/port have been removed
+#### All server based concepts like path/port have been removed
 
-- Type name changes:
+#### Type name changes:
 1) ws-websocket to ws-binary
 2) node-http to http
 
-- Removal of UWS, we now use UWS or a node HTTP server to drive all of deepstream and not individual parts
+#### Removal of UWS, we now use UWS or a node HTTP server to drive all of deepstream and not individual parts
 
-- Path changes. Now that they are all on the same server we use the following paths:
+#### Path changes. Now that they are all on the same server we use the following paths:
 
-1) Binary (V4/V5 clients): /deepstream
-2) Text (V3/V2 clients): /v3-deepstream
-3) JSON (V4 debug builds): /deepstream-json
-4) HTTP Post/Get: /api and /api/auth
+1) Binary (V4/V5 clients): */deepstream*
+2) Text (V3/V2 clients): */v3-deepstream*
+3) JSON (V4 debug builds): */deepstream-json*
+4) HTTP Post/Get: */api* and */api/auth*
 
 ```yaml
 # Connection Endpoint Configuration
