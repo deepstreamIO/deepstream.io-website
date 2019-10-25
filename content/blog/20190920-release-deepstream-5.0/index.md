@@ -6,13 +6,13 @@ redirectFrom: [/releases/server/v5-0-0/]
 
 ### Features:
 
+- New License
 - Singular HTTP Service
 - Combined authentication handler
 - Embedded dependencies
 - Builtin HTTP Monitoring
 - Storage authentication endpoint
 - Guess whats back, official clustering support!
-- New License
 
 ### Backwards compatibility
 
@@ -26,9 +26,16 @@ You can see the upgrade guide for backwards compatibility [here](/tutorials/upgr
 
 ## TLDR:
 
+### BACK TO MIT LICENSE
+
+This part deserves its own post and I can't try to do it justice here. The summary is that all deepstream components will be released using the MIT license, starting with the heavily worked on Server and Client in V5. What exactly does this mean?
+
+- Clustering is open source (with redis support out of the box on docker and binaries)
+- Monitoring endpoint is open source
+
 ## Single HTTP Service
 
-This is the second largest announcement for this release. After working with multiple clients on deploying deepstream we realized one large annoyance was how our plugins previously ran in isolation. What this meant  was that we would run our HTTP service under port 8080, deepstream on 6020, and all the other
+After working with multiple clients on deploying deepstream we realized one large annoyance was how our plugins previously ran in isolation. What this meant was that we would run our HTTP service under port 8080, deepstream on 6020, and all the other
 services on different ports (like monitoring and such). This has a massive limitation of having to constantly update the deployment config to respect the ports, as well as generally just not supporting more then one on some load balancers.
 
 The other issue was that we had multiple different network stacks running in deepstream with code duplicated in all those endpoints. 
@@ -215,7 +222,3 @@ Added a HTTP monitoring API which provides data in a format that can easily be c
 
 This deserves a blog post for itself one day talking about how the difficulties with trying to have an entirely opensource server while also being able to run a company around it. The final outcome however is
 starting from V5 clustering is officially back and supported, with a redis clustering mechanism that can be used via node `@deepstream/clusternode-redis` and is shipped with deepstream binary/docker images. Happy clustering!
-
-### New License
-
-Leaving the best for last *TODO*
