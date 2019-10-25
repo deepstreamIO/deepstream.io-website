@@ -1,8 +1,18 @@
 ---
 title: "Release: Deepstream 5.0" 
-description: Easier, Faster, Free'er
+description: The MIT Resurrection
 redirectFrom: [/releases/server/v5-0-0/]
+blogImage: ./5.0-release.png
 ---
+
+<div style="height: 300px;
+    width: 100%;
+    background-repeat: repeat;
+    display: inline-block;
+    background-size: 275px 300px;
+    background-image: url(/images/eltons/elton-zombie.svg);
+    animation: pulse 3s infinite;">
+</div>
 
 ### Features:
 

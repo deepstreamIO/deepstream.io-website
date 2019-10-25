@@ -1,6 +1,6 @@
 ---
 title: "Release: Javascript/Node 5.0" 
-description: Better Typescript
+description: Better Typescript and MIT
 redirectFrom: [/releases/clientjs/v5-0-0/]
 ---
 

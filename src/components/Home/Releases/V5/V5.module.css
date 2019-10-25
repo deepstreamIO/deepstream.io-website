@@ -1,0 +1,26 @@
+.image {
+    width: 200px;
+    display: inline-block;
+}
+
+.content {
+    display: inline-block;
+}
+
+h4 a {
+    font-size: 1.6em;
+}
+
+.content li {
+    margin: 30px;
+}
+
+.content li a {
+    font-size: 20px;
+    font-style: italic;
+    color: #3e3e3e;
+}
+
+.release {
+    text-align: center;  
+}
