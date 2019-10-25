@@ -132,13 +132,6 @@ export const TutorialsGuides: React.FunctionComponent<TutorialsOverviewProps> = 
                 {/*<Category title="Logger Connectors" entries={sections.plugins.logger} />*/}
             </div>,
             <div>
-            <h2>Cloud</h2>
-                <Category title="Deployment &amp; PaaS" entries={sections.integrations.cloud} />
-            </div>
-        ]} />
-
-        <Section columnClassName="entries" columns={[
-            <div>
                 <h2>Extending deepstream</h2>
                 <Category title="Writing your own plugin" entries={sections['custom-plugins']} />
             </div>

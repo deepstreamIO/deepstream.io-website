@@ -1,12 +1,13 @@
 ---
 title: Angular
-description: Learn how to use Angular 2 with deepstream
+description: Learn how to use Angular with deepstream
 logoImage: angular.png
+wip: true
 ---
 
-The "new Angular" popularly known as "Angular 2", [though a bad name](https://toddmotto.com/please-stop-worrying-about-angular-3#real-versioning), is component architected and follows the W3C component standards thereby forcing us ( for a good reason ) to build apps as reusable UI components/widgets. This means you can't continue to build apps the exact same way you did while using Angular 1.x.
+The "new Angular" popularly known as "Angular", [though a bad name](https://toddmotto.com/please-stop-worrying-about-angular-3#real-versioning), is component architected and follows the W3C component standards thereby forcing us ( for a good reason ) to build apps as reusable UI components/widgets. This means you can't continue to build apps the exact same way you did while using Angular 1.x.
 
-You can get started with Angular 2 using the [Quickstart guide](https://angular.io/docs/ts/latest/quickstart.html) which is enough knowledge to start using deepstream in Angular 2. Using deepstream in Angular is what this guide is about.
+You can get started with Angular 2 using the [Quickstart guide](https://angular.io/docs/ts/latest/quickstart.html) which is enough knowledge to start using deepstream in Angular. Using deepstream in Angular is what this guide is about.
 
 ## 1. Setup Angular
 Angular provides a [CLI tool](https://github.com/angular/angular-cli) which takes the pain of booting and scaffolding an Angular project by reducing the process to just one command:
@@ -62,8 +63,8 @@ You can see that installation was successful by running the following command in
 ```javascript
 export class AppComponent {
     constructor() {
-        // Logs the deepstream function
-        console.log(deepstream);
+      // Logs the deepstream function
+      console.log(deepstream);
     }
 }
 ```

@@ -18,7 +18,8 @@ In this section you can change general settings for each server in a cluster.
 # general configuration with default values
 serverName: UUID
 showLogo: true
-dependencyInitialisationTimeout: 2000
+dependencyInitializationTimeout: 2000
+exitOnFatalError: false
 ```
 
 ### serverName
@@ -36,15 +37,20 @@ The logLevel to use across the application
 
 _Default_: INFO
 
-### dependencyInitialisationTimeout
+### dependencyInitializationTimeout
 Sets how long deepstream will wait for dependencies to initialize.
 
 _Default_:`2000`
 
 ### libDir
-The directory where all the plugins reside, this is used in standalone binaries or when doing system wide install
+The directory where all the plugins reside, this is used in standalone binaries
 
 _Default_: None, it assumes all plugins are installed via npm
+
+### exitOnFatalError
+Exit if a fatal error occurs
+
+_Default_: false
 
 ## RPC Configuration
 
@@ -126,29 +132,14 @@ connectionEndpoints:
 
 The special types 'uws-websocket', 'ws-websocket' and 'node-http' endpoint configures the built-in endpoints
 
-### Websockets (µWebSockets and ws)
+### Websockets
 
 The websocket endpoints share the following options:
-
-#### port
-Sets the port for the HTTP healthcheck and Websocket server.
-
-_Default_: `6020`
-
-#### host
-Sets the host for the HTTP healthcheck and Websocket server.
-
-_Default_: `0.0.0.0`
 
 #### urlPath
 Sets which URL path Websocket connections should connect to.
 
 _Default_: `/deepstream`
-
-#### healthCheckPath
-URL path for HTTP health-checks, GET requests to this path will return 200 if deepstream is alive.
-
-_Default_: `/health-check`
 
 #### heartbeatInterval
 The number of milliseconds between each ping/heartbeat message. 
@@ -182,12 +173,6 @@ writes that are not realtime critical, which currently are either ACKs or
 non critical ERROR messages.
 
 _Default_: `0`
-
-### headers:
-The list of headers to copy over from the websocket. This is required to match the uws
-API
-
-_Default_: [ 'user-agent' ]
 
 ## Custom Plugin Configuration
 
@@ -244,23 +229,23 @@ _Default_: `INFO`
 
 ## Authentication
 
-In this section you can configure the authentication type the server uses.
+In this section you can configure the authentication types the server uses.
 
 You set the authentication type as a subkey the `auth` key. The available
-authentication options are `none`, `file`, and `http`, each of them having
+authentication options are `none`, `file`, `storage` and `http`, each of them having
 different `options` which are described in the tutorials on [Auth
 None](/tutorials/core/auth-none/), [file-based
-authentication](/tutorials/core/auth-file/), and [HTTP
+authentication](/tutorials/core/auth-file/), [storage-based
+authentication](/tutorials/core/auth-storae/), and [HTTP
 authentication](/tutorials/core/auth/http-webhook/), respectively.
 
 ```yaml
 #Authentication
 auth:
-  type: none
+  - type: none
 ```
 
 _Default_: `none`
-
 
 ## Permissioning
 
