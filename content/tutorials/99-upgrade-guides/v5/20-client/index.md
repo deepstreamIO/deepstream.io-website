@@ -18,3 +18,4 @@ const client = deepstream('localhost:6020/deepstream')
 ```
 
 This provides much better typescript support and stops us from trying to do high level wizardry
+when creating the bundle

@@ -4,7 +4,7 @@ description: Better Typescript
 redirectFrom: [/releases/clientjs/v5-0-0/]
 ---
 
-This version bump is mainly to respect the major version of the deepstream server, and is fully compatible with V4.
+This version bump is mainly to respect the major version of the deepstream server, and is (almost) fully compatible with V4.
 
 The one breaking change we figured we should sneak in is the following:
 
