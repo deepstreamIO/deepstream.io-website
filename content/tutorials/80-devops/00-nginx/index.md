@@ -50,6 +50,32 @@ make install
 ```
 
 ## Configuring nginx as a stream proxy / load balancer
+
+In V5 you can see the recommended configuration file by running:
+
+```bash
+deepstream nginx
+
+Usage: deepstream nginx [options]
+
+Generate an nginx config file for deepstream
+
+Options:
+  -c, --config [file]  The deepstream config file
+  -p, --port           The nginx port, defaults to 8080
+  -h, --host           The nginx host, defaults to localhost
+  --ssl                If ssl encryption should be added
+  --ssl-cert           The SSL Certificate Path
+  --ssl-key            The SSL Key Path
+  -o, --output [file]  The file to save the configuration to
+  -h, --help           output usage information
+```
+
+This will generate the desired output from your config file.
+
+
+### Manual configuration
+
 The following configuration shows how to use nginx as a load balancer, SSL termination point and reverse proxy for HTTP, WS and TCP connections. If you only want to use parts of this functionality, remove the unneeded bits.
 
 ```nginx
@@ -88,7 +114,7 @@ http {
        }
 
         # Deepstream http endpoint
-        location / {
+        location /api {
             proxy_pass http://deepstream;
             proxy_http_version 1.1;
         }
