@@ -44,9 +44,8 @@ This macro will:
 ```yaml
 type: uws
 options:
-  key_file_name: file(cert/key.pem)
-  cert_file_name: file(cert/cert.pem)
-  passphrase: fileLoad(cert/passphrase)
+  key: file(cert/key.pem)
+  cert: file(cert/cert.pem)
 ```
 
 This macro will inform deepstream that the file is relative to the `config.yml` file. This is not
