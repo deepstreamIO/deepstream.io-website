@@ -9,11 +9,11 @@ The following breaking changes were introduced in V5, sorted by easiest to harde
 
 The following configuration options were renamed in config.yml due to adding a spell checker in visual code:
 
-- path() to file()
+- dependencyInitialisationTimeout to dependencyInitializationTimeout
 
 This way probably not used by anyone in V4, will be explained further down in it's own section.
 
-- dependencyInitialisationTimeout to dependencyInitializationTimeout
+- path() to file()
 
 ### Usage of fileLoad() and file() in config.yml
 
