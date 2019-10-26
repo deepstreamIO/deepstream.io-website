@@ -19,7 +19,7 @@ This way probably not used by anyone in V4, will be explained further down in it
 
 In V4 we introduced the ability to have custom plugins, and as we added new ones we realized that we really
 don't want to be bogged down by simple details like reading config files, adjusting relative paths and ensuring
-they exist. So we introduced two new helper macros.
+they exist. So we introduced two new helper macros. These have now been used for all files related mechanisms.
 
 #### fileLoad(filename.yml)
 
@@ -52,6 +52,36 @@ options:
 This macro will inform deepstream that the file is relative to the `config.yml` file. This is not
 as useful as fileLoad but could be used if your plugin needs to reference an actual file (due to the 
 library underneath). 
+
+The two places you would need to change these are:
+
+1) Valve
+
+V5:
+
+```yaml
+permissions: fileLoad(permissions.yml)
+```
+
+V4:
+
+```yaml
+path: permissions.yml
+```
+
+2) User Authentication
+
+V5:
+
+```yaml
+users: fileLoad(users.yml)
+```
+
+V4:
+
+```yaml
+path: users.yml
+```
 
 ### No longer required to run all plugins and connection endpoints on separate ports
 
