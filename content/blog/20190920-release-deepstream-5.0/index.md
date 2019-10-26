@@ -18,6 +18,8 @@ blogImage: ./5.0-release.png
 
 - New License
 - Singular HTTP Service
+- SSL Support reintroduced
+- Better Config file validation
 - Combined authentication handler
 - Embedded dependencies
 - Builtin HTTP Monitoring
@@ -167,6 +169,72 @@ httpServer:
   options:
     # url path for http health-checks, GET requests to this path will return 200 if deepstream is alive
     healthCheckPath: /health-check
+```
+
+## SSL Reintroduced
+
+SSL was removed from the V4 server because of the multiple ports issue. We recommend (and still do!) that 
+our customers deploy SSL in production via SSL termination, such as that provided with Nginx and all modern
+load balancers.
+
+However, sometimes we don't want to justify having to run an entire separate process (clouds ain't cheap) 
+just to have a demo application running. Because of that, and the introduction of our new `fileLoad` and 
+`file` config macros we can now enable SSL by just doing the following:
+
+```yaml
+httpServer:
+  type: default
+  options:
+    # url path for http health-checks, GET requests to this path will return 200 if deepstream is alive
+    healthCheckPath: /health-check
+    # -- CORS --
+    # if disabled, only requests with an 'Origin' header matching one specified under 'origins'
+    # below will be permitted and the 'Access-Control-Allow-Credentials' response header will be
+    # enabled
+    allowAllOrigins: true
+    # a list of allowed origins
+    origins:
+      - 'https://example.com'
+    # Headers to copy over from websocket
+    headers:
+      - user-agent
+    # Options required to create an ssl app
+    ssl:
+      key: fileLoad(ssl/key.pem)
+      cert: fileLoad(ssl/cert.pem)
+    #   ca: ...
+```
+
+OR
+
+```yaml
+type: uws
+options:
+  # url path for http health-checks, GET requests to this path will return 200 if deepstream is alive
+  healthCheckPath: /health-check
+  # Headers to copy over from websocket
+  headers:
+    - user-agent
+  # Options required to create an ssl app
+  ssl:
+    key: file(ssl/key.pem)
+    cert: file(ssl/cert.pem)
+  ##  dhParams: ...
+  ##  passphrase: ...
+  ```
+
+### Better Config file validation
+
+Remember when you would stare at the screen with despair because you would get an error like 
+this `Invalid configuration: data should NOT have additional properties` and have no idea why
+or where its from?
+
+V5 now uses some smarter error handling, allowing you to get errors that make a bit more sense.
+
+```
+There was an error validating your configuration:
+1) Property listens is not expected to be here
+2)/logger/type should be equal to one of the allowed values: default, Did you mean default?
 ```
 
 ## Combined authentication handler

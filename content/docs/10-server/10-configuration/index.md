@@ -10,6 +10,28 @@ be found in
   `npm`, or
 - in the folder `conf` after unpacking the standalone server binary.
 
+## Macros
+
+Before we start diving into config, lets look at the current macros we have in order
+to make our lives a little bit easier:
+
+- `${ENVIRONMENT_VARIABLE}`
+
+This is the usual replace environment variable into my config before running, useful
+in around 100% of deployment usecases.
+
+- `file(relative/path)`
+
+This allows the server to binary to point to the file relative to your config file. This
+is pretty useful for global and binary installs.
+
+- `fileLoad(relative/path)`
+
+This is more of a utility for us plugin developers, it automatically loads up the data
+and parses it (if json or yml). This means node developers can now just deal with writing
+everything as parsed data and leave loading / parsing and errors to deepstream startup.
+
+
 ## General Configuration
 
 In this section you can change general settings for each server in a cluster.

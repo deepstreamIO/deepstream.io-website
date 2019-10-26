@@ -97,9 +97,12 @@ httpServer:
     # Headers to copy over from websocket
     headers:
       - user-agent
-    key_file_name: file(cert/key.pem)
-    cert_file_name: file(cert/cert.pem)
-    passphrase: fileLoad(cert/passphrase)
+    # Options required to create an ssl app
+    ssl:
+      key: file(ssl/key.pem)
+      cert: file(ssl/cert.pem)
+    ##  dhParams: ...
+    ##  passphrase: ...
 ```
 
 All websocket / HTTP services now hook into this server to provide their own functionality. This means you can run
