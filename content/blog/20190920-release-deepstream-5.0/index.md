@@ -161,7 +161,8 @@ this.services.httpService.sendWebsocketMessage(socket, message, isBinary)
 this.services.httpService.getSocketWrappersForUserId(userId)
 ```
 
-The best part about this is that you can change the httpServer to uws in order for everything to use UWS
+The best part about this is that you can change the httpServer to uws to have the entire server run 
+using it
 
 ```yaml
 httpServer:
@@ -298,5 +299,5 @@ Added a HTTP monitoring API which provides data in a format that can easily be c
 
 ### OpenSource clustering support
 
-This deserves a blog post for itself one day talking about how the difficulties with trying to have an entirely opensource server while also being able to run a company around it. The final outcome however is
+This deserves a blog post for itself one day talking about the difficulties of trying to have an entirely opensource server while also being able to run a company around it. The final outcome however is
 starting from V5 clustering is officially back and supported, with a redis clustering mechanism that can be used via node `@deepstream/clusternode-redis` and is shipped with deepstream binary/docker images. Happy clustering!
