@@ -15,10 +15,9 @@ Here's how they work together:
 deepstream supports transport layer security for web-facing connections using HTTPS and WSS. To setup SSL on deepstream, you need to provide the following configuration keys:
 
 ```yaml
-sslKey: ./my-key.key
-sslCert:  ./my-cert.key
-sslDHParams:  ./my-dhl-params.key
-sslPassphrase:  ./my-ssl-passphrase.key
+ssl:
+  key: fileLoad(./my-key.key)
+  cert: fileLoad(./my-key.key)
 ```
 
 It's highly recommended to always use a seperate process to do SSL termination. Usually via a load balancer (e.g. Nginx or HA Proxy). To learn more about this, head over to the [Nginx Tutorial](/tutorials/devops/nginx/).

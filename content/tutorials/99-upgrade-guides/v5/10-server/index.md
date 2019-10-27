@@ -145,13 +145,15 @@ The following config is now used for deepstream, please note the following impor
 1) ws-websocket to ws-binary
 2) node-http to http
 
-#### Removal of UWS, we now use UWS or a node HTTP server to drive all of deepstream and not individual parts
+#### Removal of UWS Websocket Endpoint
+
+We now use UWS or a node HTTP server to drive all of deepstream and not individual parts
 
 #### Path changes. Now that they are all on the same server we use the following paths:
 
 1) Binary (V4/V5 clients): */deepstream*
 2) Text (V3/V2 clients): */v3-deepstream*
-3) JSON (V4 debug builds): */deepstream-json*
+3) JSON (V4/V5 debug builds): */deepstream-json*
 4) HTTP Post/Get: */api* and */api/auth*
 
 ```yaml
