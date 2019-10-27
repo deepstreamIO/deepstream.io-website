@@ -2,6 +2,11 @@
     padding: 0 50px;
 }
 
+.guideSectionHeader {
+    margin-top: 30px;
+    border-bottom: 1px solid #ddd;
+}
+
 .guide {
     width: 300px;
     padding: 50px;
@@ -14,7 +19,7 @@
 }
 
 .guideImage {
-
+    width: 100%;
 }
 
 .guideTitle {

@@ -4,6 +4,8 @@ description: Learn how to use Memcached with deepstream
 logoImage: memcached.png
 ---
 
+*** Memcached not upgraded to V4/V5. Please [refer to this github issue](https://github.com/deepstreamIO/deepstream.io/issues/973) if you require this ***
+
 #### What is Memcached?
 [Memcached](https://memcached.org/) is a distributed caching system. All its data is purely kept in memory which means two things:
 
@@ -17,17 +19,9 @@ For two reasons: Speed and scale. Memcached can power large clusters and writes 
 Redis! Memcached is a great cache, but Redis also saves data to disk and can act as a message-bus for smaller deepstream clusters, giving you all the functionality you need.
 
 #### How to use Memcached with deepstream?
-deepstream comes with an official connector for Memcached. You can install it via the commandline:
+deepstream comes preinstalled with an official connector for Memcached.
 
-```bash
-deepstream install cache memcached
-```
-
-resulting in the following output
-
-![Memcached Console Output](console-output.png)
-
-If you are using deepstream from Node, you can also install it via [NPM](https://www.npmjs.com/package/deepstream.io-cache-memcached)
+If you are using deepstream from Node, you can also install it via [NPM](https://www.npmjs.com/package/@deepstream/cache-memcached)
 
 #### Configuring the Memcached connector
 You can configure memcached in the plugin section of deepstream's config.yml file

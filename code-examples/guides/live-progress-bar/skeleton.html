@@ -1,0 +1,59 @@
+<html>
+  <head>
+    <style>
+    </style>
+    <script
+      type="text/javascript"
+      src="https://cdn.deepstream.io/js/client/latest/ds.min.js"
+    ></script>
+  </head>
+  <body>
+
+    <div id="app">
+        <div>
+            <progress max="100" value="0"></progress>
+        </div>
+        <form id="submit-form">
+            <button>Submit</button>
+        </form>
+    </div>
+
+    <!-- The application code -->
+    <script type="text/javascript">
+      const form = document.getElementById('submit-form')
+      form.onsubmit = async event => {
+        event.preventDefault()
+        const id = Math.random()
+        try {
+          const data = await postData('http://localhost:9090/post', { id })
+          console.log(JSON.stringify(data))
+        } catch (error) {
+          console.error(error)
+        }
+      }
+
+      function updateProgressBar ({ percentage, message }) {
+        const progressBar = document.querySelector('progress')
+        if (percentage === 100) {
+            progressBar.style = "opacity: 0;"
+        } else {
+            progressBar.style = "opacity: 1;"
+        }
+        progressBar.value = percentage
+      }
+
+      async function postData(url = '', data = {}) {
+        const response = await fetch(url, {
+          method: 'POST',
+          mode: 'no-cors',
+          credentials: 'same-origin',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        })
+        return await response.json()
+      }
+    </script>
+  </body>
+</html>

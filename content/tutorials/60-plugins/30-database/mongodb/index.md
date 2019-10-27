@@ -19,16 +19,7 @@ deepstream can connect to MongoDB using the "MongoDB storage connector", a plugi
 
 **Installing the MongoDB storage connector**
 
-You can install the mongodb connector via deepstream's commandline interface, using:
-
-```bash
-# mac / linux
-deepstream install storage mongodb
-# windows
-deepstream.exe install storage mongodb
-```
-
-resulting in deepstream MongoDB connector install command line output.
+The mongoDB storage connector comes preinstalled in the binaries.
 
 If you're using deepstream's Node.js interface, you can also install it as an [NPM module](https://www.npmjs.com/package/deepstream.io-storage-mongodb)
 

@@ -1,0 +1,33 @@
+.wip {
+    height: 85px;
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #6d6d6d;
+    border-radius: 4px;
+}
+
+.image {
+    width: 50px;
+    display: inline-block;
+}
+
+.help {
+    vertical-align: top;
+    display: inline-block;
+    width: calc(100% - 200px);
+    margin-left: 20px;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.editLink {
+    color: #647276;
+    line-height: 20px;
+    font: 16px Roboto, sans-serif;
+    font-weight: 500;
+}
+
+.editLink:hover {
+    cursor: pointer;
+    color: #0FBBEC;
+}

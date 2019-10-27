@@ -44,7 +44,7 @@ Create an _index.html_ file and add the following to it, making sure to point to
 This page consists of one text field ready for user input. Inside the `script` tag, add the following JavaScript to login to your deepstream server:
 
 ```javascript
-const client = deepstream('localhost:6020')
+const client = new DeepstreamClient('localhost:6020')
 client.login()
 ```
 

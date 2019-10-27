@@ -51,10 +51,6 @@
     margin-left: 10px;
 }
 
-.leaf::before {
-    content: '- ';
-}
-
 .leaf > a, .leaf > label {
     font-size: 16px;
     line-height: 1.75;

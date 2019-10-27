@@ -19,7 +19,6 @@ ElasticSearch also mentions its "realtime search capabilities". Here it means th
 
 #### Storing deepstream's data in ElasticSearch
 Storing data in ElasticSearch is easy. Just use deepstream's storage connector for ElasticSearch.
-
 ![deepstream elasticsearch install console output](elasticsearch-install-console-output.png)
 
 #### Querying ElasticSearch from deepstream

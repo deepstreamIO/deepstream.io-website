@@ -10,7 +10,7 @@ description: This class gives you access to all methods related to data-sync
 You need to connect to the deepstream server:
 
 ```javascript
-const deepstream = require('@deepstream/client')
+const { DeepstreamClient } = require('@deepstream/client')
 const client = deepstream( 'localhost:6020')
 client.login()
 ```

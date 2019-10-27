@@ -1,6 +1,7 @@
 import * as React from "react"
 import {Section} from "../../General/Section/Section"
 import {Entry} from "../Entry/Entry"
+import { Link } from "gatsby";
 
 interface TutorialsOverviewProps {
     edges: Array<{
@@ -98,29 +99,33 @@ export const TutorialsGuides: React.FunctionComponent<TutorialsOverviewProps> = 
     return <Section className="section-overview">
         <Section columnClassName="entries" columns={[
             <div>
-                <h2>Core Concepts</h2>
+                <h2>Introduction</h2>
+                {Object.keys(sections.concepts).map((key: any) =>
+                    <Link className="entry" to={sections.concepts[key].slug} title={sections.concepts[key].description}>
+                        <h4>{sections.concepts[key].title}</h4>
+                    </Link>
+                )}
+            </div>,
+            <div>
+                <h2>Core Features</h2>
                 <Category key="data-sync" title="Data-Sync" entries={sections.core.datasync} />
                 <Category key="events" title="Events" entry={sections.core.pubsub} />
                 <Category key="rpc" title="RPC" entry={sections.core['request-response']} />
                 <Category key="presence" title="Presence" entry={sections.core.presence} />
-            </div>,
-            <div>
-                <h2>Security</h2>
-                <Category key="authentication" title="Authentication" entries={sections.core.auth} />
-                <Category key="permissioning" title="Permissioning" entries={sections.core.permission} />
             </div>
         ]} />
 
         <Section columnClassName="entries" columns={[
             <div>
+                <h2>Security</h2>
+                <Category key="authentication" title="Authentication" entries={sections.core.auth} />
+                <Category key="permissioning" title="Permissioning" entries={sections.core.permission} />
+            </div>,
+            <div>
                 <h2>Frameworks</h2>
                 <Category title="Frontend Frameworks" entries={sections.integrations.frontend} />
                 <Category title="Mobile Frameworks" entries={sections.integrations.mobile} />
-            </div>,
-            <div>
-                <h2>Example Applications</h2>
-                <Category title="Example Applications" entries={sections['example-apps']} />
-            </div>,
+            </div>
         ]} />
 
         <Section columnClassName="entries" columns={[
@@ -132,13 +137,6 @@ export const TutorialsGuides: React.FunctionComponent<TutorialsOverviewProps> = 
                 {/*<Category title="Logger Connectors" entries={sections.plugins.logger} />*/}
             </div>,
             <div>
-            <h2>Cloud</h2>
-                <Category title="Deployment &amp; PaaS" entries={sections.integrations.cloud} />
-            </div>
-        ]} />
-
-        <Section columnClassName="entries" columns={[
-            <div>
                 <h2>Extending deepstream</h2>
                 <Category title="Writing your own plugin" entries={sections['custom-plugins']} />
             </div>
@@ -148,10 +146,18 @@ export const TutorialsGuides: React.FunctionComponent<TutorialsOverviewProps> = 
             <div>
                 <h2>Upgrade Guides</h2>
                 <Category title="Upgrading to V4" entries={sections['upgrade-guides'].v4} />
+                <Category title="Upgrading to V5" entries={sections['upgrade-guides'].v5} />
             </div>,
             <div>
                 <h2>WebRTC</h2>
                 <Category title="WebRTC" entries={sections.webrtc} />
+            </div>
+        ]} />
+
+        <Section columnClassName="entries" columns={[
+            <div>
+                <h2>Example Applications Walkthrough</h2>
+                <Category title="Example Applications" entries={sections['example-apps']} />
             </div>
         ]} />
     </Section>

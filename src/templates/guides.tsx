@@ -1,7 +1,6 @@
 import React from 'react'
 import {graphql} from 'gatsby'
 import MarkdownContent from '../components/Markdown/MarkdownContent/MarkdownContent'
-
 interface GuidesProps {
     data: any
     location: string,
@@ -10,8 +9,8 @@ interface GuidesProps {
     }
 }
 
-export const Blog: React.FunctionComponent<GuidesProps> = ({ data, location, pageContext }) => (
-    <MarkdownContent data={data} location={location} navigation={pageContext.navigation} />
+export const Guides: React.FunctionComponent<GuidesProps> = ({ data, location, pageContext }) => (
+    <MarkdownContent numbers={true} data={data} location={location} navigation={pageContext.navigation} />
 )
 
 export const pageQuery = graphql`
@@ -31,4 +30,4 @@ export const pageQuery = graphql`
   }
 `;
 
-export default Blog
+export default Guides

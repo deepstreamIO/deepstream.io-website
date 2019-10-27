@@ -43,3 +43,36 @@
 .githubEdit svg {
     font-size: 22px;
 }
+
+.navToItem {
+    display: inline-block;
+    margin-top: 25px;
+}
+
+.navToItem a {
+    font-size: 16px;
+    margin: 5px;
+}
+
+.navToItem a, .navToItem path {
+    color: #aaa;
+}
+
+.navToItem:hover a, .navToItem:hover path {
+    color: #0FBBEC;
+}
+
+.nextItem {
+    composes: navToItem;
+    float: right;
+}
+
+.previousItem {
+    composes: navToItem;
+}
+
+.versionchanged {
+    margin-top: 10px;
+    font-size: 12px;
+    font-style: italic;
+}

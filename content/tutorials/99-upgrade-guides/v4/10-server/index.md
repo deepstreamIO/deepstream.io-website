@@ -233,7 +233,7 @@ permission:
 
 Old plugins followed the following API:
 
-```js
+```javascript
 class Plugin extends Emitter {
     constructor (options) {
         this.isReady = false
@@ -254,7 +254,7 @@ class Plugin extends Emitter {
 
 New Plugins have this following API
 
-```js
+```javascript
 class Plugin {
     /**
     * @param {PluginOptions} pluginOptions 
@@ -300,7 +300,7 @@ from having to bind functions in the codebase which gives us a nice little perfo
 
 ### Old callback
 
-```js
+```javascript
 canPerformAction (username, message, callback, authData) {
 callback(null, true)
 }
@@ -308,7 +308,7 @@ callback(null, true)
 
 # New callback
 
-```js
+```javascript
 canPerformAction (username, message, callback, authData, socketWrapper, passItOn) {
     callback(socketWrapper, message, passItOn, null, true)
 }

@@ -1,12 +1,13 @@
 ---
 title: Angular
-description: Learn how to use Angular 2 with deepstream
+description: Learn how to use Angular with deepstream
 logoImage: angular.png
+wip: true
 ---
 
-The "new Angular" popularly known as "Angular 2", [though a bad name](https://toddmotto.com/please-stop-worrying-about-angular-3#real-versioning), is component architected and follows the W3C component standards thereby forcing us ( for a good reason ) to build apps as reusable UI components/widgets. This means you can't continue to build apps the exact same way you did while using Angular 1.x.
+The "new Angular" popularly known as "Angular", [though a bad name](https://toddmotto.com/please-stop-worrying-about-angular-3#real-versioning), is component architected and follows the W3C component standards thereby forcing us ( for a good reason ) to build apps as reusable UI components/widgets. This means you can't continue to build apps the exact same way you did while using Angular 1.x.
 
-You can get started with Angular 2 using the [Quickstart guide](https://angular.io/docs/ts/latest/quickstart.html) which is enough knowledge to start using deepstream in Angular 2. Using deepstream in Angular is what this guide is about.
+You can get started with Angular 2 using the [Quickstart guide](https://angular.io/docs/ts/latest/quickstart.html) which is enough knowledge to start using deepstream in Angular. Using deepstream in Angular is what this guide is about.
 
 ## 1. Setup Angular
 Angular provides a [CLI tool](https://github.com/angular/angular-cli) which takes the pain of booting and scaffolding an Angular project by reducing the process to just one command:
@@ -59,11 +60,11 @@ To tell Angular that the install dependency is a vendor file and should be loade
 
 You can see that installation was successful by running the following command in your `AppComponent`'s constructor:
 
-```js
+```javascript
 export class AppComponent {
     constructor() {
-        // Logs the deepstream function
-        console.log(deepstream);
+      // Logs the deepstream function
+      console.log(deepstream);
     }
 }
 ```
@@ -75,7 +76,7 @@ deepstream will work perfectly fine when used directly in the component but as y
 
 In our case, we need a service to group all our deepstream task and expose methods to our components to interact with:
 
-```js
+```javascript
 // ./src/app/services/ds.service.ts
 import { Injectable } from '@angular/core';
 
@@ -86,14 +87,14 @@ export class DsService {
     public dsInstance;
 
     constructor() {
-       this.ds = this.dsInstance = deepstream('localhost:6020');
+       this.ds = this.dsInstance = new DeepstreamClient('localhost:6020');
     }
 }
 ```
 
 The `dsInstance` is public (though we know the deal with privacy in JavaScript) so you can access all `deepstream`'s method from it. If that you think this is all you need from such service, fine, but you can also wrap the common methods by creating more members on the service:
 
-```js
+```javascript
 // ./src/app/services/ds.service.ts
 import { Injectable } from '@angular/core';
 
@@ -104,7 +105,7 @@ export class DsService {
     public dsInstance;
 
     constructor() {
-      this.ds = this.dsInstance = deepstream('localhost:6020');
+      this.ds = this.dsInstance = new DeepstreamClient('localhost:6020');
     }
 
     login (credentials?, loginHandler?) {
@@ -127,7 +128,7 @@ Those are the three methods we need to log in, create or get a record and create
 ## 4. Login to deepstream
 Authenticating to deepstream server does not require credentials and for simple stuffs like a demo, you can go ahead and perform and anonymous authentication:
 
-```js
+```javascript
 // ./src/app/app.component.ts
 import { Component, OnInit } from '@angular/core';
 import { DsService } from './services/ds.service';
@@ -173,7 +174,7 @@ The `ngOnInit` method is a lifecycle method that is called when the component is
 
 Let's create another method that will be called when the user creates a chat message:
 
-```js
+```javascript
 // ./src/app/app.component.ts
 import { Component, OnInit } from '@angular/core';
 import { DsService } from './services/ds.service';
@@ -227,7 +228,7 @@ The `chats` property, for now, is undefined and is supposed to be a [deepstream 
 
 We can create this list when the component is ready, and subscribe to it as well so as to print the `chats` as they come in:
 
-```js
+```javascript
 // ./src/app/app.component.ts
 // ...
 

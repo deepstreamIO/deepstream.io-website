@@ -1,1 +1,1 @@
-const dsClient = deepstream('<Your deepstream URL>');
+const dsClient = new DeepstreamClient('localhost:6020');

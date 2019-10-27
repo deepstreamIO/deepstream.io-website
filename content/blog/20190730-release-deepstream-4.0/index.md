@@ -266,7 +266,7 @@ The reason it's an object instead is in case we ever decided to add more metadat
 
 So how did we decide on optimizing this? By no longer doing any of the transform logic in the core server. This means rather than deepstream calling into storage using this:
 
-```js
+```javascript
 public set (
     name: string, 
     data: { __ds: { _v: number }, ...recordData }, 
@@ -276,7 +276,7 @@ public set (
 
 We do this:
 
-```js
+```javascript
 public set (
     name: string, 
     version: number,

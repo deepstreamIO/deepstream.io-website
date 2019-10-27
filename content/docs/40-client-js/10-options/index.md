@@ -6,7 +6,7 @@ description: The options that the deepstream javascript client can be initialize
 Options are passed to the client upon initialisation
 
 ```javascript
-const deepstream = require('@deepstream/client')
+const { DeepstreamClient } = require('@deepstream/client')
 const client = deepstream( 'localhost:6020', {
   // custom deepstream options
   mergeStrategy: deepstream.LOCAL_WINS,

@@ -29,7 +29,7 @@ Isn't WebRTC all about peer-to-peer communication? Well, yes - it is. But these 
 
 This process is called "Interactive Connectivity Establishment" or ICE for short and it involves an external server that transmits SDP signals between the peers as well as possibly an additional STUN or TURN server to overcome a NATS. A what to what? Welcome to what has been lovingly labelled the "ocean of acronyms" - to learn more I can highly recommend [WebRTC and the ocean of acronyms](https://hacks.mozilla.org/2013/07/webrtc-and-the-ocean-of-acronyms/) by Louis Stowasser and of course to always keep your handy [WebRTC Glossary](https://webrtcglossary.com/) ready.
 
-For this guide we'll be using [deepstreamHub](https://deepstreamhub.com/) as a signalling platform as well as a way to keep state (e.g. lists of users in a room) and some of the [numerous public STUN and TURN servers](https://gist.github.com/sagivo/3a4b2f2c7ac6e1b5267c2f1f59ac6c6b).
+For this guide we'll be using [deepstream](https://deepstream.io/) as a signalling platform as well as a way to keep state (e.g. lists of users in a room) and some of the [numerous public STUN and TURN servers](https://gist.github.com/sagivo/3a4b2f2c7ac6e1b5267c2f1f59ac6c6b).
 
 Alright, time to get started with our first usecase: [Establishing a WebRTC connection between two browsers](../webrtc-datachannels).
 

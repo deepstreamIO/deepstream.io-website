@@ -11,6 +11,9 @@ module.exports = async ({graphql, actions}) => {
     const blogTemplate = resolve(__dirname, '../src/templates/blog.tsx');
     const guideTemplate = resolve(__dirname, '../src/templates/guides.tsx');
 
+    // deprecatedInVersion,
+    // removedInVersion,
+    
     const allMarkdown = await graphql(
         `
       {
@@ -28,8 +31,9 @@ module.exports = async ({graphql, actions}) => {
                 draft,
                 logoImage,
                 deepstreamVersion,
-                deepstreamHub,
-                redirectFrom
+                addedInVersion,
+                redirectFrom,
+                wip
               }
             }
           }
@@ -47,9 +51,9 @@ module.exports = async ({graphql, actions}) => {
 
     allMarkdown.data.allMarkdownRemark.edges.forEach(edge => {
         let { slug, weightedSlug } = edge.node.fields;
-        const { title, description, draft, deepstreamVersion, deepstreamHub, redirectFrom } = edge.node.frontmatter;
+        const { title, description, draft, deepstreamVersion, redirectFrom } = edge.node.frontmatter;
 
-        if (draft || deepstreamVersion === 'V3' || deepstreamHub === true) {
+        if (draft || deepstreamVersion === 'V3') {
             return
         }
 

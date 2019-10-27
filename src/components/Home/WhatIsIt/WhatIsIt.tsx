@@ -15,8 +15,8 @@ export const WhatIsIt = () => (
                 </li>
                 <li>
                     <h3>how do I use it?</h3>
-                    <p>Deepstream can be run as an executable on Linux, Mac &amp; Windows. You can connect and
-                        interact with the deepstream server via our client SDKs or via its HTTP API.</p>
+                    <p>Deepstream can be run as an executable, using docker or via node. You can connect and
+                        interact with the deepstream server via our client SDKs, MQTT or via its HTTP API.</p>
                 </li>
             </ul>
 
@@ -36,7 +36,7 @@ export const WhatIsIt = () => (
                 <li>
                     <h3>events <small>publish-subscribe messaging</small></h3>
                     <p>events allow for high-performance, many-to-many messaging. deepstream provides topic
-                        based routing from publisher to subscriber, data-serialisation and subscription
+                        based routing from publisher to subscriber, data-serialization and subscription
                         listening.</p>
                 </li>
                 <li>
@@ -49,21 +49,23 @@ export const WhatIsIt = () => (
             <ul className="core-features" style={{ marginTop: '50px' }}>
                 <li>
                     <h3>presence <small>monitoring who is online</small></h3>
-                    <p>presence allows you to query deepstream for the status of logged-in users and 
+                    <p>presence allows you to query deepstream for the status of logged-in users and
                         subscribe to anyone logging in or out across the entire cluster.
                     </p>
                 </li>
                 <li>
                     <h3>listening <small>reactive subscriptions</small></h3>
                     <p>
-                    listening enables you to monitor your client's subscriptions actively and only provide data when it's actually needed. This significantly reduces data-throughput and costs, especially across larger micro-service architectures.
+                    listening enables you to monitor your client's subscriptions actively and only provide
+                    data when it's actually needed. This significantly reduces data-throughput and costs,
+                    especially across larger micro-service architectures.
                     </p>
                 </li>
                 <li>
                     <h3>security <small>authorize everything</small></h3>
                     <p>
                         deepstream's finegrained identity and permission system allows you to permission each connection
-                        and message going through your system. Easily accept or deny messages in realtime based on 
+                        and message going through your system. Easily accept or deny messages in realtime based on
                         user roles, data or even cross references to existing records.
                     </p>
                 </li>

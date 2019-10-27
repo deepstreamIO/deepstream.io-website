@@ -22,6 +22,7 @@
     "gatsby-plugin-sharp": "^2.2.9",
     "gatsby-plugin-typescript": "^2.1.2",
     "gatsby-remark-autolink-headers": "^2.1.3",
+    "gatsby-remark-code-buttons": "^2.0.1",
     "gatsby-remark-code-repls": "^2.2.0",
     "gatsby-remark-copy-linked-files": "^2.1.3",
     "gatsby-remark-custom-blocks": "^2.1.2",
@@ -62,7 +63,6 @@
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
     "deploy": "aws s3 sync public s3://deepstream.io"
   },
   "repository": {

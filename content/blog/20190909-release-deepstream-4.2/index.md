@@ -12,7 +12,7 @@ of concept (with flags distinguishing them) we bridge both events and records to
 So for example, using the following nodeJS mqtt code we can get any mqtt device to be controlled by a 
 browser client (not that this is totally useful!):
 
-```js
+```javascript
 const mqtt = require('mqtt')
 const client  = mqtt.connect('mqtt://localhost:1883', {
   // all this data will get forwarded to the HTTP webhook for normal
@@ -67,9 +67,9 @@ client.on('message', function (topic, message) {
 
 You can listen in on the events using a normal deepstream client:
 
-```js
-const deepstream = require('@deepstream/client')
-const client = deepstream('localhost:6020')
+```javascript
+const { DeepstreamClient } = require('@deepstream/client')
+const client = new DeepstreamClient('localhost:6020')
 await client.login({
     username: 'my-username',
     password: 'my-user-password',
