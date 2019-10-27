@@ -20,6 +20,8 @@ blogImage: ./5.0-release.png
 - Singular HTTP Service
 - SSL Support reintroduced
 - Better Config file validation
+- JSON Logger
+- NGINX Helper
 - Combined authentication handler
 - Embedded dependencies
 - Builtin HTTP Monitoring
@@ -237,6 +239,26 @@ There was an error validating your configuration:
 1) Property listens is not expected to be here
 2)/logger/type should be equal to one of the allowed values: default, Did you mean default?
 ```
+
+### JSON Logger
+
+You can now use a JSON logger for deepstream (useful for streaming data to ELK stack and so forth) by
+setting the name of the logger to pino
+
+```
+logger:
+  name: pino
+```
+
+### NGINX Helper
+
+You can output nginx config for deepstream (automatically generated from config) by running
+
+```bash
+deepstream nginx
+```
+
+Not the most useful command for some, but here by popular demand!
 
 ## Combined authentication handler
 
