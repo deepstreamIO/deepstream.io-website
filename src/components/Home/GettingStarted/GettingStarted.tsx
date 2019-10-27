@@ -13,10 +13,10 @@ export const GettingStarted = () => (
                 <h3>Quickstart</h3>
                 <p>Get up and running with deepstream in 10 minutes or less</p>
             </a>
-            <a href="/tutorials/">
+            <a href="/guides/">
                 <div className="icon"><IoIosBook /></div>
-                <h3>Tutorials</h3>
-                <p>Learn more about deepstream's features and integrations</p>
+                <h3>Guides</h3>
+                <p>Checkout more detailed guides on building applications</p>
             </a>
         </div>
     </Section>
