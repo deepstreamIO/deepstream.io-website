@@ -242,7 +242,7 @@ deepstream.rpc.provide('realtime_search', async (data, response) => {
 })
 
 deepstream.record.listen('realtime_search/list_.*', async (name, response) => {
-    const hash = /realtime_search\/list_(.*)/.match[0]
+    const hash = /realtime_search\/list_(.*)/.match(name)[0]
     const data = await deepstream.record.snapshot(hash)
     
     const cursor = database.table(data.table).on('change', await () => {
