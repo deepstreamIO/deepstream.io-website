@@ -16,7 +16,7 @@ and Java 3.0 simultaneously!
 It is worth keeping in mind there is a small CPU overhead between switching from V3 custom deepstream
 encoding to JSON (V4), so it is advised to monitor your CPU when possible!
 
-```
+```yaml
 - type: ws-text
     options:
         # port for the websocket server

@@ -10,7 +10,7 @@ isn't cheap (you can verify this by creating a couple thousand records and notic
 
 You can toggle them with the following:
 
-```
+```yaml
 # When true uses setTimeout
 nativeTimerRegistry: true,
 # When nativeTimerRegistry is false uses an interval with this timer resolution

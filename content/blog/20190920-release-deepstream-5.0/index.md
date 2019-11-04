@@ -234,7 +234,7 @@ or where its from?
 
 V5 now uses some smarter error handling, allowing you to get errors that make a bit more sense.
 
-```
+```bash
 There was an error validating your configuration:
 1) Property listens is not expected to be here
 2)/logger/type should be equal to one of the allowed values: default, Did you mean default?
@@ -245,7 +245,7 @@ There was an error validating your configuration:
 You can now use a JSON logger for deepstream (useful for streaming data to ELK stack and so forth) by
 setting the name of the logger to pino
 
-```
+```yaml
 logger:
   name: pino
 ```

@@ -74,7 +74,7 @@ Current custom external plugins are:
 
 All these plugins need to extend or implement the same plugin interface (via the @deepstream/types package)
 
-```
+```typescript
 abstract class DeepstreamPlugin<PluginConfig> {
   public abstract description: string
   constructor (pluginConfig: PluginConfig, services: DeepstreamServices, config: DeepstreamConfig)
@@ -99,7 +99,7 @@ This means by the time your custom plugins are initialized, Deepstream has all t
 
 A simple monitoring interface was added to monitor statistics from deepstream:
 
-```
+```typescript
 interface DeepstreamMonitoring  {
   onErrorLog (loglevel: LOG_LEVEL, event: EVENT, logMessage: string): void
   onLogin (allowed: boolean, endpointType: string): void
@@ -114,7 +114,7 @@ query deepstream for more verbose stats you can easily access those from `deepst
 
 For example, getting all the events subscribed to via a HTTP endpoint would be:
 
-```
+```typescript
 class HTTPMonitoringEndpoint extends DeepstreamPlugin implements Monitoring {
     // setup HTTP server and implement interface
 
@@ -149,7 +149,7 @@ Using the following plugins:
 
 A cluster node is the core of clustering and is responsible for serializing the messages to send, as well as subscribing to any messages in the cluster it may be interested in. The default supplied version with deepstream is a vertical message bus for use with node clustering. It's very easy to write your own though!
 
-```
+```typescript
 interface DeepstreamClusterNode  {
   // Broadcast a message to all nodes
   send (message: Message): void
@@ -164,7 +164,7 @@ interface DeepstreamClusterNode  {
 
 A lock registry allows a single node (the cluster leader) to get or release a node. This is currently implemented via a distributed central cluster nominated leader. But if you wanted to you could use a redis cache as easily and get rid of the extra step of having a leader hold onto locks!
 
-```
+```typescript
 type LockCallback = (locked: boolean) => void
 interface DeepstreamLockRegistry  {
   // Request a lock that is across the entire cluster
@@ -178,7 +178,7 @@ interface DeepstreamLockRegistry  {
 
 The state registry is responsible for holding the state of subscriptions across the cluster. The default implementation is distributed, using add/remove and reconciliation checks. However, this is one of the more expensive operations in deepstream due to consistency checks. By being a plugin we could also use a Redis based approach, as long as we figure out how to clear down the state if a server died ungracefully.
 
-```
+```typescript
 type StateRegistryCallback = (name: string) => void
 interface StateRegistry {
   // The name is registered somewhere on the cluster
@@ -211,7 +211,7 @@ interface StateRegistryFactory extends DeepstreamPlugin {
 
 The cluster registry is simply a registry to maintain the current state of the cluster and figure out who the leader is.
 
-```
+```typescript
 interface ClusterRegistry {
   // Is this node the leader?
   isLeader (): boolean
@@ -346,7 +346,7 @@ The new cache now implements `headBulk` which is an insanely quicker way to do b
 
 The idea being rathern than doing multiple calls to a cache, getting the response, parsing out the version and sending those one by one to the client we now just do it one go.
 
-```
+```typescript
 export type StorageHeadBulkCallback = (error: string | null, versions?: { [index: string]: number }, missing?: string[]) => void
 public headBulk (names: string[], callback: StorageHeadBulkCallback)
 ```
@@ -398,7 +398,7 @@ That is done for every single update. So if you're updating a thousand records t
 
 Now with 
 
-```
+```typescript
 await httpPost('/', {
     topic: 'record',
     action: 'notify',

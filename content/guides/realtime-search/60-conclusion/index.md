@@ -14,7 +14,7 @@ So what we learnt in this tutorial was:
 
 #### FrontEnd
 
-`embed:server/realtime-search/example/live-progress-bar/realtime-search-browser.html`
+`embed:server/realtime-search/example/realtime-search-browser.html`
 
 #### Backend
 
