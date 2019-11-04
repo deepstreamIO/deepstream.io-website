@@ -70,7 +70,6 @@ const discardRecord = (recordName) => {
     const record = records.get(recordName)
     record.discard()
     records.delete(recordName)
-    dele
 }
 
 const resultList = client.record.getList(`realtime_search/list_${hash}`)
@@ -82,26 +81,54 @@ resultList.on('entry-removed', discardRecord)
 
 ### Rendering
 
-Given the simplicity of this app and the lack of framework use I'm going to take the more unconventional route of rendering the list on animation request. It's definitely not the recommended approach in a bigger application, but I wanted to keep things as simple as possible
+Given the simplicity of this app and the lack of framework use I'm going to take the more unconventional route of just rerendering the list whenever it or the data within it changes
 
 ```javascript
 const render = () => {
-    const template = document.querySelector("#postit-template");
-    const clone = document.importNode(template.content, true);
-    const postit = clone.children[0];
-    postit.style = `right: ${-100 * (index - 1)}px;`;
-    postit.setAttribute("draggable", false);
-    postit.setAttribute("data-type", POSTIT_TYPE[type]);
-    postit.querySelector(".postit-copy").setAttribute("disabled", true);
-    postit.onclick = e => {
-    const type = e.currentTarget.getAttribute("data-type");
-    addHeaderPostitClicked(type);
-    };
-    document
-        .querySelector(".board-wrapper > header").appendChild(clone);
+    const users = document.createElement('ul')
+    users.className = 'users'
 
-    requestAnimationFrame(render)
+    records.forEach(user => {
+        const template = document.querySelector("#user-template");
+        const clone = document.importNode(template.content, true);
+        const elem = clone.children[0];
+        elem.querySelector('.name span').innerText = user.get('name')
+        elem.querySelector('.age span').innerText = user.get('age')
+        users.append(elem)
+    })
+    
+    document
+        .querySelector(".users")
+        .replaceWith(users)
 }
 
-render()
+const createRecord = async (recordName) => {
+    const record = client.record.getRecord(recordName)
+    records.set(recordName, record)
+    await record.whenReady()
+
+    // Render whenever something changes and on initial load
+    record.subscribe(render, true)
+}
+
+const discardRecord = (recordName) => {
+    const record = records.get(recordName)
+    record.discard()
+    records.delete(recordName)
+
+    // Render whenever it has been discarded
+    render()
+}
 ```
+
+### Setting it change
+
+So the best way to make sure this all works is just to do a HTTP post to make sure everything updates properly! The following snippets should be added into files (like upsert-user.sh) as it will make like easier when doing multiple operations. Or just use the ones within the example directory of the [realtime-search github repo](https://github.com/deepstreamIO/deepstream.io-realtime-search/tree/master/example).
+
+- When adding/insert a new entry
+
+`embed:server/realtime-search/example/http/upsert-user.sh`
+
+- Deleting a user
+
+`embed:server/realtime-search/example/http/delete-user.sh`

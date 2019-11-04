@@ -14,7 +14,9 @@ can provide the actual rpc hook so another client doesn't register it!
 - the record
 
 You want to make sure only the backend can update the list and meta objects, as again a front-end
-client should not be able to do so. The same with listening patterns
+client should not be able to do so.
+
+### The permissions
 
 `embed:server/realtime-search/example/conf/permissions.yml`
 
