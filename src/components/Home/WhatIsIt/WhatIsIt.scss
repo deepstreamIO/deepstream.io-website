@@ -4,103 +4,80 @@
     box-shadow: 0 0 11px 0px rgba(0, 0, 0, 0.3);
     position: relative;
     z-index: 3;
-    text-align: center;
 
-    img {
-        position: relative;
-        top: -130px;
-        left: -20px;
-        margin-bottom: -70px;
-        z-index: -1;
-    }
-
-
-    .general, .core-features {
+    .core-features {
         flex-direction: row;
         display: flex;
         justify-content: space-between;
         margin-right: 60px;
         margin-left: 95px;
-    }
-
-    .general p {
-        width: 300px;
-    }
-
-    .general li {
-        margin-bottom: 40px;
-        text-align: left;
-    }
-
-    p {
-        line-height: 22px;
-        font-size: 16px;
-    }
-
-    .divider {
-        height: 2px;
-        width: 400px;
-        background-color: #0fbbec;
-        margin: 40px auto;
-        clear: left;
-    }
-
-    h2 {
-        text-align: center;
-        font-size: 30px;
-        color: #5f5f5f;
-        margin-bottom: 40px;
-    }
-
-    h3 {
-        text-align: left;
-        font-size: 22px;
-        color: #5f5f5f;
-        margin-bottom: 14px;
-        font-weight: 300;
-    }
-
-    h3 small {
-        display: block;
-        margin-top: 6px;
-        font-size: 14px;
-        font-style: italic;
-    }
-
-    .core-features li {
-        width: 260px;
-        margin-right: 110px;
-        text-align: left;
-        float: left;
-    }
-
-    .core-features li:last-child {
-        margin-right: 0;
-    }
-
-    @media screen and (max-width: 900px) {
+    
         p {
-            width: 90%;
-        }
-
-        & {
-            padding-top: 40px;
+            line-height: 22px;
+            font-size: 16px;
         }
     
-        .general, .core-features {
-            flex-direction: column;
-            margin: 0;
-            padding: 0 10px 0 35px;
+        .divider {
+            height: 2px;
+            width: 400px;
+            background-color: #0fbbec;
+            margin: 40px auto;
+            clear: left;
         }
-
-        .core-features li {
-            margin-top: 40px;
+    
+        h2 {
+            text-align: center;
+            font-size: 30px;
+            color: #5f5f5f;
+            margin-bottom: 40px;
         }
-
-        img {
-            position: initial;
-            width: 90%;
-            margin-bottom: 50px;
+    
+        h3 {
+            text-align: left;
+            font-size: 22px;
+            color: #5f5f5f;
+            margin-bottom: 14px;
+            font-weight: 300;
+        }
+    
+        h3 small {
+            display: block;
+            margin-top: 6px;
+            font-size: 14px;
+            font-style: italic;
+        }
+    
+        li {
+            width: 260px;
+            margin-right: 110px;
+            text-align: left;
+            float: left;
+        }
+    
+        li:last-child {
+            margin-right: 0;
+        }
+    
+        @media screen and (max-width: 900px) {
+            p {
+                width: 90%;
+            }
+    
+            & {
+                flex-direction: column;
+                margin: 0;
+                padding: 0 10px 0 35px;
+            }
+        
+            li {
+                margin-top: 40px;
+            }
+    
+            img {
+                position: initial;
+                width: 90%;
+                margin-bottom: 50px;
+            }
         }
     }
 }

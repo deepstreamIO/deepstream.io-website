@@ -1,7 +1,8 @@
 ---
-title: WebSocket Connection
+title: V3 Text Protocol
 description: Learn how to configure a V3 compatible endpoint
 wip: true
+logoImage: deepstream-v3.png
 ---
 
 ### How to configure:

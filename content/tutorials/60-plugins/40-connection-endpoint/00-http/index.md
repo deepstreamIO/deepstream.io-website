@@ -2,6 +2,7 @@
 title: HTTP Endpoint
 description: Learn how to configure a HTTP Endpoint
 wip: true
+logoImage: http.png
 ---
 
 ### How to configure:

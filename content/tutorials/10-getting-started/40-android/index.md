@@ -3,6 +3,7 @@ title: Getting started with Android
 description: A getting started guide for deepstream with Android
 tags: [Android, Java, pub-sub, data-sync, request-response]
 wip: true
+logoImage: android.png
 ---
 
 This guide will take you through getting started on Android with deepstream's three core concepts: [Records](/tutorials/guides/records), [Events](/tutorials/guides/events) and [RPCs](/tutorials/guides/remote-procedure-calls/).

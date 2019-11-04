@@ -1,6 +1,7 @@
 ---
 title: Node HTTP
 description: Learn how to configure the node HTTP Service
+logoImage: websocket.png
 ---
 
 Node is the default HTTP server as it supports all platforms and is much easier to debug.

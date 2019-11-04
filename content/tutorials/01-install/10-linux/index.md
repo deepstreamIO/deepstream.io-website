@@ -2,6 +2,7 @@
 title: Installing on Linux
 description: Learn how to install deepstream on Linux
 redirectFrom: [/install/linux/,/tutorials/core/server/getting-started-config/]
+logoImage: linux.png
 ---
 
 Download the latest server artifact [deepstream.io-linux-VERSION.tar.gz](https://github.com/deepstreamIO/deepstream.io/releases) and unzip it.

@@ -31,7 +31,7 @@ const Category: React.FunctionComponent<CategoryProps> = ({ title, entries, entr
         const keys = Object.keys(entries).sort((a,b) => entries[a].weight - entries[b].weight)
         children = keys.map(key => <Entry key={key} entry={entries[key]}/>)
     } else {
-        children = [<Entry key="single" entry={entry} />]
+        children = [<Entry key="1" entry={entry} />]
     }
 
     if (children.length > 5) {
@@ -101,41 +101,58 @@ export const TutorialsGuides: React.FunctionComponent<TutorialsOverviewProps> = 
             <div>
                 <h2>Introduction</h2>
                 {Object.keys(sections.concepts).map((key: any) =>
-                    <Link className="entry" to={sections.concepts[key].slug} title={sections.concepts[key].description}>
+                    <Link className="entry" key={key} to={sections.concepts[key].slug} title={sections.concepts[key].description}>
                         <h4>{sections.concepts[key].title}</h4>
                     </Link>
                 )}
             </div>,
             <div>
-                <h2>Core Features</h2>
-                <Category key="data-sync" title="Data-Sync" entries={sections.core.datasync} />
-                <Category key="events" title="Events" entry={sections.core.pubsub} />
-                <Category key="rpc" title="RPC" entry={sections.core['request-response']} />
-                <Category key="presence" title="Presence" entry={sections.core.presence} />
+                <h2>Getting Started</h2>
+                <Category title="Getting Started" entries={sections['getting-started']} />
             </div>
         ]} />
 
         <Section columnClassName="entries" columns={[
             <div>
+                <h2>Install</h2>
+                <Category title="Install" entries={sections.install} />
+                <Category title="Devops" entries={sections.devops} />
+            </div>,
+            <div>
+                <h2>Core Features</h2>
+                <Category title="Data-Sync" entries={sections.core.datasync} />
+                <Category title="Events" entry={sections.core.pubsub} />
+                <Category title="RPC" entry={sections.core['request-response']} />
+                <Category title="Presence" entry={sections.core.presence} />
+            </div>
+        ]} />
+            
+        <Section columnClassName="entries" columns={[
+            <div>
                 <h2>Security</h2>
-                <Category key="authentication" title="Authentication" entries={sections.core.auth} />
-                <Category key="permissioning" title="Permissioning" entries={sections.core.permission} />
+                <Category title="Authentication" entries={sections.core.auth} />
+                <Category title="Permissioning" entries={sections.core.permission} />
             </div>,
             <div>
                 <h2>Frameworks</h2>
-                <Category title="Frontend Frameworks" entries={sections.integrations.frontend} />
-                <Category title="Mobile Frameworks" entries={sections.integrations.mobile} />
-            </div>
+                <Category title="Frontend" entries={sections.integrations.frontend} />
+                <Category title="Mobile" entries={sections.integrations.mobile} />
+            </div>,
         ]} />
 
         <Section columnClassName="entries" columns={[
             <div>
                 <h2>Connectors</h2>
-                <Category title="DataBase Connectors" entries={sections.plugins.database} />
-                <Category title="Cache Connectors" entries={sections.plugins.cache} />
-                {/*<Category title="Endpoint Connectors" entries={sections.plugins.endpoint} />*/}
-                {/*<Category title="Logger Connectors" entries={sections.plugins.logger} />*/}
-            </div>,
+                <Category title="HTTP Service" entries={sections.plugins['http-service']} />
+                <Category title="Endpoint" entries={sections.plugins['connection-endpoint']} />
+                <Category title="DataBase" entries={sections.plugins.database} />
+                <Category title="Cache" entries={sections.plugins.cache} />
+                <Category title="Monitoring" entries={sections.plugins.monitoring} />
+                <Category title="Cluster" entries={sections.plugins.clusternode} />
+            </div>
+        ]} />
+
+        <Section columnClassName="entries" columns={[
             <div>
                 <h2>Extending deepstream</h2>
                 <Category title="Writing your own plugin" entries={sections['custom-plugins']} />
@@ -147,10 +164,6 @@ export const TutorialsGuides: React.FunctionComponent<TutorialsOverviewProps> = 
                 <h2>Upgrade Guides</h2>
                 <Category title="Upgrading to V4" entries={sections['upgrade-guides'].v4} />
                 <Category title="Upgrading to V5" entries={sections['upgrade-guides'].v5} />
-            </div>,
-            <div>
-                <h2>WebRTC</h2>
-                <Category title="WebRTC" entries={sections.webrtc} />
             </div>
         ]} />
 
@@ -160,5 +173,13 @@ export const TutorialsGuides: React.FunctionComponent<TutorialsOverviewProps> = 
                 <Category title="Example Applications" entries={sections['example-apps']} />
             </div>
         ]} />
+
+        <Section columnClassName="entries" columns={[
+            <div>
+                <h2>WebRTC</h2>
+                <Category title="WebRTC" entries={sections.webrtc} />
+            </div>
+        ]} />
+
     </Section>
 }

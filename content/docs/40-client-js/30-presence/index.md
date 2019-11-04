@@ -48,13 +48,13 @@ client.presence.unsubscribe( onOnlineStatusChange )
 
 |Argument|Type|Optional|Description|
 |---|---|---|---|
-|callback|Function|false|A function that will be called with an array of usernames that are online|
+|callback|Function|false|A function that will be called with an error value and an array of usernames that are online|
 
 Queries for currently connected clients
 
 ```javascript
 // Client B
-client.presence.getAll((clients) => {
-    // [ 'Alex', 'Ben', 'Charlie' ]
+client.presence.getAll((error, clients) => {
+    // error = null, clients = [ 'Alex', 'Ben', 'Charlie' ]
 })
 ```

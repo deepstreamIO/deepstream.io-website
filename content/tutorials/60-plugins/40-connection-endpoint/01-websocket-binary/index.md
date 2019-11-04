@@ -2,6 +2,7 @@
 title: Binary WebSocket Endpoint
 description: Learn how to configure the default binary WS Websocket Endpoint
 wip: true
+logoImage: binary.png
 ---
 
 ### How to configure:

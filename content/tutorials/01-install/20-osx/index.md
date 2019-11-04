@@ -1,7 +1,7 @@
 ---
 title: Installing on OSX
 description: Find out how to get deepstream running on OSX
-installImage: osx.png
+logoImage: osx.png
 redirectFrom: [/install/osx/]
 ---
 

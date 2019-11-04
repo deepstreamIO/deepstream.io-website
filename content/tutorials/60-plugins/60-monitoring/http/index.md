@@ -1,6 +1,7 @@
 ---
 title: HTTP Monitoring
 description: Learn how to use monitor deepstream using http
+logoImage: http.png
 ---
 
 Deepstream allows you to gather detailed insights into what the server is actually doing. How detailed is really up to you, since you can aggregate data by topic, action or actually go far enough to log each individual subscription name!

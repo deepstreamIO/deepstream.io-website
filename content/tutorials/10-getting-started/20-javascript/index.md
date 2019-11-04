@@ -1,6 +1,7 @@
 ---
 title: Getting started with JavaScript
 description: Learn how to start a server and connect a simple client
+logoImage: javascript.png
 ---
 
 Time to get started with deepstream. This tutorial takes you through the initial steps of starting a server and connecting to it from a simple webpage using the JS Client.

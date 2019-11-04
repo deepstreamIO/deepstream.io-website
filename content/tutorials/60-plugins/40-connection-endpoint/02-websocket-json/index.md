@@ -2,6 +2,7 @@
 title: JSON Endpoint
 description: Learn how to configure a JSON based  Websocket Endpoint
 wip: true
+logoImage: json.png
 ---
 
 ### How to configure:

@@ -1,0 +1,52 @@
+.hero {
+    background-color: #0FBBEC;
+    width: 100%;
+}
+
+.wrapper {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+    max-width: 1000px;
+    width: 100%;
+    margin: auto;
+}
+
+@media screen and (max-width: 47em) {
+    .hero {
+        padding: 50px;
+    }
+    .wrapper {
+        flex-direction: column;
+    }
+}
+
+.bannerImage {
+    width: 33%;
+    min-width: 200px;
+    max-width: 300px;
+}
+
+.content {
+    text-align: center;
+}
+
+.title {
+    color: #FFF;
+    font-size: 4rem;
+}
+
+.description {
+    color: #FFF;
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+.action {
+    color: #0FBBEC;
+    background-color: #FFF;
+    text-transform: uppercase;
+    padding: 20px;
+    margin-bottom: 30px;
+}

@@ -16,8 +16,7 @@ allMarkdownRemark(
     filter: {
     fields: {slug: {regex: "/blog/"}},
     frontmatter: {
-        draft: {ne: true},
-        deepstreamVersion: {ne: "V3"}
+        draft: {ne: true}
     }
 },
 limit: 1000

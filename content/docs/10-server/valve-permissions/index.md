@@ -35,9 +35,9 @@ the authentication data for the user attempting the read or write, containing th
 
 ```javascript
 {
-    //Boolean, false if username === 'open'
+    //Boolean, false if id === 'open'
     isAuthenticated: true, //Boolean
-    //the userid / username as returned by auth the auth provider
+    //the userId / username as returned by auth the auth provider
     id: 'johndoe', //String
     //optional object, containing fields like e.g. role, access level etc
     //returned by auth provider
