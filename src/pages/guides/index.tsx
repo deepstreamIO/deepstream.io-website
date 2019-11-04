@@ -26,6 +26,10 @@ export default () => (
                         <img className={style.guideImage} src={LiveProgressBarImage} />
                         <h1 className={style.guideTitle}>Live Progress Bar</h1>
                     </Link>
+                    <Link to="/guides/realtime-search/" className={style.guide}>
+                        <img className={style.guideImage} src="/images/eltons/elton-reveals.png" />
+                        <h1 className={style.guideTitle}>Realtime Search</h1>
+                    </Link>
                     {/* <Link to="/guides/browser/color-picker/" className={style.guide}>
                         <img className={style.guideImage} src="/images/eltons/elton-docs.svg" />
                         <h1 className={style.guideTitle}>Weather App</h1>
