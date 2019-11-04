@@ -2,6 +2,7 @@
 title: MQTT
 description: Learn how to configure a MQTT Endpoint
 wip: true
+logoImage: mqtt.png
 ---
 
 ### How to configure:

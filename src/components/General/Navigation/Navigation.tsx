@@ -9,7 +9,7 @@ export const Navigation = ({ mobile = false }) => (
             </a>
         </li>
         {
-            ['guides', 'install', 'tutorials', 'docs', 'blog'].map(section => (
+            ['guides', 'tutorials', 'docs', 'blog'].map(section => (
                 <li className="navigation-link" key={section}>
                     <Link to={`/${section}/`} activeClassName="active">
                         {section}

@@ -1,7 +1,7 @@
 ---
 title: Getting started with HTTP
 description: Learn how to start a server and interact with a HTTP API
-state: incomplete
+logoImage: http.png
 ---
 
 This guide will introduce deepstream's HTTP interface, and show how it can be used to access

@@ -2,7 +2,8 @@
 title: Getting started with Swift
 description: Learn how to add realtime features to your iOS app
 tags: [Swift, iOS,data-sync, pub-sub, request-response, RPCs]
-deepstreamVersion: V3
+logoImage: swift.png
+draft: true
 ---
 
 This guide will take you through deepstream's three core concepts: [Records](/tutorials/guides/records/), [Events](/tutorials/guides/events/) and [RPCs](/tutorials/guides/remote-procedure-calls/).

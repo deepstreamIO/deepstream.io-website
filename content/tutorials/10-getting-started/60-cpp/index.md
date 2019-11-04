@@ -3,6 +3,8 @@ title: Getting started with C++
 description: Learn how to set-up deepstream with C++
 tags: [C++, realtime, request-response, data-sync]
 deepstreamVersion: V3
+logoImage: cpp.png
+draft: true
 ---
 
 This guide will be a brief introduction to using the deepstream C++ client with

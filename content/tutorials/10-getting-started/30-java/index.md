@@ -3,6 +3,7 @@ title: Getting started with Java
 description: Learn how to build serverside realtime provider with deepstream and Java
 tags: [Java, realtime, RPC, request-response, data-sync]
 wip: true
+logoImage: java.png
 ---
 
 This guide will show you how to build backend processes in Java using deepstream's three core concepts: [Records](/tutorials/guides/records/), [Events](/tutorials/guides/events/) and [RPCs](/tutorials/guides/remote-procedure-calls/).

@@ -1,6 +1,7 @@
 ---
 title: UWS HTTP
 description: Learn how to configure the UWS HTTP Service
+logoImage: uws.svg
 ---
 
 UWS is enabled throughout all endpoints by setting the httpServer type to uws.
