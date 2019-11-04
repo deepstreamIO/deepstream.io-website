@@ -1,0 +1,23 @@
+.why {
+    text-align: left;
+    margin-right: 60px;
+    margin-left: 95px;
+    margin-bottom: 30px;
+}
+
+@media screen and (max-width: 900px) {
+    .why {
+        margin-right: 10px;
+        margin-left: 30px;
+    }
+}
+
+.whyTitle {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+
+.whyDescription {
+    font-size: 2rem;
+}

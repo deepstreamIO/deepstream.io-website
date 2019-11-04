@@ -17,17 +17,17 @@ the [configuration and default values](/docs/server/configuration/).
 |---|---|---|---|
 |options|Object or string|true|Either the configuration object or a filepath to the configuration file|
 
-**Please note** calling `server = new Deepstream()` only creates the instance, to actually start the server, you still need to call `server.start();`
+**Please note** calling `server = new Deepstream()` only creates the instance, to actually start the server, you still need to call `server.start()`
 
 ```javascript
 const { Deepstream } = require('@deepstream/server')
-const server = new Deepstream({ port:8000 })
+const server = new Deepstream()
 ```
 
 ## Events
 
 ### `started`
-Emitted once `deepstream.start()` has been called and the startup procedure has completed succesfully.
+Emitted once `deepstream.start()` has been called and the startup procedure has completed successfully.
 
 ### `stopped`
 Emitted once `deepstream.stop()` has been called and the server has been completely shut down.
@@ -55,15 +55,6 @@ configuration initialization step.
 
 ##### Differences when using `set(key, value)`
 
-If you use a configuration object its properties will be treated as a file path.
-Here the `value` is treated as a string for these options:
-
-- `sslCert`
-- `sslKey`
-- `sslCA`
-
-Actually these options can be passed by an configuration object, but if you use a file-based configuration it only works with a `.js` file. YAML and JSON config files are not supporting these options.
-
 These options might have a different name and location in the structure of the configuration object. If you use `set()` you also need to provide the instantiated instance as the `value`.
 
 - `authentication`
@@ -74,55 +65,27 @@ These options might have a different name and location in the structure of the c
 
 Make sure you run `server.start()` after you set all your options.
 
-Some examples:
+Some examples of overriding plugins are initialization:
 
 ```javascript
-
 /**
-* The public key to use if using ssl
-* Must have an associated sslKey set
-*
-* @type String
+* An object that exposes an isValidUser function.
 */
-server.set('sslCert', fs.readFileSync('./keys/cert.pem', 'utf8'))
-
-
-/**
-* An object that exposes a isValidUser function.
-*
-* @type authenticationHandler
-* @default OpenPermissionHandler (same as `{auth:{type: none}}` in the default config)
-*/
-server.set('authentication', new OAuthHandler())
+server.set('authentication', new OAuthHandler({
+  options: ''
+}, server.getServices()))
 
 /**
 * An object that that exposes a canPerformAction function.
-*
-* @type permissionHandler
-* @default ConfigPermissionHandler (with arguments from the default config)
 */
-server.set('permission', new LdapPermissionHandler())
+server.set('permission', new LdapPermissionHandler({
+
+}, server.getServices()))
 
 /**
 * A logger
-*
-* @type Logger
-* @default DeepstreamWinstonLogger
 */
-server.set('logger', new FileLogger())
+server.set('logger', new FileLogger({
 
-/**
-* A regular expression that determines which records will not be
-* stored in the database.
-*
-* This is useful to improve performance for fast-updating records
-* that do not need to be stored in the long-term, e.g. stock prices
-*
-* Any record whose name matches the specified RegExp will be read / written
-* directly to cache
-*
-* @type RegExp
-* @default null
-*/
-server.set('storageExclusion', /^dont-store\/*./)
+}, server.getServices()))
 ```

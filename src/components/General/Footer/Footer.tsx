@@ -30,14 +30,10 @@ export const Footer = ({ hasSideBar }) => (
                                 <FaCode />
                                 <span>Documentation</span>
                         </Link>
-                        <Link to="/releases">
+                        <Link to="/blog/">
                                 <FaBullhorn />
-                                <span>Releases</span>  
+                                <span>Blog</span>
                         </Link>
-                        {/* <Link to="/info/">
-                                <FaInfo />
-                                <span>Info</span>
-                        </Link> */}
                 </div>
 
                 <div className="col col-d">

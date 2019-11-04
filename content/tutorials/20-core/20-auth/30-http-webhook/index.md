@@ -42,7 +42,7 @@ How you construct the service behind the url endpoint is up to you and your appl
 
 ```json
 {
-    "username":"chris",
+    "id":"chris",
     "clientData": {},
     "serverData": {}
 }
@@ -66,7 +66,7 @@ app.use(bodyParser.json())
 app.post('/auth-user', (req, res) => {
   if (req.body.authData.username === 'chris') {
     res.json({
-      username: 'chris',
+      id: 'chris',
       clientData: { themeColor: 'pink' },
       serverData: { role: 'admin' }
     })

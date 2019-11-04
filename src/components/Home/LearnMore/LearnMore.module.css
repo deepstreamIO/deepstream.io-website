@@ -1,0 +1,16 @@
+.learnMore {
+    background-color: #0FBBEC;
+}
+
+.actions {
+    margin-top: 50px;
+}
+
+.action {
+    color: #0FBBEC;
+    background-color: #FFF;
+    text-transform: uppercase;
+    padding: 20px;
+    margin-bottom: 30px;
+    margin-right: 10px;
+}

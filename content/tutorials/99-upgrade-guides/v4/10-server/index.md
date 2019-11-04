@@ -301,7 +301,7 @@ from having to bind functions in the codebase which gives us a nice little perfo
 ### Old callback
 
 ```javascript
-canPerformAction (username, message, callback, authData) {
+canPerformAction (id, message, callback, authData) {
 callback(null, true)
 }
 ```
@@ -309,7 +309,7 @@ callback(null, true)
 # New callback
 
 ```javascript
-canPerformAction (username, message, callback, authData, socketWrapper, passItOn) {
+canPerformAction (id, message, callback, authData, socketWrapper, passItOn) {
     callback(socketWrapper, message, passItOn, null, true)
 }
 ```
