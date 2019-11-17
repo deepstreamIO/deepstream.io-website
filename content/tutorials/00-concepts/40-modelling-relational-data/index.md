@@ -4,7 +4,7 @@ description: An overview of relational data concepts using Records
 tags: [relational, relational data, deepstream, records, sql]
 ---
 
-## Relational data with deppstream
+## Relational data with deepstream
 
 Relational databases are common in our industry, and quite often developers learn to model their data using relational techniques. Learning how to represent these common patterns in NoSQL solutions is hugely beneficial for both green field projects and enhancements for legacy software.
 
