@@ -4,7 +4,7 @@ description: Applying filters to a WebRTC video stream before transmitting it
 tags: [WebRTC, Canvas, getUserMedia, captureStream, filter, video manipulation]
 ---
 
-In the [previous tutorial](../webrtc-audio-video) we've discussed how to share unaltered audio and video streams between browsers - but in times of Snapchat, dog snout overlays and vintage effect filters this might not be enough. So in this tutorial we'll look into manipulating the video before sending.
+In the [previous tutorial](../webrtc-audio-video) ([Github-friendly link](../30-webrtc-audio-video)) we've discussed how to share unaltered audio and video streams between browsers - but in times of Snapchat, dog snout overlays and vintage effect filters this might not be enough. So in this tutorial we'll look into manipulating the video before sending.
 
 ## How it works
 

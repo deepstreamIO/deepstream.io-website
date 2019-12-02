@@ -4,7 +4,7 @@ description: Create a video feed from your screen and share it via WebRTC
 tags: [WebRTC, Canvas, getUserMedia, captureStream, Screensharing]
 ---
 
-In this WebRTC tutorial for screensharing we won't be talking about WebRTC. Why? The video feed from your browser or desktop screen is just another MediaStream like the ones we've discussed in the [WebRTC Audio/Video tutorial](../webrtc-audio-video) and can be attached to a PeerConnection in the exact same way. The difference is: this MediaStream is a lot more complicated to optain.
+In this WebRTC tutorial for screensharing we won't be talking about WebRTC. Why? The video feed from your browser or desktop screen is just another MediaStream like the ones we've discussed in the [WebRTC Audio/Video tutorial](../webrtc-audio-video) ([Github-friendly link](../30-webrtc-audio-video)) and can be attached to a PeerConnection in the exact same way. The difference is: this MediaStream is a lot more complicated to optain.
 
 ## Getting a MediaStream from your screen
 In a nutshell getting a MediaStream from your browser-window or desktop takes three steps:

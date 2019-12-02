@@ -22,7 +22,7 @@ const p2pConnection = new SimplePeer({
 });
 ```
 
-In the [full mesh example](/tutorials/webrtc//webrtc-full-mesh/) well compare usernames `localUserName > remoteUserName` to achieve the same.
+In the [full mesh example](/tutorials/webrtc/webrtc-full-mesh/) ([GitHub-friendly link](/tutorials/98-webrtc/20-webrtc-full-mesh/))  well compare usernames `localUserName > remoteUserName` to achieve the same.
 
 ## Signaling
 As the connection is being established, both peers need to send information about themselves and how to reach them to each other - the previously mentioned Interactive Connectivity Establishment Process (or ICE for short).

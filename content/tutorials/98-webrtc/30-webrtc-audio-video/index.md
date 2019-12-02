@@ -4,7 +4,7 @@ description: Learn how to establish audio and video streams using deepstream
 tags: [WebRTC, Video, Audio]
 ---
 
-Once you know how to [establish a WebRTC connection between two peers](/tutorials/webrtc//webrtc-datachannels/), adding audio and video streams to this connection is surprisingly easy.
+Once you know how to [establish a WebRTC connection between two peers](../webrtc-datachannels) ([Github-friendly link](../10-webrtc-datachannels)), adding audio and video streams to this connection is surprisingly easy.
 
 First of all we request access to the user's microphone and camera using the browser's `navigator.getUserMedia` method. Once we have access to a stream we store a reference to it, render it on a video element using `URL.createObjectURL( stream )` and establish our P2PConnection.
 

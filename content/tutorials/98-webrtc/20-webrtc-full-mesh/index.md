@@ -3,7 +3,7 @@ title: "WebRTC 02: Many-To-Many connectivity"
 description: Learn how to setup WebRTC connections between multiple clients and share messages within rooms
 tags: [WebRTC, Rooms, many-to-many, full-mesh]
 ---
-As we've seen in the previous [data-channels tutorial](../webrtc-datachannels) establishing a WebRTC connection between two peers is simple enough when using a high level library. But often you'll want to chat with multiple users in the same room, join a video conference or share a file with a number of people.
+As we've seen in the previous [data-channels tutorial](../webrtc-datachannels) ([Github-friendly link](../10-webrtc-datachannels)) establishing a WebRTC connection between two peers is simple enough when using a high level library. But often you'll want to chat with multiple users in the same room, join a video conference or share a file with a number of people.
 
 The only trouble is: WebRTC does not have any pre-build concepts to handle many-to-many communication. This leaves you with the following options:
 

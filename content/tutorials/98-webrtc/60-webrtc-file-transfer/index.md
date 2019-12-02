@@ -4,7 +4,7 @@ description: Learn how to read, transfer, receive and download a file between tw
 tags: [WebRTC, FileReader, Blob, Download Blob, JavaScript]
 ---
 
-WebRTC makes it possible to transfer any file between two browsers using [data-channels](/tutorials/webrtc//webrtc-datachannels/) and binary data.
+WebRTC makes it possible to transfer any file between two browsers using [data-channels](../webrtc-datachannels) ([Github-friendly link](../10-webrtc-datachannels)) and binary data.
 
 ## How does binary data work in browsers
 The current generation of browsers allow you to send arrays of bytes - groups of eight zeros or ones that can specify numbers between 0 and 255. To work with these, they provide a number of concepts - `Uint8Array`s  to store them in, `FileReader`s to create them and `Blob`s to assemble them. Transports like Websockets and WebRTC allow for the transmission of raw byte streams.
