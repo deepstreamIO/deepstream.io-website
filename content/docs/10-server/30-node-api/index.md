@@ -17,11 +17,11 @@ the [configuration and default values](/docs/server/configuration/).
 |---|---|---|---|
 |options|Object or string|true|Either the configuration object or a filepath to the configuration file|
 
-**Please note** calling `server = new Deepstream(null)` only creates the instance, to actually start the server, you still need to call `server.start()`
+**Please note** calling `server = new Deepstream({})` only creates the instance, to actually start the server, you still need to call `server.start()`
 
 ```javascript
 const { Deepstream } = require('@deepstream/server')
-const server = new Deepstream(null)
+const server = new Deepstream({})
 ```
 
 ## Events
