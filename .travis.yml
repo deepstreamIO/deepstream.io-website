@@ -15,11 +15,13 @@ script:
   - npm run build;
 
 deploy:
-  provider: pages
+- provider: s3
+  access_key_id: ${ACCESS_KEY_ID}
+  secret_access_key: ${SECRET_ACCESS_KEY}
+  bucket: deepstream.io
   skip_cleanup: true
-  github_token: ${GITHUB_TOKEN}
+  acl: public_read
   local_dir: public
-  keep_history: false
   on:
     branch: master
 
