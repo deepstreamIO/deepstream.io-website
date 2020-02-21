@@ -1,7 +1,7 @@
 ---
 title: Installing on Linux
 description: Learn how to install deepstream on Linux
-redirectFrom: [/install/linux/,/tutorials/core/server/getting-started-config/]
+redirectFrom: [/install/,/install/linux/,/tutorials/core/server/getting-started-config/]
 logoImage: linux.png
 ---
 
