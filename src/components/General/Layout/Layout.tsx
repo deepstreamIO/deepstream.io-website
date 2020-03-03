@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Header } from "../Header/Header"
 import {Footer} from "../Footer/Footer"
+import { SEO } from "../SEO/SEO";
 
 interface LayoutProps {
     location?: any
@@ -11,6 +12,7 @@ interface LayoutProps {
 
 export const Layout: React.FunctionComponent<LayoutProps> = ({ children, pageClass, hasSideBar = false }) => {
     return <div className={pageClass}>
+        <SEO />
         <Header/>
         <div>
             {children}
