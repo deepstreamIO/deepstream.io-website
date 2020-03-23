@@ -245,7 +245,7 @@ deepstream.record.listen('realtime_search/list_.*', async (name, response) => {
     const hash = /realtime_search\/list_(.*)/.match(name)[0]
     const data = await deepstream.record.snapshot(hash)
     
-    const cursor = database.table(data.table).on('change', await () => {
+    const cursor = database.table(data.table).on('change', async () => {
         const results = await doQuery(data.query)
         const previousResults = await deepstream.record.snapshot(name)
         if (!deepEquals(previousResults, results)) {
