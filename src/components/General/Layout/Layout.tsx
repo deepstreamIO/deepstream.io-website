@@ -32,11 +32,11 @@ export const Layout: React.FunctionComponent<LayoutProps> = ({ children, pageCla
         }}>
             <div style={{ paddingTop: '10px' }}>
                 <Link style={{
-                    fontSize: '30px',
+                    fontSize: '20px',
                     color: 'yellow',
                     fontWeight: 500,
                     paddingTop: '20px'
-                }} to="/blog/20200519-deprecating-deepstream/">Deepstream is deprecated, use at your own risk.</Link>
+                }} to="/blog/20200519-deepstream-maintenance-mode/">Deepstream is in maintenance mode, contributors needed</Link>
             </div>
         </div>
         <div>
