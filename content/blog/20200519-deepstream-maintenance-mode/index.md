@@ -19,6 +19,6 @@ Contributors willing to do the following will help this project progress forward
 - Own and improve connectors and plugins. They are minimal in code but keeping track of dependencies and testing against latest versions of the database and caches is required for security and to remain relevant.
 - SDKs
 - Custom plugins
-- Most importantly, [stating your using deepstream](https://github.com/deepstreamIO/deepstream.io/issues/1049). The more users we can publicly say we have the more likely people will contribute.
+- Most importantly, [stating your using deepstream](https://forms.gle/8mtPrGe1y5q3KweR7). The more users we can publicly say we have the more likely people will contribute.
 
 I would like to use this opportunity to thank everyone for their time and effort adopting deepstream, and for the huge support we had during our deepstreamHub era. This was quite the journey, and I really hope to see realtime techs boundries push on going forwards.
