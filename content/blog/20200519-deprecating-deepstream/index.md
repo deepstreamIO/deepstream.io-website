@@ -8,6 +8,6 @@ I have some sad news to share today. After joining deepstream around 5 years ago
 
 The reason why I decided to make this statement instead of just quietly stopping my involvement is because adopting core stack technology is an expensive and difficult process, and I would rather have potential adopters have a clear indication about the current state of the project when making that decision. I have spent the last few months gathering information to make this decision, mainly via trying to [assess the usage of this project in the wider world](https://github.com/deepstreamIO/deepstream.io/issues/1049) and [contribution callouts](https://github.com/deepstreamIO/deepstream.io/issues/1030), both with very limited results.
 
+I will still be merging in PRs and doing releases, however I will no longer be active within the communication channels or github issues, fixing bugs or answering questions. Will contain my activity to just making sure fixes can find their way in while users figure out how to move forward.
+
 I would like to use this opportunity to thank everyone for their time and effort adopting deepstream, and for the huge support we had during our deepstreamHub era. This was quite the journey, and I really hope to see realtime techs boundries push on going forwards.
-
-
