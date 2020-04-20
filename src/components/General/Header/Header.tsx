@@ -41,5 +41,6 @@ export const Header: React.FunctionComponent<HeaderProps> = () => {
         </nav>
 
         <MobileMenu open={menuOpen} />
+
     </header>
 }

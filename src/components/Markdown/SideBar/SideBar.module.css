@@ -5,10 +5,10 @@
 
 .hack {
     position: fixed;
-    top: 60px;
+    top: 120px;
     right: 0;
     z-index: 2;
-    height: calc(100vh - 60px);
+    height: calc(100vh - 120px);
     overflow-y: auto;
     width: 400px;
     box-sizing: border-box;
