@@ -1,0 +1,83 @@
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 20px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+
+.article {
+  max-width: 1200px;
+  width: calc(100% - 250px);
+  padding: 20px;
+  border-right: 1px solid #efefef;
+}
+
+@media (max-width: 500px) {
+  .wrapper,
+  .article {
+    width: 100%;
+  }
+}
+
+.header {
+  margin-top: 80px;
+}
+
+.title {
+  font-size: 3em;
+}
+
+.githubEdit {
+  margin-left: 10px;
+}
+
+.githubEdit svg {
+  font-size: 22px;
+}
+
+.navToItem {
+  display: inline-block;
+  margin-top: 25px;
+}
+
+.navToItem a {
+  font-size: 16px;
+  margin: 5px;
+}
+
+.navToItem a,
+.navToItem path {
+  color: #aaa;
+}
+
+.navToItem:hover a,
+.navToItem:hover path {
+  color: #0fbbec;
+}
+
+.nextItem {
+  composes: navToItem;
+  float: right;
+}
+
+.previousItem {
+  composes: navToItem;
+}
+
+.versionchanged {
+  margin-top: 10px;
+  font-size: 12px;
+  font-style: italic;
+}
