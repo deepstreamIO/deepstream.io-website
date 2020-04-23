@@ -1,68 +1,53 @@
 .sidebar {
-    display: flex;
-    /*flex: 0 0 300px;*/
+  width: 250px;
+  padding: 50px 20px;
+  overflow-y: auto;
 }
 
-.hack {
-    position: fixed;
-    top: 120px;
-    right: 0;
-    z-index: 2;
-    height: calc(100vh - 120px);
-    overflow-y: auto;
-    width: 400px;
-    box-sizing: border-box;
-    /* margin-right: -999px; */
-    /* padding-right: 999px; */
-    background-color: rgb(247, 247, 247);
-    opacity: 1 !important;
-    padding-right: 100px;
-    padding-left: 40px;
-    padding-bottom: 40px;
-    padding-top: 40px;
-    border-left: 1px solid #eee;
+.sectionLevel > a,
+.sectionLevel > label {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 3;
+  text-transform: uppercase;
+  margin-right: 5px;
+  color: #6d6d6d;
 }
 
-.sectionLevel {
-}
-
-.sectionLevel > a, .sectionLevel > label {
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 3;
-    text-transform: uppercase;
-    margin-right: 5px;
-    color: #6d6d6d;
-}
-
-.subsectionLevel {
-}
-
-.subsectionLevel > a, .subsectionLevel > label {
-    margin-left: 10px;
-    font-size: 14px;
-    font-weight: 300;
-    line-height: 3;
-    text-transform: uppercase;
-    color: #6d6d6d;
+.subsectionLevel > a,
+.subsectionLevel > label {
+  margin-left: 10px;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 3;
+  text-transform: uppercase;
+  color: #6d6d6d;
 }
 
 .leaf {
-    margin-left: 10px;
+  margin-left: 10px;
 }
 
-.leaf > a, .leaf > label {
-    font-size: 16px;
-    line-height: 1.75;
-    font-weight: 300;
+.leaf > a,
+.leaf > label {
+  font-size: 16px;
+  line-height: 1.75;
+  font-weight: 300;
 }
 
-.activeLeaf, .activeLeaf > a {
-    color: #0FBBEC;
+.activeLeaf,
+.activeLeaf > a {
+  color: #0fbbec;
 }
 
-@media screen and (max-width:500px) {
-    .sidebar {
-        display: none;
-    }
+@media screen and (max-width: 500px) {
+  .sidebar {
+    display: none;
+  }
+}
+
+@media print {
+  .sidebar {
+    display: none;
+  }
 }
