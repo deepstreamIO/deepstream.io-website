@@ -99,13 +99,13 @@ Sets how long deepstream will wait when retrieving values from the database.
 _Default_:`2000`
 
 ### storageExclusionPrefixes
-A list of prefixes that, when a record starts with one of the prefixes the 
+A list of prefixes that, when a record starts with one of the prefixes the
 records data won't be stored in the db
 
 _Default_: `[]`
 
 ### storageHotPathPrefixes
-A list of prefixes that designate a record for direct writes to storage. 
+A list of prefixes that designate a record for direct writes to storage.
 When a correctly permissioned matching record is updated via `setData()`, it will be written
 directly to the cache and storage without a record transition. This can be up to twice as fast as
 updating a normal record using `setData()`
@@ -140,19 +140,143 @@ _Default_: 10000
 
 ## Connection Endpoint Configuration
 
-Deepstream (v2.3.0 and later) can be configured with custom connection endpoints. You can supply as many as you want, each as any individual 
-list entry below the `connectionEndpoints` key. Just make sure the ports don't clash!
+Deepstream (v5 and later) runs all websocket / HTTP services in one server to which they hook to provide their own functionality. This means you can run all the services at the same time on the same port if you want (for example text, binary and JSON). The idea is that *EVERYTHING* (minus MQTT) runs on port 6020, which makes deployments much easier.  
 
 ```yaml
-connectionEndpoints:
-  -
-    name: uws
-    options:
-      port: 6020
-      host: 0.0.0.0
+httpServer:
+  type: default
+  options:
+    # url path for http health-checks, GET requests to this path will return 200 if deepstream is alive
+    healthCheckPath: /health-check
+    # -- CORS --
+    # if disabled, only requests with an 'Origin' header matching one specified under 'origins'
+    # below will be permitted and the 'Access-Control-Allow-Credentials' response header will be
+    # enabled
+    allowAllOrigins: true
+    # a list of allowed origins
+    origins:
+      - 'https://example.com'
+    # Headers to copy over from websocket
+    headers:
+      - user-agent
+    ssl:
+      key: fileLoad(/path/to/sslKey)
+      cert: fileLoad(/path/to/sslCert)
+      ca: fileLoad(/path/to/caAuth)
 ```
 
-The special types 'uws-websocket', 'ws-websocket' and 'node-http' endpoint configures the built-in endpoints
+OR
+
+```yaml
+httpServer:
+  type: uws
+  options:
+    # url path for http health-checks, GET requests to this path will return 200 if deepstream is alive
+    healthCheckPath: /health-check
+    # Headers to copy over from websocket
+    headers:
+      - user-agent
+    # Options required to create an ssl app
+    ssl:
+      key: file(ssl/key.pem)
+      cert: file(ssl/cert.pem)
+    ##  dhParams: ...
+    ##  passphrase: ...
+```
+
+
+
+The server can be configured with custom connection endpoints. You can supply as many as you want, each as any individual list entry below the `connectionEndpoints` key:
+
+```yaml
+# Connection Endpoint Configuration
+connectionEndpoints:
+  - type: ws-binary
+    options:
+      # url path websocket connections connect to
+      urlPath: /deepstream
+      # the amount of milliseconds between each ping/heartbeat message
+      heartbeatInterval: 30000
+      # the amount of milliseconds that writes to sockets are buffered
+      outgoingBufferTimeout: 10
+      # the maximum amount of bytes to buffer before flushing, stops the client from large enough packages
+      # to block its responsiveness
+      maxBufferByteSize: 100000
+
+      # Security
+      # amount of time a connection can remain open while not being logged in
+      unauthenticatedClientTimeout: 180000
+      # invalid login attempts before the connection is cut
+      maxAuthAttempts: 3
+      # maximum allowed size of an individual message in bytes
+      maxMessageSize: 1048576
+
+  - type: ws-text
+    options:
+      # url path websocket connections connect to
+      urlPath: /deepstream-v3
+      # the amount of milliseconds between each ping/heartbeat message
+      heartbeatInterval: 30000
+      # the amount of milliseconds that writes to sockets are buffered
+      outgoingBufferTimeout: 10
+      # the maximum amount of bytes to buffer before flushing, stops the client from large enough packages
+      # to block its responsiveness
+      maxBufferByteSize: 100000
+
+      # Security
+      # amount of time a connection can remain open while not being logged in
+      unauthenticatedClientTimeout: 180000
+      # invalid login attempts before the connection is cut
+      maxAuthAttempts: 3
+      # maximum allowed size of an individual message in bytes
+      maxMessageSize: 1048576
+
+  - type: ws-json
+    options:
+      # url path websocket connections connect to
+      urlPath: /deepstream-json
+      # the amount of milliseconds between each ping/heartbeat message
+      heartbeatInterval: 30000
+      # the amount of milliseconds that writes to sockets are buffered
+      outgoingBufferTimeout: 10
+      # the maximum amount of bytes to buffer before flushing, stops the client from large enough packages
+      # to block its responsiveness
+      maxBufferByteSize: 100000
+
+      # Security
+      # amount of time a connection can remain open while not being logged in
+      unauthenticatedClientTimeout: 180000
+      # invalid login attempts before the connection is cut
+      maxAuthAttempts: 3
+      # maximum allowed size of an individual message in bytes
+      maxMessageSize: 1048576
+
+  - type: http
+    options:
+      # allow 'authData' parameter in POST requests, if disabled only token and OPEN auth is
+      # possible
+      allowAuthData: true
+      # enable the authentication endpoint for requesting tokens/userData.
+      # note: a custom authentication handler is required for token generation
+      enableAuthEndpoint: false
+      # path for authentication requests
+      authPath: /api/auth
+      # path for POST requests
+      postPath: /api
+      # path for GET requests
+      getPath: /api
+      # maximum allowed size of an individual message in bytes
+      maxMessageSize: 1024
+
+  - type: mqtt
+    options:
+        # port for the mqtt server
+        port: 1883
+        # host for the mqtt server
+        host: 0.0.0.0
+        # timeout for idle devices
+        idleTimeout: 60000
+```
 
 ### Websockets
 
@@ -164,17 +288,17 @@ Sets which URL path Websocket connections should connect to.
 _Default_: `/deepstream`
 
 #### heartbeatInterval
-The number of milliseconds between each ping/heartbeat message. 
+The number of milliseconds between each ping/heartbeat message.
 
 _Default_: `30000`
 
 #### unauthenticatedClientTimeout
-The amount of time a connection can remain open while not being logged in. 
+The amount of time a connection can remain open while not being logged in.
 
 _Default_: `180000`
 
 #### maxAuthAttempts
-Invalid login attempts before the connection is cut. 
+Invalid login attempts before the connection is cut.
 
 _Default_: `3`
 
@@ -191,7 +315,7 @@ _Default_: `1048576`
 
 ### outgoingBufferTimeout
 The amount of milliseconds that secondary writes to sockets are buffered. This means
-writes that are not realtime critical, which currently are either ACKs or 
+writes that are not realtime critical, which currently are either ACKs or
 non critical ERROR messages.
 
 _Default_: `0`
