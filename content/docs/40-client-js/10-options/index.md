@@ -73,3 +73,10 @@ _Default_: `3000`
 The number of milliseconds from the moment `record.delete()` is called until an error is thrown since no delete ack message has been received. Please take into account that the deletion is only complete after the record has been deleted from both cache and storage.<br>
 _Type_: Number<br>
 _Default_: `3000`
+
+### offlineEnabled
+Enable offline record support using indexdb to store data client side.  
+_Type_: Boolean<br>
+_Default_: `false`  
+
+See all options in [source repo](https://github.com/deepstreamIO/deepstream.io-client-js/blob/master/src/client-options.ts).
