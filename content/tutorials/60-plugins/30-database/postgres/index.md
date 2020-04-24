@@ -53,15 +53,15 @@ plugins:
 This connector can also be used as a standalone component from node.js to connect to postgres' notification mechanism. To do this, install the connector via
 
 ```bash
-npm install deepstream.io-storage-postgres --save
+npm install @deepstream/storage-postgres --save
 #or
-yarn add deepstream.io-storage-postgres
+yarn add @deepstream/storage-postgres
 ```
 
 and instantiate it directly
 
 ```javascript
-const PostgresConnector = require( 'deepstream.io-storage-postgres' );
+const PostgresConnector = require( '@deepstream/storage-postgres' );
 const settings = {
   user: process.env.PG_USER,
   database: process.env.PG_DB,
@@ -120,14 +120,14 @@ Subscribe to notifications from the schema. Which notifications you'll receive i
 ### unsubscribe(callback, done, schema)
 Removes a previously registered callback or all listeners if callback is omitted. Schema is optional
 
-### set(key, value, callback)
+### set(key, version, value, callback)
 Writes a value to the database. If key includes a `/` e.g. `cars/bmw`, the first part will be used to create a table and the second part as id. Value can be any JSON blob, callback will be invoked once the write is complete. Please note that reads are buffered and batched and might not be executed straight away.
 
-### get(key, callback) 
-Retrieves a value from a database. Callback will be invoked with error or null and the value
+### get(key, callback)
+Retrieves a value from a database. Callback will be invoked with error or null, version and value. If record not found version will be -1.
 
 ### delete(key, callback)
 Deletes a value from the database
 
-### query(statement, callback, args, silent) 
+### query(statement, callback, args, silent)
 Low level query interface.  Statement is a PostgreSQL string, args an optional array of arguments for parameterized queries and silent = true ensures that errors are forwarded to the callback rather than thrown/logged.

@@ -20,10 +20,6 @@ const client = new DeepstreamClient('localhost:6020')
 client.login()
 ```
 
-## Constants
-* `deepstream.CONSTANTS` grants access to constants. See [constants](/docs/common/constants/) for a full list
-* `deepstream.MERGE_STRATEGIES` grants access to the default merge strategies used globally as `mergeStrategy` client option or per record with `record.mergeStrategy()`
-
 ## Events
 
 ### connectionStateChanged
