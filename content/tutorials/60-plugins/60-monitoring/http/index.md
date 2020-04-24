@@ -1,6 +1,6 @@
 ---
-title: HTTP Monitoring
-description: Learn how to use monitor deepstream using http
+title: HTTP and Log Monitoring
+description: Learn how to use monitor deepstream using http or logs
 logoImage: http.png
 ---
 
@@ -72,12 +72,33 @@ This provides us good insight into what the server is actually doing, but doesn'
 
 Usually by using a poll agent like logstash, this takes the json object, transforms it slightly to add some useful meta data and then sends it off to elasticsearch to visualise via Kibana. Keep an eye out for a tutorial  soon!
 
-#### How to install HTTP monitoring?
+Deesptream has two prebuillt services for monitoring.
 
-It's prebuilt into deepstream core, so all you need to do is enable it as follows in your config file:
+### Http monitoring  
+
+Enables an endpoint to get the metrics. After the endpoint is called, metrics are reseted.
+Authentication can be open or setting a `key:value` in the request header.
 
 ```yaml
 monitoring:
   type: http
+  # the endpoint url
+  url: /monitoring,
+  headerKey: string,
+  headerValue: string,
+  allowOpenPermissions: false
+
 ```
 
+### Log monitoring  
+
+Logs the monitoring metrics to be retrieved by a log transport. After the metrics are logged they are reseted.  
+
+```yaml
+monitoring:
+  type: log
+  # milliseconds
+  logInterval: number
+  # log key for metrics, defaults to 'DEEPSTREAM_MONITORING'
+  monitoringKey: string
+```
