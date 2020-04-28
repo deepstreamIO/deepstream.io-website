@@ -72,7 +72,7 @@ This provides us good insight into what the server is actually doing, but doesn'
 
 Usually by using a poll agent like logstash, this takes the json object, transforms it slightly to add some useful meta data and then sends it off to elasticsearch to visualise via Kibana. Keep an eye out for a tutorial  soon!
 
-Deesptream has two prebuillt services for monitoring.
+Deesptream has two prebuilt services for monitoring.
 
 ### Http monitoring  
 
@@ -92,7 +92,7 @@ monitoring:
 
 ### Log monitoring  
 
-Logs the monitoring metrics to be retrieved by a log transport. After the metrics are logged they are reseted.  
+Logs the monitoring metrics to be retrieved by a log transport every `logInterval` milliseconds. After the metrics are logged they are reseted.  
 
 ```yaml
 monitoring:
