@@ -5,11 +5,15 @@ wip: true
 logoImage: json.png
 ---
 
+The JSON endpoint is available to help people to debug writing new SDKs and should not be used in production.
+
 ### How to configure:
+
+#### server  
 
 ```yaml
 connectionEndpoints:
-  - type: ws-binary
+  - type: ws-json
     options:
       # url path websocket connections connect to
       urlPath: /deepstream-json
@@ -28,4 +32,14 @@ connectionEndpoints:
       maxAuthAttempts: 3
       # maximum allowed size of an individual message in bytes
       maxMessageSize: 1048576
+```
+
+#### client  
+
+In the client options include:  
+
+```
+socketOptions: {
+  jsonTransportMode: true
+}
 ```
