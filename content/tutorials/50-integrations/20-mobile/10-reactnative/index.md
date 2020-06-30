@@ -20,7 +20,7 @@ deepstream start
 
 ## 2. Set up the HTML side (optional)
 
-To try some quick tests between the React Native Simulator and a browser window, you can set up an HTML side following the [quickstart guide](/tutorials/guides/getting-started-quickstart/).
+To try some quick tests between the React Native Simulator and a browser window, you can set up an HTML side following the [quickstart guide](/tutorials/getting-started/javascript/).
 
 ## 3. Initialize and run a new React Native application
 
@@ -39,7 +39,7 @@ cd DeepstreamReactNative
 Fetch the deepstream code and the url lib it depends on
 
 ```bash
-npm install @deepstream/client url --save
+npm install @deepstream/client --save
 ```
 
 Run the app in the iOS simulator (or check the React Native [docs](https://facebook.github.io/react-native/docs/getting-started.html) for use with the Android simulator)
@@ -94,17 +94,17 @@ AppRegistry.registerComponent(
 
 ## 5. Import the deepstream JS component
 
-Since we allready installed deepstream in step 3, all we need to do now is import it:
+Since we already installed deepstream in step 3, all we need to do now is import it:
 
 ```javascript
 import React, { Component } from 'react';
 import { AppRegistry, TextInput } from 'react-native';
-import deepstream from '@deepstream/client';
+import { DeepstreamClient } from '@deepstream/client';
 
 // ...
 ```
 
-Then setup the client and record like we saw in the [quickstart guide](/tutorials/guides/getting-started-quickstart/)
+Then setup the client and record like we saw in the [quickstart guide](/tutorials/getting-started/javascript/)
 
 ```javascript
 constructor(props) {
@@ -171,7 +171,7 @@ Your index.ios.js should now look as follows, and the app should work as shown i
 ```javascript
 import React, { Component } from 'react';
 import { AppRegistry, TextInput } from 'react-native';
-import deepstream from '@deepstream/client';
+import { DeepstreamClient } from '@deepstream/client';
 
 export default class DeepstreamReactNative extends Component {
   constructor(props) {
