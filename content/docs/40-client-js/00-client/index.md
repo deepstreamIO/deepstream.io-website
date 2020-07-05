@@ -73,7 +73,7 @@ client.login({username: 'peter', password: 'sesame'}, (success, data) => {
 ```
 
 ### close()
-Closes the connection to the server.
+Closes the connection to the server. Using this method will prevent the client from reconnecting and authenticating again with the same instance of the client.
 
 ```javascript
 client.on('connectionStateChanged', connectionState => {
