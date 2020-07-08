@@ -17,7 +17,7 @@ export const LearnMore = () => (
                     </p>
                     <div className={style.actions}>
                         <Link className={style.action} to="/tutorials/concepts/what-is-deepstream/">What is it?</Link>
-                        <Link className={style.action} to="/guides/">Getting Started</Link>
+                        <Link className={style.action} to="/tutorials/getting-started/javascript/">Getting Started</Link>
                     </div>
                 </div>
             </div>

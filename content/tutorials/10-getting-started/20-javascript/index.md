@@ -36,7 +36,9 @@ Create an _index.html_ file and add the following to it, making sure to point to
   <body>
     <input type="text" />
     <script type="text/javascript">
-      //js goes here
+      window.onload = function () {
+        //js goes here
+      }
     </script>
   </body>
 </html>
@@ -45,6 +47,7 @@ Create an _index.html_ file and add the following to it, making sure to point to
 This page consists of one text field ready for user input. Inside the `script` tag, add the following JavaScript to login to your deepstream server:
 
 ```javascript
+const { DeepstreamClient } = window.DeepstreamClient
 const client = new DeepstreamClient('localhost:6020')
 client.login()
 ```

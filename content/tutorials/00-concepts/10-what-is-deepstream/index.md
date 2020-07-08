@@ -34,11 +34,11 @@ deepstream is useful as a backend for most applications, but is mostly used for
 deepstream provides three core concepts:
 - **[Data-sync:](/tutorials/core/datasync/records/)** stateful and persistent JSON objects that can be manipulated in whole or in parts and are synchronized across all connected clients
 - **[Pub-Sub:](/tutorials/core/pubsub/)** many-to-many messaging based on subscriptions to topics
-- **[Request-Response:](/tutorials/core/request-response/)** Question/Answer workflows
-- **[Presence:](/tutorials/core/presence/)** Question/Answer workflows
+- **[Request-Response:](/tutorials/core/request-response/)** RPC question/answer workflows
+- **[Presence:](/tutorials/core/presence/)** Query on the connected clients
 
 ### What does it not do?
-deepstream is a realtime data server that can handle all aspects of your application's logic. But: 
+deepstream is a realtime data server that can handle all aspects of your application's logic. But:
 
 It is not an HTTP server, so won’t be able to serve images, HTML or CSS files. When you’re building a webapp we recommend using a CDN and something like Github pages or AWS S3 to serve your static assets and leave the dynamic data to deepstream.
 
@@ -51,7 +51,7 @@ deepstream can optionally be integrated with three types of systems:
 - Databases can be used for long-term data storage and querying
 - Caches can be used for fast, short-term data access
 
-Connectors are available for many popular systems, e.g. [RethinkDB](/tutorials/plugins/database/rethinkdb/), [MongoDB](/tutorials/plugins/database/mongodb/), [Redis](/tutorials/plugins/cache/redis/) or [ElasticSearch](/tutorials/plugins/database/elasticsearch/) and can also easily be written yourself.
+Connectors are available for many popular systems, e.g. [Postgres](/tutorials/plugins/database/postgres/), [RethinkDB](/tutorials/plugins/database/rethinkdb/), [MongoDB](/tutorials/plugins/database/mongodb/), [Redis](/tutorials/plugins/cache/redis/) or [ElasticSearch](/tutorials/plugins/database/elasticsearch/) and can also easily be written yourself.
 
 If no external system is specified, deepstream will run as a single node and store data in internal memory, but won't persist it to disk.
 
