@@ -36,10 +36,10 @@ Move into the project folder
 cd DeepstreamReactNative
 ```
 
-Fetch the deepstream code and the url lib it depends on
+Fetch the deepstream code and the url lib it depends on. For usage in react-native the install must include an environment variable in order to run a postinstall script that facilitates integration with react-native. For further explanation see [this issue](https://github.com/deepstreamIO/deepstream.io-client-js/issues/534).
 
 ```bash
-npm install @deepstream/client --save
+DEEPSTREAM_ENV=react-native npm install @deepstream/client --save
 ```
 
 Run the app in the iOS simulator (or check the React Native [docs](https://facebook.github.io/react-native/docs/getting-started.html) for use with the Android simulator)
