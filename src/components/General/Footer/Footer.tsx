@@ -2,9 +2,9 @@ import * as React from 'react';
 import {Link} from "gatsby"
 import cn from 'classnames'
 import './Footer.scss'
-import { 
+import {
         FaDownload, FaBook, FaCode, FaInfo, FaBullhorn,
-        FaStackOverflow, FaSlack, FaGithub, FaTwitter, 
+        FaStackOverflow, FaSlack, FaGithub, FaTwitter,
 } from 'react-icons/fa'
 
 
@@ -18,7 +18,7 @@ export const Footer = ({ hasSideBar }) => (
 
                 <div className="col col-c">
                         <h4>CONTENT</h4>
-                        <Link to="/install/">
+                        <Link to="/tutorials/install/linux/">
                                 <FaDownload />
                                 <span>Install</span>
                         </Link>
