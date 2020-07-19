@@ -78,3 +78,29 @@ client.on('connectionStateChanged', connectionState => {
     }
 })
 ```
+
+## Closed client connection  
+
+Once the client closes the connection to the server, it can not be opened again using the same instance of the client. This can cause some issues on web/mobile when we logout a user, and close it's deepstream client connection, and then try to login as a new user. It will not be possible using the same instance of the client. One solution is to use the [singleton pattern](https://en.wikipedia.org/wiki/Singleton_pattern), as shown in this quick example:  
+
+```javascript
+
+// Deepstream client using "singleton" pattern
+let client = null
+
+const dsClient = () => {
+  if (!client) {
+    client = new DeepstreamClient('<url>', options)
+  }
+  if (client && client.getConnectionState() === 'CLOSED') {
+    client = new DeepstreamClient('<url>', options)
+  }
+  return client
+}
+```
+
+Then pass along and call the dsClient function for interacting with the client methods:  
+ `dsClient().login()`  
+  `dsClient().record.getRecord(recordName)`  
+
+Using this pattern, if the client connection is closed, a new one will be instantiated and returned.  
