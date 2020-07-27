@@ -8,7 +8,7 @@ deepstream comes with a comprehensive command line interface (CLI) that lets you
 Many of these options can also be set via the configuration file, read [config file documentation](/docs/server/configuration/). for a detailed list.
 
 ## Usage
-If you've [installed](/install/) deepstream on linux via a package manager, the `deepstream` command is already on your path. On Mac and Windows, you can access it through the executable, e.g. `./deepstream` or `deepstream.exe`
+If you've [installed](/tutorials/install/linux/) deepstream on linux via a package manager, the `deepstream` command is already on your path. On Mac and Windows, you can access it through the executable, e.g. `./deepstream` or `deepstream.exe`
 
 For the brave souls who've got deepstream via [Github](https://github.com/deepstreamIO/deepstream.io) or [NPM](https://www.npmjs.com/package/deepstream.io) instead, you can find the executable in `bin/deepstream`
 
@@ -28,7 +28,7 @@ will print out all available commands:
 
     start [options]            start a deepstream server
     daemon [options]           start a deepstream daemon that will auto-restart on failures
-    service [options] [add|remove|start|stop]  Add, remove, start or stop deepstream as a 
+    service [options] [add|remove|start|stop]  Add, remove, start or stop deepstream as a
                                service to your operating system
     install [options]          install connectors
     info [options]             print meta information about build and runtime
@@ -112,8 +112,8 @@ deepstream service --help
     --std-out <directory>  the directory for output logs
     --std-err <directory>  the directory for error logs
     --dry-run              outputs the service file to screen
-``` 
-   
+```
+
 #### --config
 
 If you installed it via a linux package manager it will default to _/etc/deepstream_.

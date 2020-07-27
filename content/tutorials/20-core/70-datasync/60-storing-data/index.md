@@ -52,7 +52,7 @@ It can be tempting to use a fully managed cache from an infrastructure-as-a-serv
 Equally, a lot of cache / database protocols are designed for use within a trusted environment and therefor unencrypted. If your database lives outside of your network, make sure to use TLS or choose a service that offers a VPN.
 
 ## Downloading and installing connectors
-deepstream connectors are available for many popular databases and caches and we're constantly looking to expand the selection. You can find an overview of available connectors on the [download page](/install/). Connectors can be installed via deepstream's commandline interface, using the `cache` or `storage` keyword, e.g.
+deepstream connectors are available for many popular databases and caches and we're constantly looking to expand the selection. You can find an overview of available connectors on the [tutorials page](/tutorials/). Connectors can be installed via deepstream's commandline interface, using the `cache` or `storage` keyword, e.g.
 
 ```bash
 deepstream install cache redis
@@ -75,4 +75,4 @@ If you're using deepstream from Node, it's also possible to download connectors 
 ## Writing your own connector
 If you can't find a connector for your system of choice, you can also write your own quite easily in C++ with Node bindings or in Node.js. If you're happy with the way your connector turned out, please consider contributing it. To do so, have a look at deepstream's [contribution guidelines](/info/contribution-guidelines/)
 
-For a guide into how to implement your own connection, please refer to the [storage plugin](../../../guides/plugins/storage/) and [cache plugin](../../../guides/plugins/cache/) guides.
+For a guide into how to implement your own connection, please refer to the [custom plugin](/tutorials/custom-plugins/an-overview/) guides.

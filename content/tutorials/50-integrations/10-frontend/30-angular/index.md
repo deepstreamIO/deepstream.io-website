@@ -38,7 +38,7 @@ ng serve
 ![](first-run.png)
 
 ## 2. Install deepstream
-deepstream needs to be installed on both the client and server. Angular is a client tool so we are focusing on the client installation but you can follow the steps [here](https://deepstream.io/install/) to install deepstream on the server.
+deepstream needs to be installed on both the client and server. Angular is a client tool so we are focusing on the client installation but you can follow the steps [here](https://deepstream.io/tutorials/install/linux/) to install deepstream on the server.
 
 Installing deepstream in Angular projects is quite simple. Angular bundles up scripts using Webpack and splits these bundles in a manner that makes it easier for browsers load them faster. To help Angular with this process, rather than just installing the scripts anywhere, we install with `npm` and load the script as a vendor file.
 
@@ -69,7 +69,7 @@ export class AppComponent {
 }
 ```
 
-Depending on your Typescript configuration, calling `deepstream` from nowhere might throw an error. 
+Depending on your Typescript configuration, calling `deepstream` from nowhere might throw an error.
 
 ## 3. Create deepstream Service (DsService)
 deepstream will work perfectly fine when used directly in the component but as your project grows large, you might find yourself in the deep mess of violating [DRY](https://en.wikipedia.org/wiki/Don't_repeat_yourself). A common pattern in Angular (both 1.x and the newer versions) is to create a service that abstracts a group of tasks so this services can be used and re-used by multiple components if need be.
@@ -160,7 +160,7 @@ export class AppComponent implements OnInit{
     // Login without credentials
     this.ds.login(null, this.loginHandler);
   }
-        
+
   loginHandler(success, data) {
     console.log('logged in', success, data);
   }
@@ -209,7 +209,7 @@ export class AppComponent implements OnInit{
 }
 ```
 
-The `addChat` method creates a [record](https://deepstream.io/tutorials/core/datasync/records/), sets a value to the record, clears the text property and updates the deepstream chat list with the record name. 
+The `addChat` method creates a [record](https://deepstream.io/tutorials/core/datasync/records/), sets a value to the record, clears the text property and updates the deepstream chat list with the record name.
 
 The markup for creating messages is quite simple:
 
@@ -224,7 +224,7 @@ The markup for creating messages is quite simple:
 We perform a two-way binding to the input with the `text` property as well as add a click event listener to the send button which calls `addChat` method.
 
 ## 6. Chat Listing
-The `chats` property, for now, is undefined and is supposed to be a [deepstream list](/tutorials/core/datasync/lists/) which will hold the collection of deepstream records. 
+The `chats` property, for now, is undefined and is supposed to be a [deepstream list](/tutorials/core/datasync/lists/) which will hold the collection of deepstream records.
 
 We can create this list when the component is ready, and subscribe to it as well so as to print the `chats` as they come in:
 
@@ -245,12 +245,12 @@ export class AppComponent implements OnInit{
   ) {}
 
   ngOnInit() {
-    // . . . 
+    // . . .
 
     this.chats = this.ds.getList('chats');
 
     this.chats.on('entry-added', recordName => {
-            
+
       this.ds.getRecord( recordName ).whenReady( record => {
 
         record.subscribe( (data) => {

@@ -10,7 +10,7 @@ Time to get started with deepstream. This tutorial takes you through the initial
 
 ## Start the server
 
-Let's start by installing the server. Just pick the [right version for your operating system](/install/) and follow its steps. Once the server is installed, you can start it with:
+Let's start by installing the server. Just pick the [right version for your operating system](/tutorials/install/linux/) and follow its steps. Once the server is installed, you can start it with:
 
 ```bash
 ./deepstream start
