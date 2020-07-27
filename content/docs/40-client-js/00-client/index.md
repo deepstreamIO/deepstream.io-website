@@ -44,7 +44,7 @@ client.on('error', ( error, event, topic ) =>
 |authParams|Object|false|An object with authentication parameters
 |callback|Function|true|A function that will be called once the response to the authentication request is received.
 
-Authenticates the client against the server. To learn more about how authentication works, please have a look at the [Security Overview](/tutorials/core/security/).
+Authenticates the client against the server. To learn more about how authentication works, please have a look at the [Security Overview](/tutorials/concepts/security/).
 
 Callback will be called with: success (Boolean), data (Object).
 
@@ -81,6 +81,32 @@ client.on('connectionStateChanged', connectionState => {
 })
 
 client.close()
+```
+
+### pause()
+Pauses the connection to the server and enters in `OFFLINE` state.
+
+```javascript
+client.on('connectionStateChanged', connectionState => {
+  // will be called with 'OFFLINE' once the connection is successfully paused.
+})
+
+client.pause()
+```
+
+### resume()
+|Argument|Type|Optional|Description|
+|---|---|---|---|
+|callback|Function|true|A function that will be called with the result of the reconnection attempt.
+
+Restores the connection to the server after a `pause()` call.
+
+```javascript
+client.on('connectionStateChanged', connectionState => {
+  // will be called with 'RECONNECTING' and the subsequent intermediate connection states
+})
+
+client.resume()
 ```
 
 ### getConnectionState()
