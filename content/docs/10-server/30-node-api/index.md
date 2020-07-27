@@ -32,6 +32,12 @@ Emitted once `deepstream.start()` has been called and the startup procedure has 
 ### `stopped`
 Emitted once `deepstream.stop()` has been called and the server has been completely shut down.
 
+💡 **NOTE:** stopping the server does not imply exiting the Node.js process. To do so, the following code can be used:  
+
+```javascript
+server.on('stopped', () => process.exit(0))
+```
+
 ---
 
 ## Methods
@@ -40,7 +46,7 @@ Emitted once `deepstream.stop()` has been called and the server has been complet
 Starts the server.
 
 ### `stop()`
-Stops the server.
+Stops the server. Once the server is stopped, it can not be started again using the same instance of the server.  
 
 ### `set(key, value)`
 This method allows you to overwrite particular configuration options which were built via the

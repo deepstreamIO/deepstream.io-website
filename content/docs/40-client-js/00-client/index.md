@@ -23,7 +23,7 @@ client.login()
 ## Events
 
 ### connectionStateChanged
-Emitted every time the connectionstate changes. The connectionState is passed to the callback and can also be retrieved using <a href="#getConnectionState()">getConnectionState()</a>. A list of possible connection states is available [here](/tutorials/concepts/connectivity/index.html#connection-states)
+Emitted every time the connectionstate changes. The connectionState is passed to the callback and can also be retrieved using <a href="#getConnectionState()">getConnectionState()</a>. A list of possible connection states is available [here](/tutorials/concepts/connectivity/#connection-states)
 
 ### error
 Aggregates all errors that are encountered. Some errors like `CONNECTION_ERROR` or `MESSAGE_PARSE_ERROR` are exlusively emitted by the client.
@@ -44,7 +44,7 @@ client.on('error', ( error, event, topic ) =>
 |authParams|Object|false|An object with authentication parameters
 |callback|Function|true|A function that will be called once the response to the authentication request is received.
 
-Authenticates the client against the server. To learn more about how authentication works, please have a look at the [Security Overview](/tutorials/core/security/).
+Authenticates the client against the server. To learn more about how authentication works, please have a look at the [Security Overview](/tutorials/concepts/security/).
 
 Callback will be called with: success (Boolean), data (Object).
 
@@ -73,7 +73,7 @@ client.login({username: 'peter', password: 'sesame'}, (success, data) => {
 ```
 
 ### close()
-Closes the connection to the server. Using this method will prevent the client from reconnecting and authenticating again with the same instance of the client.
+Closes the connection to the server. Using this method will prevent the client from reconnecting and authenticating again with the same instance of the client. More info [here](/tutorials/concepts/connectivity/#closed-client-connection)
 
 ```javascript
 client.on('connectionStateChanged', connectionState => {
@@ -81,6 +81,32 @@ client.on('connectionStateChanged', connectionState => {
 })
 
 client.close()
+```
+
+### pause()
+Pauses the connection to the server and enters in `OFFLINE` state.
+
+```javascript
+client.on('connectionStateChanged', connectionState => {
+  // will be called with 'OFFLINE' once the connection is successfully paused.
+})
+
+client.pause()
+```
+
+### resume()
+|Argument|Type|Optional|Description|
+|---|---|---|---|
+|callback|Function|true|A function that will be called with the result of the reconnection attempt.
+
+Restores the connection to the server after a `pause()` call.
+
+```javascript
+client.on('connectionStateChanged', connectionState => {
+  // will be called with 'RECONNECTING' and the subsequent intermediate connection states
+})
+
+client.resume()
 ```
 
 ### getConnectionState()

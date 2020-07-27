@@ -21,7 +21,7 @@ Installation goes two ways, but a very simple process; we need to install both d
 
 deepstream server comes in different forms and shapes; it can be downloaded and executed as a shell command on your OS (OSX, Windows, Linux), or installed using Docker or npm. We will go the OS route in this tutorial:
 
-- Download deepstream from the [install page](https://deepstream.io/install/).
+- Download deepstream from the [install page](https://deepstream.io/tutorials/install/linux/).
 - Extract the content of the zipped file to your project directory.
 - Run the following command on the unzipped directory to start deepstream:
 
@@ -147,7 +147,7 @@ export class HomePage {
 
   constructor(
     public navCtrl: NavController,
-    
+
     /*
     * Inject the deepstream service
     */
@@ -195,7 +195,7 @@ A deepstream record will store each of the chat messages. We need to collect the
 </ion-content>
 ```
 
-`ion-navbar` is the app bar as seen in the view's header. A username property is bound to it so as to show the user her name when she joins the chat. 
+`ion-navbar` is the app bar as seen in the view's header. A username property is bound to it so as to show the user her name when she joins the chat.
 
 `ion-textarea` is an input field for entering chat messages. It is bound to the `text` property which we will create soon. The button, `ion-button` is bound to the `addChat` click handler.
 
@@ -211,9 +211,9 @@ export class HomePage {
         // Get username from prompt
         const defaultUsername = 'anonymous';
         const username = window.prompt('Please enter your username', defaultUsername);
-    
+
         this.username = username || defaultUsername;
-    
+
         this.ds.login(null, this.loginHandler);
     }
 

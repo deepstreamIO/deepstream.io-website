@@ -17,7 +17,7 @@ RethinkDB’s realtime search makes it a great fit as a datastore within a deeps
 Not really. We’ve used RethinkDB extensively within internal architectures and can very much recommend it. As database lifecycles go, it’s still very young and unestablished, but seeing increasing adoption. At the moment, the realtime querying capabilities aren’t compatible with all query types (e.g. aggregate queries like averages etc. aren’t supported), sharding is limited to 64 nodes and load balancing / shard accessing can require connection redirects.
 
 #### How to use RethinkDB with deepstream.io
-deepstream offers a database connector plugin for RethinkDB and optionally also a search provider that creates realtime queries based on dynamic list names. RethinkDB and the search provider are also part of the [Compose file for Docker](/install/docker-compose/).
+deepstream offers a database connector plugin for RethinkDB and optionally also a search provider that creates realtime queries based on dynamic list names. RethinkDB and the search provider are also part of the [Compose file for Docker](/tutorials/devops/docker-compose/).
 
 **Installing the RethinkDB storage connector**
 

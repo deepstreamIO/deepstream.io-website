@@ -11,7 +11,7 @@ The first thing you'll need to access the HTTP API is your application's unique 
 
 ## Start the server
 
-Let's start by installing the server. Just pick the [right version for your operating system](/install/) and follow its steps. Once the server is installed, you can start it with:
+Let's start by installing the server. Just pick the [right version for your operating system](/tutorials/install/linux/) and follow its steps. Once the server is installed, you can start it with:
 
 ```bash
 deepstream start
@@ -26,7 +26,7 @@ tutorial.
 We'll use the JS client to subscribe to the event 'test-event':
 
 ```javascript
-ds.event.subscribe( 'test-event', function( eventData ){ 
+ds.event.subscribe( 'test-event', function( eventData ){
   console.log( eventData );
 });
 ```
