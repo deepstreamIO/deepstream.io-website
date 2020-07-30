@@ -26,6 +26,8 @@ deepstream’s data-structures are schemaless JSON documents identified by a uni
 ## How to use deepstream with Postgres
 deepstream comes preinstalled an official connector for postgres.
 
+💡 **NOTE:** for new installs we recommend using the latest postgres connector version available on [github](https://github.com/deepstreamIO/deepstream.io-storage-postgres#installing-and-migrating-to-the-latest-connector-version).
+
 It can be configured in the `plugins - storage` section of deepstreams `config.yml`
 
 ```yaml
