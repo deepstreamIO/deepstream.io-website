@@ -15,7 +15,7 @@ export const Layout: React.FunctionComponent<LayoutProps> = ({ children, pageCla
     return <div className={pageClass}>
         <SEO />
         <Header/>
-        <div style={{
+{/*        <div style={{
             boxSizing: 'border-box',
             paddingTop: "10px",
             paddingBottom: "10px",
@@ -39,7 +39,7 @@ export const Layout: React.FunctionComponent<LayoutProps> = ({ children, pageCla
                 }} to="/blog/20200519-deepstream-maintenance-mode/">Deepstream is in maintenance mode, contributors needed</Link>
             </div>
         </div>
-        <div>
+*/}        <div>
             {children}
         </div>
         <Footer hasSideBar={hasSideBar} />
