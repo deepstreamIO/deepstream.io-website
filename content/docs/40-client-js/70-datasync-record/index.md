@@ -27,9 +27,6 @@ const record = client.record.getRecord(recordName)
 
 ## Events
 
-### ready
-Emitted once the record has received its current data from the server.
-
 ### hasProviderChanged
 Emitted whenever the `hasProvider` property has been changed. Argument is the `hasProvider` property.
 
