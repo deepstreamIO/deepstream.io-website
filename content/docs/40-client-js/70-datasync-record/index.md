@@ -162,9 +162,12 @@ record.get('personalData.firstname') // 'Homer'
 |callback|Function|false|A function that is called whenever the value changes and the data passed through.|
 |triggerNow|Boolean|true| If true, the callback function will be called immediately with the current value.|
 
-Registers that a function will be performed whenever the record's value changes. All of the record's data can be subscribed to by providing a callback function or when changes are performed to a specific path within the record.
+Registers that a function will be called whenever the record's value changes. All of the record's data can be subscribed to by providing a callback function or when changes are performed to a specific path within the record.
 
 Optional: Passing `true` will execute the callback immediately with the record's current value.
+
+[[info]]
+| Subscribe is an operation done per record instance. Each time you call `client.getRecord(name)` you can subscribe and then unsubscribe to that specific record instance.
 
 Listening to any changes on the record:
 ```javascript
@@ -219,16 +222,14 @@ user.unsubscribe()
 ```
 
 ### discard()
-Removes all change listeners and notifies the server that client no longer wants updates for this record if your application
-no longer requires the record.
+Removes all change listeners and notifies the server that client no longer wants updates for this record instance.
 
 ```javascript
 user.discard()
 ```
 
 [[info]]
-| It is important to use this operation for records that are no longer needed. `unsubscribe()` only removes listeners and does not notify the server; in this case, the server will continue to send updates to the client.
-| Records are only discarded when you have no record subscriptions left.
+| It is important to use this operation for record instances that are no longer needed.  
 
 ### delete()
 

@@ -96,6 +96,30 @@ try {
 }
 ```
 
+### client.record.head(name, callback)
+
+|Argument|Type|Optional|Description|
+|---|---|---|---|
+|name|String|false|The name of the record.|
+|callback|Function|true|Arguments are (String) error and (Number) version|
+
+The callback contains an error argument and a number to indicate the current record version in deepstream.
+
+```javascript
+// Callback
+client.record.head('user/johndoe', (error, version) => {
+  // ...
+})
+
+// Promise
+try {
+  const recordVersion = await client.record.head('user/johndoe')
+  // ...
+} catch (error) {
+
+}
+```
+
 ### client.record.snapshot(name, callback)
 
 |Argument|Type|Optional|Description|
