@@ -12,7 +12,7 @@ deepstream is a standalone realtime server that can be run on all major platform
 
 Clients establish persistent, bidirectional WebSocket connections with the deepstream server using lightweight SDKs that are available for [Browsers/Node](/tutorials/getting-started/javascript/) and [Java/Android](https://github.com/deepstreamIO/deepstream.io/issues/72) and soon/partially as well for [iOS(ObjC/Swift)](https://github.com/deepstreamIO/deepstream.io/issues/68), [Python](https://github.com/deepstreamIO/deepstream.io/issues/72), [.NET](https://github.com/deepstreamIO/deepstream.io/issues/70) and [C/C++](/deepstreamIO/deepstream.io/issues/69).
 
-The server itself is [configurable](/docs/server/configuration/) and uses [permission files](/tutorials/core/permission/conf-simple/) to validate incoming messages, but doesn’t hold any custom logic other than that. All logic is provided by “clients” which can be backend processes as well as end-users. deepstream provides numerous features such as [listening and active subscriptions](/tutorials/core/active-data-providers/) to hook into what users request and provide/transform data accordingly as well as integrate and retrieve data from third party components or APIs.
+The server itself is [configurable](/docs/server/configuration/) and uses [permission files](/tutorials/core/permission/valve-introduction/) to validate incoming messages, but doesn’t hold any custom logic other than that. All logic is provided by “clients” which can be backend processes as well as end-users. deepstream provides numerous features such as [listening and active subscriptions](/tutorials/core/active-data-providers/) to hook into what users request and provide/transform data accordingly as well as integrate and retrieve data from third party components or APIs.
 This makes deepstream useful as both a realtime server for mobile/browser and desktop clients as well as a backbone for microservice architectures.
 
 What is it for?
@@ -59,7 +59,7 @@ If no external system is specified, deepstream will run as a single node and sto
 deepstream supports [encrypted connections](/tutorials/core/security/)
 and [multiple authentication strategies](/tutorials/core/auth/http-webhook/) to
 validate incoming connections. It also uses a granular permission language
-called [_Valve_](/tutorials/core/permission/conf-simple/) that lets you
+called [_Valve_](/tutorials/core/permission/valve-introduction/) that lets you
 configure exactly which user can manipulate which record, event or rpc with
 which data.
 

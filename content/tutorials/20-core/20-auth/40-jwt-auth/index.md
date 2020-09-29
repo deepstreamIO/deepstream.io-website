@@ -7,9 +7,9 @@ Authentication is vital to most apps and the way it is achieved has evolved subs
 
 These tokens are compact and self-contained encoded JSON objects that hold vital information which is transferred between different parties (clients/servers most times). The compact nature makes it possible to exchange them via request headers while the self-contained characteristics shine at JWT's ability to store authentication payload making JWT not just useful at authentication but also handy in information exchange.
 
-JWTs have three parts: header, payload, and signature: 
+JWTs have three parts: header, payload, and signature:
 
-- The __header__ holds the hashing algorithm, and the type (which is most time `jwt`). 
+- The __header__ holds the hashing algorithm, and the type (which is most time `jwt`).
 - The second part which is __payload__ consists of authentication data usually known as __claims__. - The __signature__ is created by signing the header and payload using the hashing algorithm and secret. This signing process is what verifies the token.
 
 deepstream can use a number of strategies to authenticate incoming connections. For JWT we'll use the [HTTP-Webhook](/tutorials/core/auth/http-webhook/) - a configurable URL that deepstream will send both login and connection data to for verification.
@@ -58,7 +58,7 @@ The steps shown here are
 1. The user provides credentials in a static login page which are sent via HTTP POST request to the auth server.
 2. If the provided credentials are valid, the server generates a JWT and responds with a 301 redirect to the web-app page that stores the token as a cookie
 3. The deepstream client establishes a connection to the deepstream server and authenticates itself by calling `ds.login(null, callback)`. This sends the stored cookie containing the JWT to the deepstream server.
-4. deepstream forwards the cookie to the authentication server and awaits its reply. The auth server also has the option to parse the cookie and provide the data it contains back to deepstream to use within [Valve Permissions](/tutorials/core/permission/conf-simple/). If the authentication server returns a positive response (e.g. HTTP code 200) the connection is authenticated.
+4. deepstream forwards the cookie to the authentication server and awaits its reply. The auth server also has the option to parse the cookie and provide the data it contains back to deepstream to use within [Valve Permissions](/tutorials/core/permission/valve-introduction/). If the authentication server returns a positive response (e.g. HTTP code 200) the connection is authenticated.
 
 So much for the theory - here's how this works in practise:
 
@@ -69,7 +69,7 @@ Our app will offer the following URLs:
 - `/check-token` deepstream will forward the auth data for incoming connections to this URL
 
 ## Let's start with the login page
-We'll start by creating a static HTML page with a simple login form. 
+We'll start by creating a static HTML page with a simple login form.
 
 ```html
 <form action="/handle-login" method="POST">
@@ -94,7 +94,7 @@ Just two inputs -- a username and a password. Once te user hits login, the crede
 const jwt = require('jsonwebtoken');
 
 app.post('/handle-login', function(req, res, next) {
-  
+
    const users = {
     wolfram: {
       username: 'wolfram',
@@ -208,7 +208,7 @@ const authMiddleware = function(req, res, next) {
 
 
   const token = req.cookies.access_token;
-  
+
   // decode token
   if (token) {
     // verifies secret and checks exp
@@ -227,13 +227,10 @@ const authMiddleware = function(req, res, next) {
     // if there is no token
     // return an error
     return res.status(403).redirect('/login');
-    
+
   }
 }
 
 // Protect route with middleware
 app.post('/protected', authMiddleware, routeHandler);
 ```
-
-
-

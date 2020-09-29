@@ -1,7 +1,7 @@
 ---
 title: Valve Introduction
 description: Learn permissions with Valve
-redirectFrom: [/tutorials/core/permission/conf-simple/]
+redirectFrom: [/tutorials/core/permission/valve-simple/]
 ---
 
 deepstream uses a powerful permission-language called Valve that allows you to specify which user can perform which action with which data.
@@ -22,7 +22,7 @@ variety of communication concepts such as data-sync, publish-subscribe or reques
 ### Let's start with an example
 Imagine you are running a discussion forum. To avoid vandalism and spam, users
 have to wait 24 hours before they can create new posts or modify existing posts
-after registration. 
+after registration.
 This means we'll need to store the time the user registered along with their account information. This can be done dynamically using [http authentication](/tutorials/core/auth/http-webhook/), but to keep things simple for this tutorial we'll just store it as `timestamp` within the `serverData` using deepstream's file-based authentication. A user entry in `conf/users.yml` might look as follows:
 ```yaml
 JohnDoe:
@@ -273,6 +273,6 @@ permission:
 ## Further Reading
 
 More compact introductions (or refreshers) are the tutorials [_Valve
-Permissioning Simple_](/tutorials/core/permission/conf-simple/), [_Valve
-Permissioning Advanced_](/tutorials/core/permission/conf-advanced/), and
-[_Dynamic Permissions using Valve_](/tutorials/core/permissions/dynamic/). To learn how to sent user-specific data using Valve, have a look at the [user-specific data guide](/tutorials/guides/user-specific-data/).
+Permissioning Simple_](/tutorials/core/permission/valve-simple/), [_Valve
+Permissioning Advanced_](/tutorials/core/permission/valve-advanced/), and
+[_Dynamic Permissions using Valve_](/tutorials/core/permissions/valve-dynamic/). To learn how to sent user-specific data using Valve, have a look at the [user-specific data guide](/tutorials/core/permission/user-specific-data/).

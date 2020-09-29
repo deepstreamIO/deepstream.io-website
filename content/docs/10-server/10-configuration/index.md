@@ -404,7 +404,7 @@ _Default_: `none`
 ## Permissioning
 
 In this section you can configure the
-[permissioning](/tutorials/core/permission/conf-simple/). The key used for this
+[permissioning](/tutorials/core/permission/valve-introduction/). The key used for this
 section is `permission` and you can create your own custom permission handler or
 use a configuration file. To use the former method, select the option
 `type: none` and override the `permissionHandler` with the aid of the [NodeJS
