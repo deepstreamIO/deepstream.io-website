@@ -388,10 +388,10 @@ In this section you can configure the authentication types the server uses.
 You set the authentication type as a subkey the `auth` key. The available
 authentication options are `none`, `file`, `storage` and `http`, each of them having
 different `options` which are described in the tutorials on [Auth
-None](/tutorials/core/auth-none/), [file-based
-authentication](/tutorials/core/auth-file/), [storage-based
-authentication](/tutorials/core/auth-storae/), and [HTTP
-authentication](/tutorials/core/auth/http-webhook/), respectively.
+None](/tutorials/core/auth/none/), [file-based
+authentication](/tutorials/core/auth/file/), [storage-based
+authentication](/tutorials/core/auth/storage/), [HTTP
+authentication](/tutorials/core/auth/http-webhook/), and [JWT authentication](/tutorials/core/auth/jwt-auth/) respectively.
 
 ```yaml
 #Authentication

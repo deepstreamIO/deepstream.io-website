@@ -16,18 +16,18 @@ To enable authentication to a deepstream server with user credentials stored in 
 auth:
   type: file
   options:
-    path: ./users.yml # Path to the user file. Can be json, js or yml
+    users: fileLoad(users.yml) # Path to the user file. Can be json, js or yml
     hash: 'md5' # the name of a HMAC digest algorithm
     iterations: 100 # the number of times the algorithm should be applied
     keyLength: 32 # the length of the resulting key
 ```
 
-The `path` key contains a path to the file relative to the config file, that defines your users and passwords. By default this is the _users.yml_ file that comes with deepstream, but the name or location is up to you.
+The `users` key contains a path to the file relative to the config file, that defines your users and passwords. By default this is the _users.yml_ file that comes with deepstream, but the name or location is up to you.
 
 In the `hash` key add the hashing algorithm to hash the passwords, for example,
 using `md5` (or any other algorithm supported by your operating system). The `iterations` key sets how many times the algorithm should be applied to the user's password, and `keyLength` is the length of the generated key. These should match how you hashed the passwords.
 
-In the _users_ file, create a list of your users and their hashed passwords (you can create hashes with your setting using deepstreams [hash command](/docs/server/command-line-interface/#deepstream-hash)). 
+In the _users_ file, create a list of your users and their hashed passwords (you can create hashes with your setting using deepstreams [hash command](/docs/server/command-line-interface/#deepstream-hash)).
 
 You also have the option to specify:
   - `clientData` – user data you want to be sent to the client upon successful login,

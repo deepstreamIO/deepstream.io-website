@@ -48,7 +48,7 @@ To keep things simple we'll be using [file-authentication](/tutorials/core/auth-
 auth:
   type: file
   options:
-    path: ./users.yml # Path to the user file. Can be json, js or yaml
+    users: fileLoad(users.yml) # Path to the user file. Can be json, js or yaml
     hash: false # false indicates that we're using cleartext passwords
 ```
 
