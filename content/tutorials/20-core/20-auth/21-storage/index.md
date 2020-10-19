@@ -22,6 +22,7 @@ auth:
     hash: 'md5' # the name of a HMAC digest algorithm
     iterations: 100 # the number of times the algorithm should be applied
     keyLength: 32 # the length of the resulting key
+    reportInvalidParameters: true # return when credentials are incorrect: missing username or password
 ```
 
 In the `hash` key add the hashing algorithm to hash the passwords, for example,
