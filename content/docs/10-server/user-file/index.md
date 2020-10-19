@@ -52,7 +52,7 @@ If you've configured file-based authentication as follows, use plaintext passwor
 ```yaml
    type: file
    options:
-     path: ./users.yml
+     users: fileLoad(users.yml)
      hash: false
 ```
 
@@ -61,7 +61,7 @@ If you've configured a hashing algorithm, use hashes as password:
 ```yaml
    type: file
    options:
-     path: ./users.yml
+     users: fileLoad(users.yml)
      hash: 'md5'
      iterations: 50
      keyLength: 16

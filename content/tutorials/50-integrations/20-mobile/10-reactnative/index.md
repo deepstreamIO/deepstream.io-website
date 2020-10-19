@@ -214,3 +214,22 @@ AppRegistry.registerComponent(
   () => DeepstreamReactNative
 );
 ```
+
+## 9. Building for production  
+
+If you are using a minifier for your react-native production build (for example when using [expo](https://expo.io/)), make sure to include in the project root the metro bundler config file: `metro.config.js` with the following values:
+
+```
+module.exports = {
+  transformer: {
+    minifierConfig: {
+      keep_classnames: true,
+      keep_fnames: true,
+      mangle: {
+        keep_classnames: true,
+        keep_fnames: true
+      }
+    }
+  }
+}
+```

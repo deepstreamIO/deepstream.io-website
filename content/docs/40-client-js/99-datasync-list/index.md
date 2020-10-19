@@ -23,9 +23,6 @@ const list = client.record.getList( 'cars' );
 
 ## Events
 
-### ready
-Emitted once the list has received its current data from the server.
-
 ### entry-added
 Emitted whenever a new entry is added to the list. Passes the entry and its position within the list to the callback.
 

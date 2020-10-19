@@ -76,7 +76,7 @@ Absolutely, any string can be used as a record name. But you need to be certain 
 Many permissioning strategies in deepstream are based on record, event or
 rpc-names and the data they contain.  To make sure that only `johndoe` can
 change his settings, you would call your record `settings/johndoe` and specify
-an associated [Valve rule](../permission-conf-simple/):
+an associated [Valve rule](../permission/valve-simple/):
 
 ```yaml
 record:
