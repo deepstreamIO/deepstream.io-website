@@ -34,16 +34,6 @@ The number of reconnection attempts until the client gives up and declares the c
 _Type_: Number<br>
 _Default_: `5`
 
-### rpcAckTimeout
-The number of milliseconds after which a RPC will error if no ack message has been received.<br>
-_Type_: Number<br>
-_Default_: `6000`
-
-### rpcResponseTimeout
-The number of milliseconds after which a RPC will error if no response-message has been received.<br>
-_Type_: Number<br>
-_Default_: `10000`
-
 ### subscriptionTimeout
 The number of milliseconds that can pass after providing/unproviding a RPC or subscribing/unsubscribing/listening to a record or event before an error is thrown.<br>
 _Type_: Number<br>
