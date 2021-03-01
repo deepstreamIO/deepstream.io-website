@@ -400,8 +400,9 @@ Note: HTTP requests do not contribute to presence updates or queries. These deta
 |---|---|---|---|
 |topic|string|false|Must have value "presence".|
 |action|string|false|Must have value "query".|
+|names|array|true|Array of user names to query for presence.|
 
-Example request:
+Example request for all users:
 ```json
 {
   "topic": "presence",
@@ -415,7 +416,7 @@ Non-standard response properties:
 |---|---|---|---|
 |users|array|false|An array of logged-in users.|
 
-Example response:
+Example response when querying all users:
 ```json
 {
   "success": true,
@@ -424,6 +425,26 @@ Example response:
     "fba85ac8-02bd-98a7-bb42-b2526243b562", 
     "aba325bd-dd23-aba4-3390-02763477453e"
   ]
+}
+```
+
+Example request for some users:
+```json
+{
+  "topic": "presence",
+  "action": "query",
+  "names": ["one", "two"]
+}
+```
+
+Example response when querying specific users:
+```json
+{
+  "success": true,
+  "users":{
+    "one":true,
+    "two":false
+    }
 }
 ```
 
