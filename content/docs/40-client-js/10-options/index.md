@@ -29,6 +29,12 @@ E.g.for 1500: if the connection is lost,the client will attempt to reconnect imm
 _Type_: Number<br>
 _Default_: `4000`
 
+### heartbeatInterval
+The number of milliseconds to wait before sending a heartbeat. If two heatbeats are missed in a row the client will consider the server to have disconnected and will close the connection in order to establish a new one. <br> **Note**: If `client heartbeatInterval > 2 * server heartbeatInterval` the client will be considered as disconnnected by the server if no other messages are sent.<br>
+
+_Type_: Number<br>
+_Default_: `30000`
+
 ### maxReconnectAttempts
 The number of reconnection attempts until the client gives up and declares the connection closed.<br>
 _Type_: Number<br>
