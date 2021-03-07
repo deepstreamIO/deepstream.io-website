@@ -393,7 +393,8 @@ authentication](/tutorials/core/auth/file/), [storage-based
 authentication](/tutorials/core/auth/storage/), [HTTP
 authentication](/tutorials/core/auth/http-webhook/), and [JWT authentication](/tutorials/core/auth/jwt-auth/) respectively.
 
-You can set multiple authentication types simultaneously and the incoming connection will be validated against each of them until one succeeds or all fail. The `reportInvalidParameters` option on each authentication config must be set to `false` in order to allow for multiple auth strategies. Otherwise the first authentication provider that fails will return with an unauthorized request response and no more auth providers will be queried.
+You can set multiple authentication types simultaneously and the incoming connection will be validated against each of them until one succeeds or all fail. Authentication strategies will be queried in the same order they are declared on the configuration file.  
+
 
 ```yaml
 #Authentication
