@@ -37,7 +37,7 @@ storage:
     # defaults to deepstream_docs
     defaultTable: 'someTable'
     # optional character that's used as part of the
-    # record names to split it into a tabel and an id part
+    # record names to split it into a table and an id part
     splitChar: '/'
 ```
 
