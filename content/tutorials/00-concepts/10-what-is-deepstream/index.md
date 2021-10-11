@@ -31,7 +31,7 @@ deepstream is useful as a backend for most applications, but is mostly used for
 
 ### What does it do?
 
-deepstream provides three core concepts:
+deepstream provides four core concepts:
 - **[Data-sync:](/tutorials/core/datasync/records/)** stateful and persistent JSON objects that can be manipulated in whole or in parts and are synchronized across all connected clients
 - **[Pub-Sub:](/tutorials/core/pubsub/)** many-to-many messaging based on subscriptions to topics
 - **[Request-Response:](/tutorials/core/request-response/)** RPC question/answer workflows
@@ -47,7 +47,7 @@ The most frequent comparison is a “self hosted Firebase”. That’s quite clo
 
 ### What can it integrate with?
 
-deepstream can optionally be integrated with three types of systems:
+deepstream can optionally be integrated with two types of systems:
 - Databases can be used for long-term data storage and querying
 - Caches can be used for fast, short-term data access
 
