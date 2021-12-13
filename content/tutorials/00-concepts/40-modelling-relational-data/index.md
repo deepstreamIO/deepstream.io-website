@@ -126,12 +126,17 @@ This list `abc-123-addresses` itself just contains pointers to the actual addres
 When it comes to fetching these addresses (assuming we already have the user `Record`), we can do this as follows and render them:
 
 ```javascript
-const addressList = client.record.getList(addresses)
+
+// From user Record with id 'users/abc-123', asyncronously request the List id referenced in user property 'addresses'.  E.g. List id 'abc-123-addresses'
+const addressList = client.record.getList('addresses')
+
+// When List 'abc-123-addresses' is ready, iterate it's references to address Record ids.  E.g. Record id 'addresses/789'
 addressList.whenReady((list) => {
     list.forEach(printAddress)
 })
 
-const renderAddress = (recordName) => {
+// Function passed to forEach() to print one particular address Record.  E.g. 'addresses/789'
+const printAddress = (recordName) => {
     const record = client.record.getRecord(recordName)
     record.whenReady(record => console.log(record.get()))
 }
