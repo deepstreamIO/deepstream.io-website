@@ -38,7 +38,7 @@
     "gatsby-transformer-sharp": "^2.2.4",
     "ioredis": "^4.11.2",
     "node-cache": "^4.2.0",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "pino": "^5.13.0",
     "prismjs": "^1.17.1",
     "prop-types": "^15.7.2",
