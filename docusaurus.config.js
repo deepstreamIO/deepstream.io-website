@@ -68,11 +68,23 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: 'Content',
             items: [
               {
-                label: 'Tutorial',
-                to: '/docs/intro',
+                label: 'Install',
+                to: '/docs/tutorials/install/linux/',
+              },
+              {
+                label: 'Tutorials',
+                to: '/docs/tutorials/concepts/what-is-deepstream',
+              },
+              {
+                label: 'Documentation',
+                to: '/docs/docs/server/command-line-interface',
+              },
+              {
+                label: 'Blog',
+                to: '/blog',
               },
             ],
           },
@@ -80,34 +92,26 @@ const config = {
             title: 'Community',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
-              },
+                label: 'Discussions',
+                href: 'https://github.com/deepstreamIO/deepstream.io-website/discussions',
+              }
             ],
           },
           {
             title: 'More',
             items: [
               {
-                label: 'Blog',
-                to: '/blog',
+                label: 'Server changelog',
+                href: 'https://github.com/deepstreamIO/deepstream.io/blob/master/CHANGELOG.md',
               },
               {
-                label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
-              },
+                label: 'Client changelog',
+                href: 'https://github.com/deepstreamIO/deepstream.io-client-js/blob/master/CHANGELOG.md',
+              }
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} deepstreamHub GmbH and contributors`,
       },
       prism: {
         theme: lightCodeTheme,
