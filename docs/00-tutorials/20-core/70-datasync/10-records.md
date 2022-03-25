@@ -39,7 +39,24 @@ When calling `client.record.getRecord(name)`, one of three things can happen:
 
 Independent of whether the record has been loaded yet, `getRecord(name)` will return a record instance straight away. You can already start setting values or subscribing to updates at this point, however `get()` calls might return `null`.
 
-To ensure a record is fully loaded, use the `whenReady()` method. Please note: This method will execute synchronously when the record is already available or asynchronously if its still being loaded.
+To ensure a record is fully loaded, use the `whenReady()` method.
+
+:::info
+Please note:
+This method will execute synchronously when the record is already available or asynchronously if its still being loaded.
+If the record is not yet available and still being loaded, it will slow down the operation, for low latency and high write frequency its more performant not to use the `whenReady()` method.
+
+```
+for (let index = 0; index < 1000; index++) {
+  <!-- faster -->
+  const record = client.record.getRecord(`${index}`)
+  record.set('index', index)
+  <!-- slower if record not already on client -->
+  const record = await client.record.getRecord(`${index}`).whenReady()
+  record.set('index', index)
+}
+```
+:::
 
 #### Discarding Records
 To inform the server that you're no longer interested in updates for a record, call `discard()`.
