@@ -72,6 +72,15 @@ record.setName('user/johndoe')
 record.setName('user/maxpower')
 ```
 
+### client.record.names()
+
+ Returns all the available data-sync names.
+
+ Please note: Lists, AnonymousRecords and Records are all essentially the same thing within the SDK, so this array will contain a list of everything.
+
+ Due to how records work as well even after a discard this list will take a while to update. This is intentional as their is an option for how long a record will survive before being discarded! You can change that via the `recordDiscardTimeout: milliseconds` option.
+
+
 ### client.record.has(name, callback)
 
 |Argument|Type|Optional|Description|
@@ -209,4 +218,8 @@ Removes a listener that was previously registered using `listen()`.
 
 ### client.record.notify(recordNames: string[], callback?| Promise)
 
-Adding notify on record handler to notify if the db was changed without using deepstream APIs.
+Notify that the record data was changed at the database without using deepstream APIs.
+
+### client.record.setMergeStrategy (recordName: string, mergeStrategy: MergeStrategy)
+
+Set merge strategy for a given record.

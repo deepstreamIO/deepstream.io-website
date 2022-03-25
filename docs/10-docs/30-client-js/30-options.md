@@ -45,16 +45,6 @@ The number of milliseconds that can pass after providing/unproviding a RPC or su
 _Type_: Number<br/>
 _Default_: `2000`
 
-### maxMessagesPerPacket
-If your app sends a large number of messages in quick succession, the deepstream client will try to split them into smaller packets and send these every `timeBetweenSendingQueuedPackages` ms. This parameter specifies the number of messages after which deepstream sends the packet and queues the remaining messages. Set to `Infinity` to turn the feature off.<br/>
-_Type_: Number<br/>
-_Default_: `100`
-
-### timeBetweenSendingQueuedPackages
-Please see description for maxMessagesPerPacket. Sets the time in ms.<br/>
-_Type_: Number<br/>
-_Default_: `16`
-
 ### recordReadAckTimeout
 The number of milliseconds from the moment `client.record.getRecord()` is called until an error is thrown since no ack message has been received.<br/>
 _Type_: Number<br/>
@@ -69,6 +59,11 @@ _Default_: `3000`
 The number of milliseconds from the moment `record.delete()` is called until an error is thrown since no delete ack message has been received. Please take into account that the deletion is only complete after the record has been deleted from both cache and storage.<br/>
 _Type_: Number<br/>
 _Default_: `3000`
+
+### recordDiscardTimeout
+The number of milliseconds from the moment `record.discard()` is called until the record is definitely discarded. Take into account that this interval might lead to some inconsistencies and race conditions if not handled properly.<br/>
+_Type_: Number<br/>
+_Default_: `5000`
 
 ### offlineEnabled
 Enable offline record support using indexdb to store data client side.

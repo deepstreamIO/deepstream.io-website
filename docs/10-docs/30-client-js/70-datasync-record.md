@@ -254,6 +254,3 @@ user.erase('name')
 ### eraseWithAck(path: string)
 
 Deletes a path from the record and either takes a callback that will be called when the write has been done or returns a promise that will resolve when the write is done.
-
-### setMergeStrategy
-
