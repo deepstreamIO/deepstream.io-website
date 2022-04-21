@@ -1,9 +1,8 @@
 ---
 title: Storage Authentication
-description: A deepstream authentication mechanism that reads credentials and userdata via the storage adaptor
 tags: [authentication, database, hash, crypto]
-addedInVersion: 5.0
 ---
+import JsLogin from './_js-login.mdx'
 
 Storage-based authentication allows you to store usernames, password hashes and optional meta-data in a table within
 your database that will be used to authenticate incoming connections.
@@ -30,8 +29,6 @@ using `md5` (or any other algorithm supported by your operating system). The `it
 
 Start the deepstream server and you should see the authentication type confirmed.
 
-<!-- ![deepstream starting with storage authentication](/img/tutorials/20-core/ds-auth-storage-start.png) -->
-
 In your application code you can now connect to the deepstream server and try to login a user.
 
 ```javascript
@@ -44,18 +41,9 @@ client.login({
 })
 ```
 
-If a success, the deepstream console will show:
-
-<!-- ![Authentication success](/img/tutorials/20-core/ds-auth-storage-success.png) -->
-
-And if a failure:
-
-<!-- ![Authentication failure](/img/tutorials/20-core/ds-auth-storage-failure.png) -->
-
 You can then handle the outcome of the login request in your JavaScript code, for example:
 
-`embed: js/login-es5.js`
-`embed: js/login-es6.js`
+<JsLogin/>
 
 ## User auto-registration
 

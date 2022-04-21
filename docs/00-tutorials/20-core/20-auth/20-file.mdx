@@ -1,8 +1,8 @@
 ---
 title: File Authentication
-description: A deepstream authentication mechanism that reads credentials and userdata from a file
 tags: [authentication, file, hash, crypto]
 ---
+import JsLogin from './_js-login.mdx'
 
 File-based authentication allows you to store usernames, passwords or password hashes and optional meta-data in a file that will be used to authenticate incoming connections.
 
@@ -28,7 +28,9 @@ The `users` key contains a path to the file relative to the config file, that de
 In the `hash` key add the hashing algorithm to hash the passwords, for example,
 using `md5` (or any other algorithm supported by your operating system). The `iterations` key sets how many times the algorithm should be applied to the user's password, and `keyLength` is the length of the generated key. These should match how you hashed the passwords.
 
-**Please note** You can omit the `hash` key in order to use cleartext passwords (Not advised in production settings!). Otherwise, the provided password upon login must be the already hashed password using the same algorithm you specified in options.
+:::note
+You can omit the `hash` key in order to use cleartext passwords (Not advised in production settings!). Otherwise, the provided password upon login must be the already hashed password using the same algorithm you specified in options.
+:::
 
 In the _users_ file, create a list of your users and their hashed passwords (you can create hashes with your setting using deepstreams [hash command](/docs/server/command-line-interface/#deepstream-hash)).
 
@@ -52,9 +54,7 @@ fred:
     department: finance
 ```
 
-Start the deepstream server and you should see the authentication type confirmed.
-
-![deepstream starting with file authentication](/img/tutorials/20-core/ds-auth-file-start.png)
+Start the deepstream server and you should see the authentication type confirmed in the startup log.
 
 In your application code you can now connect to the deepstream server and try to login a user.
 
@@ -68,15 +68,6 @@ client.login({
 })
 ```
 
-If a success, the deepstream console will show:
-
-![Authentication success](/img/tutorials/20-core/ds-auth-file-success.png)
-
-And if a failure:
-
-![Authentication failure](/img/tutorials/20-core/ds-auth-file-failure.png)
-
 You can then handle the outcome of the login request in your JavaScript code, for example:
 
-`embed: js/login-es5.js`
-`embed: js/login-es6.js`
+<JsLogin/>
