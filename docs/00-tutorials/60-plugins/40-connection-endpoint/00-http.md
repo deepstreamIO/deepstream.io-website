@@ -23,6 +23,8 @@ connectionEndpoints:
       postPath: /
       # path for GET requests
       getPath: /
-      # maximum allowed size of an individual message in bytes
-      maxMessageSize: 1024
+      # should the server log invalid auth data, defaults to false
+      logInvalidAuthData: false
+      # http request timeout in milliseconds, defaults to 20000
+      requestTimeout: 20000
 ```
