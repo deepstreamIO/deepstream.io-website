@@ -1,6 +1,5 @@
 ---
 title: What is deepstream?
-description: A general introduction
 ---
 
 Hey, it’s good to see that you’ve stumbled upon this page. deepstream is an incredibly powerful concept, but it’s also quite different and can be a lot to wrap your head around at first. So let's get down to the bottom of what exactly it is and how it works.

@@ -1,6 +1,5 @@
 ---
 title: Modelling relational data
-description: An overview of relational data concepts using Records
 tags: [relational, relational data, deepstream, records, sql]
 ---
 

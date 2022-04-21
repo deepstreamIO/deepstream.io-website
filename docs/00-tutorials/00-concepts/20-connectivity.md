@@ -1,6 +1,5 @@
 ---
 title: Connectivity
-description: Documentation for connection status and how to configure reconnection behaviour
 ---
 
 All deepstream SDKs establish a persistent, bidirectional connection to the platform. This connection can be lost due to network outage, lack of mobile network coverage or similar problems – if this happens all SDKs will queue outgoing updates and try to re-establish the connection.
@@ -30,7 +29,7 @@ The connection was deliberately closed by the user via `client.close()`. No reco
 ### ERROR
 The connection is finally declared unrecoverable, e.g. as a result from too many failed reconnection attempts or missed heartbeats. No further reconnection attempts will be made.
 
-### OFFLINE  
+### OFFLINE
 The client deliberately  disconnected from the server using the `pause()` method. Can be reconnected using the `resume()` method.
 
 __Intermediate States__
@@ -82,9 +81,9 @@ client.on('connectionStateChanged', connectionState => {
 })
 ```
 
-## Closed client connection  
+## Closed client connection
 
-Once the client closes the connection to the server calling the `close()` method, it can not be opened again using the same instance of the client. This can cause some issues on web/mobile when we logout a user, and close it's deepstream client connection, and then try to login as a new user. It will not be possible using the same instance of the client. One solution is to use the [singleton pattern](https://en.wikipedia.org/wiki/Singleton_pattern), as shown in this quick example:  
+Once the client closes the connection to the server calling the `close()` method, it can not be opened again using the same instance of the client. This can cause some issues on web/mobile when we logout a user, and close it's deepstream client connection, and then try to login as a new user. It will not be possible using the same instance of the client. One solution is to use the [singleton pattern](https://en.wikipedia.org/wiki/Singleton_pattern), as shown in this quick example:
 
 ```javascript
 
@@ -102,8 +101,8 @@ const dsClient = () => {
 }
 ```
 
-Then pass along and call the dsClient function for interacting with the client methods:  
- `dsClient().login()`  
-  `dsClient().record.getRecord(recordName)`  
+Then pass along and call the dsClient function for interacting with the client methods:
+ `dsClient().login()`
+  `dsClient().record.getRecord(recordName)`
 
-Using this pattern, if the client connection is closed, a new one will be instantiated and returned.  
+Using this pattern, if the client connection is closed, a new one will be instantiated and returned.

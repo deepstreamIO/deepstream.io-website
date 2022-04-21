@@ -1,13 +1,12 @@
 ---
 title: Security Overview
-description: How encryption, authentication and permissioning work together
 ---
 
 Security in deepstream is based on three interrelated concepts:
 
-    - encrypted connections
-    - user authentication
-    - granular permissions
+  - encrypted connections
+  - user authentication
+  - granular permissions
 
 Here's how they work together:
 
