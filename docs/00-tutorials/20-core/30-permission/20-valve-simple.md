@@ -68,4 +68,4 @@ This example introduced two basic concepts:
 * **path variables** dollar prefixes identify parts of a record, RPC or eventname as variables, e.g. `$userId` in `user-status/$userId`. These variables will be made available within the permission rule. Using e.g. the username as part of the record name for records with access restrictions is a central concept in valve.
 
 ## What's next?
-This was a quick introduction to what valve can do, but there are more powerful concepts, such as build-in variables, string-functions or cross-references to explore. To learn about these, let's move on to the [advanced permission tutorial](/tutorials/core/permission/conf-advanced/)
+This was a quick introduction to what valve can do, but there are more powerful concepts, such as build-in variables, string-functions or cross-references to explore. To learn about these, let's move on to the [advanced permission tutorial](/docs/tutorials/core/permission/valve-advanced/)

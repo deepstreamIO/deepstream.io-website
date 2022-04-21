@@ -1,7 +1,7 @@
 ---
 title: Storing Data
 description: Find out how deepstream uses cache and storage systems to store your data
-redirectFrom: [/tutorials/core/server/storing-data/]
+redirectFrom: [/docs/tutorials/core/server/storing-data/]
 ---
 
 ## How deepstream stores data

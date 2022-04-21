@@ -1,6 +1,5 @@
 ---
 title: Events
-description: Learn how you can use events to implement  publish/subscribe and decouple your logic
 ---
 
 Events are deepstream's implementation of the "publish/subscribe" or "observer" pattern. If you're familiar with e.g. JavaScript event-emitters or Java events, you know how they work. Zero or more interested clients subscribe to an event (sometimes also called a "topic", "channel" or "namespace") and zero or more other clients publish to it.
@@ -16,7 +15,7 @@ Due to its simplicity and versatility, pub/sub is the most widely adopted patter
 
 However, pub/sub is purely a lightweight way of messaging, but doesn't have any concept of persistence or state. It's therefore often used to notify clients of changes which in turn trigger a separate HTTP request to retrieve the actual data.
 
-This comes with significant overhead and is increasingly abandoned in favour of "data-sync", an approach where the actual data is distributed and kept in sync across all subscribed clients. Data-sync is one of deepstream's core features and can be used in the form of [records](/tutorials/core/datasync/records/).
+This comes with significant overhead and is increasingly abandoned in favour of "data-sync", an approach where the actual data is distributed and kept in sync across all subscribed clients. Data-sync is one of deepstream's core features and can be used in the form of [records](/docs/tutorials/core/datasync/records/).
 
 Having said that, pub/sub vs data-sync doesn't need to be an either/or decision. Both complement each other well and can be used together for many use cases.
 

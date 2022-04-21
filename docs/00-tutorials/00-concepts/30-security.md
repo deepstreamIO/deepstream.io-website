@@ -25,9 +25,9 @@ It's highly recommended to always use a seperate process to do SSL termination. 
 Every incoming connection needs to pass an authentication step. This happens when the client calls `login(data, callback)`.
 deepstream comes with three built-in authentication mechanisms:
 
-- [none](/tutorials/core/auth/none/) allows every connection. Choose this option for public sites that don't require access controls.
-- [file](https://deepstream.io/tutorials/core/auth-file/) reads authentication data from a static file. This is a good choice for public read / private write use cases, e.g. sports result pages that let every user visit, but only a few backend processes update the result.
-- [http](https://deepstream.io/tutorials/core/auth/http-webhook/) contacts a configurable HTTP webhook to ask if a user is allowed to connect. This is the most flexible option as it allows you to write a tiny http server in any language that can connect to databases, active directories, oAuth providers or whatever else your heart desires.
+- [none](/docs/tutorials/core/auth/none/) allows every connection. Choose this option for public sites that don't require access controls.
+- [file](https://deepstream.io/docs/tutorials/core/auth-file/) reads authentication data from a static file. This is a good choice for public read / private write use cases, e.g. sports result pages that let every user visit, but only a few backend processes update the result.
+- [http](https://deepstream.io/docs/tutorials/core/auth/http-webhook/) contacts a configurable HTTP webhook to ask if a user is allowed to connect. This is the most flexible option as it allows you to write a tiny http server in any language that can connect to databases, active directories, oAuth providers or whatever else your heart desires.
 
 Apart from just accepting / denying incoming connections, the authentication step can also provide two extra bits of information:
 
@@ -56,7 +56,7 @@ Permissioning is the act of deciding whether a specific action, e.g. writing to 
 To help with this, deepstream uses an expressive, JSON-based permissioning
 language called Valve. There's a lot to say about Valve. Here's a small Valve
 File that should give you a first impression, to learn more though head over to
-the [permissioning tutorial](/tutorials/core/permission/valve-introduction/)
+the [permissioning tutorial](/docs/tutorials/core/permission/valve-introduction/)
 
 ```yaml
 record:

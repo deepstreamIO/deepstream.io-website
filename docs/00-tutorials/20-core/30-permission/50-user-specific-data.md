@@ -8,7 +8,7 @@ different users. Whether it's updates to a social feed, discounts for frequent
 buyers, a list of matches on a dating platform, or any other kind of private or at least user-specific information.
 
 Fortunately, all three of deepstream's core concepts - data-sync,
-publish-subscribe, and request-response - provide various means to achieve this. The trick? Combine user-specific record or event names with deepstream's permissioning language [Valve](/tutorials/core/permission/valve-introduction/).
+publish-subscribe, and request-response - provide various means to achieve this. The trick? Combine user-specific record or event names with deepstream's permissioning language [Valve](/docs/tutorials/core/permission/valve-introduction/).
 
 ## User-Specific Records
 Providing private or user-specific records is as simple as including the username in the record name. If your social network has a profile for Lisa Miller, simply store the profile in a record called `profile/lisa-miller`:
@@ -43,11 +43,11 @@ gets. This means we need three things in our e-marketplace setup:
 
 To summarize, our setup will look as follows:
 
-![RPC permission flow](rpc-diagram.png)
+![RPC permission flow](/img/tutorials/20-core/30-permission/rpc-diagram.png)
 
 Let's go through the various components step by step, shall we? First off, the client needs to log in. We'll use a very basic login form: username, password, and an button labeled "login" is all we need.
 
-![Login Form](login-form.png)
+![Login Form](/img/tutorials/20-core/30-permission/login-form.png)
 
 You can find this and all other files for this guide in the accompanying [Github repo](https://github.com/deepstreamIO/ds-demo-userspecific-data).
 
