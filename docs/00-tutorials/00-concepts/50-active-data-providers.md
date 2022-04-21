@@ -10,7 +10,7 @@ Data Providers are processes that feed data into deepstream. Technically, they a
 #### Example
 Imagine you're building an application that shows stock prices from various exchanges from around the world. For each exchange, you'd build a process that receives data and forwards it to deepstream.
 
-![Data Providers](data-providers.png)
+![Data Providers](/img/tutorials/00-concepts/data-providers.png)
 
 #### The Problem
 Nasdaq alone can send out tens of millions of price updates every day, and it's not much different for other stock exchanges. This can put an unsustainable load on your infrastructure and can lead to high bandwidth costs.
@@ -33,4 +33,4 @@ client.record.listen('nasdaq/.*', (match, response) => {
 
 This allows you to create efficient providers that only send out the data that's currently needed.
 
-![Active Data Providers](active-data-providers.png)
+![Active Data Providers](/img/tutorials/00-concepts/active-data-providers.png)
