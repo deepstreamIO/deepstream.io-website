@@ -140,7 +140,7 @@ _Default_: 10000
 
 ## Connection Endpoint Configuration
 
-Deepstream (v5 and later) runs all websocket / HTTP services in one server to which they hook to provide their own functionality. This means you can run all the services at the same time on the same port if you want (for example text, binary and JSON). The idea is that *EVERYTHING* (minus MQTT) runs on port 6020, which makes deployments much easier.  
+Deepstream (v5 and later) runs all websocket / HTTP services in one server to which they hook to provide their own functionality. This means you can run all the services at the same time on the same port if you want (for example text, binary and JSON). The idea is that *EVERYTHING* (minus MQTT) runs on port 6020, which makes deployments much easier.
 
 ```yaml
 httpServer:
@@ -156,6 +156,8 @@ httpServer:
     # a list of allowed origins
     origins:
       - 'https://example.com'
+    # maximum allowed size of a POST request body
+    maxMessageSize: 1048576
     # Headers to copy over from websocket
     headers:
       - user-agent
@@ -181,6 +183,8 @@ httpServer:
     # a list of allowed origins
     origins:
       - 'https://example.com'
+    # maximum allowed size of a POST request body
+    maxMessageSize: 1048576
     # Headers to copy over from websocket
     headers:
       - user-agent
@@ -273,8 +277,10 @@ connectionEndpoints:
       postPath: /api
       # path for GET requests
       getPath: /api
-      # maximum allowed size of an individual message in bytes
-      maxMessageSize: 1024
+      # should the server log invalid auth data, defaults to false
+      logInvalidAuthData: false
+      # http request timeout in milliseconds, defaults to 20000
+      requestTimeout: 20000
 
   - type: mqtt
     options:
@@ -393,7 +399,7 @@ authentication](/tutorials/core/auth/file/), [storage-based
 authentication](/tutorials/core/auth/storage/), [HTTP
 authentication](/tutorials/core/auth/http-webhook/), and [JWT authentication](/tutorials/core/auth/jwt-auth/) respectively.
 
-You can set multiple authentication types simultaneously and the incoming connection will be validated against each of them until one succeeds or all fail. Authentication strategies will be queried in the same order they are declared on the configuration file.  
+You can set multiple authentication types simultaneously and the incoming connection will be validated against each of them until one succeeds or all fail. Authentication strategies will be queried in the same order they are declared on the configuration file.
 
 
 ```yaml
