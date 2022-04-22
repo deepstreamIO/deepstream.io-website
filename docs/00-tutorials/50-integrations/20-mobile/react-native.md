@@ -1,8 +1,9 @@
 ---
 title: React Native
-description: Learn how to use React Native with deepstream
-logoImage: reactnative.png
 ---
+:::caution
+This tutorial has not been updated
+:::
 
 [React Native](https://facebook.github.io/react-native/) lets you build mobile apps using only JavaScript. It uses the same design as React, letting you compose a rich mobile UI from declarative components.
 

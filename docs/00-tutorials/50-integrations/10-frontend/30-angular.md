@@ -1,9 +1,9 @@
 ---
 title: Angular
-description: Learn how to use Angular with deepstream
-logoImage: angular.png
-wip: true
 ---
+:::caution
+This tutorial has not been updated
+:::
 
 The "new Angular" popularly known as "Angular", [though a bad name](https://toddmotto.com/please-stop-worrying-about-angular-3#real-versioning), is component architected and follows the W3C component standards thereby forcing us ( for a good reason ) to build apps as reusable UI components/widgets. This means you can't continue to build apps the exact same way you did while using Angular 1.x.
 

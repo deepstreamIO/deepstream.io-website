@@ -1,10 +1,6 @@
 ---
 title: Memcached Cache Connector
-description: Learn how to use Memcached with deepstream
-logoImage: memcached.png
 ---
-
-*** Memcached not upgraded to V4/V5. Please [refer to this github issue](https://github.com/deepstreamIO/deepstream.io/issues/973) if you require this ***
 
 #### What is Memcached?
 [Memcached](https://memcached.org/) is a distributed caching system. All its data is purely kept in memory which means two things:

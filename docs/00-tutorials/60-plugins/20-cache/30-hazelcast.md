@@ -1,10 +1,9 @@
 ---
 title: Hazelcast Cache Connector
-description: Learn how to use Hazelcast with deepstream
-logoImage: hazelcast.png
 ---
-
+:::caution
 *** Hazelcast not upgraded to V4/V5. Please refer to [this github issue](https://github.com/deepstreamIO/deepstream.io/issues/972) if you require this ***
+:::
 
 #### What is Hazelcast?
 Hazelcast is a distributed caching layer, organized as a grid of independent nodes that sync their state. On top of that, Hazelcast allows to perform computations based on the stored data and even supports basic server side messaging.

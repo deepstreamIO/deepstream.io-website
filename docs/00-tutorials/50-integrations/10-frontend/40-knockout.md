@@ -1,9 +1,9 @@
 ---
 title: KnockoutJs
-description: Learn how to use KnockoutJs with deepstream
-logoImage: knockout.png
-wip: true
 ---
+:::caution
+This tutorial has not been updated
+:::
 
 ## What's KnockoutJs?
 You've probably heard of Angular, React and EmberJS, maybe even Vue or Polymer. But [KnockoutJS](http://knockoutjs.com/)? No? That's a shame...

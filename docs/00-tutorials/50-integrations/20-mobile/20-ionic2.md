@@ -1,8 +1,9 @@
 ---
 title: Ionic
-description: Learn how to use Ionic with deepstream
-logoImage: ionic.png
 ---
+:::caution
+This tutorial has not been updated
+:::
 
 [Ionic](http://ionicframework.com/) is a UI  framework for building mobile apps built on top of Angular and can interact with native APIs via Cordova. Ionic is incompatible with the new Angular version; this is why Ionic 2 was released to play nice with Angular 2x.
 
