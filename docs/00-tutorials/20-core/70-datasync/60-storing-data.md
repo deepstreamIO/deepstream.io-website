@@ -66,8 +66,6 @@ deepstream.exe install storage rethinkdb
 
 Each connector requires specific configuration parameters. These can be configured in deepstream's config.yml file (found either in your deepstream's `conf` directory or on linux in `/etc/deepstream/`). When installing a connector, it usually prints an example of the most common settings.
 
-![Example Console Output](console-output-elasticsearch-install.png)
-
 Cache connectors are configured in the config's `plugins - cache` section, database connectors in `plugins - storage`
 
 If you're using deepstream from Node, it's also possible to download connectors from NPM. All connectors follow the naming convention `deepstream.io-type-name`, e.g. `deepstream.io-storage-rethinkdb`.

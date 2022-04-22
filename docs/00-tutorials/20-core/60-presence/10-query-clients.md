@@ -1,6 +1,5 @@
 ---
-title: Presence
-description: Presence allows us to query on the connected authenticated clients.
+title: Query connected clients
 tags: [Javascript, Presence]
 ---
 
@@ -12,7 +11,7 @@ It is possible to ask presence to either send you a list of all the people who a
 
 ## getAll()
 
-Using the `getAll()` method we can retrieve the status of connected clients at any particular instance of time. This can be done in two ways! 
+Using the `getAll()` method we can retrieve the status of connected clients at any particular instance of time. This can be done in two ways!
 
 If you would like to see all the users who are online in your application, you could just do the following:
 

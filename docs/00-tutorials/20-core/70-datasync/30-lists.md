@@ -14,7 +14,7 @@ Apart from that, lists are quite similar to [records](../records/). They notify 
 ## What are lists useful for?
 Lists are used whenever records need to be combined into collections. Let's take the infamous [TodoMVC](http://todomvc.com/) for example. When built with deepstream, each task would be a record, containing the `title` and a `completed` flag.
 
-![records in todo list](todolist-record.png)
+![records in todo list](/img/tutorials/20-core/todolist-record.png)
 
 Each record is identified by a unique name, e.g. `todo/ikfndiqx-43jdj23bsdf`.
 
@@ -36,17 +36,17 @@ todos.setEntries([
 ]);
 ```
 
-![todolist with list](todolist-list.png)
+![todolist with list](/img/tutorials/20-core/todolist-list.png)
 
 ## Taking it a step further
 deepstream is all about combining simple building blocks into powerful apps - and lists are no exception. Nesting references to lists within records and references to records within lists allows you to model your applications data-layer as a fully synced and observable tree structure.
 
-![List - Record Tree Structure](tree-structure.png)
+![List - Record Tree Structure](/img/tutorials/20-core/tree-structure.png)
 
 ## Using lists with anonymous records
 Lists are often used to power selection panels for [anonymous records](../anonymous-records/).
 
-![simple app with anonymous record](simple-app-structure.png)
+![simple app with anonymous record](/img/tutorials/20-core/simple-app-structure.png)
 
 ## Why do lists not contain or subscribe to the actual record data?
 Records are more than just their data. They have their own subscribe/discard lifecycle which tends to be closely associated with the component that renders them. Naturally, this component is the best place to request the record and manage its lifecycle.

@@ -4,7 +4,7 @@ title: Events
 
 Events are deepstream's implementation of the "publish/subscribe" or "observer" pattern. If you're familiar with e.g. JavaScript event-emitters or Java events, you know how they work. Zero or more interested clients subscribe to an event (sometimes also called a "topic", "channel" or "namespace") and zero or more other clients publish to it.
 
-![Pub/Sub diagram](pubsub-diagram.png)
+![Pub/Sub diagram](/img/tutorials/20-core/pubsub-diagram.png)
 
 The emphasis on "zero or more" underlines one of the main characteristics of pub/sub: Publishers and subscribers are completely decoupled. It's a bit like a newspaper - journalists write articles assuming but not knowing that they will be read, and readers open the sports section expecting but not knowing that something they care about will be written on it.
 

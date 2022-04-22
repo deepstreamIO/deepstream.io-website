@@ -1,6 +1,5 @@
 ---
 title: Remote Procedure Calls
-description: Learn how you can use RPCs for your request/response requirements
 ---
 
 Remote Procedure Calls (RPC) are deepstream's mechanism for request/response communication (think Ajax Request, but with added load balancing and rerouting etc).
@@ -51,7 +50,7 @@ client.rpc.unprovide('add-two-numbers')
 ## RPC routing
 Processes can register as providers for multiple RPCs and many processes can provide the same RPC. deepstream will try to route a client's request as efficiently as possible as well as load-balance incoming requests between the available providers.
 
-![RPC rerouting](rpc-rerouting.png)
+![RPC rerouting](/img/tutorials/20-core/rpc-rerouting.png)
 
 Providers themselves are also able to reject requests (e.g. because they're under heavy load) using `response.reject()` which will prompt deepstream to re-route the request to another available provider.
 

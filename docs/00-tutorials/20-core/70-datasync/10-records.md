@@ -46,7 +46,7 @@ Please note:
 This method will execute synchronously when the record is already available or asynchronously if its still being loaded.
 If the record is not yet available and still being loaded, it will slow down the operation, for low latency and high write frequency its more performant not to use the `whenReady()` method.
 
-```
+```js
 for (let index = 0; index < 1000; index++) {
   <!-- faster -->
   const record = client.record.getRecord(`${index}`)
