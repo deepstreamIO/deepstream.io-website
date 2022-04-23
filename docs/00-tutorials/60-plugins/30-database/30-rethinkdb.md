@@ -1,7 +1,5 @@
 ---
 title: RethinkDB DataBase Connector
-description: Learn how to use RethinkDB with deepstream
-logoImage: rethinkdb.png
 ---
 
 #### What is RethinkDB?
@@ -10,7 +8,6 @@ RethinkDB is a distributed, document-oriented database. It implements a propriet
 What makes RethinkDB stand out is its ability to perform “realtime queries”. Rather than just retrieving query results as snapshots of the current state, RethinkDB allows to keep search result cursors open and stream continuous updates as new documents match or unmatch the query.
 
 #### Why use RethinkDB with deepstream?
-![deepstream.io and rethinkdb](deepstream-rethinkdb.png)
 RethinkDB’s realtime search makes it a great fit as a datastore within a deepstream architecture. Combining its search capabilities with deepstream’s data-sync, pub/sub and rpc can be a very powerful combination.
 
 #### Any downsides?
@@ -60,11 +57,10 @@ storage:
 ```
 
 ## search provider
-<a class="npm-download big" href="https://www.npmjs.com/package/deepstream.io-provider-search-rethinkdb">download search provider</a>
 
 The RethinkDB search provider is an independent process that sits between deepstream and RethinkDB. It let's you create lists with dynamic names such as `search?{"table":"book","query":[["title","match","^Harry Potter.*"],["price","lt",15.3]]}` on the client that automatically map to realtime searches on the backend
 
-![deepstream rethinkdb search provider diagram](deepstream-rethinkdb-search-provider.png)
+![deepstream rethinkdb search provider diagram](/img/tutorials/60-plugins/deepstream-rethinkdb-search-provider.png)
 
 Here's an example: Say you're storing a number of books as records.
 
@@ -95,3 +91,5 @@ const searchList = client.record.getList('search?' + queryString)
 ```
 
 and the best thing is: it's in realtime. Whenever a record that matches the search criteria is added or removed, the list will be updated accordingly.
+
+You can check the rethinkdb search provider code [here](https://github.com/deepstreamIO/deepstream.io-provider-search-rethinkdb)

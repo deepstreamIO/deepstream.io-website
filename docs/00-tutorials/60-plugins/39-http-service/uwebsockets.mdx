@@ -1,8 +1,7 @@
 ---
 title: UWS HTTP
-description: Learn how to configure the UWS HTTP Service
-logoImage: uws.svg
 ---
+import UwsHttpServerConfig from '../../../10-docs/10-server/_uws-http-server-config.mdx'
 
 UWS is enabled throughout all endpoints by setting the httpServer type to uws.
 
@@ -31,19 +30,4 @@ key: file(relative/to/config/ssl/key.pem)
 
 ### How to configure:
 
-```yaml
-httpServer:
-  type: uws
-  options:
-    # url path for http health-checks, GET requests to this path will return 200 if deepstream is alive
-    healthCheckPath: /health-check
-    # Headers to copy over from websocket
-    headers:
-      - user-agent
-    # Options required to create an ssl app
-    # ssl:
-    #   key: file(ssl/key.pem)
-    #   cert: file(ssl/cert.pem)
-    ##  dhParams: ...
-    ##  passphrase: ...
-```
+<UwsHttpServerConfig/>

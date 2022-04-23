@@ -2,6 +2,8 @@
 title: Configuration
 description: The available configuration options to customize deepstream
 ---
+import NodeHttpServerConfig from './_node-http-server-config.mdx'
+import UwsHttpServerConfig from './_uws-http-server-config.mdx'
 
 You can make any configuration changes you need for your deepstream setup in the
 *config.yml* file. Depending on the installation sources, the configuration can
@@ -142,61 +144,11 @@ _Default_: 10000
 
 Deepstream (v5 and later) runs all websocket / HTTP services in one server to which they hook to provide their own functionality. This means you can run all the services at the same time on the same port if you want (for example text, binary and JSON). The idea is that *EVERYTHING* (minus MQTT) runs on port 6020, which makes deployments much easier.
 
-```yaml
-httpServer:
-  type: default
-  options:
-    # url path for http health-checks, GET requests to this path will return 200 if deepstream is alive
-    healthCheckPath: /health-check
-    # -- CORS --
-    # if disabled, only requests with an 'Origin' header matching one specified under 'origins'
-    # below will be permitted and the 'Access-Control-Allow-Credentials' response header will be
-    # enabled
-    allowAllOrigins: true
-    # a list of allowed origins
-    origins:
-      - 'https://example.com'
-    # maximum allowed size of a POST request body
-    maxMessageSize: 1048576
-    # Headers to copy over from websocket
-    headers:
-      - user-agent
-    ssl:
-      key: fileLoad(/path/to/sslKey)
-      cert: fileLoad(/path/to/sslCert)
-      ca: fileLoad(/path/to/caAuth)
-```
+<NodeHttpServerConfig/>
 
 OR
 
-```yaml
-httpServer:
-  type: uws
-  options:
-    # url path for http health-checks, GET requests to this path will return 200 if deepstream is alive
-    healthCheckPath: /health-check
-    # -- CORS --
-    # if disabled, only requests with an 'Origin' header matching one specified under 'origins'
-    # below will be permitted and the 'Access-Control-Allow-Credentials' response header will be
-    # enabled
-    allowAllOrigins: true
-    # a list of allowed origins
-    origins:
-      - 'https://example.com'
-    # maximum allowed size of a POST request body
-    maxMessageSize: 1048576
-    # Headers to copy over from websocket
-    headers:
-      - user-agent
-    # Options required to create an ssl app
-    ssl:
-      key: file(ssl/key.pem)
-      cert: file(ssl/cert.pem)
-    ##  dhParams: ...
-    ##  passphrase: ...
-```
-
-
+<UwsHttpServerConfig/>
 
 The server can be configured with custom connection endpoints. You can supply as many as you want, each as any individual list entry below the `connectionEndpoints` key:
 

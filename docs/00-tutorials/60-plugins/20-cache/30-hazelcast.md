@@ -12,12 +12,10 @@ Hazelcast is a distributed caching layer, organized as a grid of independent nod
 Hazelcast can be a good choice as a fast and scalable caching layer for deepstream. It can outperform other caches like Redis in cluster-mode, but is a bit trickier to set up.
 Where Hazelcast really comes into its own is the additional Map-Reduce functionality built on top of its caching capabilities. This makes it possible to perform simple, distributed computations based on record data and feed the results back to deepstream.
 
-![Hazelcast Diagram](hazelcast-diagram.png)
+![Hazelcast Diagram](/img/tutorials/60-plugins/hazelcast-diagram.png)
 
 #### Using Hazelcast with deepstream
 deepstream comes with a cache connector for Hazelcast preinstalled
-
-![Hazelcast install console output](console-output.png)
 
 or, if you're using deepstream in Node, [get it from NPM](https://www.npmjs.com/package/@deepstream/cache-hazelcast)
 

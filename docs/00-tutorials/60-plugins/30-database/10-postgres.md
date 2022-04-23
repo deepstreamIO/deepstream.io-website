@@ -1,14 +1,11 @@
 ---
 title: Postgres DataBase Connector
-description: Learn how to use Postgres with deepstream
-logoImage: postgres.png
 tags: [postgres, postgresql, deepstream, realtime, search]
 ---
 
 ## What is Postgres?
 [PostgreSQL](https://www.postgresql.org/) or Postgres for short is a relational database management system, similar to MySQL or Oracle. With development starting as early as 1986 and continuous improvement ever since it is as mature and established as databases go and has become one of the most solid and reliable cornerstones of the database world.
 
-![Postgres deepstream](postgres-deepstream.svg)
 But that doesn’t mean that Postgres is complicated or old fashioned. Over the years it has evolved from a simple relational database into a powerful data programming platform with elaborate stored procedures, trigger functions, a myriad of datatypes and powerful querying capabilities.
 
 ## Why you should use Postgres as a database for deepstream
@@ -27,28 +24,29 @@ deepstream’s data-structures are schemaless JSON documents identified by a uni
 deepstream comes preinstalled an official connector for postgres.
 
 
-It can be configured in the `plugins - storage` section of deepstreams `config.yml`
+It can be configured in the `storage` section of deepstreams `config.yml`
 
 ```yaml
-plugins:
-  storage:
-    name: postgres
-    options:
-      user: some-user
-      database: some-database
-      password: some-password
-      host: localhost
-      port: 5432 #postgres default post
-      schema: ds #schema defaults to ds. Will be created if it doesn't exist
-      max: 10 #concurrent connections
-      idleTimeoutMillis: 30000 #timeout after which connection will be cut
-      writeInterval: 200 #amout of milliseconds during which writes will be buffered
-      notifications:
-        CREATE_TABLE: true #Get notified when tables are created
-        DESTROY_TABLE: true #Get notified when tables are dropped
-        INSERT: true # Get notified when records are created
-        UPDATE: false # Get notified when records are updated
-        DELETE: true # Get notified when records are deleted
+storage:
+  name: postgres
+  options:
+    user: some-user
+    database: some-database
+    password: some-password
+    host: localhost
+    port: 5432 #postgres default post
+    schema: ds #schema defaults to ds. Will be created if it doesn't exist
+    defaultTable: default # default table name defaults to default
+    max: 10 #concurrent connections
+    idleTimeoutMillis: 30000 #timeout after which connection will be cut
+    writeInterval: 200 #amount of milliseconds during which writes will be buffered
+    useJsonb: false #store values as searchable binary JSON (slower)
+    notifications:
+      CREATE_TABLE: false #Get notified when tables are created
+      DESTROY_TABLE: false #Get notified when tables are dropped
+      INSERT: false # Get notified when records are created
+      UPDATE: false # Get notified when records are updated
+      DELETE: false # Get notified when records are deleted
 ```
 
 This connector can also be used as a standalone component from node.js to connect to postgres' notification mechanism. To do this, install the connector via
@@ -62,7 +60,7 @@ yarn add @deepstream/storage-postgres
 and instantiate it directly
 
 ```javascript
-const PostgresConnector = require( '@deepstream/storage-postgres' );
+const { Connector } = require( '@deepstream/storage-postgres' );
 const settings = {
   user: process.env.PG_USER,
   database: process.env.PG_DB,
@@ -71,7 +69,7 @@ const settings = {
   port: parseInt( process.env.PG_PORT, 10 )
 }
 
-const connector = new PostgresConnector( settings )
+const connector = new Connector( settings )
 
 // start connector
 connector.init()

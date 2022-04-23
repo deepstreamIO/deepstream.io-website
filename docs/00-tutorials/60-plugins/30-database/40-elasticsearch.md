@@ -1,7 +1,5 @@
 ---
 title: ElasticSearch DataBase Connector
-description: Learn how to use ElasticSearch with deepstream
-logoImage: elasticsearch.png
 ---
 
 #### What is ElasticSearch
@@ -19,14 +17,13 @@ ElasticSearch also mentions its "realtime search capabilities". Here it means th
 
 #### Storing deepstream's data in ElasticSearch
 Storing data in ElasticSearch is easy. Just use deepstream's storage connector for ElasticSearch.
-![deepstream elasticsearch install console output](elasticsearch-install-console-output.png)
 
 #### Querying ElasticSearch from deepstream
 You have two choices: ElasticSearch offers a well structured REST API that can be accessed directly via HTTP (e.g. via an Ajax call from the Browser). This can be a simple and very solid choice, especially when used with a managed ElasticSearch deployment as a service.
 
 ElasticSearch can also be accessed from within deepstream through a remote procedure call (RPC). For this, you'll need to create a backend process that sits in between deepstream and the search engine.
 
-![deepstream elasticsearch provider diagram](deepstream-elasticsearch-provider-diagram.png)
+![deepstream elasticsearch provider diagram](/img/tutorials/60-plugins/deepstream-elasticsearch-provider-diagram.png)
 
 Say we create a (admittably nonsensical) set of records like
 
