@@ -1,8 +1,5 @@
 ---
 title: V3 Text Protocol
-description: Learn how to configure a V3 compatible endpoint
-wip: true
-logoImage: deepstream-v3.png
 ---
 
 ### How to configure:
@@ -28,4 +25,6 @@ connectionEndpoints:
       maxAuthAttempts: 3
       # maximum allowed size of an individual message in bytes
       maxMessageSize: 1048576
+      # optional required headers
+      headers: []
 ```

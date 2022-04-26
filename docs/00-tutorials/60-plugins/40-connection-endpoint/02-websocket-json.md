@@ -9,7 +9,7 @@ The JSON endpoint is available to help people to debug writing new SDKs and shou
 
 ### How to configure:
 
-#### server  
+#### server
 
 ```yaml
 connectionEndpoints:
@@ -24,7 +24,6 @@ connectionEndpoints:
       # the maximum amount of bytes to buffer before flushing, stops the client from large enough packages
       # to block its responsiveness
       maxBufferByteSize: 100000
-
       # Security
       # amount of time a connection can remain open while not being logged in
       unauthenticatedClientTimeout: 180000
@@ -32,11 +31,14 @@ connectionEndpoints:
       maxAuthAttempts: 3
       # maximum allowed size of an individual message in bytes
       maxMessageSize: 1048576
+      # optional required headers
+      headers: []
+
 ```
 
-#### client  
+#### client
 
-In the client options include:  
+In the client options include:
 
 ```
 socketOptions: {

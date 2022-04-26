@@ -1,8 +1,5 @@
 ---
 title: Binary WebSocket Endpoint
-description: Learn how to configure the default binary WS Websocket Endpoint
-wip: true
-logoImage: binary.png
 ---
 
 ### How to configure:
@@ -16,7 +13,7 @@ connectionEndpoints:
       # the amount of milliseconds between each ping/heartbeat message
       heartbeatInterval: 30000
       # the amount of milliseconds that writes to sockets are buffered
-      outgoingBufferTimeout: 10
+      outgoingBufferTimeout: 0
       # the maximum amount of bytes to buffer before flushing, stops the client from large enough packages
       # to block its responsiveness
       maxBufferByteSize: 100000
@@ -28,4 +25,8 @@ connectionEndpoints:
       maxAuthAttempts: 3
       # maximum allowed size of an individual message in bytes
       maxMessageSize: 1048576
+      # should the server log invalid auth data, defaults to false
+      logInvalidAuthData: false
+      # optional required headers
+      headers: []
 ```

@@ -21,7 +21,7 @@ Postgres is established, reliable and rock solid. But it’s especially its newe
 deepstream’s data-structures are schemaless JSON documents identified by a unique key. This makes object-oriented databases a more natural fit as deepstream won’t make much use of Postgres relational features. Beyond that, there’s not much negative to say: Postgres is solid, fast and available from many hosting companies, e.g. [AWS](https://aws.amazon.com/rds/postgresql/) or [Heroku](https://www.heroku.com/postgres) as well as under a very [permissive open source license](https://www.postgresql.org/about/licence/) - give it a go!
 
 ## How to use deepstream with Postgres
-deepstream comes preinstalled an official connector for postgres.
+deepstream comes preinstalled with an official connector for postgres.
 
 
 It can be configured in the `storage` section of deepstreams `config.yml`
