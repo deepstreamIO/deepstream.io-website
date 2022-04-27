@@ -46,7 +46,7 @@ A custom plugin is something that can add new functionality to connect your worl
 The custom plugin API currently is just in its infancy, and we're hoping that we get requests of useful (and crazy!)
 ideas to help us mold it into something even more powerful!
 
-To see an example custom plugin that listens to user logins/logouts, logs detailed information and sends an event please look [here](../custom-plugin/)
+To see an example custom plugin that listens to user logins/logouts, logs detailed information and sends an event please look [here](20-custom-plugin.md)
 
 ## Authentication
 
@@ -57,7 +57,7 @@ Authentication provides three pieces of functionality to deepstream:
 3) It returns clientData, which is data that is forwarded to the client on login
 
 To see a guide of an Authentication plugin that only allows users to login with a preconfigured
-token please look [here](../authentication/)
+token please look [here](30-authentication.md)
 
 ## Permissioning
 
@@ -68,7 +68,7 @@ generate their own permissioning logic, which can allow you to interact with thi
 implement smarter caching depending on your use case.
 
 To see a guide of a Permission plugin that only allows users to interact with actions that have
-their userId in the name please look [here](../permission/)
+their userId in the name please look [here](40-permission.md)
 
 ## Cache
 
@@ -80,16 +80,14 @@ your own by implementing it's simple API.
 The main performance benefit you always want to implement with cache layers is to seperate the version
 and values so that retrieving thousands of records in one go is significantly faster!
 
-To see a guide of a Cache plugin that stores data in memory please look [here](./cache). Once
-your comfortable with it take a look at [redis](./redis), [memcache](./memcache) and hazelcast(./hazelcast)
-implementations for further inspiration!
+To see a guide of a Cache plugin that stores data in memory please look [here](70-cache.md)
 
 ## Storage
 
 The storage API is a subset of the Cache API. It's used alot less frequent than the cache layer,
 once for each write, but only once for a record thoughout the records entire lifetime!
 
-To see a guide of a simple storage plugin that stores it's data please look [here](../storage).
+To see a guide of a simple storage plugin that stores it's data please look [here](60-storage.md).
 Word of advice though, please don't use this system in production unless your okay with insanely
 slow speeds.
 
@@ -101,30 +99,32 @@ with logs is usually quite expensive and so is better to leave for seperate proc
 easily integrate with multiple logging solutions and send your logs directly to your logging frameworks.
 
 To see a guide of a simple log plugin that buffers debug logs in memory until an error occurs (helps debugging!)
-please look [here](../logger/)
+please look [here](50-logger.md)
 
 ## Connection Endpoints
 
 A connection endpoint is the deepstream nervous system. Without it you can't get any messages back and forth between
 it and the outside world. We provide three build in solutions, [ws](https://github.com/websockets/ws), [uWebsockets.js](https://github.com/uNetworking/uWebSockets.js/) and HTTP via a standard called JIF.
 
-However its super simple to build your own, which in turn will allow you to create your own crazy protocols. Since this is
-quite a large plugin we'll be releasing the documentation after the official V4 release.
+However its super simple to build your own, which in turn will allow you to create your own crazy protocols. Check out the source code for inspiration.
 
 ## Monitoring
 
 Monitoring is a new API that allows users to track all high level actions that happen in deepstream and show it in a
-pretty display using a system such as grafana. This plugin will offer rich APIs with time, but for now covers the essentials needed to get that warm fuzzy feeling when everything is going right.
+pretty display using a system such as grafana.
 
 To see an example monitoring plugin that exposes a HTTP server to allow users to query it's currently state please
-look [here](../monitoring/)
+look [here](92-monitoring.md)
+
+Using the monitoring plugin it's straightforward to implement an audit log of every user message (event, record, rpc request and data) that goes through the server for compliance purposes.
 
 ## Cluster Node
 
-The almighty cluster node! This plugin is the only one that isn't shipped with a default setting (although we are looking into vertical clustering!). It's responsible for allowing deepstream nodes to communicate with each other.
+The almighty cluster node!. It's responsible for allowing deepstream nodes to communicate with each other. The server comes with a no-cluster and vertical cluster options in order to use all CPU cores.
+
 There's no magic to this, purely just a `send`, `sendDirect` and `recieve` method.
 
-To see an example clustering plugin that allows nodes to talk to each other using redis please look [here](../cluster-node/)
+To see an example clustering plugin that allows nodes to talk to each other using redis please look [here](90-cluster-node.md)
 
 ## Locks
 
