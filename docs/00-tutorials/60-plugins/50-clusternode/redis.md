@@ -1,10 +1,6 @@
 ---
 title: Redis Cluster Connector
-description: Learn how to use Redis with deepstream for clustering
-logoImage: redis.png
 ---
-
-`markdown:redis-description.md`
 
 #### How to use Redis for clustering with deepstream?
 

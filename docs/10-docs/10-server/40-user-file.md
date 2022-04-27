@@ -75,10 +75,6 @@ If you've configured a hashing algorithm, use hashes as password:
 deepstream hash <password>
 ```
 
-e.g.
-
-![deepstream hash console output](ds-hash-output.png)
-
 ### data
 Optional authentication data, e.g. `role: admin` or `canCreatePosts: true`. This data will be available in your permission rules as `user.data`. Data stored within clientData will also be forwarded to the client as part of the login process.
 
