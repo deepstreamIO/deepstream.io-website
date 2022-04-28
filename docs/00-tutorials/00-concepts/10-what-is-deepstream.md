@@ -68,4 +68,4 @@ Recent benchmarks ran a cluster of six nodes on AWS EC2 t2.medium instances for 
 Mostly nodeJS, with native nodeJS plugins like the uws websocket server that be used for superior memory and cpu efficiency.
 
 ### Who’s behind it?
-It was started by Yasser Fadl and Wolfram Hempel, two trading technology geeks that used to build similar systems for Investment Banks and Hedge Funds in London until they’ve got somewhat irritated by this world and decided to move into open source.
+It was started by Yasser Fadl and Wolfram Hempel, two trading technology geeks that used to build similar systems for Investment Banks and Hedge Funds in London until they’ve decided to move into open source.

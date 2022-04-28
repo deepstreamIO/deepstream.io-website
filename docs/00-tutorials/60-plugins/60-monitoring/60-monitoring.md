@@ -4,9 +4,9 @@ description: Learn how to use monitor deepstream using http or logs
 logoImage: http.png
 ---
 
-Deepstream allows you to gather detailed insights into what the server is actually doing. How detailed is really up to you, since you can aggregate data by topic, action or actually go far enough to log each individual subscription name!
+Deepstream allows you to gather detailed insights into what the server is actually doing. How detailed is really up to you, since you can aggregate data by topic, action or actually go far enough to log each individual subscription name, user, message, anything that goes through the system in one place thus giving complete observability and auditing capabilities.
 
-With most users in production we realized the sweet spot is metrics in the following structure:
+With most users in production we realized the sweet spot in metrics in the following structure:
 
 ```json
 {
