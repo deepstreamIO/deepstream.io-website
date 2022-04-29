@@ -54,27 +54,9 @@ deepstream.set('plugins', {
 deepstream.start()
 ```
 
-### Building custom plugins
-
-Please check the example plugins repo for more examples on how to build your own custom plugins for the main services. Remember to cjeck the server source code for the actual implementations of the core plugins.
-
-- [Authentication](https://github.com/deepstreamIO/deepstream.io-example-plugins/tree/master/src/auth): Learn how to create an authentication plugin to verify a users ability to connect, as well as provide data that can be used for permissioning further on.
-
-- [Permission](https://github.com/deepstreamIO/deepstream.io-example-plugins/tree/master/src/permission): Learn the basics of creating a permission plugin, allowing you to allow or deny actions down to a per message basis.
-
-- [Logger](https://github.com/deepstreamIO/deepstream.io-example-plugins/tree/master/src/logger): Create your own logger to interact with your favorite logging platform or filter logs to what you want exactly.
-
-- [Storage](https://github.com/deepstreamIO/deepstream.io-example-plugins/tree/master/src/storage): Create a plugin to connect to any type of storage system out there, be it file, memory, disk, a url or anything else.
-
-- [Cache](https://github.com/deepstreamIO/deepstream.io-example-plugins/tree/master/src/cache):Create a plugin to connect to any type of cache system out there, just remember to keep it fast!
-
-- [Cluster Node](https://github.com/deepstreamIO/deepstream.io/blob/master/src/services/cluster-node/vertical-cluster-node.ts): Create a plugin that allows deepstream nodes to connect to each other and scale. Example taken from main repo.
-
-- [Monitoring](https://github.com/deepstreamIO/deepstream.io-example-plugins/tree/master/src/monitoring): Create a plugin that monitors deepstream nodes, incoming and outgoing messages, users, anything you need.
-
-
-
 ### Example Documented Plugin
+
+This plugin listens to user logins/logouts, logs detailed information and sends an event.
 
 ```js
 import { TOPIC, EVENT_ACTION } from '@deepstream/protobuf/dist/types/all'
@@ -164,4 +146,23 @@ export default class CustomPlugin extends DeepstreamPlugin implements Connection
     }
 }
 ```
+
+### Building custom plugins
+
+Please check the example plugins repo for more examples on how to build your own custom plugins for the main services. Remember to cjeck the server source code for the actual implementations of the core plugins.
+
+- [Authentication](https://github.com/deepstreamIO/deepstream.io-example-plugins/tree/master/src/auth): Learn how to create an authentication plugin to verify a users ability to connect, as well as provide data that can be used for permissioning further on.
+
+- [Permission](https://github.com/deepstreamIO/deepstream.io-example-plugins/tree/master/src/permission): Learn the basics of creating a permission plugin, allowing you to allow or deny actions down to a per message basis.
+
+- [Logger](https://github.com/deepstreamIO/deepstream.io-example-plugins/tree/master/src/logger): Create your own logger to interact with your favorite logging platform or filter logs to what you want exactly.
+
+- [Storage](https://github.com/deepstreamIO/deepstream.io-example-plugins/tree/master/src/storage): Create a plugin to connect to any type of storage system out there, be it file, memory, disk, a url or anything else.
+
+- [Cache](https://github.com/deepstreamIO/deepstream.io-example-plugins/tree/master/src/cache):Create a plugin to connect to any type of cache system out there, just remember to keep it fast!
+
+- [Cluster Node](https://github.com/deepstreamIO/deepstream.io/blob/master/src/services/cluster-node/vertical-cluster-node.ts): Create a plugin that allows deepstream nodes to connect to each other and scale. Example taken from main repo.
+
+- [Monitoring](https://github.com/deepstreamIO/deepstream.io-example-plugins/tree/master/src/monitoring): Create a plugin that monitors deepstream nodes, incoming and outgoing messages, users, anything you need.
+
 

@@ -1,5 +1,0 @@
----
-title: Winston Logger
----
-
-TODO

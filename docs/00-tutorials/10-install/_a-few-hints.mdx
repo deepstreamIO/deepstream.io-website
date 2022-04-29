@@ -1,5 +1,15 @@
 ## A few hints
 
+deepstream binary comes pre-installed with the following connectors:
+- cache redis
+- cache memcached
+- clusternode redis
+- storage rethinkdb
+- storage postgres
+- storage mongodb
+- storage elasticsearch
+- logger winston
+
 deepstream's configuration file can be written in both YAML or JSON. deepstream will automatically choose the right parser, based on the file-extension.
 
 Some core configuration options can be overridden via commandline parameters, e.g. `--host`, `--port` or `--disable-auth`. For a full list, just run `deepstream start --help`

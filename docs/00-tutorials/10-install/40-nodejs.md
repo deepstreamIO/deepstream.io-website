@@ -40,6 +40,21 @@ run the file with node
 node start.js
 ```
 
+#### Installing connectors
+
+Connectors can be installed via NPM:
+
+- cache redis: `npm i @deepstream/cache-redis`
+- cache memcached: `npm i @deepstream/cache-memcached`
+- clusternode redis: `npm i @deepstream/clusternode-redis`
+- storage rethinkdb: `npm i @deepstream/storage-rethinkdb`
+- storage postgres: `npm i @deepstream/storage-postgres`
+- storage mongodb: `npm i @deepstream/storage-mongodb`
+- storage elasticsearch: `npm i @deepstream/storage-elasticsearch`
+- logger winston: `npm i @deepstream/logger-winston`
+
+[Or write your own to suit your needs](00-tutorials/70-custom-plugins/10-an-overview.md)
+
 #### Using the deepstream client in Node.js
 The deepstream javascript client can be installed via [NPM](https://www.npmjs.com/package/@deepstream/client) and used in Node.js.
 
@@ -52,3 +67,4 @@ const { DeepstreamClient } = require('@deepstream/client')
 const client = new DeepstreamClient('localhost:6020')
 client.login()
 ```
+

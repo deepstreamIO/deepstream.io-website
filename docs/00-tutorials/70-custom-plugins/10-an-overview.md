@@ -34,30 +34,16 @@ just having this code wouldn't add any functionality! Deepstream offers a powerf
 that allow developers to modify nearly every aspect of functionality or add your own. Let's look at the
 different types, and remember to take a deeper dive into each section to see an example implementation!
 
-## Custom Plugins
-
-A custom plugin is something that can add new functionality to connect your world to internal deepstream logic and services. A couple of random examples:
-
-- Forcefully terminating user sessions via a HTTP request
-- Refreshing valve permissions on demand without a server restart
-- Send login/logout events to a third party system
-- Changing deepstream configuration during runtime (like timeout durations)
-
-The custom plugin API currently is just in its infancy, and we're hoping that we get requests of useful (and crazy!)
-ideas to help us mold it into something even more powerful!
-
-To see an example custom plugin that listens to user logins/logouts, logs detailed information and sends an event please look [here](20-custom-plugin.md)
-
 ## Authentication
 
 Authentication provides three pieces of functionality to deepstream:
 
-1) Validates whether a user is allowed to login
-2) It returns serverData, which is sensitive information used by deepstream to aid permissioning
-3) It returns clientData, which is data that is forwarded to the client on login
+1. Validates whether a user is allowed to login
+2. It returns serverData, which is sensitive information used by deepstream to aid permissioning
+3. It returns clientData, which is data that is forwarded to the client on login
 
 To see a guide of an Authentication plugin that only allows users to login with a preconfigured
-token please look [here](30-authentication.md)
+token please look [here](https://github.com/deepstreamIO/deepstream.io-example-plugins/tree/master/src/auth)
 
 ## Permissioning
 
@@ -68,7 +54,7 @@ generate their own permissioning logic, which can allow you to interact with thi
 implement smarter caching depending on your use case.
 
 To see a guide of a Permission plugin that only allows users to interact with actions that have
-their userId in the name please look [here](40-permission.md)
+their userId in the name please look [here](https://github.com/deepstreamIO/deepstream.io-example-plugins/tree/master/src/permission)
 
 ## Cache
 
@@ -80,14 +66,14 @@ your own by implementing it's simple API.
 The main performance benefit you always want to implement with cache layers is to seperate the version
 and values so that retrieving thousands of records in one go is significantly faster!
 
-To see a guide of a Cache plugin that stores data in memory please look [here](70-cache.md)
+To see a guide of a Cache plugin that stores data in memory please look [here](https://github.com/deepstreamIO/deepstream.io-example-plugins/tree/master/src/cache)
 
 ## Storage
 
 The storage API is a subset of the Cache API. It's used alot less frequent than the cache layer,
 once for each write, but only once for a record thoughout the records entire lifetime!
 
-To see a guide of a simple storage plugin that stores it's data please look [here](60-storage.md).
+To see a guide of a simple storage plugin that stores it's data please look [here](https://github.com/deepstreamIO/deepstream.io-example-plugins/tree/master/src/storage).
 Word of advice though, please don't use this system in production unless your okay with insanely
 slow speeds.
 
@@ -99,7 +85,7 @@ with logs is usually quite expensive and so is better to leave for seperate proc
 easily integrate with multiple logging solutions and send your logs directly to your logging frameworks.
 
 To see a guide of a simple log plugin that buffers debug logs in memory until an error occurs (helps debugging!)
-please look [here](50-logger.md)
+please look [here](https://github.com/deepstreamIO/deepstream.io-example-plugins/tree/master/src/logger)
 
 ## Connection Endpoints
 
@@ -114,7 +100,7 @@ Monitoring is a new API that allows users to track all high level actions that h
 pretty display using a system such as grafana.
 
 To see an example monitoring plugin that exposes a HTTP server to allow users to query it's currently state please
-look [here](92-monitoring.md)
+look [here](https://github.com/deepstreamIO/deepstream.io-example-plugins/tree/master/src/monitoring)
 
 Using the monitoring plugin it's straightforward to implement an audit log of every user message (event, record, rpc request and data) that goes through the server for compliance purposes.
 
@@ -124,7 +110,7 @@ The almighty cluster node!. It's responsible for allowing deepstream nodes to co
 
 There's no magic to this, purely just a `send`, `sendDirect` and `recieve` method.
 
-To see an example clustering plugin that allows nodes to talk to each other using redis please look [here](90-cluster-node.md)
+To see an example clustering plugin that allows nodes to talk to each other using redis please look at the redis cluster node source code [here](https://github.com/deepstreamIO/deepstream.io-clusternode-redis) or the vertical cluster source code [here](https://github.com/deepstreamIO/deepstream.io/blob/master/src/services/cluster-node/vertical-cluster-node.ts)
 
 ## Locks
 
@@ -150,3 +136,17 @@ presence, subscriptions and listening across multiple nodes. This API is current
 The Subscription Registry is sort of like the dispatch centre of deepstream. It holds all subscriptions and gets told whenever someone subscribes or unsubscribes to anything. It's also responsible for sending those messages out
 to all interested clients. This is a plugin purely because we want to start experimenting with different broadcast
 patterns and allowing users to decide which one makes most sense. We'll be adding an example plugin to this in the future as it's quite complex. However if anyone is interested please raise a git issue and we'll be more than happy to run you through it!
+
+## Custom Plugins
+
+A custom plugin is something that can add new functionality to connect your world to internal deepstream logic and services. A couple of random examples:
+
+- Forcefully terminating user sessions via a HTTP request
+- Refreshing valve permissions on demand without a server restart
+- Send login/logout events to a third party system
+- Changing deepstream configuration during runtime (like timeout durations)
+
+The custom plugin API currently is just in its infancy, and we're hoping that we get requests of useful (and crazy!)
+ideas to help us mold it into something even more powerful!
+
+To see example custom plugins please look at [building custom plugins](20-custom-plugin.md)
