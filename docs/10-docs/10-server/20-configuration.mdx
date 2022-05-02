@@ -6,11 +6,16 @@ import NodeHttpServerConfig from './_node-http-server-config.mdx'
 import UwsHttpServerConfig from './_uws-http-server-config.mdx'
 
 You can make any configuration changes you need for your deepstream setup in the
-*config.yml* file. Depending on the installation sources, the configuration can
+*config.yml* file or in the options object passed to the deepstream constructor when using the node API.
+Depending on the installation sources, the configuration can
 be found in
 - in the folder `conf` in the Node.js module directory if you installed with
   `npm`, or
 - in the folder `conf` after unpacking the standalone server binary.
+
+:::info
+The default server configuration can be found on the [source code here](https://github.com/deepstreamIO/deepstream.io/blob/master/src/default-options.ts)
+:::
 
 ## Macros
 
@@ -44,6 +49,8 @@ serverName: UUID
 showLogo: true
 dependencyInitializationTimeout: 2000
 exitOnFatalError: false
+logLevel: INFO
+#libDir: ../lib
 ```
 
 ### serverName
@@ -57,7 +64,8 @@ When starting, a server can show the deepstream logo. This setting is best left 
 _Default_: `true`
 
 ### logLevel
-The logLevel to use across the application
+The logLevel to use across the application. Sets at what level and above the server should log messages. Valid levels are `DEBUG`, `INFO`,
+`WARN`, `ERROR`, and `OFF`.
 
 _Default_: INFO
 
@@ -66,15 +74,26 @@ Sets how long deepstream will wait for dependencies to initialize.
 
 _Default_:`2000`
 
+### exitOnFatalError
+Exit if a fatal error occurs
+
+_Default_: false
+
 ### libDir
 The directory where all the plugins reside, this is used in standalone binaries
 
 _Default_: None, it assumes all plugins are installed via npm
 
-### exitOnFatalError
-Exit if a fatal error occurs
+## Features configuration
+This disables specific feature in deepstream, which is a more performant way than disabling via permissions and is also how telemetry figures out what features are enabled.
 
-_Default_: false
+```yaml
+enabledFeatures:
+  record: true
+  event: true
+  rpc: true
+  presence: true
+```
 
 ## RPC Configuration
 
@@ -84,9 +103,19 @@ Sets how long deepstream will wait for a RPC provider to acknowledge receipt of 
 _Default_:`1000`
 
 ### responseTimeout
-Sets how long deepstream will wait for RPCs to complete.
+Sets how long deepstream will wait for RPCs to complete before sending a response timeout error.
 
 _Default_:`10000`
+
+### provideRequestorName
+Send requestorName by default.
+
+_Default_:`true`
+
+### provideRequestorData
+Send requestorData by default.
+
+_Default_:`true`
 
 ## Record Configuration
 
@@ -131,7 +160,7 @@ The amount of time before trying to reattempt finding matches for subscriptions.
 is not a cheap operation so it's recommended to raise keep this at minutes rather then
 second intervals if you are experiencing heavy loads
 
-_Default_: 60000
+_Default_: 30000
 
 ### matchCooldown
 The amount of time a server will refuse to retry finding a subscriber after a previously
@@ -162,12 +191,14 @@ connectionEndpoints:
       # the amount of milliseconds between each ping/heartbeat message
       heartbeatInterval: 30000
       # the amount of milliseconds that writes to sockets are buffered
-      outgoingBufferTimeout: 10
+      outgoingBufferTimeout: 0
       # the maximum amount of bytes to buffer before flushing, stops the client from large enough packages
       # to block its responsiveness
       maxBufferByteSize: 100000
 
       # Security
+      # should the server log invalid auth data, defaults to false
+      logInvalidAuthData: false
       # amount of time a connection can remain open while not being logged in
       unauthenticatedClientTimeout: 180000
       # invalid login attempts before the connection is cut
@@ -182,12 +213,14 @@ connectionEndpoints:
       # the amount of milliseconds between each ping/heartbeat message
       heartbeatInterval: 30000
       # the amount of milliseconds that writes to sockets are buffered
-      outgoingBufferTimeout: 10
+      outgoingBufferTimeout: 0
       # the maximum amount of bytes to buffer before flushing, stops the client from large enough packages
       # to block its responsiveness
       maxBufferByteSize: 100000
 
       # Security
+      # should the server log invalid auth data, defaults to false
+      logInvalidAuthData: false
       # amount of time a connection can remain open while not being logged in
       unauthenticatedClientTimeout: 180000
       # invalid login attempts before the connection is cut
@@ -202,12 +235,14 @@ connectionEndpoints:
       # the amount of milliseconds between each ping/heartbeat message
       heartbeatInterval: 30000
       # the amount of milliseconds that writes to sockets are buffered
-      outgoingBufferTimeout: 10
+      outgoingBufferTimeout: 0
       # the maximum amount of bytes to buffer before flushing, stops the client from large enough packages
       # to block its responsiveness
       maxBufferByteSize: 100000
 
       # Security
+      # should the server log invalid auth data, defaults to false
+      logInvalidAuthData: false
       # amount of time a connection can remain open while not being logged in
       unauthenticatedClientTimeout: 180000
       # invalid login attempts before the connection is cut
@@ -222,7 +257,7 @@ connectionEndpoints:
       allowAuthData: true
       # enable the authentication endpoint for requesting tokens/userData.
       # note: a custom authentication handler is required for token generation
-      enableAuthEndpoint: false
+      enableAuthEndpoint: true
       # path for authentication requests
       authPath: /api/auth
       # path for POST requests
@@ -309,7 +344,9 @@ Set a path to a JavaScript file, node module or a folder with an _index.js_ file
 ### name
 If you are using any of the official deepstream connectors, add the name of what the plugin connects to here, for example `redis`.
 
-**Note**: You can set `path` **or** name, but not both.
+:::note
+ You can set `path` **or** `name`, but not both.
+:::
 
 ### options
 Under this key, add sub key/value pairs to set the configuration options that are passed to the plugin. Each plugin should mention what configuration options you can set.
@@ -320,10 +357,9 @@ deepstream uses by default a logger which prints out to _stdout_ (errors and war
 
 ```yaml
 logger:
-  name: default
+  type: default
   options:
     colors: true
-    logLevel: INFO
 ```
 
 ### colors
@@ -332,13 +368,6 @@ leave color markers in log files if you redirect the output into a file.
 
 _Default_: `true`
 
-### logLevel
-Sets at what level and above the server should log messages. Valid levels are `DEBUG`, `INFO`,
-`WARN`, `ERROR`, and `OFF`.
-
-_Default_: `INFO`
-
-
 ## Authentication
 
 In this section you can configure the authentication types the server uses.
@@ -346,10 +375,10 @@ In this section you can configure the authentication types the server uses.
 You set the authentication type as a subkey in the `auth` key. The available
 authentication options are `none`, `file`, `storage` and `http`, each of them having
 different `options` which are described in the tutorials on [Auth
-None](/tutorials/core/auth/none/), [file-based
-authentication](/tutorials/core/auth/file/), [storage-based
-authentication](/tutorials/core/auth/storage/), [HTTP
-authentication](/tutorials/core/auth/http-webhook/), and [JWT authentication](/tutorials/core/auth/jwt-auth/) respectively.
+None](../../00-tutorials/20-core/20-auth/00-auth-introduction.md), [file-based
+authentication](../../00-tutorials/20-core/20-auth/20-file.mdx), [storage-based
+authentication](../../00-tutorials/20-core/20-auth/21-storage.mdx), [HTTP
+authentication](../../00-tutorials/20-core/20-auth/30-http-webhook.mdx), and [JWT authentication](../../00-tutorials/20-core/20-auth/40-jwt-auth.md) respectively.
 
 You can set multiple authentication types simultaneously and the incoming connection will be validated against each of them until one succeeds or all fail. Authentication strategies will be queried in the same order they are declared on the configuration file.
 
@@ -365,11 +394,11 @@ _Default_: `none`
 ## Permissioning
 
 In this section you can configure the
-[permissioning](/tutorials/core/permission/valve-introduction/). The key used for this
+[permissioning](../../00-tutorials/20-core/30-permission/10-valve-introduction.md). The key used for this
 section is `permission` and you can create your own custom permission handler or
 use a configuration file. To use the former method, select the option
 `type: none` and override the `permissionHandler` with the aid of the [NodeJS
-server API](/docs/server/node-api/). To use the latter method, set `type: config` and modify the `option` values below.
+server API](30-node-api.md). To use the latter method, set `type: config` and modify the `option` values below.
 
 ```yaml
 # Permissioning example with default values for config-based permissioning
@@ -398,7 +427,8 @@ _Default_: `60000`
 
 ## Storage and Cache
 
-Storage and Cache plugins can be configured as follows, please look at [current connectors](/tutorials/#connectors/) for in depth tutorials how to configure them.
+Storage and Cache plugins can be configured as follows, please look at [storage](../../00-tutorials/60-plugins/30-database/10-postgres.md) and
+[cache](../../00-tutorials/60-plugins/20-cache/10-redis.md) connectors for in depth tutorials how to configure them.
 
 ```yaml
 cache:
@@ -415,4 +445,74 @@ storage:
     password: mysecretpassword
     host: 'localhost'
     port: 5432
+```
+
+_Default_: in memory cache and no storage.
+
+## Monitoring
+
+Set monitoring options.
+
+```yaml
+monitoring:
+  type: none
+
+  # # Allows monitoring stats to be requested via HTTP, useful for polling agents
+  # # such as LogStash
+  # type: http
+  # options:
+  #   url: /monitoring
+  #   allowOpenPermissions: false
+  #   headerKey: deepstream-password2
+  #   headerValue: deepstream-secret
+
+  # # Logs monitoring stats, useful for kibana where you can visualize meta data
+  # type: log
+  # options:
+  #   logInterval: 30000
+  #   monitoringKey: DEEPSTREAM_MONITORING
+```
+
+_Default_: `none`
+
+## Clusternode
+
+Configuration options for deepstream clusters. Deepstream comes with two possible cluster modes: no cluster and [vertical cluster](../../00-tutorials/60-plugins/50-clusternode/vertical.md) in order to use all CPU cores.
+See [here](../../00-tutorials/60-plugins/50-clusternode/redis.md) in order to use redis as cluster connector in multiple machine deployments.
+
+```yaml
+clusterNode:
+  type: default
+  #name: vertical
+```
+
+_Default_: `none`
+
+### Lock registry
+
+The lock registry is responsible for maintaing a single source of truth within the cluster, used mainly for issuing cluster wide locks when an operation that stretches over multiple nodes are required. For example, distributed listening requires a leader to drive the nodes in sequence, so issuing a lock prevents multiple nodes from assuming the lead.
+
+Check the default server configuration for details, [source code here](https://github.com/deepstreamIO/deepstream.io/blob/master/src/default-options.ts)
+
+### Cluster registry
+
+ This class maintains a list of all nodes that are currently present within the cluster. It provides status messages on a predefined interval and keeps track of incoming status messages.
+
+Check the default server configuration for details, [source code here](https://github.com/deepstreamIO/deepstream.io/blob/master/src/default-options.ts)
+
+### Cluster States
+
+ This class provides a generic mechanism that allows to maintain a distributed state amongst the nodes of a cluster. The state is an array of unique strings in arbitrary order. Whenever a string is added by any node within the cluster for the first time,
+ an 'add' event is emitted. Whenever its removed by the last node within the cluster, a 'remove' event is emitted.
+
+Check the default server configuration for details, [source code here](https://github.com/deepstreamIO/deepstream.io/blob/master/src/default-options.ts)
+
+## Custom Plugins
+
+Deepstream can be extended with any plugin via the [plugin API](../../00-tutorials/70-custom-plugins/10-an-overview.md). Custom plugins can be declared as follows:
+
+```yaml
+plugins:
+  custom:
+    path: '...'
 ```

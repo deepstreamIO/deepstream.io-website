@@ -3,6 +3,8 @@ title: Valve Permissions
 description: The API for Valve, deepstream's powerful permissioning mechanism
 ---
 
+The API for Valve, deepstream's powerful permissioning mechanism.
+
 ## Rule Types
 You can specify permission rules for the following interactions
 

@@ -1,28 +1,29 @@
 ---
 title: Node API
 description: API docs for using deepstream within your own node application
-needsReview: true
 ---
 
-API when using deepstream as a Node.js package via NPM.
+API docs for using deepstream within your own node application
 
 ### `constructor(options)`
 Instantiate a new deepstream server instance. You can pass an optional object
 which contains the configuration or a filePath to the configuration file. Missing options will be merged with default values.
 
 If you omit the argument, deepstream will use default values. Read more about
-the [configuration and default values](/docs/server/configuration/).
+the [configuration and default values](20-configuration.mdx).
 
 |Parameter|Type|Optional|Description|
 |---|---|---|---|
 |options|Object or string|true|Either the configuration object or a filepath to the configuration file|
 
-**Please note** calling `server = new Deepstream({})` only creates the instance, to actually start the server, you still need to call `server.start()`
-
 ```javascript
 const { Deepstream } = require('@deepstream/server')
 const server = new Deepstream({})
 ```
+
+:::tip
+calling `server = new Deepstream({})` only creates the instance, to actually start the server, you still need to call `server.start()`
+:::
 
 ## Events
 
@@ -32,13 +33,18 @@ Emitted once `deepstream.start()` has been called and the startup procedure has 
 ### `stopped`
 Emitted once `deepstream.stop()` has been called and the server has been completely shut down.
 
-💡 **NOTE:** stopping the server does not imply exiting the Node.js process. To do so, the following code can be used:  
+:::tip
+Stopping the server does not imply exiting the Node.js process. To do so, the following code can be used:
 
 ```javascript
 server.on('stopped', () => process.exit(0))
 ```
-
+:::
 ---
+
+### `DEEPSTREAM_STATE_CHANGED`
+
+Emitted for each state transition, useful for debuging purposes.
 
 ## Methods
 
@@ -46,13 +52,27 @@ server.on('stopped', () => process.exit(0))
 Starts the server.
 
 ### `stop()`
-Stops the server. Once the server is stopped, it can not be started again using the same instance of the server.  
+Stops the server. Once the server is stopped, it can not be started again using the same instance of the server.
+
+### `isRunning()`
+
+Returns true if the deepstream server is running, otherwise false.
+
+### `getServices()`
+
+Return all running services
+
+### `getConfig()`
+
+Returns server configuration options
 
 ### `set(key, value)`
 This method allows you to overwrite particular configuration options which were built via the
 configuration initialization step.
 
-💡 **NOTE:** If deepstream is initialized with a configuration object, `set()` will override the keys in your initial configuration. This is useful for passing in objects which are shared between deepstream and the rest of your application, such as a cache connector. You can override any of the options using the same name within your [configuration](/docs/server/configuration/), except for the notable difference(s) below.
+:::note
+If deepstream is initialized with a configuration object, `set()` will override the keys in your initial configuration. This is useful for passing in objects which are shared between deepstream and the rest of your application, such as a cache connector. You can override any of the options using the same name within your [configuration](20-configuration.mdx), except for the notable difference(s) below.
+:::
 
 |Parameter|Type|Optional|Description|
 |---|---|---|---|

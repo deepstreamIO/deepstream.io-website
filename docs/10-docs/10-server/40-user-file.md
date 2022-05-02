@@ -3,7 +3,7 @@ title: User File
 description: The API on how you can configure and use file-based authentication
 ---
 
-This file is used in conjunction with [file-based authentication](/tutorials/core/auth-file/). It is structured as a map of usernames and their associated passwords and optional auth data.
+The API on how you can configure and use [file-based authentication](../../00-tutorials/20-core/20-auth/20-file.mdx). The file is structured as a map of usernames and their associated passwords and optional auth data.
 
 The userfile can be written in YAML or JSON.
 
@@ -68,12 +68,13 @@ If you've configured a hashing algorithm, use hashes as password:
 
 ```
 
-[[info]]
-| You can create hashes from passwords with the currently specified settings using deepstream's command line interface
+:::info
+You can create hashes from passwords with the currently specified settings using deepstream's command line interface
 
 ```bash
 deepstream hash <password>
 ```
+:::
 
 ### data
 Optional authentication data, e.g. `role: admin` or `canCreatePosts: true`. This data will be available in your permission rules as `user.data`. Data stored within clientData will also be forwarded to the client as part of the login process.

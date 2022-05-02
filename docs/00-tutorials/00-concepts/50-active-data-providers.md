@@ -1,5 +1,6 @@
 ---
 title: Active Data Providers
+description: How to boost your application performance by supplying data on demand
 ---
 
 What are Data Providers?
