@@ -5,7 +5,7 @@ description: The API docs for deepstream records
 
 Records are one of deepstream's core features. A Record is an arbitrary JSON data structure that can be created, retrieved, updated, deleted and listened to. Records are created and retrieved using `client.record.getRecord('name')`
 
-To learn more about how they are used, have a look at the [Record Tutorial](/tutorials/core/datasync/records/).
+To learn more about how they are used, have a look at the [Record Tutorial](/docs/tutorials/core/datasync/records/).
 
 ## Creating records
 
@@ -41,7 +41,7 @@ Emitted if the record encounters an error. The error message is passed to the ev
 
 ## Methods
 
-### whenReady(callback)
+### whenReady(callback? | Promise)
 
 |Argument|Type|Optional|Description|
 |---|---|---|---|
@@ -59,7 +59,7 @@ record.whenReady(record => {
 await record.whenReady()
 ```
 
-### set(path, value, callback)
+### set(path, value, callback?)
 
 |Argument|Type|Optional|Description|
 |---|---|---|---|
@@ -72,8 +72,9 @@ Used to set the record's data and can be called with a value. A path and callbac
 Including a callback will indicate that write acknowledgement to cache or
 storage is required and will slow down the operation.
 
-[[info]]
-| After calling `set`, you still have to wait for the record to be ready before a `get` call will return the value assigned by `set`.
+:::info
+After calling `set`, you still have to wait for the record to be ready before a `get` call will return the value assigned by `set`.
+:::
 
 ```javascript
 // Set the entire record's data
@@ -111,6 +112,30 @@ record.set('personalData.firstname', 'Homer', err => {
 })
 ```
 
+#### Write error notification feature
+
+Starting with deepstream v6, there is slight change in the `set` logic that allows faster operations with write error notification. If writing to cache or storage fails, a `RECORD_UPDATE_ERROR` error message will be forwarded to the record instance that can be listened to and thus manage the write error from the client, without having to explicitely wait for the write acknowledgement. Before deepstream v6 if such error ocurred the client was not aware of it.
+
+```js
+const record = client.record.getRecord('test')
+// set record data without write ack
+record.set({ data: 'ok' })
+record.set('path', 5)
+
+// record error listener
+record.on('error', (e) => {
+  if (e === 'RECORD_UPDATE_ERROR') {
+    // write to database or cache failed
+    // handle it properly: retry or nuke the operation...
+  }
+})
+```
+
+:::note
+If `RECORD_UPDATE_ERROR` is emitted, all pending operations with write acknowledgement will receive the error message callback. This is due to the fact that a write error could potentially corrupt data and thus leave the record instance out of sync with the database.
+:::
+
+
 ### setWithAck(path, value)
 
 |Argument|Type|Optional|Description|
@@ -122,8 +147,9 @@ Used to set the record's data and can be called with a value. A path can optiona
 
 This function returns a promise that fulfills when writing to cache or storage completed thus slowing down the operation.
 
-[[info]]
-| After awaiting `setWithAck`, the data is persisted so using `get` will retrieve the updated record.
+:::info
+After awaiting `setWithAck`, the data is persisted so using `get` will retrieve the updated record.
+:::
 
 ```javascript
 // Set the entire record's data with write acknowledgement
@@ -146,7 +172,7 @@ await record.setWithAck('personalData.firstname', 'Marge')
 |---|---|---|---|
 |path|String|true|A particular path within the JSON structure that should be retrieved.|
 
-Used to return the record's data but if called without an argument, will return all the data. `get()` can also be used to retrive a specific part by defining a path string. If the part can not be found, `undefined` will be returned.
+Used to return the record's data but if called without an argument, will return all the data. `get()` can also be used to retrive a specific part by defining a path string. If the path can not be found, `undefined` will be returned.
 
 ```javascript
 record.get() // Returns entire object
@@ -166,8 +192,9 @@ Registers that a function will be called whenever the record's value changes. Al
 
 Optional: Passing `true` will execute the callback immediately with the record's current value.
 
-[[info]]
-| Subscribe is an operation done per record instance. Each time you call `client.getRecord(name)` you can subscribe and then unsubscribe to that specific record instance.
+:::info
+Subscribe is an operation done per record instance. Each time you call `client.getRecord(name)` you can subscribe and then unsubscribe to that specific record instance.
+:::
 
 Listening to any changes on the record:
 ```javascript
@@ -198,8 +225,9 @@ user.subscribe('status', statusChanged, true)
 
 Removes a subscription previous made using `record.subscribe()`. Defining a path with `unsubscribe` removes that specific path, or with a callback, can remove it from generic subscriptions.
 
-[[info]]
-|`unsubscribe` is entirely a client-side operation. To notify the server that the app would no longer interested in the record, use `discard()` instead.
+:::info
+`unsubscribe` is entirely a client-side operation. To notify the server that the app would no longer interested in the record, use `discard()` instead.
+:::
 
 Unsubscribe all callbacks registered with the path `status`:
 ```javascript
@@ -227,9 +255,11 @@ Removes all change listeners and notifies the server that client no longer wants
 ```javascript
 user.discard()
 ```
+Make sure to avoid race conditions, there is a `recordDiscardTimeout` [option](options#recorddiscardtimeout) that will define the number of milliseconds before actually executing the discard operation.
 
-[[info]]
-| It is important to use this operation for record instances that are no longer needed.
+:::info
+It is important to use this operation for record instances that are no longer needed in order to remove listeners.
+:::
 
 ### delete()
 
@@ -239,18 +269,20 @@ This permanently deletes the record on the server for all users.
 user.delete()
 ```
 
-[[info]]
-| Since deleting a record means that it no longer exists, the resulting action will be a forced discard to all clients with that record.
-| Creating a record directly after deleting it without waiting for the `delete` event can end up in a race condition. Try to ensure the record has been deleted succesfully to avoid edge cases.
+Make sure to avoid race conditions, there is a `recordDeleteTimeout` [option](options#recorddeletetimeout) that will define the number of milliseconds before actually executing the delete operation.
+
+:::info
+Since deleting a record means that it no longer exists, the resulting action will be a forced discard to all clients with that record. Creating a record directly after deleting it without waiting for the `delete` event can end up in a race condition. Try to ensure the record has been deleted succesfully to avoid edge cases.
+:::
 
 ### erase(path: string)
 
-Deletes a path from the record. Equivalent to doing `record.set(path, undefined)
+Deletes a path from the record. Equivalent to doing `record.set(path, undefined)`
 
 ```javascript
 user.erase('name')
 ```
 
-### eraseWithAck(path: string)
+### eraseWithAck(path: string, callback? | Promise)
 
 Deletes a path from the record and either takes a callback that will be called when the write has been done or returns a promise that will resolve when the write is done.

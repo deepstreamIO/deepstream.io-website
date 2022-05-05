@@ -23,14 +23,14 @@ client.login()
 |---|---|---|---|
 |name|String|false|The name of the record.|
 
-Retrieves and if necessary creates a [Record](/docs/client-js/datasync-record/) with the given name. Records are persistent data structures that are synced between clients. To learn more about what they are used for and how they work, head over to the [record tutorial](/tutorials/core/datasync/records/).
-
-[[info]]
-| The record will be loaded asynchronously. To ensure the record is loaded put your logic into the [whenReady](/tutorials/core/datasync/records/) callback.
+Retrieves and if necessary creates a [Record](datasync-record) with the given name. Records are persistent data structures that are synced between clients. To learn more about what they are used for and how they work, head over to the [record tutorial](../../tutorials/core/datasync/records).
 
 ```javascript
 const record = client.record.getRecord('user/johndoe')
 ```
+:::info
+The record will be loaded asynchronously. To ensure the record is loaded put your logic into the [whenReady](../../tutorials/core/datasync/records#record-lifecycle) callback. However you can perform set operations without waiting for the record to be ready.
+:::
 
 ### client.record.getList(name)
 
@@ -38,10 +38,7 @@ const record = client.record.getRecord('user/johndoe')
 |---|---|---|---|
 |name|String|false|The name of the list.|
 
-Retrieves or creates a [List](../datasync-list/) with the given name. Lists are arrays of recordNames that clients can manipulate and observe. You can learn more about them in the [list tutorial](/tutorials/core/datasync/lists/).
-
-[[info]]
-| The list will be loaded asynchronously. To ensure the list is loaded put your logic into the [whenReady](/tutorials/core/datasync/records/) callback.
+Retrieves or creates a [List](datasync-list) with the given name. Lists are arrays of recordNames that clients can manipulate and observe. You can learn more about them in the [list tutorial](../../tutorials/core/datasync/lists/).
 
 ```javascript
 const beatlesAlbums = client.record.getList('albums')
@@ -57,14 +54,15 @@ beatlesAlbums.whenReady(() => {
 */
 ```
 
+:::info
+The list will be loaded asynchronously. To ensure the list is loaded put your logic into the [whenReady](../../tutorials/core/datasync/records#record-lifecycle) callback.
+:::
+
 ### client.record.getAnonymousRecord()
 
-Returns an [AnonymousRecord](../datasync-anonymous-record/).
+Returns an [AnonymousRecord](datasync-anonymous-record).
 
-An AnonymousRecord is a record that can change its name. It
-acts as a wrapper around an actual record that can
-be swapped out for another one whilst keeping all bindings intact.
-You can learn more about anonymous records [here](/tutorials/core/datasync/anonymous-records/).
+An AnonymousRecord is a record that can change its name. It acts as a wrapper around an actual record that can be swapped out for another one whilst keeping all  bindings intact. You can learn more about anonymous records [here](../../tutorials/core/datasync/anonymous-records/).
 
 ```javascript
 const record = client.record.getAnonymousRecord()
@@ -74,14 +72,14 @@ record.setName('user/maxpower')
 
 ### client.record.names()
 
- Returns all the available data-sync names.
+Returns all the available data-sync names.
 
- Please note: Lists, AnonymousRecords and Records are all essentially the same thing within the SDK, so this array will contain a list of everything.
+Please note: Lists, AnonymousRecords and Records are all essentially the same thing within the SDK, so this array will contain a list of everything.
 
- Due to how records work as well even after a discard this list will take a while to update. This is intentional as their is an option for how long a record will survive before being discarded! You can change that via the `recordDiscardTimeout: milliseconds` option.
+Due to how records work as well even after a discard this list will take a while to update. This is intentional as their is an option for how long a record will survive before being discarded! You can change that via the `recordDiscardTimeout: milliseconds` option.
 
 
-### client.record.has(name, callback)
+### client.record.has(name, callback | Promise)
 
 |Argument|Type|Optional|Description|
 |---|---|---|---|
@@ -105,7 +103,7 @@ try {
 }
 ```
 
-### client.record.head(name, callback)
+### client.record.head(name, callback | Promise)
 
 |Argument|Type|Optional|Description|
 |---|---|---|---|
@@ -129,7 +127,7 @@ try {
 }
 ```
 
-### client.record.snapshot(name, callback)
+### client.record.snapshot(name, callback | Promise)
 
 |Argument|Type|Optional|Description|
 |---|---|---|---|
@@ -181,6 +179,11 @@ client.record.setData('user/homer', 'son', 'Bart', (err) => {
 })
 ```
 
+### client.record.setDataWithAck(name, path, data)
+
+The same as `setData` but returns a Promise.
+
+
 ### client.record.listen(pattern, callback)
 
 |Argument|Type|Optional|Description|
@@ -200,8 +203,9 @@ client.record.listen('raceHorse/.*', (match, response) => {
 })
 ```
 
-[[info]]
-|The callback will be called for all matching subscriptions that already exist at the time its registered.
+:::info
+The callback will be called for all matching subscriptions that already exist at the time its registered.
+:::
 
 ### client.record.unlisten(pattern)
 
@@ -216,10 +220,54 @@ client.record.unlisten('raceHorse/.*')
 Removes a listener that was previously registered using `listen()`.
 
 
-### client.record.notify(recordNames: string[], callback?| Promise)
+### client.record.notify(recordNames, callback? | Promise)
 
-Notify that the record data was changed at the database without using deepstream APIs.
+|Argument|Type|Optional|Description|
+|---|---|---|---|
+|recordNames|Array|false|The record names to be notified of data changes|
+|callback|Function|true|Arguments are (String) error|
 
-### client.record.setMergeStrategy (recordName: string, mergeStrategy: MergeStrategy)
+Notify that the record data was changed at the database without using deepstream APIs. Useful for third party integrations.
 
-Set merge strategy for a given record.
+```javascript
+client.record.notify(['raceHorse', 'pony'], (error) => {
+  // ...
+})
+
+// Promise
+try {
+  const data = await client.record.notify(['raceHorse', 'pony'])
+} catch (error) {
+  // ...
+}
+```
+
+### client.record.setMergeStrategy (recordName, mergeStrategy)
+
+|Argument|Type|Optional|Description|
+|---|---|---|---|
+|recordName|String|false|The record name merge strategy to be changed|
+|mergeStrategy|Function|false|Merge strategy to be set for the record|
+
+Set merge strategy for a given record. See [handling data conflicts](../../tutorials/core/datasync/handling-data-conflicts) for more information.
+
+### client.record.setMergeStrategyRegExp (pattern, mergeStrategy)
+
+|Argument|Type|Optional|Description|
+|---|---|---|---|
+|pattern|String(regex)|false|The reg exp to match record names for which the merge strategy is to be changed|
+|mergeStrategy|Function|false|Merge strategy to be set for the records|
+
+Set merge strategy for a given record. See [handling data conflicts](../../tutorials/core/datasync/handling-data-conflicts) for more information.
+
+### client.record.saveToOfflineStorage()
+
+Save all records in memory to offline storage
+
+```js
+client.record.saveToOfflineStorage()
+```
+
+### client.record.clearOfflineStorage(callback? | Promise)
+
+Clears offline storage data

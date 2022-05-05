@@ -10,7 +10,7 @@ The deepstream JavaScript client can be used by both browsers and Node.js. You c
 |Argument|Type|Optional|Description|
 |---|---|---|---|
 |url|String|false|The server URL
-|options|Object|true|A map of options. Please find a list of available options [here](/docs/client-js/options/)
+|options|Object|true|A map of options. Please find a list of available options [here](30-options.md)
 
 Creates a client instance and initialises the connection to the deepstream server. The connection will be kept in a quarantine state and won't be fully usable until `login()` is called.
 
@@ -23,11 +23,11 @@ client.login()
 ## Events
 
 ### connectionStateChanged
-Emitted every time the connectionstate changes. The connectionState is passed to the callback and can also be retrieved using <a href="#getConnectionState()">getConnectionState()</a>. A list of possible connection states is available [here](/tutorials/concepts/connectivity/#connection-states)
+Emitted every time the connectionstate changes. The connectionState is passed to the callback and can also be retrieved using <a href="#getConnectionState()">getConnectionState()</a>. A list of possible connection states is available [here](/docs/tutorials/concepts/connectivity#connection-states)
 
 ### error
 Aggregates all errors that are encountered. Some errors like `CONNECTION_ERROR` or `MESSAGE_PARSE_ERROR` are exlusively emitted by the client.
-Others like `ACK_TIMEOUT` or `VERSION_EXISTS` that relate to a specific Record, Event or RPC are emitted first by the object they relate to and are then forwarded to the client. You can find a list of all errors [here](/docs/common/errors/).
+Others like `ACK_TIMEOUT` or `VERSION_EXISTS` that relate to a specific Record, Event or RPC are emitted first by the object they relate to and are then forwarded to the client.
 
 ```javascript
 client.on('error', ( error, event, topic ) =>
@@ -44,9 +44,9 @@ client.on('error', ( error, event, topic ) =>
 |authParams|Object|false|An object with authentication parameters
 |callback|Function|true|A function that will be called once the response to the authentication request is received.
 
-Authenticates the client against the server. To learn more about how authentication works, please have a look at the [Security Overview](/tutorials/concepts/security/).
+Authenticates the client against the server. To learn more about how authentication works, please have a look at the [Security Overview](/docs/tutorials/concepts/security/).
 
-Callback will be called with: success (Boolean), data (Object).
+Callback will be called with: `success (Boolean), data (Object)`.
 
 ```javascript
 const { DeepstreamClient } = require('@deepstream/client')
@@ -73,7 +73,7 @@ client.login({username: 'peter', password: 'sesame'}, (success, data) => {
 ```
 
 ### close()
-Closes the connection to the server. Using this method will prevent the client from reconnecting and authenticating again with the same instance of the client. More info [here](/tutorials/concepts/connectivity/#closed-client-connection)
+Closes the connection to the server. Using this method will prevent the client from reconnecting and authenticating again with the same instance of the client. More info [here](/docs/tutorials/concepts/connectivity/#closed-client-connection)
 
 ```javascript
 client.on('connectionStateChanged', connectionState => {

@@ -19,7 +19,7 @@ You can finely tune deepstream to meet your specific requirements, including rec
 ## General Configuration
 
 ### mergeStrategy
-A global merge strategy that is applied whenever two clients write to the same record at the same time. Can be overwritten on a per record level. Default merge strategies are exposed by the client constructor. It's also possible to write custom merge strategies as functions. You can find more on handling data conflicts [here](/tutorials/core/handling-data-conflicts/)<br/>
+A global merge strategy that is applied whenever two clients write to the same record at the same time. Can be overwritten on a per record level. Default merge strategies are exposed by the client constructor. It's also possible to write custom merge strategies as functions. You can find more on handling data conflicts [here](/docs/tutorials/core/datasync/handling-data-conflicts/)<br/>
 _Type_: Function<br/>
 _Default_: `MERGE_STRATEGIES.REMOTE_WINS`
 
@@ -30,7 +30,10 @@ _Type_: Number<br/>
 _Default_: `4000`
 
 ### heartbeatInterval
-The number of milliseconds to wait before sending a heartbeat. If two heatbeats are missed in a row the client will consider the server to have disconnected and will close the connection in order to establish a new one. <br/> **Note**: If `client heartbeatInterval > 2 * server heartbeatInterval` the client will be considered as disconnnected by the server if no other messages are sent.<br/>
+The number of milliseconds to wait before sending a heartbeat. If two heatbeats are missed in a row the client will consider the server to have disconnected and will close the connection in order to establish a new one. <br/>
+:::tip
+If `client heartbeatInterval > 2 * server heartbeatInterval` the client will be considered as disconnnected by the server if no other messages are sent.<br/>
+:::
 
 _Type_: Number<br/>
 _Default_: `30000`
@@ -70,4 +73,12 @@ Enable offline record support using indexdb to store data client side.
 _Type_: Boolean<br/>
 _Default_: `false`
 
-See all options in [source repo](https://github.com/deepstreamIO/deepstream.io-client-js/blob/master/src/client-options.ts).
+### More
+
+See all options in [source repo](https://github.com/deepstreamIO/deepstream.io-client-js/blob/master/src/client-options.ts) or access default options through the client:
+
+```js
+// Access default options
+const { Options } = require('@deepstream/client')
+```
+

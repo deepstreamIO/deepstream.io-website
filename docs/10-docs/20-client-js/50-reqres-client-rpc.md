@@ -12,7 +12,7 @@ RPCs (Remote Procedure Calls, sometimes also referred to as Remote Method Invoca
 |Argument|Type|Optional|Description|
 |---|---|---|---|
 |name|String|false|The name of the RPC. Each client can only register as a provider for an RPC name once.|
-|callback|Function|false|A function that handles incoming RPCs. Will be called with data and an [RPC response object](../reqres-response/).|
+|callback|Function|false|A function that handles incoming RPCs. Will be called with data and an [RPC response object](reqres-response).|
 
 Registers the client as a provider for incoming RPCs of a specific name. The callback will be invoked when another client calls `client.rpc.make()`.
 
@@ -22,10 +22,11 @@ client.rpc.provide( 'add-two-numbers', function( data, response ){
 });
 ```
 
-[[info]]
-| Only one callback per client can be registered for the same RPC
-| Data can be any serializable object
-| Documentation for the `response` object can be found [here](../reqres-response/)
+:::note
+- Only one callback per client can be registered for the same RPC
+- Data can be any serializable object
+- Documentation for the `response` object can be found [here](reqres-response)
+:::
 
 ### client.rpc.unprovide( name )
 
@@ -58,3 +59,7 @@ client.rpc.make( 'add-two-numbers', { numA:4, numB: 7 }, (error, result) => {
 // ES6
 const result = await client.rpc.make('add-two-numbers', { numA: 4, numB: 7})
 ```
+
+:::info
+That data that will be sent with the RPC is limited in size by the `maxMessageSize` [config option](../server/configuration#connection-endpoint-configuration) for the given server connection endpoint
+:::

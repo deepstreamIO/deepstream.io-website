@@ -3,7 +3,7 @@ title: Event
 description: API docs for deepstream's events, the many to many broadcasting mechanism
 ---
 
-Events are deepstream's implementation of the publish/subscribe pattern. You can find more about how they are used in the [events tutorial](/tutorials/core/pubsub/).
+Events are deepstream's implementation of the publish/subscribe pattern. You can find more about how they are used in the [events tutorial](/docs/tutorials/core/pubsub/events).
 
 ## Methods
 
@@ -61,7 +61,7 @@ client.event.emit('notifications', 'Maria just came online')
 |pattern|String (regex)|false|The pattern to match events which subscription status you want to be informed of|
 |callback|Function|false|A function that will be called whenever an event matching the `pattern` has been initially subscribed to. When there are no more subscriptions to any events matching `pattern`, the callback passed to `response.onStop()` is called. Arguments are (String) match, and response (Object)|
 
-Registers the client as a listener for event subscriptions made by other clients. This is useful to create active data providers - processes that only send events if clients are actually interested in them. You can find more about listening in the [events tutorial](/tutorials/core/pubsub/#how-to-listen-for-event-subscriptions).
+Registers the client as a listener for event subscriptions made by other clients. This is useful to create active data providers - processes that only send events if clients are actually interested in them. You can find more about listening in the [events tutorial](/docs/tutorials/core/pubsub/events#how-to-listen-for-event-subscriptions).
 
 The callback is invoked with two arguments:
 - **match**: the name of the event that has been matched against the provided pattern

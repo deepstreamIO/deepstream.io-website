@@ -25,6 +25,10 @@ client.rpc.provide( 'add-two-numbers', (data, response) => {
 })
 ```
 
+:::info
+That data that will be sent with the RPC is limited in size by the `maxMessageSize` [config option](../server/configuration#connection-endpoint-configuration) for the given server connection endpoint
+:::
+
 ### response.reject()
 Rejects the request. Rejections are not errors but merely a means of saying "I'm busy at the moment, try another client". Upon receiving a rejection, deepstream will try to re-route the request to another provider for the same RPC. If there are no more providers left to try, deepstream will send a `NO_RPC_PROVIDER` error to the client.
 
@@ -57,8 +61,9 @@ Explicitly acknowledges the receipt of a request.
 
 This is usually done automatically but can also be performed explicitly by setting `response.autoAck = false` and calling `ack()` later. This is useful when a client needs to perform an asynchronous operation to determine if it will accept or reject the request.
 
-[[info]]
-| Requests count as completed once `send()` or `error()` was called. Calling `ack()` after that won't do anything.
+:::note
+Requests count as completed once `send()` or `error()` was called. Calling `ack()` after that won't do anything.
+:::
 
 ```javascript
 client.rpc.provide('support/billing', (data, response) => {
