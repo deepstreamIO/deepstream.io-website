@@ -3,7 +3,7 @@ title: List
 description: API docs for deepstream's list object, a manageable collection of record names
 ---
 
-Lists are collections of record names. To learn more about how they are used, have a look at the [List Tutorial](../../../tutorials/core/datasync/lists/).
+Lists are collections of record names. To learn more about how they are used, have a look at the [List Tutorial](../../tutorials/core/datasync/lists/).
 
 Lists and record names have an `n:m` relationship. A record name can be part of many lists and a list can contain many record names. A list can also contain the same record name multiple times.
 

@@ -5,13 +5,13 @@ description: Learn how to use anonymous records to switch context without having
 
 AnonymousRecord is a record without a predefined name. It functions as a wrapper around an actual record that can be swapped out for another while keeping all bindings intact.
 
-An anonymousRecord extends `Record` and contains all of its [API calls](/docs/client-js/datasync-record/).
+An anonymousRecord extends `Record` and contains all of its [API calls](datasync-record).
 
-To learn more about how they are used, have a look at the [AnonymousRecord Tutorial](/tutorials/core/datasync/anonymous-records/).
+To learn more about how they are used, have a look at the [AnonymousRecord Tutorial](../../tutorials/core/datasync/anonymous-records/).
 
 ## Creating an anonymousRecord
 
-AnonymousRecords are created and retrieved using `client.record.getAnonymousRecord('name')`
+AnonymousRecords are created and retrieved using `client.record.getAnonymousRecord()`
 
 ```javascript
 const anonymousRecord = client.record.getAnonymousRecord()
