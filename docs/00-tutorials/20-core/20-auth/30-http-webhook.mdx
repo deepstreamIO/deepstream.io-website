@@ -23,6 +23,8 @@ To enable HTTP authentication, set the `type` to `http` in the `auth` section of
     retryAttempts: 3
     retryInterval: 5000
     reportInvalidParameters: true # return when credentials are incorrect: missing username or password
+    # fields to copy from authData to header, useful for when endpoints authenticate using middleware
+    promoteToHeader: string[]
 ```
 
 In the `options` key, set an `endpointUrl` for an authentication service that deepstream will send a `POST` request to, `permittedStatusCodes` to the list of accepted http codes for successful authentication, and `requestTimeout`is the timeout value (in milliseconds).
@@ -39,6 +41,8 @@ The following payload is sent with the `POST` request for your authentication se
   "authData": {...}
 }
 ```
+
+`authData` will have either the user credentials `{username: 'xx', password: 'xx'}` or an access token `{token: 'xxxx'}`
 
 How you construct the service behind the url endpoint is up to you and your application stack, but it should return the relevant http response code and either a `username` string, or a JSON:
 

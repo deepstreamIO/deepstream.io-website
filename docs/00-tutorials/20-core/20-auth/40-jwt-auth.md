@@ -19,7 +19,7 @@ Maybe. Traditional tokens serve as primary keys to session data, meaning they he
 
 This is great for HTTP workflows where clients make many individual requests that are all associated with the same user. deepstream, however, uses a persistent connection that is only established once when the client connects (okay, and maybe occasionally again if the connection drops). All session data stays associated with that connection, rather than with the requests and subscriptions made through it. As a result, deepstream messages are significantly smaller and faster than their HTTP equivalents.
 
-This, however, does mean that deepstream itself doesn't benefit much from using JWT. It doesn't hurt much either though and can still be helpful when deepstream is used in conjunction with traditional HTTP endpoints.
+This, however, does mean that deepstream itself doesn't benefit much from using JWT. It doesn't hurt much either though and can still be helpful when deepstream is used in conjunction with traditional HTTP endpoints or using deepstream's own [HTTP API](../../../docs/client-http/v1)
 
 ## deepstream's Auth Webhook
 Before you begin performing authentication with JWT, it's worth noting that deepstream allows you to register an HTTP endpoint URL to which connection data is forwarded as POST request whenever a client or backend process attempts to log in.
@@ -31,25 +31,7 @@ The [HTTP Authentication](/docs/tutorials/core/auth/http-webhook/) guide covers 
 ## deepstream HTTP Auth with JWT
 [JWT](https://jwt.io) allows us to transport claims securely from the server to client and vice versa using an encoded JSON string. This token is persisted on the client and used to make authorized requests as long as the token is valid (not tampered with and not expired).
 
-Looking back at the flow described above, JWT needs to be put somewhere in the picture. For that, there are two choices:
-
-## The simple, but less secure one
-
-![JWT Authentication Flow Simple](/img/tutorials/20-core/deepstream-jwt-auth-flow-simple.png)
-
-In this scenario, the deepstream client sends the user's credential to deepstream which forwards it to a configured HTTP endpoint.
-
-The endpoint creates the JWT and passes it back through deepstream to the client which stores it in localStorage
-
-For subsequent requests, the token is already in localStorage and will be sent by the client instead of asking the user for credentials.
-
-### Why is this less secure?
-Storing the token in localStorage or in a cookie using javascript makes it readable by all scripts on the page. This leaves it open for cross-site scripting attacks (XSS) that can hijack the session.
-
-Likewise, this approach requires the web application itself and all its assets to be publicly readable. Using the following approach, however, would allow you to redirect all unauthenticated requests to the web app to a login page.
-
-## The complicated, secure one
-The recommended workflow looks as follows:
+Looking back at the flow described above, JWT needs to be put somewhere in the picture. The recommended workflow looks as follows:
 
 ![JWT-Auth Flow](/img/tutorials/20-core/deepstream-jwt-auth-flow.png)
 

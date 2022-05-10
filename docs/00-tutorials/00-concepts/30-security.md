@@ -25,9 +25,10 @@ It's highly recommended to always use a seperate process to do SSL termination. 
 Every incoming connection needs to pass an authentication step. This happens when the client calls `login(data, callback)`.
 deepstream comes with three built-in authentication mechanisms:
 
-- [none](/docs/tutorials/core/auth/none/) allows every connection. Choose this option for public sites that don't require access controls.
-- [file](https://deepstream.io/docs/tutorials/core/auth-file/) reads authentication data from a static file. This is a good choice for public read / private write use cases, e.g. sports result pages that let every user visit, but only a few backend processes update the result.
-- [http](https://deepstream.io/docs/tutorials/core/auth/http-webhook/) contacts a configurable HTTP webhook to ask if a user is allowed to connect. This is the most flexible option as it allows you to write a tiny http server in any language that can connect to databases, active directories, oAuth providers or whatever else your heart desires.
+- [none](/docs/tutorials/core/auth/none) allows every connection. Choose this option for public sites that don't require access controls.
+- [file](/docs/tutorials/core/auth/file) reads authentication data from a static file. This is a good choice for public read / private write use cases, e.g. sports result pages that let every user visit, but only a few backend processes update the result.
+- [storage](/docs/tutorials/core/auth/storage) authentication allows you to store usernames, password hashes and optional meta-data in a table within your database that will be used to authenticate incoming connections.
+- [http](/docs/tutorials/core/auth/http-webhook) contacts a configurable HTTP webhook to ask if a user is allowed to connect. This is the most flexible option as it allows you to write a tiny http server in any language that can connect to databases, active directories, oAuth providers or whatever else your heart desires. http auth can be combined with [jwt](/docs/tutorials/core/auth/jwt-auth/).
 
 Apart from just accepting / denying incoming connections, the authentication step can also provide two extra bits of information:
 

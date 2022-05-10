@@ -249,34 +249,6 @@ connectionEndpoints:
       maxAuthAttempts: 3
       # maximum allowed size of an individual message in bytes
       maxMessageSize: 1048576
-
-  - type: http
-    options:
-      # allow 'authData' parameter in POST requests, if disabled only token and OPEN auth is
-      # possible
-      allowAuthData: true
-      # enable the authentication endpoint for requesting tokens/userData.
-      # note: a custom authentication handler is required for token generation
-      enableAuthEndpoint: true
-      # path for authentication requests
-      authPath: /api/auth
-      # path for POST requests
-      postPath: /api
-      # path for GET requests
-      getPath: /api
-      # should the server log invalid auth data, defaults to false
-      logInvalidAuthData: false
-      # http request timeout in milliseconds, defaults to 20000
-      requestTimeout: 20000
-
-  - type: mqtt
-    options:
-        # port for the mqtt server
-        port: 1883
-        # host for the mqtt server
-        host: 0.0.0.0
-        # timeout for idle devices
-        idleTimeout: 60000
 ```
 
 ### Websockets
@@ -314,12 +286,43 @@ Sets the maximum message size allowed to be sent to the server (in bytes).
 
 _Default_: `1048576`
 
-### outgoingBufferTimeout
+#### outgoingBufferTimeout
 The amount of milliseconds that secondary writes to sockets are buffered. This means
 writes that are not realtime critical, which currently are either ACKs or
 non critical ERROR messages.
 
 _Default_: `0`
+
+### http
+
+```yaml
+  - type: http
+    options:
+      # allow 'authData' parameter in POST requests, if disabled only token and OPEN auth is
+      # possible
+      allowAuthData: true
+      # path for POST requests
+      postPath: /api
+      # path for GET requests
+      getPath: /api
+      # should the server log invalid auth data, defaults to false
+      logInvalidAuthData: false
+      # http request timeout in milliseconds, defaults to 20000
+      requestTimeout: 20000
+```
+
+### mqtt
+
+```yaml
+  - type: mqtt
+    options:
+        # port for the mqtt server
+        port: 1883
+        # host for the mqtt server
+        host: 0.0.0.0
+        # timeout for idle devices
+        idleTimeout: 60000
+```
 
 ## Custom Plugin Configuration
 
