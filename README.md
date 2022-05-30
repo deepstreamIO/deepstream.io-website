@@ -1,3 +1,8 @@
+# The active repository for the documentation website is https://github.com/deepstreamIO/deepstreamIO.github.io
+
+# The up-to-date version of the documentation can be found at https://deepstreamio.github.io/
+
+
 <p align="center">
   <a href="https://deepstream.io">
     <img alt="Gatsby" src="https://deepstream.io/images/deepstream-elton-logo-startpage.svg" width="60" />
